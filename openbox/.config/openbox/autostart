@@ -1,0 +1,5 @@
+tint2 &
+volumeicon &
+nm-applet &
+udiskie -t &
+feh --bg-scale /home/migbert/.config/qtile/wallpapers/league-of-legends.jpg
