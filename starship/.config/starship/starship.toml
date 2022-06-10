@@ -1,12 +1,12 @@
 format = """
 [](#9A348E)\
 $username\
-[](bg:#DA627D fg:#9A348E)\
+[](bg:#55208d fg:#9A348E)\
 $directory\
-[](fg:#DA627D bg:#33658A)\
+[](fg:#55208d bg:#004953)\
 $git_branch\
 $git_status\
-[](fg:#33658A bg:#86BBD8)\
+[](fg:#004953 bg:#86BBD8)\
 $c\
 $elixir\
 $elm\
@@ -18,8 +18,8 @@ $nodejs\
 $lua\
 $rust\
 $php\
-[](fg:#86BBD8 bg:#33658A)\
-[ ](fg:#33658A)\
+[](fg:#86BBD8 bg:#004953)\
+[ ](fg:#004953)\
 """
 # mueve el resto del mensaje a la derecha
 right_format = """
@@ -37,7 +37,7 @@ style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 
 [directory]
-style = "bg:#DA627D"
+style = "bg:#55208d"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -77,12 +77,12 @@ format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#33658A"
-format = '[[ $symbol $branch ](bg:#33658A)]($style)'
+style = "bg:#004953"
+format = '[[ $symbol $branch ](bg:#004953)]($style)'
 
 [git_status]
-style = "bg:#33658A"
-format = '[[($all_status$ahead_behind )](bg:#33658A)]($style)'
+style = "bg:#004953"
+format = '[[($all_status$ahead_behind )](bg:#004953)]($style)'
 
 [golang]
 symbol = " "
@@ -127,8 +127,8 @@ format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 [time]
 disabled = true
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[[ ♥ $time ](bg:#33658A)]($style)'
+style = "bg:#004953"
+format = '[[ ♥ $time ](bg:#004953)]($style)'
 
 
 
@@ -146,10 +146,10 @@ format = '[[ ♥ $time ](bg:#33658A)]($style)'
 # right_format = """$cmd_duration"""
 #
 # # Espera 10 milisegundos para que starship revise los archivos del directorio actual.
-# scan_timeout = 10
-#
+scan_timeout = 10
+command_timeout = 100
 # # Deshabilita la línea en blanco al inicio del prompt
-# add_newline = false
+add_newline = false
 #
 # [character]
 # error_symbol = "[](bold red)"
