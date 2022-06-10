@@ -14,12 +14,12 @@ def separator():
     return widget.Sep(**base(), linewidth=0, padding=5)
 
 
-def icon(fg='text', bg='dark', fontsize=16, text="?"):
+def icon(fg='text', bg='dark', fontsize=18, text="?"):
     return widget.TextBox(
         **base(fg, bg),
         fontsize=fontsize,
         text=text,
-        padding=3
+        padding=2
     )
 
 
@@ -27,8 +27,8 @@ def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
         text="", # Icon: nf-oct-triangle_left
-        fontsize=37,
-        padding=-2
+        fontsize=36,
+        padding=-3
     )
 
 
@@ -57,7 +57,7 @@ def workspaces():
             disable_drag=True
         ),
         separator(),
-        widget.WindowName(**base(fg='focus'), fontsize=14, padding=5),
+        widget.WindowName(**base(fg='focus'), fontsize=16, padding=4),
         separator(),
     ]
 
@@ -81,13 +81,19 @@ primary_widgets = [
         custom_command='checkupdates',
     ),
 
-    powerline('color3', 'color4'),
+     powerline('color3', 'color4'),
 
-    icon(bg="color3", text=' '),  # Icon: nf-fa-feed
+    icon(bg="color3", text=' '),  
     
-    widget.Net(**base(bg='color3'), interface='wlp2s0'),
+    widget.Memory(**base(bg='color3'), format='{MemUsed: .0f}{mm}', measure_mem='M' ),
 
-    powerline('color2', 'color3'),
+   powerline('color1', 'color3'),
+
+    icon(bg="color1", text=' '),  # Icon: nf-fa-feed
+    
+    widget.Net(**base(bg='color1'), format='{down}'),
+
+    powerline('color2', 'color1'),
 
     widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
 
@@ -97,11 +103,12 @@ primary_widgets = [
 
     icon(bg="color1", fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
 
-    widget.Clock(**base(bg='color1'), format='%d/%m/%Y - %H:%M '),
+    widget.Clock(**base(bg='color1'), format='%d/%m/%y - %-I:%M'),
 
     powerline('dark', 'color1'),
 
     widget.Systray(background=colors['dark'], padding=5),
+    powerline('color3', 'dark'),
 ]
 
 secondary_widgets = [
@@ -117,7 +124,7 @@ secondary_widgets = [
 
     powerline('color2', 'color1'),
 
-    widget.Clock(**base(bg='color2'), format='%d/%m/%Y - %H:%M '),
+    widget.Clock(**base(bg='color2'), format='%d/%m/%y - %I:%M %p'),
 
     powerline('dark', 'color2'),
 ]
