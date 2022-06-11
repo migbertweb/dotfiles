@@ -81,6 +81,7 @@ git log --all --graph --decorate --oneline --abbrev-commit
 alias gp=gitpush
 alias glog='git log --all --graph --decorate --oneline --abbrev-commit'
 
+alias instalar='sudo pacman -S'
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mtar='tar -zcvf' # mtar <archive_compress>
 alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
@@ -102,6 +103,7 @@ alias v='nvim'
 alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
+alias upgrade='paru -Syu'
 
 # init starship
 eval "$(starship init zsh)"
