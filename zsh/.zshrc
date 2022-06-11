@@ -66,7 +66,21 @@ source /usr/share/fzf/key-bindings.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 
+# Git command
+gitpush() {
+echo Añadiendo cambios a Stage
+  git add .
+  echo commit Stage
+    git commit -m "$*"
+    echo Subiendo cambios a Origin
+    git push
+    echo Mostrando Log del repositorio
+git log --all --graph --decorate --oneline --abbrev-commit
+  }
 # alias
+alias gp=gitpush
+alias glog='git log --all --graph --decorate --oneline --abbrev-commit'
+
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mtar='tar -zcvf' # mtar <archive_compress>
 alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
