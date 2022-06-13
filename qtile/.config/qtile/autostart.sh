@@ -12,4 +12,7 @@ udiskie -t &
 $HOME/.config/qtile/slideshow.sh &
 # compositor
 picom &
-
+# Music server
+mpd &
+# Playertctl support for mpd
+mpDris2 &
