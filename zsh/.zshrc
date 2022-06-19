@@ -63,6 +63,7 @@ source $HOME/.fzf/shell/key-bindings.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 
 # Git command
+# Subir cambios a git
 gitpush() {
 echo Añadiendo cambios a Stage
   git add .
@@ -70,12 +71,58 @@ echo Añadiendo cambios a Stage
     git commit -m "$*"
     echo Subiendo cambios a Origin
     git push
+<<<<<<< HEAD
     echo Mostrando Log del repositorio
+=======
+    sleep 2
+    echo "\n ##### Mostrando Log del repositorio ##### \n"
+>>>>>>> aff4581 (cambios a Awesome en apps, keys y en .zshrc)
 git log --all --graph --decorate --oneline --abbrev-commit
   }
+# borrar una rama Remota
+gitdelete() {
+  echo "\n ##### borrar rama remota ##### \n"
+    git push origin --delete "$*"
+    sleep 2
+   echo "\n ##### Mostrando Log del repositorio ##### \n"
+git log --all --graph --decorate --oneline --abbrev-commit
+  }
+# fusionar ramas de git
+gitmerge() {
+  echo "\n ##### Fusionar ramas de git ##### \n"
+    git merge --no-ff "$*"
+    sleep 2
+   echo "\n ##### Mostrando Log del repositorio ##### \n"
+git log --all --graph --decorate --oneline --abbrev-commit
+  }
+# eliminar commit
+gitdeletecommit() {
+  echo "\n ##### borrar rama remota ##### \n"
+    git push origin --delete "$*"
+   echo "\n ##### Mostrando Log del repositorio ##### \n"
+git log --all --graph --decorate --oneline --abbrev-commit
+  }
+# mostrar el log de git
+gitlog() {
+  echo "\n ##### Mostrando el Log Graph ##### \n"
+sleep 2
+  git log --all --graph --decorate --oneline --abbrev-commit
+  }
+
 # alias
+<<<<<<< HEAD
 alias gp=gitpush
 alias glog='git log --all --graph --decorate --oneline --abbrev-commit'
+=======
+alias gitu=gitpush
+alias glog=gitlog
+alias gbranch='git branch'
+alias gcheck='git checkout'
+alias gs='git status'
+alias gitd=gitdelete
+alias gitm=gitmerge
+alias gitdc=gitdeletecommit
+>>>>>>> aff4581 (cambios a Awesome en apps, keys y en .zshrc)
 
 alias instalar='sudo pacman -S'
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'

@@ -8,7 +8,7 @@ return {
 		-- Default terminal emulator
 		terminal = "kitty",
 		-- Defalut music client
-		music_player = "kitty --class music -e ncmpcpp",
+		music_player = "kitty --class music -e ncmpcpp -c ~/.config/awesome/ncmpcpp/config",
 		-- Default text editor
 		text_editor = "kitty -e nvim",
 		-- Default code editor
@@ -16,7 +16,7 @@ return {
 		-- Default web browser
 		web_browser = "firefox",
 		-- Default file manager
-		file_manager = "nautilus",
+		file_manager = "thunar",
 		-- Default network manager
 		network_manager = "kitty -e nmtui",
 		-- Default bluetooth manager

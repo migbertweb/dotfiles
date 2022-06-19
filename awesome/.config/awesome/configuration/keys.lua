@@ -148,7 +148,7 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "toggle dashboard", group = "hotkeys" }),
 
 	-- Music player
-	awful.key({ mod }, "grave", function()
+	awful.key({ mod, shift }, "m", function()
 		awful.spawn.with_shell(apps.default.music_player)
 	end, { description = "open music client", group = "hotkeys" }),
 
