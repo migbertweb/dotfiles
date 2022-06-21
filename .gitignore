@@ -1,3 +1,3 @@
 mpd/.config/mpd/mpd.state
-mpd/.config/mpd/playlists/*
-
+mpd/.config/mpd/playlists/
+mpd/.config/mpd/mpd.db
