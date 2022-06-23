@@ -13,8 +13,8 @@ return {
 		end,
 	},
 	-- load it after nvim-lspconfig cuz we lazy loaded lspconfig
-	-- Github Copilot
-	["github/copilot.vim"] = {
-		after = "nvim-lspconfig",
-	},
+	-- -- Github Copilot
+	-- ["github/copilot.vim"] = {
+	-- 	after = "nvim-lspconfig",
+	-- },
 }

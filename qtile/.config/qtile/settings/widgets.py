@@ -14,7 +14,7 @@ def separator():
     return widget.Sep(**base(), linewidth=0, padding=5)
 
 
-def icon(fg='text', bg='dark', fontsize=18, text="?"):
+def icon(fg='text', bg='dark', fontsize=16, text="?"):
     return widget.TextBox(
         **base(fg, bg),
         fontsize=fontsize,
@@ -28,7 +28,7 @@ def powerline(fg="light", bg="dark"):
         **base(fg, bg),
         text="", # Icon: nf-oct-triangle_left
         fontsize=36,
-        padding=-3
+        padding=-2
     )
 
 
@@ -57,7 +57,7 @@ def workspaces():
             disable_drag=True
         ),
         separator(),
-        widget.WindowName(**base(fg='focus'), fontsize=16, padding=4),
+        widget.WindowName(**base(fg='focus'), fontsize=17, padding=4),
         separator(),
     ]
 
@@ -101,7 +101,7 @@ primary_widgets = [
 
     powerline('color1', 'color2'),
 
-    icon(bg="color1", fontsize=17, text=' '), # Icon: nf-mdi-calendar_clock
+    icon(bg="color1", fontsize=18, text=' '), # Icon: nf-mdi-calendar_clock
 
     widget.Clock(**base(bg='color1'), format='%d/%m/%y - %-I:%M'),
 
@@ -131,7 +131,7 @@ secondary_widgets = [
 
 widget_defaults = {
     'font': 'UbuntuMono Nerd Font Bold',
-    'fontsize': 14,
+    'fontsize': 17,
     'padding': 1,
 }
 extension_defaults = widget_defaults.copy()
