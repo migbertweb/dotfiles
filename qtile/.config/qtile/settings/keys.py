@@ -75,6 +75,8 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 # Music client
 	    ([mod, "shift"], "m", lazy.spawn("kitty --class music -e ncmpcpp")),
     # ------------ Hardware Configs ------------
+# Network Manager cli
+	    ([mod, "shift"], "w", lazy.spawn("kitty -e nmtui")),
 
     # Volume
     ([], "XF86AudioLowerVolume", lazy.spawn(

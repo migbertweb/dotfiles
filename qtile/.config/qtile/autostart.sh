@@ -15,4 +15,4 @@ picom &
 # Music server
 mpd &
 # Playertctl support for mpd
-mpDris2 &
+# mpDris2 &
