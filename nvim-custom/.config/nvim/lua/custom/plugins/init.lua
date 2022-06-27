@@ -12,6 +12,12 @@ return {
 			require("custom.plugins.null-ls").setup()
 		end,
 	},
+	-- "NTBBloodbath/rest.nvim", Cliente API
+	["NTBBloodbath/rest.nvim"] = {
+		config = function()
+			require("custom.plugins.rest").setup()
+		end,
+	},
 	-- load it after nvim-lspconfig cuz we lazy loaded lspconfig
 	-- -- Github Copilot
 	-- ["github/copilot.vim"] = {

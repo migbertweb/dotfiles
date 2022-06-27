@@ -3,34 +3,45 @@
 local M = {}
 
 M.treesitter = {
-   ensure_installed = {
-      "lua",
-      "html",
-      "css",
-      "php",
-      "json",
-      "http",
-      "python",
-      "bash",
-      "javascript",
-      "typescript",
-   },
+	ensure_installed = {
+		"lua",
+		"html",
+		"css",
+		"php",
+		"json",
+		"http",
+		"python",
+		"bash",
+		"javascript",
+		"typescript",
+	},
 }
 
 M.nvimtree = {
-   git = {
-      enable = true,
-   },
-   view = {
-      width = 25,
-   },
-   renderer = {
-      highlight_git = true,
-      icons = {
-         show = {
-            git = true,
-         },
-      },
-   },
+	sort_by = "case_sensitive",
+	git = {
+		enable = true,
+	},
+	view = {
+		adaptive_size = true,
+		hide_root_folder = false,
+		--		width = 25,
+		mappings = {
+			list = {
+				{ key = "u", action = "dir_up" },
+			},
+		},
+	},
+	filters = {
+		dotfiles = true,
+	},
+	renderer = {
+		highlight_git = true,
+		icons = {
+			show = {
+				git = true,
+			},
+		},
+	},
 }
 return M
