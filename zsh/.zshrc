@@ -167,7 +167,7 @@ alias upgrade='paru -Syu'
 #####################################################
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+#source ~/powerlevel10k/powerlevel10k.zsh-theme
 #####################################################
 # Buscador FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -178,3 +178,4 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
