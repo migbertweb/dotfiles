@@ -70,7 +70,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 ##### FUNCIONES BASH
 #####################################################
 # Actualizar NVIM como modulo de mis Dotfiles
-actnvim(){
+actualizarnvim(){
   echo Actualizando nvim
   echo -e \nCambiando al directorio Dotfiles
   cd ~/dotfiles/
@@ -135,7 +135,7 @@ alias gitd=gitdelete
 alias gitm=gitmerge
 alias gitdc=gitdeletecommit
 
-alias actnvim=actnvim
+alias actnvim=actualizarnvim
 alias instalar='sudo pacman -S'
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mtar='tar -zcvf' # mtar <archive_compress>
@@ -158,7 +158,7 @@ alias v='nvim'
 alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
-alias upgrade='paru -Syu'
+alias upgrade='yay -Syu'
 #####################################################
 # init starship
 # eval "$(starship init zsh)"
