@@ -1,7 +1,8 @@
 local M = {}
-local rest_nvim = require "rest"
+
 M.setup = function()
-	rest_nvim.setup({
+	local rest_nvim = require "rest-nvim"
+        rest_nvim.setup{
 		-- Open request results in a horizontal split
 		result_split_horizontal = false,
 		-- Skip SSL verification, useful for unknown certificates
@@ -9,7 +10,7 @@ M.setup = function()
 		-- Highlight request on run
 		highlight = {
 			enabled = true,
-			timeout = 150,
+			timeout = 250,
 		},
 		result = {
 			-- toggle showing URL, HTTP info, headers at top the of result window
@@ -22,7 +23,7 @@ M.setup = function()
 		env_file = ".env",
 		custom_dynamic_variables = {},
 		yank_dry_run = true,
-	})
+	}
 end
 
 -- vim.api.nvim_create_autocmd("FileType", {
