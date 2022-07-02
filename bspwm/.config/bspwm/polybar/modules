@@ -281,7 +281,7 @@ format-offline-prefix = " "
 format-offline-prefix-foreground = ${color.RED}
 label-offline = "Offline"
 
-label-song =  "%title% | %artist%"
+label-song =  "%title%-%artist%"
 label-song-maxlen = 32
 label-song-ellipsis = true
 
@@ -345,7 +345,7 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
-label-connected = "%{A1:nmd &:}%downspeed%/%essid%%{A}"
+label-connected = "%{A1:nmd &:}%downspeed%%{A}"
 label-disconnected = "%{A1:nmd &:}Disconnected%{A}"
 
 ramp-signal-0 = 
