@@ -38,7 +38,7 @@ workspaces() {
 workspaces
 
 bspc config border_width 1
-bspc config window_gap 10
+bspc config window_gap 4
 bspc config split_ratio 0.50
 
 bspc config focused_border_color "$BLUE"
@@ -156,7 +156,7 @@ bash $HOME/.fehbg
 exec mpd &
 
 # Udiskie
-exec udiskie -t &
+exec udiskie -t -s &
 
 # Start bspwm scripts
 bspcolors

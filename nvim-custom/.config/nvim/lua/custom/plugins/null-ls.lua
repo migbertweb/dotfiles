@@ -37,6 +37,10 @@ local sources = {
 	b.formatting.djlint, -- pip install djlint
 	b.diagnostics.djlint, -- pip install djlint
 
+	--JSON
+	b.formatting.fixjson, -- npm install -g fixjson
+	b.diagnostics.jsonlint, -- npm install -g jsonlint
+
 	-- PHP Formatting & Linter
 	b.formatting.phpcsfixer, --composer global require friendsofphp/php-cs-fixer
 	b.diagnostics.phpcs, --composer global require "squizlabs/php_codesniffer=*"

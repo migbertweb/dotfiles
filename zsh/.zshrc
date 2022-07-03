@@ -11,6 +11,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export DENO_INSTALL="/home/migbert/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 #####################################################
 ##### ENV
 #####################################################
