@@ -82,16 +82,19 @@ actualizarnvim(){
 # Git command
 # Subir cambios a git
 gitpush() {
-echo Añadiendo cambios a Stage
+echo "########## Añadiendo cambios a Stage ##########"
   git add .
-  echo commit Stage
+  sleep 1
+  echo "########## Estado del Commit ##########"
     git commit -m "$*"
-    echo Subiendo cambios a Origin
+    sleep 1
+    echo "########## Subiendo cambios a Origin ##########"
     git push
-    echo Mostrando Log del repositorio
-    sleep 2
+    sleep 1
+    echo "########## Mostrando Log del repositorio ##########"
+    sleep 1
     echo "\n ##### Mostrando Log del repositorio ##### \n"
-git log --all --graph --decorate --oneline --abbrev-commit
+git log -5 --graph --oneline --abbrev-commit --pretty=format:"%h - %an, %ar : %s"
   }
 # borrar una rama Remota
 gitdelete() {
