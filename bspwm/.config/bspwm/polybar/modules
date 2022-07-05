@@ -1,6 +1,58 @@
 ## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/updates]
+type = custom/script
+
+; Available tokens:
+;   %counter%
+; Command to be executed (using "/usr/bin/env sh -c [command]")
+exec = ~/.config/bspwm/polybar/scripts/updates.sh
+
+; Conditional command that, if defined, needs to exit successfully
+; before the main exec command is invoked.
+; Default: ""
+;;exec-if = ""
+
+; Will the script output continous content?
+; Default: false
+tail = true
+
+; Seconds to sleep between updates
+; Default: 2 (0 if `tail = true`)
+interval = 5
+
+; Available tags:
+;   <output> - deprecated
+;   <label> (default)
+format = <label>
+format-prefix = 
+
+; Available tokens:
+;   %output%
+; Default: %output%
+label = %output%
+
+; Available tokens:
+;   %counter%
+;   %pid%
+;
+; "click-(left|middle|right)" will be executed using "/usr/bin/env sh -c [command]"
+click-left = exo-open --launch TerminalEmulator && sleep 0.6 && xdotool type 'sudo pacman -Syu'
+click-right = exo-open --launch TerminalEmulator && sleep 0.6 && xdotool type 'sudo pacman -Syu'
+;;double-click-left = echo double left %counter%
+;;double-click-middle = echo double middle %counter%
+;;double-click-right = echo double right %counter%
+
+; Available tokens:
+;   %counter%
+;   %pid%
+;
+; "scroll-(up|down)" will be executed using "/usr/bin/env sh -c [command]"
+;;scroll-up = echo scroll up %counter%
+;;scroll-down = echo scroll down %counter%
 
 [module/alsa]
 type = internal/alsa
@@ -678,7 +730,7 @@ format-disconnected-background = ${color.BGL}
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
 ;label-connected = "%essid%  %downspeed%"
-label-connected = "%{A1:networkmanager_dmenu &:} %downspeed%%{A}"
+label-connected = "%{A1:networkmanager_dmenu &:}%downspeed%%{A}"
 
 ; Available tokens:
 ;   %ifname%    [wireless+wired]
@@ -758,15 +810,15 @@ label-monitor = %name%
 ;label-dimmed-focused-background = ${color.BACKGROUND}
 
 label-focused = %name%
-label-focused-foreground = ${color.BLUE}
+label-focused-foreground = ${color.INDIGO}
 label-focused-background = ${color.BG}
-label-focused-underline = ${color.BLUE}
+label-focused-underline = ${color.INDIGO}
 label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-foreground = ${color.GREEN}
+label-occupied-foreground = ${color.LIME}
 label-occupied-background = ${color.BGL}
-;label-occupied-underline = ${color.GREEN}
+;label-occupied-underline = ${color.LIME}
 label-occupied-padding = 1
 
 label-urgent = %name%
@@ -985,7 +1037,7 @@ format-background = ${color.BGL}
 ;   %title%
 ; Default: %title%
 label = %title%
-label-maxlen = 25
+label-maxlen = 28
 
 ; Used instead of label when there is no window title
 ; Available tokens:

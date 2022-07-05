@@ -22,8 +22,8 @@
     <primaryMonitor>Mouse</primaryMonitor>
   </placement>
   <theme>
-    <name>Arc-Dark</name>
-    <titleLayout>DLIMC</titleLayout>
+    <name>Hack</name>
+    <titleLayout>LC</titleLayout>
     <keepBorder>no</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
@@ -86,7 +86,7 @@
   </resize>
   <margins>
     <top>0</top>
-    <bottom>10</bottom>
+    <bottom>0</bottom>
     <left>10</left>
     <right>10</right>
   </margins>
@@ -871,7 +871,7 @@
   </mouse>
   <!-- ################################ Menu Settings ################################ -->
   <menu>
-    <file>menu-icons.xml</file>
+    <file>menu-simple.xml</file>
     <hideDelay>400</hideDelay>
     <middle>no</middle>
     <submenuShowDelay>100</submenuShowDelay>

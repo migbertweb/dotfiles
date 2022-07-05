@@ -15,6 +15,22 @@ type = custom/text
 content = 
 
 content-background = ${color.BG}
+content-foreground = ${color.FG}
+content-padding = 1
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/sep-alt]
+type = custom/text
+content = -
+
+content-background = ${color.BGL}
+content-foreground = ${color.BGL}
+
+[module/dot-alt]
+type = custom/text
+content = 
+
+content-background = ${color.BG}
 content-foreground = ${color.BGL}
 content-padding = 1
 

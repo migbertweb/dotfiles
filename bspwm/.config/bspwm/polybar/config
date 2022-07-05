@@ -138,9 +138,9 @@ font-3 = "Iosevka:style=bold:"size=13;3"
 ;   modules-right = ipc clock
 
 # Default
-modules-left = LD menu RD sep LD bspwm RD
-modules-center = LD title RD sep LD mpd RD sep song
-modules-right = LD cpu RD sep LD used-memory RD sep LD volume RD sep LD network RD sep LD date RD sep LD sysmenu RD
+modules-left = LD menu RD sep LD bspwm sep-alt title RD
+modules-center = LD mpd RD sep song
+modules-right = LD cpu sep-alt used-memory RD sep LD volume sep-alt network RD sep LD date sep-alt sysmenu RD
 
 # Alternate
 ;modules-left = openbox 2LD cpu 3LD memory 4LD filesystem 5LD
