@@ -22,8 +22,8 @@
     <primaryMonitor>Mouse</primaryMonitor>
   </placement>
   <theme>
-    <name>Hack</name>
-    <titleLayout>LC</titleLayout>
+    <name>Nordic</name>
+    <titleLayout>LIMC</titleLayout>
     <keepBorder>no</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
@@ -86,9 +86,9 @@
   </resize>
   <margins>
     <top>0</top>
-    <bottom>0</bottom>
-    <left>10</left>
-    <right>10</right>
+    <bottom>15</bottom>
+    <left>15</left>
+    <right>15</right>
   </margins>
   <dock>
     <position>Bottom</position>
@@ -871,7 +871,7 @@
   </mouse>
   <!-- ################################ Menu Settings ################################ -->
   <menu>
-    <file>menu-simple.xml</file>
+    <file>menu-icons.xml</file>
     <hideDelay>400</hideDelay>
     <middle>no</middle>
     <submenuShowDelay>100</submenuShowDelay>
