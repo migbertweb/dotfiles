@@ -7,15 +7,15 @@
 type = custom/text
 content = -
 
-content-background = ${color.BG}
-content-foreground = ${color.BG}
+content-background = ${color.BACKGROUND}
+content-foreground = ${color.ALTBLACK}
 
 [module/dot]
 type = custom/text
 content = 
 
-content-background = ${color.BG}
-content-foreground = ${color.FG}
+content-background = ${color.BACKGROUND}
+content-foreground = ${color.ALTBLACK}
 content-padding = 1
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -23,15 +23,15 @@ content-padding = 1
 type = custom/text
 content = -
 
-content-background = ${color.BGL}
-content-foreground = ${color.BGL}
+content-background = ${color.ALTBLACK}
+content-foreground = ${color.BACKGROUND}
 
 [module/dot-alt]
 type = custom/text
 content = 
 
-content-background = ${color.BG}
-content-foreground = ${color.BGL}
+content-background = ${color.BACKGROUND}
+content-foreground = ${color.ALTBLACK}
 content-padding = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -39,14 +39,14 @@ content-padding = 1
 [module/LD]
 type = custom/text
 content = "%{T3}%{T-}"
-content-background = ${color.BG}
-content-foreground = ${color.BGL}
+content-background = ${color.BACKGROUND}
+content-foreground = ${color.ALTBLACK}
 
 [module/RD]
 type = custom/text
 content = "%{T3}%{T-}"
-content-background = ${color.BG}
-content-foreground = ${color.BGL}
+content-background = ${color.BACKGROUND}
+content-foreground = ${color.ALTBLACK}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______

@@ -20,8 +20,8 @@
 ;; interface = ${system.network_interface}
 
 [system]
-adapter = ACAD
-battery = BATT
+;; adapter = ACAD
+;; battery = BATT
 graphics_card = radeon_bl0
 network_interface = wlan0
 

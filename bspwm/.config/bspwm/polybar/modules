@@ -29,6 +29,7 @@ interval = 5
 ;   <label> (default)
 format = <label>
 format-prefix = 
+format-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %output%
@@ -100,7 +101,7 @@ type = internal/alsa
 ;   <ramp-volume>
 ;   <bar-volume>
 format-volume = <ramp-volume> <label-volume>
-format-volume-background = ${color.BGL}
+format-volume-background = ${color.ALTBLACK}
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -109,7 +110,7 @@ format-volume-background = ${color.BGL}
 format-muted = <label-muted>
 format-muted-prefix = 
 format-muted-prefix-font = 2
-format-muted-background = ${color.BGL}
+format-muted-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -149,7 +150,7 @@ content = " NA"
 content-prefix = 
 content-prefix-font = 2
 content-prefix-foreground = ${color.RED}
-content-background = ${color.BGL}
+content-background = ${color.ALTBLACK}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -165,7 +166,7 @@ card = intel_backlight
 ;   <ramp>
 ;   <bar>
 format = <ramp> <label>
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -202,7 +203,7 @@ enable-scroll = true
 ;   <ramp>
 ;   <bar>
 format = <ramp> <label>
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -261,7 +262,7 @@ format-charging = <animation-charging> <label-charging>
 format-charging-prefix = " "
 format-charging-prefix-font = 1
 format-charging-prefix-foreground = ${color.PINK}
-format-charging-background = ${color.BGL}
+format-charging-background = ${color.ALTBLACK}
 
 ; Available tags:
 ;   <label-discharging> (default)
@@ -269,7 +270,7 @@ format-charging-background = ${color.BGL}
 ;   <ramp-capacity>
 ;   <animation-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-background = ${color.BGL}
+format-discharging-background = ${color.ALTBLACK}
 
 ; Available tags:
 ;   <label-full> (default)
@@ -296,7 +297,7 @@ format-full = <label-full>
 format-full-prefix = " "
 format-full-prefix-font = 2
 format-full-prefix-foreground = ${color.GREEN}
-format-full-background = ${color.BGL}
+format-full-background = ${color.ALTBLACK}
 label-full = %percentage%%
 
 ; Only applies if <ramp-capacity> is used
@@ -337,7 +338,7 @@ format = <label>
 format-prefix = 
 format-prefix-font = 2
 format-prefix-foreground = ${color.YELLOW}
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load averaged over all cores
@@ -382,7 +383,7 @@ format = <label>
 format-prefix = " "
 format-prefix-font = 2
 format-prefix-foreground = ${color.CYAN}
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %date%
@@ -418,7 +419,7 @@ fixed-values = true
 ;   <bar-used>
 ;   <ramp-capacity>
 format-mounted = <label-mounted>
-format-mounted-background = ${color.BGL}
+format-mounted-background = ${color.ALTBLACK}
 
 format-mounted-prefix = 
 format-mounted-prefix-font = 2
@@ -427,7 +428,7 @@ format-mounted-prefix-foreground = ${color.ORANGE}
 ; Available tags:
 ;   <label-unmounted> (default)
 format-unmounted = <label-unmounted>
-format-unmounted-background = ${color.BGL}
+format-unmounted-background = ${color.ALTBLACK}
 
 format-unmounted-prefix = 
 format-unmounted-prefix-font = 2
@@ -470,7 +471,7 @@ interval = 3
 ;   <ramp-swap-used>
 ;   <ramp-swap-free>
 format = <label>
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 format-prefix = 
 format-prefix-font = 2
@@ -521,7 +522,7 @@ tail = true
 interval = 5
 
 format = <label>
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 format-prefix = 
 format-prefix-font = 2
@@ -569,7 +570,7 @@ format-online = <icon-prev> <toggle> <icon-next>
 ;;format-online-prefix = " "
 ;;format-online-prefix-font = 2
 ;;format-online-prefix-foreground = ${color.GREEN}
-format-online-background = ${color.BGL}
+format-online-background = ${color.ALTBLACK}
 
 format-playing = ${self.format-online}
 format-paused = ${self.format-online}
@@ -579,7 +580,7 @@ format-stopped = ${self.format-online}
 ;   <label-offline>
 format-offline = <label-offline>
 format-offline-prefix = " "
-format-offline-background = ${color.BGL}
+format-offline-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %artist%
@@ -655,13 +656,13 @@ format-connected = <label-connected>
 format-connected-prefix = "歷 "
 format-connected-prefix-foreground = ${color.PURPLE}
 format-connected-prefix-font = 2
-format-connected-background = ${color.BGL}
+format-connected-background = ${color.ALTBLACK}
 
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = "轢 "
 format-disconnected-prefix-font = 2
 format-disconnected-foreground = ${color.BGA}
-format-disconnected-background = ${color.BGL}
+format-disconnected-background = ${color.ALTBLACK}
 
 label-connected = "%{A1:networkmanager_dmenu &:}%downspeed% | %upspeed%%{A}"
 label-disconnected = "%{A1:networkmanager_dmenu &:}Offline%{A}"
@@ -702,7 +703,7 @@ unknown-as-up = true
 ;   <label-connected> (default)
 ;   <ramp-signal>
 format-connected = <ramp-signal> <label-connected>
-format-connected-background = ${color.BGL}
+format-connected-background = ${color.ALTBLACK}
 
 ; Available tags:
 ;   <label-disconnected> (default)
@@ -711,7 +712,7 @@ format-disconnected = <label-disconnected>
 format-disconnected-prefix = "ﲁ "
 format-disconnected-prefix-font = 2
 format-disconnected-foreground = ${color.BGA}
-format-disconnected-background = ${color.BGL}
+format-disconnected-background = ${color.ALTBLACK}
 
 ; Available tags:
 ;   <label-connected> (default)
@@ -810,40 +811,40 @@ label-monitor = %name%
 ;label-dimmed-focused-background = ${color.BACKGROUND}
 
 label-focused = %name%
-label-focused-foreground = ${color.INDIGO}
-label-focused-background = ${color.BG}
-label-focused-underline = ${color.INDIGO}
+label-focused-foreground = ${color.CYAN}
+label-focused-background = ${color.ALTBLACK}
+label-focused-underline = ${color.CYAN}
 label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-foreground = ${color.LIME}
-label-occupied-background = ${color.BGL}
-;label-occupied-underline = ${color.LIME}
+label-occupied-foreground = ${color.GREEN}       
+label-occupied-background = ${color.ALTBLACK}
+;label-occupied-underline = ${color.GREEN}
 label-occupied-padding = 1
 
 label-urgent = %name%
 label-urgent-foreground = ${color.RED}
-label-urgent-background = ${color.BGL}
+label-urgent-background = ${color.ALTBLACK}
 label-urgent-underline = ${color.RED}
 label-urgent-padding = 1
 
 label-empty = %name%
-label-empty-foreground = ${color.FG}
-label-empty-background = ${color.BGL}
+label-empty-foreground = ${color.FOREGROUND}
+label-empty-background = ${color.ALTBLACK}
 label-empty-padding = 1
 
 ; Separator in between workspaces
 label-separator = "∙"
 label-separator-padding = 0
-label-separator-foreground = ${color.ALTBLACK}
-label-separator-background = ${color.BGL}
+label-separator-foreground = ${color.BACKGROUND}
+label-separator-background = ${color.ALTBLACK}
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/mod]
 type = internal/bspwm
 
 format = <label-mode>
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 format-foreground = ${color.FG}
 format-padding = 1
 
@@ -880,7 +881,7 @@ interval = 5
 ;   <ramp-volume>
 ;   <bar-volume>
 format-volume = <ramp-volume> <label-volume>
-format-volume-background = ${color.BGL}
+format-volume-background = ${color.ALTBLACK}
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -890,7 +891,7 @@ format-muted = <label-muted>
 format-muted-prefix = 
 format-muted-prefix-font = 2
 format-muted-prefix-foreground = ${color.BGA}
-format-muted-background = ${color.BGL}
+format-muted-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -1031,7 +1032,7 @@ format = <label>
 format-prefix = " "
 format-prefix-font = 2
 format-prefix-foreground = ${color.BLUE}
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 
 ; Available tokens:
 ;   %title%
@@ -1082,7 +1083,7 @@ icon-default = 
 ;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
 ; Default: <label-state>
 format = <label-state>
-format-background = ${color.BGL}
+format-background = ${color.ALTBLACK}
 format-font = 1
 
 ; Available tokens:
@@ -1137,7 +1138,7 @@ type = custom/text
 
 content = ﯨ
 content-font = 2
-content-background = ${color.BGL}
+content-background = ${color.ALTBLACK}
 content-foreground = ${color.LIME}
 content-padding = 0
 
@@ -1155,7 +1156,7 @@ type = custom/text
 
 content = 襤
 content-font = 2
-content-background = ${color.BGL}
+content-background = ${color.ALTBLACK}
 content-foreground = ${color.RED}
 content-padding = 0
 
