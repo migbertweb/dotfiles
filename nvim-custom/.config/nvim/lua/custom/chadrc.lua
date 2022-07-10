@@ -18,7 +18,7 @@ M.ui = {
 		separator_style = "arrow",
 	},
 	transparency = true,
-	theme = "tokyodark",
+	theme = "nightfox",
 }
 
 M.mappings = require("custom.mappings")
