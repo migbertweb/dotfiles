@@ -23,4 +23,9 @@ return {
 	-- ["github/copilot.vim"] = {
 	-- 	after = "nvim-lspconfig",
 	-- },
+	-- tpope/vim-fugitive gestion de Git desde vim
+	["tpope/vim-fugitive"] = {
+		after = "base46",
+		keys = { "g" },
+	},
 }
