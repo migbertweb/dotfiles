@@ -28,4 +28,7 @@ return {
 		after = "base46",
 		keys = { "g" },
 	},
+	["tpope/vim-surround"] = {
+		after = "base46",
+	},
 }

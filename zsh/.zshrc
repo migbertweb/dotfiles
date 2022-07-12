@@ -162,7 +162,7 @@ alias v='nvim'
 alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
-alias upgrade='yay -Syu'
+alias upgrade='sudo pacman -Syu'
 #####################################################
 # init starship
 # eval "$(starship init zsh)"

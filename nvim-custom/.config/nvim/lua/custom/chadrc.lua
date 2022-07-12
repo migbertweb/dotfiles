@@ -23,4 +23,10 @@ M.ui = {
 
 M.mappings = require("custom.mappings")
 
+M.options = {
+	user = function()
+		require("custom.mioptions")
+	end,
+}
+
 return M
