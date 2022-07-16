@@ -11,17 +11,17 @@ font:
   # Bold font face
   bold:
     family: "Iosevka Custom"
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
     family: "Iosevka Custom"
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
   bold_italic:
     family: "Iosevka Custom"
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
   size: 9

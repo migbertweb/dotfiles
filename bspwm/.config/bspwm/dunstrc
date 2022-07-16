@@ -1,7 +1,7 @@
 [global]
 monitor = 0
 follow = mouse
-width = 270
+width = 280
 height = 80
 origin = top-right
 offset = 10x42
@@ -11,8 +11,8 @@ shrink = no
 separator_color = auto
 separator_height = 4
 line_height = 4
-padding = 12
-horizontal_padding = 12
+padding = 15
+horizontal_padding = 15
 frame_width = 1
 sort = no
 idle_threshold = 120
@@ -37,18 +37,18 @@ class = Dunst
 
 [urgency_low]
 timeout = 2
-background = "#01161b"
-foreground = "#66FFFF"
-frame_color = "#04acb5"
+background = "#282f37"
+foreground = "#f1fcf9"
+frame_color = "#75dbe1"
 
 [urgency_normal]
 timeout = 5
-background = "#01161b"
-foreground = "#66FFFF"
-frame_color = "#04acb5"
+background = "#282f37"
+foreground = "#f1fcf9"
+frame_color = "#75dbe1"
 
 [urgency_critical]
 timeout = 0
-background = "#01161b"
-foreground = "#66FFFF"
-frame_color = "#007b82"
+background = "#282f37"
+foreground = "#f1fcf9"
+frame_color = "#db86ba"

@@ -1,6 +1,6 @@
 ## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-##"google\-mdi:size=13;3"
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 ;; Global WM Settings
@@ -12,7 +12,6 @@ margin-top = 0
 include-file = ~/.config/bspwm/polybar/system
 include-file = ~/.config/bspwm/polybar/colors
 include-file = ~/.config/bspwm/polybar/modules
-include-file = ~/.config/bspwm/polybar/decor
 
 [bar/main]
 monitor =
@@ -43,14 +42,14 @@ padding = 1
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Iosevka Nerd Font:size=11;3"
-font-1 = "Iosevka Nerd Font:size=13;3"
-font-2 = "google\-mdi:size=13;3" 
-font-3 = "Iosevka:style=bold:"size=13;3"
+font-0 = "Iosevka Nerd Font:size=10;3"
+font-1 = "Iosevka Nerd Font:size=12;3"
+font-2 = "google\-mdi:size=12;3"
+font-3 = "Iosevka:style=bold:"size=12;3"
 
-modules-left = LD menu RD sep LD bspwm sep-alt title RD
-modules-center = LD mpd RD song
-modules-right = LD updates sep-alt cpu sep-alt used-memory RD sep LD volume sep-alt network RD sep LD date sep-alt sysmenu RD
+modules-left = mod sep bspwm
+modules-center = mpd
+modules-right = volume sep brightness sep network sep battery sep date
 
 separator =
 spacing = 0

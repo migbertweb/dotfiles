@@ -14,15 +14,15 @@
 ;; Run `ip link | awk '/state UP/ {print $2}' | tr -d :` to get active network interface.
 ;;
 ;; Polybar Variables For Modules :
-;; card = ${system.graphics_card}
-;; battery = BATT
-;; adapter = ${system.adapter}
-;; interface = ${system.network_interface}
+;; card = ${system.sys_graphics_card}
+;; battery = ${system.sys_battery}
+;; adapter = ${system.sys_adapter}
+;; interface = ${system.sys_network_interface}
 
 [system]
-;; adapter = ACAD
-;; battery = BATT
-graphics_card = radeon_bl0
-network_interface = wlan0
+sys_adapter = ACAD
+sys_battery = BATT
+sys_graphics_card = radeon_bl0
+sys_network_interface = wlan0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

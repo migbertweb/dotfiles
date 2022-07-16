@@ -28,7 +28,7 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>JetBrains Mono</name>
-      <size>10</size>
+      <size>9</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
