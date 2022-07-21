@@ -1,7 +1,25 @@
 -- custom/plugins/configs.lua file
-
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
 local M = {}
 
+M.nvchad_ui = {
+	statusline = {
+		separator_style = "arrow", -- default/round/block/arrow
+	},
+
+	-- lazyload it when there are 1+ buffers
+	--    tabufline = {
+	--          enabled = true,
+	--                lazyload = true,
+	--                      overriden_modules = nil,
+	--                         },
+}
+M.blankline = {
+	show_trailing_blankline_indent = true,
+	show_first_indent_level = true,
+	show_end_of_line = true,
+}
 M.treesitter = {
 	ensure_installed = {
 		"lua",

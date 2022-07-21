@@ -49,7 +49,7 @@ font-3 = "Iosevka:style=bold:"size=12;3"
 
 modules-left = mod sep bspwm sep cpu sep used-memory
 modules-center = title
-modules-right = mpd sep song sep volume sep network sep date sep sysmenu
+modules-right = mpd song sep volume sep network sep date sep sysmenu
 
 separator =
 spacing = 0

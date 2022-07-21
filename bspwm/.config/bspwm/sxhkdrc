@@ -38,7 +38,7 @@ super + {w,m,x,r,s}
 ##---------- Applications ----------##
 
 # Launch Apps
-super + shift + {f,w,e}
+super + {f,b,e}
 	{thunar,firefox,geany}
 
 # Terminal Apps

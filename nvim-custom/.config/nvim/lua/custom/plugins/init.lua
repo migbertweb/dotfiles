@@ -28,7 +28,14 @@ return {
 		after = "base46",
 		keys = { "g" },
 	},
+	-- cambio de tilde o comillas
 	["tpope/vim-surround"] = {
 		after = "base46",
+	},
+	-- blade syntax
+	["jwalton512/vim-blade"] = {
+		setup = function()
+			require("core.lazy_load").on_file_open("nvim-treesitter")
+		end,
 	},
 }

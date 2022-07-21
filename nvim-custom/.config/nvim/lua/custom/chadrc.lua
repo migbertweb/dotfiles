@@ -3,8 +3,10 @@ local pluginConfs = require("custom.plugins.configs")
 
 M.plugins = {
 	override = {
+		["lukas-reineke/indent-blankline.nvim"] = pluginConfs.blankline,
 		["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
 		["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
+		["NvChad/ui"] = pluginConfs.nvchad_ui,
 	},
 	user = require("custom.plugins"),
 	options = {
@@ -14,11 +16,8 @@ M.plugins = {
 	},
 }
 M.ui = {
-	statusline = {
-		separator_style = "arrow",
-	},
 	transparency = true,
-	theme = "nightfox",
+	theme = "tokyonight",
 }
 
 M.mappings = require("custom.mappings")
