@@ -38,4 +38,7 @@ return {
 			require("core.lazy_load").on_file_open("nvim-treesitter")
 		end,
 	},
+	["heavenshell/vim-jsdoc"] = {
+		after = "base46",
+	},
 }

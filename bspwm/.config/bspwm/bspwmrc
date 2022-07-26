@@ -48,8 +48,8 @@ ALTWHITE="$color15"
 
 ## Bspwm appearance
 CURRENT_BORDER='1'
-CURRENT_GAP='3'
-CURRENT_SRATIO='0.50'
+CURRENT_GAP='4'
+CURRENT_SRATIO='1'
 
 ## Configurations --------------------------------------------#
 
@@ -147,9 +147,13 @@ for i in ${floating[@]}; do
 done
 
 bspc rule -a Conky state=floating manage=off
+bspc rule -a plank state=floating follow=on
 bspc rule -a stalonetray state=floating manage=off
 
 ## Autostart -------------------------------------------------#
+
+## Thunar Daemon
+exec thunar --daemon &
 
 # Kill if already running
 killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager
@@ -188,6 +192,9 @@ exec nm-applet &
 
 # Start udiskie
 exec udiskie -t -s &
+
+# Start plank dock
+exec plank &
 
 # Start bspwm scripts
 bspcolors

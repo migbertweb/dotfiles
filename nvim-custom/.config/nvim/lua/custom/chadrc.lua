@@ -7,6 +7,7 @@ M.plugins = {
 		["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
 		["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
 		["NvChad/ui"] = pluginConfs.nvchad_ui,
+		["lewis6991/gitsigns.nvim"] = pluginConfs.gitsigns,
 	},
 	user = require("custom.plugins"),
 	options = {

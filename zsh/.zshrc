@@ -73,10 +73,14 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 # Actualizar NVIM como modulo de mis Dotfiles
 actualizarnvim(){
   echo Actualizando nvim
-  echo -e \nCambiando al directorio Dotfiles
+  sleep 1
+  echo -e Cambiando al directorio Dotfiles
+  sleep 1
   cd ~/dotfiles/
   pwd
-  echo -e \nEjecutando actualizacion de Nvim NvChad
+  sleep 2
+  echo -e Ejecutando actualizacion de Nvim NvChad
+  sleep 1
   git submodule foreach git pull origin main
 }
 # Git command

@@ -47,9 +47,9 @@ font-1 = "Iosevka Nerd Font:size=12;3"
 font-2 = "google\-mdi:size=12;3"
 font-3 = "Iosevka:style=bold:"size=12;3"
 
-modules-left = mod sep bspwm sep cpu sep used-memory
+modules-left = mod sep bspwm sep mpd song
 modules-center = title
-modules-right = mpd song sep volume sep network sep date sep sysmenu
+modules-right = cpu sep used-memory sep volume sep network sep date sep sysmenu
 
 separator =
 spacing = 0
