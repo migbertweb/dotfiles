@@ -3,6 +3,7 @@ local pluginConfs = require("custom.plugins.configs")
 
 M.plugins = {
 	override = {
+		["williamboman/mason.nvim"] = pluginConfs.mason,
 		["lukas-reineke/indent-blankline.nvim"] = pluginConfs.blankline,
 		["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
 		["kyazdani42/nvim-tree.lua"] = pluginConfs.nvimtree,
@@ -10,11 +11,7 @@ M.plugins = {
 		["lewis6991/gitsigns.nvim"] = pluginConfs.gitsigns,
 	},
 	user = require("custom.plugins"),
-	options = {
-		lspconfig = {
-			setup_lspconf = "custom.plugins.lspconfig",
-		},
-	},
+	options = {},
 }
 M.ui = {
 	transparency = true,

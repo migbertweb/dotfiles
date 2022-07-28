@@ -1,30 +1,13 @@
-local M = {}
+-- custom.plugins.lspconfig
+local on_attach = require("plugins.configs.lspconfig").on_attach
+local capabilities = require("plugins.configs.lspconfig").capabilities
 
-M.setup_lsp = function(attach, capabilities)
-	local lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
+local servers = { "emmet_ls", "eslint", "cssls", "intelephense", "pyright", "jsonls", "html", "clangd" }
 
-	-- lspservers with default config
-	local servers = { "emmet_ls", "eslint", "cssls", "intelephense", "pyright", "jsonls" }
-
-	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup({
-			on_attach = attach,
-			-- on_attach = function(client, bufnr)
-			--   attach(client, bufnr)
-			--   -- change gopls server capabilities
-			--   if lsp == "emmet_ls" then
-			--     client.resolved_capabilities.document_formatting = true
-			--     client.resolved_capabilities.document_range_formatting = true
-			--   end
-			--   if lsp == "intelephense" then
-			--     client.resolved_capabilities.document_formatting = true
-			--     client.resolved_capabilities.document_range_formatting = true
-			--   end
-			--
-			-- end,
-			capabilities = capabilities,
-		})
-	end
+for _, lsp in ipairs(servers) do
+	lspconfig[lsp].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
 end
-
-return M

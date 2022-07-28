@@ -3,6 +3,32 @@ vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 local M = {}
 
+M.mason = {
+	ensure_installed = {
+		-- lua stuff
+		"lua-language-server",
+		"stylua",
+
+		-- web dev
+		"intelephense",
+		"css-lsp",
+		"html-lsp",
+		"typescript-language-server",
+		"deno",
+		"emmet-ls",
+		"json-lsp",
+
+		-- shell
+		"shfmt",
+		"shellcheck",
+
+		-- Python
+		"pyright",
+
+		-- C
+		"clangd",
+	},
+}
 M.nvchad_ui = {
 	statusline = {
 		separator_style = "arrow", -- default/round/block/arrow
