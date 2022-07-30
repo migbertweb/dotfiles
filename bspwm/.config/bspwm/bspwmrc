@@ -191,10 +191,10 @@ exec mpd &
 exec nm-applet &
 
 # Start udiskie
-exec udiskie -t -s &
+exec udiskie -t &
 
 # Start plank dock
-exec plank &
+# exec plank &
 
 # Start bspwm scripts
 bspcolors
