@@ -42,9 +42,13 @@ local sources = {
 	b.diagnostics.jsonlint, -- npm install -g jsonlint
 
 	-- PHP Formatting & Linter
-	-- b.formatting.phpcsfixer, --composer global require friendsofphp/php-cs-fixer
-	b.formatting.phpcbf, --composer global require friendsofphp/php-cs-fixer
-	b.diagnostics.phpcs, --composer global require "squizlabs/php_codesniffer=*"
+	b.formatting.phpcsfixer.with({
+    extra_args = {"--rules=@PSR12"},
+  }), --composer global require friendsofphp/php-cs-fixer
+	-- b.formatting.phpcbf, --composer global require friendsofphp/php-cs-fixer
+	b.diagnostics.phpcs.with({
+		extra_args = { "--standard=PSR12" },
+	}), --composer global require "squizlabs/php_codesniffer=*"
 }
 
 local M = {}
