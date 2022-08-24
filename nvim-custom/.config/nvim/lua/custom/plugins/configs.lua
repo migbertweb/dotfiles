@@ -8,7 +8,8 @@ M.mason = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
-
+		-- C#
+		"omnisharp",
 		-- web dev
 		"intelephense",
 		"css-lsp",
@@ -17,14 +18,12 @@ M.mason = {
 		"deno",
 		"emmet-ls",
 		"json-lsp",
-
+		"eslint-lsp",
 		-- shell
 		"shfmt",
 		"shellcheck",
-
 		-- Python
 		"pyright",
-
 		-- C
 		"clangd",
 	},
@@ -32,6 +31,9 @@ M.mason = {
 M.nvchad_ui = {
 	statusline = {
 		separator_style = "arrow", -- default/round/block/arrow
+		overriden_modules = function()
+			return require("custom.ui")
+		end,
 	},
 }
 M.blankline = {
@@ -51,6 +53,7 @@ M.treesitter = {
 		"bash",
 		"javascript",
 		"typescript",
+		"c_sharp",
 	},
 }
 -- explorador de archivos

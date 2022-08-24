@@ -8,6 +8,10 @@ return {
 			require("custom.plugins.lspconfig")
 		end,
 	},
+	-- OmniSharp/omnisharp-vim para el desarrollo de C#
+	["OmniSharp/omnisharp-vim"] = {
+		after = "nvim-lspconfig",
+	},
 	-- Alpha Dashboard
 	["goolord/alpha-nvim"] = {
 		disable = false,
@@ -30,6 +34,10 @@ return {
 	-- ["github/copilot.vim"] = {
 	-- 	after = "nvim-lspconfig",
 	-- },
+	-- folke/which-key muestra una ayuda para los shortcut
+	["folke/which-key.nvim"] = {
+		disable = false,
+	},
 	-- tpope/vim-fugitive gestion de Git desde vim
 	["tpope/vim-fugitive"] = {
 		after = "base46",
