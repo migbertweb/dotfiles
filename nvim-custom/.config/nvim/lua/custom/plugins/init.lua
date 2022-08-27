@@ -8,6 +8,13 @@ return {
 			require("custom.plugins.lspconfig")
 		end,
 	},
+	-- nvim-Notify - notificaciones en nvim
+	["rcarriga/nvim-notify"] = {
+		after = "base46",
+		config = function()
+			require("custom.plugins.nvim-notify").setup()
+		end,
+	},
 	-- OmniSharp/omnisharp-vim para el desarrollo de C#
 	["OmniSharp/omnisharp-vim"] = {
 		after = "nvim-lspconfig",
