@@ -8,11 +8,13 @@ local fn = vim.fn
 
 return {
 	cursor_position = function()
-		--		local left_sep = "%#St_pos_sep#" .. sep_l .. "%#St_pos_icon#" .. " "
+		--		local left_sep = "%#St_pos_sep#" .. sep_l
 		local current_line = fn.line(".")
 		--		local total_line = fn.line("$")
+		--		local text = math.modf((current_line / total_line) * 100) .. tostring("%%")
+		--		local total_line = fn.line("$")
 		local pos = fn.col(".")
-		return st_modules.cursor_position() .. " lin: " .. current_line .. " col " .. pos
-		-- return left_sep .. "%#St_pos_text#" .. " " .. " lin: " .. current_line .. " col " .. pos
+		--return st_modules.cursor_position() .. " lin: " .. current_line .. " col " .. pos
+		return st_modules.cursor_position() .. "lin:" .. current_line .. " col:" .. pos
 	end,
 }

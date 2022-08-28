@@ -8,5 +8,4 @@ M.rest = {
 		["<leader>rl"] = { "<Plug>RestNvimLast", "勒  Ultimo API-Rest" },
 	},
 }
-
 return M

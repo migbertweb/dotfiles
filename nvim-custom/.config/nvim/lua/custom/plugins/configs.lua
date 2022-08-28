@@ -25,7 +25,7 @@ M.mason = {
 		-- Python
 		"pyright",
 		-- C
-		"clangd",
+--		"clangd",
 	},
 }
 M.nvchad_ui = {

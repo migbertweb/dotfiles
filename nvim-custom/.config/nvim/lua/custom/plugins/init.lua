@@ -47,8 +47,9 @@ return {
 	},
 	-- tpope/vim-fugitive gestion de Git desde vim
 	["tpope/vim-fugitive"] = {
+		disable = false,
 		after = "base46",
-		keys = { "g" },
+		--		keys = { "g" },
 	},
 	-- cambio de tilde o comillas
 	["tpope/vim-surround"] = {
