@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@ecomerce.test
+    DocumentRoot "/home/migbert/proyectos/www/ecomerce/public"
+    ServerName ecomerce.test
+    ServerAlias ecomerce.test
+    ErrorLog "/var/log/httpd/ecomerce-error_log"
+    CustomLog "/var/log/httpd/ecomerce-access_log" common
+
+    <Directory "/home/migbert/proyectos/www/ecomerce">
+Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+

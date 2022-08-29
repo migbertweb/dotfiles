@@ -49,7 +49,11 @@ return {
 	["tpope/vim-fugitive"] = {
 		disable = false,
 		after = "base46",
-		--		keys = { "g" },
+		keys = { "g" },
+	},
+	-- cambio de tilde o comillas
+	["tpope/vim-dotenv"] = {
+		after = "base46",
 	},
 	-- cambio de tilde o comillas
 	["tpope/vim-surround"] = {

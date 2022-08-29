@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@milaravel.test
+    DocumentRoot "/home/migbert/proyectos/www/milaravel/public"
+    ServerName milaravel.test
+    ServerAlias milaravel.test
+    ErrorLog "/var/log/httpd/milaravel-error_log"
+    CustomLog "/var/log/httpd/milaravel-access_log" common
+
+    <Directory "/home/migbert/proyectos/www/milaravel">
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
