@@ -5,9 +5,12 @@ local M = {}
 
 M.mason = {
 	ensure_installed = {
+		-- comunes
+		"prettierd",
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
+		"luacheck",
 		-- C#
 		"omnisharp",
 		-- web dev
@@ -24,8 +27,13 @@ M.mason = {
 		"shellcheck",
 		-- Python
 		"pyright",
+		"autopep8",
+		"pylint",
 		-- C
---		"clangd",
+		--		"clangd",
+		--YAML
+		"yamllnt",
+		"yaml-language-server",
 	},
 }
 M.nvchad_ui = {

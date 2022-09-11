@@ -1,6 +1,6 @@
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
-mpd_music_dir     = ~/Musica
+mpd_music_dir     = ~/Música
 # GENERAL
 # ---
 external_editor                  = nvim

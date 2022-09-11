@@ -41,10 +41,13 @@ local sources = {
 	b.formatting.fixjson, -- npm install -g fixjson
 	b.diagnostics.jsonlint, -- npm install -g jsonlint
 
+	-- YAML
+	b.diagnostics.yamllint,
+
 	-- PHP Formatting & Linter
 	b.formatting.phpcsfixer.with({
-    extra_args = {"--rules=@PSR12"},
-  }), --composer global require friendsofphp/php-cs-fixer
+		extra_args = { "--rules=@PSR12" },
+	}), --composer global require friendsofphp/php-cs-fixer
 	-- b.formatting.phpcbf, --composer global require friendsofphp/php-cs-fixer
 	b.diagnostics.phpcs.with({
 		extra_args = { "--standard=PSR12" },

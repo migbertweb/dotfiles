@@ -167,6 +167,62 @@ alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
 alias upgrade='sudo pacman -Syu'
+###################
+# Alias SAIL
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+#####################################################
+# Alias DOCKER
+alias dk='docker'
+alias dki='docker images'
+alias dkls='docker ps'
+alias dkps='docker ps'
+alias dkpsa='docker ps -a'
+alias dkv='docker version'
+alias dkw='docker wait'
+alias dkx='docker stop'
+## Container (C)
+alias dkC='docker container'
+alias dkCa='docker container attach'
+alias dkCcp='docker container cp'
+## Image (I)
+alias dkI='docker image'
+alias dkIb='docker image build'
+## Network (N)
+alias dkN='docker network'
+alias dkNs='docker network connect'
+alias dkNx='docker network disconnect'
+alias dkNin='docker network inspect'
+alias dkNls='docker network ls'
+alias dkNpr='docker network prune'
+alias dkNrm='docker network rm'
+# Docker Compose (c)
+  alias dkc='docker-compose'
+  alias dkcb='docker-compose build'
+  alias dkcB='docker-compose build --no-cache'
+  alias dkccf='docker-compose config'
+  alias dkccr='docker-compose create'
+  alias dkcd='docker-compose down'
+  alias dkcev='docker-compose events'
+  alias dkci='docker-compose images'
+  alias dkck='docker-compose kill'
+  alias dkcl='docker-compose logs'
+  alias dkcL='docker-compose logs -f'
+  alias dkcls='docker-compose ps'
+  alias dkcp='docker-compose pause'
+  alias dkcP='docker-compose unpause'
+  alias dkcpl='docker-compose pull'
+  alias dkcph='docker-compose push'
+  alias dkcpo='docker-compose port'
+  alias dkcps='docker-compose ps'
+    alias dkcsc='docker-compose scale'
+  alias dkcS='docker-compose restart'
+  alias dkct='docker-compose top'
+  alias dkcu='docker-compose up'
+  alias dkcU='docker-compose up -d'
+  alias dkcv='docker-compose version'
+  alias dkcx='docker-compose stop'
+
+
 #####################################################
 # init starship
 # eval "$(starship init zsh)"
