@@ -1,11 +1,34 @@
 -- custom/plugins/init.lua
 
 return {
-
+	-- nvim-lspconfig
 	["neovim/nvim-lspconfig"] = {
 		config = function()
 			require("plugins.configs.lspconfig")
 			require("custom.plugins.lspconfig")
+		end,
+	},
+	-- autoinstall lsp server con williamboman/mason-lspconfig.nvim
+	["williamboman/mason-lspconfig.nvim"] = {
+		after = {
+			"nvim-lspconfig",
+			"mason.nvim",
+		},
+		config = function()
+			require("custom.plugins.mason-lspconfig").setup()
+		end,
+	},
+	-- Auto install mason-null-ls
+	["jayp0521/mason-null-ls.nvim"] = {
+		after = {
+			"null-ls.nvim",
+			"mason.nvim",
+		},
+		config = function()
+			require("mason-null-ls").setup({
+				automatic_installation = true,
+			})
+			require("mason-null-ls").check_install(true)
 		end,
 	},
 	-- nvim-Notify - notificaciones en nvim
@@ -51,7 +74,7 @@ return {
 		after = "base46",
 		keys = { "g" },
 	},
-	-- cambio de tilde o comillas
+	-- archivos .Env
 	["tpope/vim-dotenv"] = {
 		after = "base46",
 	},

@@ -18,8 +18,8 @@ local sources = {
 			"handlebars",
 		},
 	}),
+	-- deno
 	b.formatting.deno_fmt,
-
 	-- Lua
 	b.formatting.stylua,
 	b.diagnostics.luacheck.with({ extra_args = { "--global vim" } }),
