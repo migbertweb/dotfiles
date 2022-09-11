@@ -5,6 +5,7 @@ local M = {}
 
 M.mason = {
 	ensure_installed = {
+		"dockerfile-language-server",
 		-- comunes
 		"prettierd",
 		-- lua stuff
@@ -32,7 +33,7 @@ M.mason = {
 		-- C
 		--		"clangd",
 		--YAML
-		"yamllnt",
+		"yamllint",
 		"yaml-language-server",
 	},
 }
@@ -62,6 +63,8 @@ M.treesitter = {
 		"javascript",
 		"typescript",
 		"c_sharp",
+		"yaml",
+		"dockerfile",
 	},
 }
 -- explorador de archivos
