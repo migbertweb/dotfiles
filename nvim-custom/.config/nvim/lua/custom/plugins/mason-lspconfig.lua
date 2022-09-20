@@ -6,6 +6,8 @@ M.setup = function()
 			"dockerfile-language-server",
 			-- comunes
 			"prettierd",
+			-- JSON
+			"fixjson",
 			-- lua stuff
 			"lua-language-server",
 			"stylua",

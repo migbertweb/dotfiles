@@ -39,7 +39,7 @@ local sources = {
 
 	--JSON
 	b.formatting.fixjson, -- npm install -g fixjson
-	b.diagnostics.jsonlint, -- npm install -g jsonlint
+	--	b.diagnostics.jsonlint, -- npm install -g jsonlint
 
 	-- YAML
 	b.diagnostics.yamllint,

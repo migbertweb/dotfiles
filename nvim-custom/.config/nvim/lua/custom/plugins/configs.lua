@@ -8,6 +8,8 @@ M.mason = {
 		"dockerfile-language-server",
 		-- comunes
 		"prettierd",
+		-- JSON
+		"fixjson",
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
