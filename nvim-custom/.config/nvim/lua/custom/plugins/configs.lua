@@ -13,9 +13,8 @@ M.mason = {
 		-- lua stuff
 		"lua-language-server",
 		"stylua",
-		"luacheck",
 		-- C#
-		"omnisharp",
+		-- "omnisharp",
 		-- web dev
 		"intelephense",
 		"css-lsp",
@@ -26,8 +25,8 @@ M.mason = {
 		"json-lsp",
 		"eslint-lsp",
 		-- shell
-		"shfmt",
-		"shellcheck",
+		-- "shfmt",
+		-- "shellcheck",
 		-- Python
 		"pyright",
 		"autopep8",
@@ -64,9 +63,10 @@ M.treesitter = {
 		"bash",
 		"javascript",
 		"typescript",
-		"c_sharp",
+		-- "c_sharp",
 		"yaml",
 		"dockerfile",
+		"tsx",
 	},
 }
 -- explorador de archivos

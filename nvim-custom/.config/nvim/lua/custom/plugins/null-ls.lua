@@ -22,11 +22,11 @@ local sources = {
 	b.formatting.deno_fmt,
 	-- Lua
 	b.formatting.stylua,
-	b.diagnostics.luacheck.with({ extra_args = { "--global vim" } }),
+	-- b.diagnostics.luacheck.with({ extra_args = { "--global vim" } }),
 
 	-- Shell
-	b.formatting.shfmt,
-	b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+	-- b.formatting.shfmt,
+	-- b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
 	--Python
 	b.formatting.autopep8, --pip install autopep8
@@ -34,8 +34,8 @@ local sources = {
 	b.diagnostics.pylint, --pip install pylint
 
 	-- HTML Django Jinja template
-	b.formatting.djlint, -- pip install djlint
-	b.diagnostics.djlint, -- pip install djlint
+	-- b.formatting.djlint, -- pip install djlint
+	-- b.diagnostics.djlint, -- pip install djlint
 
 	--JSON
 	b.formatting.fixjson, -- npm install -g fixjson
