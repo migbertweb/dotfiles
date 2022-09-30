@@ -1,6 +1,19 @@
 -- custom/plugins/init.lua
-
+local overrides = require("custom.plugins.configs")
 return {
+	-----------------------------------------------------------------------------
+	-- overrides options
+	-- --------------------------------------------------------------------------
+	["williamboman/mason.nvim"] = { override_options = overrides.mason },
+	["lukas-reineke/indent-blankline.nvim"] = { override_options = overrides.blankline },
+	["nvim-treesitter/nvim-treesitter"] = { override_options = overrides.treesitter },
+	["kyazdani42/nvim-tree.lua"] = { override_options = overrides.nvimtree },
+	["NvChad/ui"] = { override_options = overrides.nvchad_ui },
+	["lewis6991/gitsigns.nvim"] = { override_options = overrides.gitsigns },
+	["nvim-telescope/telescope.nvim"] = { override_options = overrides.telescope },
+	-------------------------------------------------------------------------------
+	-- Install new Plugins
+	-- ----------------------------------------------------------------------------
 	-- nvim-lspconfig
 	["neovim/nvim-lspconfig"] = {
 		config = function()
@@ -59,11 +72,6 @@ return {
 			require("custom.plugins.rest").setup()
 		end,
 	},
-	-- load it after nvim-lspconfig cuz we lazy loaded lspconfig
-	-- -- Github Copilot
-	-- ["github/copilot.vim"] = {
-	-- 	after = "nvim-lspconfig",
-	-- },
 	-- folke/which-key muestra una ayuda para los shortcut
 	["folke/which-key.nvim"] = {
 		disable = false,
@@ -88,7 +96,12 @@ return {
 			require("core.lazy_load").on_file_open("nvim-treesitter")
 		end,
 	},
+	-- doc archivos js
 	["heavenshell/vim-jsdoc"] = {
 		after = "base46",
 	},
+	-- Telescope File Browser
+	["nvim-telescope/telescope-file-browser.nvim"] = {},
+	-- Telescope Projets
+	["nvim-telescope/telescope-project.nvim"] = {},
 }

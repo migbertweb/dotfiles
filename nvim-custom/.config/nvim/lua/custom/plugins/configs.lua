@@ -3,6 +3,10 @@ vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 local M = {}
 
+M.telescope = {
+	extensions_list = { "themes", "terms", "file_browser", "project" },
+}
+
 M.mason = {
 	ensure_installed = {
 		"dockerfile-language-server",
