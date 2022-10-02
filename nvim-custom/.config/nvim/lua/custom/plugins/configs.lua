@@ -40,13 +40,16 @@ M.mason = {
 		--YAML
 		"yamllint",
 		"yaml-language-server",
+		-- PHP
+		"phpcs",
+		"php-cs-fixer",
 	},
 }
 M.nvchad_ui = {
 	statusline = {
 		separator_style = "arrow", -- default/round/block/arrow
 		overriden_modules = function()
-			return require("custom.ui")
+			return require("custom.plugins.ui")
 		end,
 	},
 }

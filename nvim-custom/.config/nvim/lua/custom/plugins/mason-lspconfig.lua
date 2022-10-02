@@ -11,9 +11,9 @@ M.setup = function()
 			-- lua stuff
 			"lua-language-server",
 			"stylua",
-			"luacheck",
+			-- "luacheck",
 			-- C#
-			"omnisharp",
+			-- "omnisharp",
 			-- web dev
 			"intelephense",
 			"css-lsp",
@@ -24,8 +24,8 @@ M.setup = function()
 			"json-lsp",
 			"eslint-lsp",
 			-- shell
-			"shfmt",
-			"shellcheck",
+			-- "shfmt",
+			-- "shellcheck",
 			-- Python
 			"pyright",
 			"autopep8",
@@ -35,6 +35,9 @@ M.setup = function()
 			--YAML
 			"yamllint",
 			"yaml-language-server",
+			-- PHP
+			"phpcs",
+			"php-cs-fixer",
 		},
 		automatic_installation = true,
 	})

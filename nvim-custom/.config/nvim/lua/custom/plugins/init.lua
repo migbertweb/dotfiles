@@ -6,7 +6,17 @@ return {
 	-- --------------------------------------------------------------------------
 	["williamboman/mason.nvim"] = { override_options = overrides.mason },
 	["lukas-reineke/indent-blankline.nvim"] = { override_options = overrides.blankline },
-	["nvim-treesitter/nvim-treesitter"] = { override_options = overrides.treesitter },
+
+	["nvim-treesitter/nvim-treesitter"] = {
+		override_options = overrides.treesitter,
+		rainbow = {
+			enable = true,
+			extended_mode = true,
+			max_file_lines = nil,
+			-- colors = {}, -- table of hex strings
+		},
+	},
+
 	["kyazdani42/nvim-tree.lua"] = { override_options = overrides.nvimtree },
 	["NvChad/ui"] = { override_options = overrides.nvchad_ui },
 	["lewis6991/gitsigns.nvim"] = { override_options = overrides.gitsigns },
@@ -41,7 +51,6 @@ return {
 			require("mason-null-ls").setup({
 				automatic_installation = true,
 			})
-			require("mason-null-ls").check_install(true)
 		end,
 	},
 	-- nvim-Notify - notificaciones en nvim
@@ -56,9 +65,7 @@ return {
 		after = "nvim-lspconfig",
 	},
 	-- Alpha Dashboard
-	["goolord/alpha-nvim"] = {
-		disable = false,
-	},
+	["goolord/alpha-nvim"] = false,
 	-- Formatter
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",
@@ -104,4 +111,6 @@ return {
 	["nvim-telescope/telescope-file-browser.nvim"] = {},
 	-- Telescope Projets
 	["nvim-telescope/telescope-project.nvim"] = {},
+	-- treesitter Raimbow
+	["p00f/nvim-ts-rainbow"] = {},
 }
