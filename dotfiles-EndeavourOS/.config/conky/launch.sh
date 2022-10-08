@@ -4,5 +4,5 @@
 killall -q conky
 
 # Launch
-conky -p 3 --config=conky.conf &
+conky -p 1 --config=conky.conf &
 

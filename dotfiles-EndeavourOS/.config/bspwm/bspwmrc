@@ -113,7 +113,7 @@ sh ~/.screenlayout/monitor.sh &
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Wallpaper
-nitrogen --restore &
+# nitrogen --restore &
 # Dex
 dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
 # Picom
@@ -131,6 +131,9 @@ xsetroot -cursor_name left_ptr &
 ksuperkey -e 'Super_L=Super_L|d' &
 ksuperkey -e 'Super_R=Super_R|d' &
 
+# start conky
+exec conky -p 2 &
+
 # Start mpd
 exec mpd &
 
@@ -140,5 +143,5 @@ exec mpd &
 # Start udiskie
 exec udiskie -t &
 
-# start conky
-exec conky -p 3 &
+# Random Wallpaper
+exec ~/.config/bspwm/scripts/randomwallpapers.sh ~/Imágenes/wallpapers/ 300 & 

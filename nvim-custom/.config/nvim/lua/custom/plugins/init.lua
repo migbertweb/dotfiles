@@ -61,9 +61,9 @@ return {
 		end,
 	},
 	-- OmniSharp/omnisharp-vim para el desarrollo de C#
-	["OmniSharp/omnisharp-vim"] = {
-		after = "nvim-lspconfig",
-	},
+	-- ["OmniSharp/omnisharp-vim"] = {
+	-- 	after = "nvim-lspconfig",
+	-- },
 	-- Alpha Dashboard
 	["goolord/alpha-nvim"] = false,
 	-- Formatter

@@ -33,8 +33,9 @@ M.mason = {
 		-- "shellcheck",
 		-- Python
 		"pyright",
-		"autopep8",
-		"pylint",
+		-- "autopep8",
+		-- "pylint",
+		"flake8",
 		-- C
 		--		"clangd",
 		--YAML
@@ -83,7 +84,7 @@ M.nvimtree = {
 		enable = true,
 	},
 	view = {
-		adaptive_size = true,
+		adaptive_size = false,
 		hide_root_folder = false,
 		--		width = 25,
 		mappings = {

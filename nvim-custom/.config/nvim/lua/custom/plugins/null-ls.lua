@@ -29,9 +29,11 @@ local sources = {
 	-- b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
 	--Python
-	b.formatting.autopep8, --pip install autopep8
+	-- b.formatting.autopep8, --pip install autopep8
 	--	b.formatting.black, --pip install black
-	b.diagnostics.pylint, --pip install pylint
+	b.diagnostics.flake8.with({
+		extra_args = { "--format", "default", "--stdin-display-name" },
+	}), -- diagnostics.pylint, --pip install pylint
 
 	-- HTML Django Jinja template
 	-- b.formatting.djlint, -- pip install djlint
@@ -60,11 +62,10 @@ M.setup = function()
 	null_ls.setup({
 		debug = true,
 		sources = sources,
-
 		-- format on save
 		on_attach = function(client)
-			if client.resolved_capabilities.document_formatting then
-				vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+			if client.server_capabilities.document_formatting then
+				vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
 			end
 		end,
 	})

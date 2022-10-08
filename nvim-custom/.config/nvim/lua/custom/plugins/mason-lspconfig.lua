@@ -28,8 +28,9 @@ M.setup = function()
 			-- "shellcheck",
 			-- Python
 			"pyright",
-			"autopep8",
-			"pylint",
+			-- "autopep8",
+			-- "pylint",
+			"flake8",
 			-- C
 			--		"clangd",
 			--YAML
