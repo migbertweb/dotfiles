@@ -17,7 +17,7 @@ export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 #####################################################
 export VISUAL=nvim;
 export EDITOR=nvim;
-export SUDO_PROMPT="passwd: "
+export SUDO_PROMPT="Su contraseña Sr: "
 ####################################################
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode

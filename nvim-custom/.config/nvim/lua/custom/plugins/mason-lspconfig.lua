@@ -1,6 +1,7 @@
 local mason_lspconfig = require("mason-lspconfig")
 local M = {}
 M.setup = function()
+  require("mason").setup()
 	mason_lspconfig.setup({
 		ensure_installed = {
 			"dockerfile-language-server",
@@ -23,6 +24,7 @@ M.setup = function()
 			"emmet-ls",
 			"json-lsp",
 			"eslint-lsp",
+      "sqlls",
 			-- shell
 			-- "shfmt",
 			-- "shellcheck",

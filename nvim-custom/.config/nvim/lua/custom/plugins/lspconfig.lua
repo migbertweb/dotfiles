@@ -12,6 +12,7 @@ local servers = {
 	"pyright",
 	"jsonls",
 	"html",
+  "sqlls",
 	-- "clangd",
 	"yamlls",
 	"dockerls",
