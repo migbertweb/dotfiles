@@ -16,7 +16,7 @@ return {
 			-- colors = {}, -- table of hex strings
 		},
 	},
-
+	["hrsh7th/nvim-cmp"] = { override_options = overrides.cmp },
 	["kyazdani42/nvim-tree.lua"] = { override_options = overrides.nvimtree },
 	["NvChad/ui"] = { override_options = overrides.nvchad_ui },
 	["lewis6991/gitsigns.nvim"] = { override_options = overrides.gitsigns },
@@ -54,7 +54,11 @@ return {
 	},
 	-- nvim-Notify - notificaciones en nvim
 	["rcarriga/nvim-notify"] = {
-		after = "base46",
+		after = {
+			"base46",
+			"nvim-lspconfig",
+			"mason.nvim",
+		},
 		config = function()
 			require("custom.plugins.nvim-notify").setup()
 		end,

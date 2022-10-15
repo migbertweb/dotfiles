@@ -17,12 +17,19 @@ local servers = {
 	"yamlls",
 	"dockerls",
 }
+-- LSP settings (for overriding per client)
+local handlers =  {
+  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover),
+  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help),
+}
 
+-- Do not forget to use the on_attach function
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		init_options = {
+	handlers=handlers,
+	init_options = {
 			onlyAnalyzeProjectsWithOpenFiles = true,
 			suggestFromUnimportedLibraries = false,
 			closingLabels = true,
@@ -30,6 +37,24 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+
+local util = require("lspconfig/util")
+--
+lspconfig.pyright.setup({
+setting = {
+  python = {
+    analysis = {
+      autoSearchPaths = true,
+      diagnosticMode = "workspace",
+      useLibraryCodeForTypes = true
+    }
+  }
+},
+root_dir = function(fname)
+return util.root_pattern("manage.py", ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+util.path.dirname(fname)
+end
+})
 -- lspconfig.omnisharp.setup({
 -- 	on_attach = on_attach,
 -- 	capabilities = capabilities,

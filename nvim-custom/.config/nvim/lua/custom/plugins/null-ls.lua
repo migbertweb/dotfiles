@@ -29,10 +29,10 @@ local sources = {
 	-- b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
 	--Python
-	-- b.formatting.autopep8, --pip install autopep8
+	b.formatting.autopep8, --pip install autopep8
 	--	b.formatting.black, --pip install black
 	b.diagnostics.flake8.with({
-		extra_args = { "--format", "default", "--stdin-display-name" },
+		extra_args = { "--format", "default", "--stdin-display-name", "--ignore=E501,F401" },
 	}), -- diagnostics.pylint, --pip install pylint
 
 	-- HTML Django Jinja template

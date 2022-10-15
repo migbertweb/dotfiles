@@ -4,7 +4,25 @@ vim.opt.listchars:append("eol:↴")
 local M = {}
 
 M.telescope = {
-	extensions_list = { "themes", "terms", "file_browser", "project" },
+	extensions_list = { "themes", "terms", "file_browser", "project", "notify"},
+}
+
+M.cmp = {
+	formatting = {
+		format = function(_, vim_item)
+			local icons = require("nvchad_ui.icons").lspkind
+			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+			-- Source
+			vim_item.menu = ({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				nvim_lua = "[Lua]",
+				path = "[path]",
+			})[_.source.name]
+			return vim_item
+		end,
+	},
 }
 
 M.mason = {
