@@ -70,19 +70,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 #####################################################
 ##### FUNCIONES BASH
 #####################################################
-# # Actualizar NVIM como modulo de mis Dotfiles
-# actualizarnvim(){
-#   echo Actualizando nvim
-#   sleep 1
-#   echo -e Cambiando al directorio Dotfiles
-#   sleep 1
-#   cd ~/dotfiles/
-#   pwd
-#   sleep 2
-#   echo -e Ejecutando actualizacion de Nvim NvChad
-#   sleep 1
-#   git submodule foreach git pull origin main
-# }
 # Git command
 # Subir cambios a git
 gitpush() {
@@ -95,10 +82,9 @@ echo "########## Añadiendo cambios a Stage ##########"
     echo "########## Subiendo cambios a Origin ##########"
     git push
     sleep 1
-    echo "########## Mostrando Log del repositorio ##########"
-    sleep 1
-    echo "\n ##### Mostrando Log del repositorio ##### \n"
+    echo "\n ########## Mostrando Log del repositorio ########## \n"
 git log -5 --graph --oneline --abbrev-commit --pretty=format:"%h - %an, %ar : %s"
+echo "Fin \n"
   }
 # borrar una rama Remota
 gitdelete() {
