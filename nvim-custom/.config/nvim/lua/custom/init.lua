@@ -1,6 +1,6 @@
 -- example file i.e lua/custom/init.lua
 local g = vim.g
-
+--
 -- load your globals, autocmds here or anything .__.
 --require("core.utils").load_mappings()
 -- g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets/"
@@ -26,6 +26,8 @@ autocmd("BufWritePre", {
 		vim.lsp.buf.format({ async = true })
 	end,
 })
+
+vim.o.winbar = "%{%v:lua.require'custom.win'.eval()%}"
 
 -- Config para Omnisharp
 -- g.OmniSharp_server_use_mono = 0
