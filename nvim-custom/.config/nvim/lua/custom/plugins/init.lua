@@ -116,4 +116,6 @@ return {
 	["nvim-telescope/telescope-project.nvim"] = {},
 	-- treesitter Raimbow
 	["p00f/nvim-ts-rainbow"] = {},
+	-- Mavic context path
+	["SmiteshP/nvim-navic"] = {},
 }

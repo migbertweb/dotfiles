@@ -1,26 +1,42 @@
 -- custom.plugins.lspconfig
--- local utils = require("core.utils")
-local on_attach = require("plugins.configs.lspconfig").on_attach
+local utils = require("core.utils")
+-- local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
+local on_attach = function(client, bufnr)
+	client.server_capabilities.documentFormattingProvider = false
+	client.server_capabilities.documentRangeFormattingProvider = false
+
+	if client.server_capabilities.documentSymbolProvider then
+		local navic = require("nvim-navic")
+		navic.attach(client, bufnr)
+	end
+
+	utils.load_mappings("lspconfig", { buffer = bufnr })
+
+	if client.server_capabilities.signatureHelpProvider then
+		require("nvchad_ui.signature").setup(client)
+	end
+end
 
 local lspconfig = require("lspconfig")
 local servers = {
 	"emmet_ls",
+  "sumneko_lua",
 	"eslint",
 	"cssls",
 	"intelephense",
 	"pyright",
 	"jsonls",
 	"html",
-  "sqlls",
+	"sqlls",
 	-- "clangd",
 	"yamlls",
 	"dockerls",
 }
 -- LSP settings (for overriding per client)
-local handlers =  {
-  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover),
-  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help),
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help),
 }
 
 -- Do not forget to use the on_attach function
@@ -28,8 +44,8 @@ for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-	handlers=handlers,
-	init_options = {
+		handlers = handlers,
+		init_options = {
 			onlyAnalyzeProjectsWithOpenFiles = true,
 			suggestFromUnimportedLibraries = false,
 			closingLabels = true,
@@ -37,23 +53,23 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-
 local util = require("lspconfig/util")
 --
 lspconfig.pyright.setup({
-setting = {
-  python = {
-    analysis = {
-      autoSearchPaths = true,
-      diagnosticMode = "workspace",
-      useLibraryCodeForTypes = true
-    }
-  }
-},
-root_dir = function(fname)
-return util.root_pattern("manage.py", ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-util.path.dirname(fname)
-end
+	setting = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				useLibraryCodeForTypes = true,
+			},
+		},
+	},
+	root_dir = function(fname)
+		return util.root_pattern("manage.py", ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(
+			fname
+		) or util.path.dirname(fname)
+	end,
 })
 -- lspconfig.omnisharp.setup({
 -- 	on_attach = on_attach,
