@@ -21,7 +21,7 @@ end
 local lspconfig = require("lspconfig")
 local servers = {
 	"emmet_ls",
-  "sumneko_lua",
+	"sumneko_lua",
 	"eslint",
 	"cssls",
 	"intelephense",
@@ -56,6 +56,9 @@ end
 local util = require("lspconfig/util")
 --
 lspconfig.pyright.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	handlers = handlers,
 	setting = {
 		python = {
 			analysis = {

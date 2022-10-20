@@ -6,9 +6,9 @@ local colors = require("base46").get_theme_tb "base_30"
 local mod = ""
 local ChevronRight = ">"
 
-vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.grey })
-vim.api.nvim_set_hl(0, "WinBarFilename", { fg = colors.green, bg = colors.grey })
-vim.api.nvim_set_hl(0, "WinBarContext", { fg = colors.green, bg = colors.grey })
+vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = colors.statusline_bg })
+vim.api.nvim_set_hl(0, "WinBarFilename", { fg = colors.nord_blue, bg = colors.statusline_bg })
+vim.api.nvim_set_hl(0, "WinBarContext", { fg = colors.nord_blue, bg = colors.statusline_bg })
 
 M.winbar_filetype_exclude = {
 	"help",

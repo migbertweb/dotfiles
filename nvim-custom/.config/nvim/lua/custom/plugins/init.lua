@@ -85,6 +85,9 @@ return {
 	-- folke/which-key muestra una ayuda para los shortcut
 	["folke/which-key.nvim"] = {
 		disable = false,
+		config = function()
+			require("custom.plugins.whichkey").setup()
+		end,
 	},
 	-- tpope/vim-fugitive gestion de Git desde vim
 	["tpope/vim-fugitive"] = {
