@@ -54,6 +54,39 @@ for _, lsp in ipairs(servers) do
 end
 
 local util = require("lspconfig/util")
+---
+lspconfig.emmet_ls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	handlers = handlers,
+	filetypes = {
+		"html",
+    "blade",
+		"typescriptreact",
+		"typescript",
+		"javascriptreact",
+		"javascript",
+		"css",
+		"sass",
+		"scss",
+		"less",
+	},
+})
+----
+lspconfig.html.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	handlers = handlers,
+	filetypes = {
+		"html",
+    "blade",
+		"typescriptreact",
+		"typescript",
+		"javascriptreact",
+		"javascript",
+		"jsx",
+	},
+})
 --
 lspconfig.pyright.setup({
 	on_attach = on_attach,

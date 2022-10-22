@@ -1,12 +1,14 @@
--- example file i.e lua/custom/init.lua
 local g = vim.g
--- require "custom.statusline"--
+
 -- load your globals, autocmds here or anything .__.
---require("core.utils").load_mappings()
--- g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets/"
+g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets/"
 g.loaded_python3_provider = 1
+g.python3_host_prog = "$HOME/.virtualenvs/my_django_environment/bin/python"
+
 -- autocmds
+--
 local autocmd = vim.api.nvim_create_autocmd
+
 autocmd("CursorHold", {
 	buffer = bufnr,
 	callback = function()
@@ -28,7 +30,7 @@ autocmd("BufWritePre", {
 })
 
 vim.o.winbar = "%{%v:lua.require'custom.plugins.winbar'.get_winbar()%}"
--- vim.o.winbar = "%{%v:lua.require'custom.win'.eval()%}"
+-- vim.o.winbar = "%{%v:lua.require'custom.statusline.win'.eval()%}"
 
 -- Config para Omnisharp
 -- g.OmniSharp_server_use_mono = 0
@@ -36,3 +38,10 @@ vim.o.winbar = "%{%v:lua.require'custom.plugins.winbar'.get_winbar()%}"
 -- g.OmniSharp_selector_ui = "fzf"
 --" Use the stdio version of OmniSharp-roslyn - this is the default
 -- g.OmniSharp_server_stdio = 1
+
+-- vim.cmd([[
+--          augroup blade
+--            autocmd!
+--            autocmd FileType *.blade.php setlocal html
+--          augroup END
+--        ]])

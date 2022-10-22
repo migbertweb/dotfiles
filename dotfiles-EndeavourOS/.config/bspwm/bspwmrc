@@ -83,7 +83,7 @@ for i in ${settings[@]}; do
 done
 
 ## Always Floating Apps
-declare -a floating=(alacritty-float xed Pcmanfm Thunar Onboard Yad 'Firefox:Places'
+declare -a floating=(alacritty-float Pcmanfm Onboard Yad 'Firefox:Places'
 	Viewnior feh Nm-connection-editor)
 for i in ${floating[@]}; do
 	bspc rule -a $i state=floating follow=on focus=on

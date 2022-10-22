@@ -19,6 +19,13 @@ export VISUAL=nvim;
 export EDITOR=nvim;
 export SUDO_PROMPT="Su contraseña Sr: "
 ####################################################
+##### VirtualEnv de Python
+####################################################
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PROJECT_HOME=$HOME/proyectos/python
+source /bin/virtualenvwrapper.sh
+####################################################
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’

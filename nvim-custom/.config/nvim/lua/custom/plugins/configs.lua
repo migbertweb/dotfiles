@@ -3,8 +3,59 @@ vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 local M = {}
 
+local function button(sc, txt, keybind)
+	local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
+
+	local opts = {
+		position = "center",
+		text = txt,
+		shortcut = sc,
+		cursor = 5,
+		width = 36,
+		align_shortcut = "right",
+		hl = "AlphaButtons",
+	}
+
+	if keybind then
+		opts.keymap = { "n", sc_, keybind, { noremap = true, silent = true } }
+	end
+
+	return {
+		type = "button",
+		val = txt,
+		on_press = function()
+			local key = vim.api.nvim_replace_termcodes(sc_, true, false, true) or ""
+			vim.api.nvim_feedkeys(key, "normal", false)
+		end,
+		opts = opts,
+	}
+end
+M.packer = {
+	profile = {
+		enable = true,
+		threshold = 1, -- the amount in ms that a plugin's load time must be over for it to be included in the profile
+	},
+}
+M.alpha = {
+	buttons = {
+		type = "group",
+		val = {
+			button("SPC f f", "  Buscar Archivo  ", ":Telescope find_files<CR>"),
+			button("SPC f o", "  Recientes  ", ":Telescope oldfiles<CR>"),
+			button("SPC f w", "  Buscar Palabras  ", ":Telescope live_grep<CR>"),
+			button("SPC b m", "  Marcadores  ", ":Telescope marks<CR>"),
+			button("SPC t h", "  Temas  ", ":Telescope themes<CR>"),
+			button("SPC e s", "  Configuracion", ":e $MYVIMRC | :cd %:p:h <CR>"),
+		},
+		opts = {
+			spacing = 1,
+		},
+	},
+	headerPaddingTop = { type = "padding", val = 2 },
+	headerPaddingBottom = { type = "padding", val = 2 },
+}
 M.telescope = {
-	extensions_list = { "themes", "terms", "file_browser", "project", "notify"},
+	extensions_list = { "themes", "terms", "file_browser", "project", "notify", "laravel" },
 }
 
 M.cmp = {
@@ -93,6 +144,37 @@ M.treesitter = {
 		"yaml",
 		"dockerfile",
 		"tsx",
+	},
+	autotag = {
+		enable = true,
+		filetypes = {
+			"html",
+			"blade",
+			"xml",
+			"javascript",
+			"typescript",
+			"javascriptreact",
+			"typescriptreact",
+			"svelte",
+			"vue",
+			"tsx",
+			"jsx",
+			"rescript",
+			"xml",
+			"php",
+			"markdown",
+			"glimmer",
+			"handlebars",
+			"hbs",
+		},
+	},
+	rainbow = {
+		enable = true,
+		extended_mode = true,
+		max_file_lines = nil,
+		-- colors = {
+		-- 	-- Colors here table of hex strings
+		-- },
 	},
 }
 -- explorador de archivos

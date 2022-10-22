@@ -4,18 +4,10 @@ return {
 	-----------------------------------------------------------------------------
 	-- overrides options
 	-- --------------------------------------------------------------------------
+	["wbthomason/packer.nvim"] = { override_options = overrides.packer },
 	["williamboman/mason.nvim"] = { override_options = overrides.mason },
 	["lukas-reineke/indent-blankline.nvim"] = { override_options = overrides.blankline },
-
-	["nvim-treesitter/nvim-treesitter"] = {
-		override_options = overrides.treesitter,
-		rainbow = {
-			enable = true,
-			extended_mode = true,
-			max_file_lines = nil,
-			-- colors = {}, -- table of hex strings
-		},
-	},
+	["nvim-treesitter/nvim-treesitter"] = { override_options = overrides.treesitter },
 	["hrsh7th/nvim-cmp"] = { override_options = overrides.cmp },
 	["kyazdani42/nvim-tree.lua"] = { override_options = overrides.nvimtree },
 	["NvChad/ui"] = { override_options = overrides.nvchad_ui },
@@ -68,7 +60,10 @@ return {
 	-- 	after = "nvim-lspconfig",
 	-- },
 	-- Alpha Dashboard
-	["goolord/alpha-nvim"] = false,
+	["goolord/alpha-nvim"] = {
+		override_options = overrides.alpha,
+		disable = false,
+	},
 	-- Formatter
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",
@@ -105,9 +100,7 @@ return {
 	},
 	-- blade syntax
 	["jwalton512/vim-blade"] = {
-		setup = function()
-			require("core.lazy_load").on_file_open("nvim-treesitter")
-		end,
+		after = "nvim-lspconfig",
 	},
 	-- doc archivos js
 	["heavenshell/vim-jsdoc"] = {
@@ -121,4 +114,17 @@ return {
 	["p00f/nvim-ts-rainbow"] = {},
 	-- Mavic context path
 	["SmiteshP/nvim-navic"] = {},
+	-- Nvim-TS-autotag
+	["windwp/nvim-ts-autotag"] = {
+		--		after = "nvim-lspconfig",
+		-- setup = function()
+		-- 	require("nvim-ts-autotag").setup()
+		-- end,
+	},
+	["adalessa/laravel.nvim"] = {
+		after = "nvim-lspconfig",
+		config = function()
+			require("custom.plugins.laravel").setup()
+		end,
+	},
 }

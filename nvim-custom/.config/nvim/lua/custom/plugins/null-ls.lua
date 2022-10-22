@@ -6,6 +6,7 @@ local sources = {
 	b.formatting.prettierd.with({
 		filetypes = {
 			"vue",
+      "blade",
 			"css",
 			"scss",
 			"less",
