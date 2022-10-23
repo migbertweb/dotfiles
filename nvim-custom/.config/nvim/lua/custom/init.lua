@@ -3,7 +3,7 @@ local g = vim.g
 -- load your globals, autocmds here or anything .__.
 g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets/"
 g.loaded_python3_provider = 1
-g.python3_host_prog = "$HOME/.virtualenvs/my_django_environment/bin/python"
+g.python3_host_prog = "$HOME/proyectos/python/env-django/bin/python"
 
 -- autocmds
 --

@@ -270,27 +270,27 @@
         "path": "./python/unittest.json"
       },
       {
-        "language": "django",
+        "language": "python",
         "path": "./frameworks/django/admin.json"
       },
       {
-        "language": "django",
+        "language": "python",
         "path": "./frameworks/django/forms.json"
       },
       {
-        "language": "django",
+        "language": "python",
         "path": "./frameworks/django/models.json"
       },
       {
-        "language": "django",
+        "language": "python",
         "path": "./frameworks/django/tags.json"
       },
       {
-        "language": "django",
+        "language": "python",
         "path": "./frameworks/django/urls.json"
       },
       {
-        "language": "django",
+        "language": "python",
         "path": "./frameworks/django/views.json"
       },
       {
@@ -298,11 +298,11 @@
         "path": "./frameworks/djangohtml.json"
       },
       {
-        "language": "django-rest",
+        "language": "python",
         "path": "./frameworks/django/django_rest/serializers.json"
       },
       {
-        "language": "django-rest",
+        "language": "python",
         "path": "./frameworks/django/django_rest/views.json"
       },
       {
