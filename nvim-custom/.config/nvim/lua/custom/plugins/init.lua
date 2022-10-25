@@ -141,4 +141,12 @@ run = ":call doge#install()",
 			require("custom.plugins.doge").setup()
 		end,
 	},
+ ["iamcco/markdown-preview.nvim"] = {
+run = function()
+    vim.fn["mkdp#util#install"]()
+  end,
+  ft = "markdown",
+  cmd = { "MarkdownPreview" },
+  requires = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
+  }
 }
