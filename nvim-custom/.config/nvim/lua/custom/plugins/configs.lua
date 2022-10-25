@@ -1,6 +1,7 @@
 -- custom/plugins/configs.lua file
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
+
 local M = {}
 
 local function button(sc, txt, keybind)
@@ -57,7 +58,6 @@ M.alpha = {
 M.telescope = {
 	extensions_list = { "themes", "terms", "file_browser", "project", "notify", "laravel" },
 }
-
 M.cmp = {
 	formatting = {
 		format = function(_, vim_item)

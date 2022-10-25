@@ -127,4 +127,18 @@ return {
 			require("custom.plugins.laravel").setup()
 		end,
 	},
+	["danymat/neogen"] = {
+		cmd = "Neogen",
+		module = "neogen",
+		config = function()
+			require("custom.plugins.neogen").setup()
+		end,
+	},
+	["kkoomen/vim-doge"] = {
+run = ":call doge#install()",
+		cmd = { "DogeGenerate", "DogeCreateDocStandard" },
+		config = function()
+			require("custom.plugins.doge").setup()
+		end,
+	},
 }
