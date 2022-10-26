@@ -9,6 +9,11 @@ M.rest = {
 		["<leader>rl"] = { "<Plug>RestNvimLast", "勒Ultimo API-Rest" },
 	},
 }
+M.lazygit = {
+	n = {
+		["<leader>gu"] = { "<cmd>:tabnew term://lazygit<CR>", "Git UI"  },
+	},
+}
 M.code = {
 	n = {
 		["<leader>c"] = { "Code Doc" },
