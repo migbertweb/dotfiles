@@ -135,18 +135,23 @@ return {
 		end,
 	},
 	["kkoomen/vim-doge"] = {
-run = ":call doge#install()",
+		run = ":call doge#install()",
 		cmd = { "DogeGenerate", "DogeCreateDocStandard" },
 		config = function()
 			require("custom.plugins.doge").setup()
 		end,
 	},
- ["iamcco/markdown-preview.nvim"] = {
-run = function()
-    vim.fn["mkdp#util#install"]()
-  end,
-  ft = "markdown",
-  cmd = { "MarkdownPreview" },
-  requires = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
-  }
+	["iamcco/markdown-preview.nvim"] = {
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		ft = "markdown",
+		cmd = { "MarkdownPreview" },
+		requires = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
+	},
+	["akinsho/toggleterm.nvim"] = {
+		config = function()
+			require("toggleterm").setup()
+		end,
+	},
 }

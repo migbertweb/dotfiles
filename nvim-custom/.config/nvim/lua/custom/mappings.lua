@@ -11,7 +11,7 @@ M.rest = {
 }
 M.lazygit = {
 	n = {
-		["<leader>gu"] = { "<cmd>:tabnew term://lazygit<CR>", "Git UI"  },
+		["<leader>gu"] = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git UI"  },
 	},
 }
 M.code = {
