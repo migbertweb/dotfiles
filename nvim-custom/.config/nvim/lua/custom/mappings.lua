@@ -11,7 +11,8 @@ M.rest = {
 }
 M.lazygit = {
 	n = {
-		["<leader>gu"] = { "<cmd>lua require('utils.term').git_client_toggle()<CR>", "Git UI"  },
+		["<leader>gu"] = { "<cmd>lua require('custom.utils.term').git_client_toggle()<CR>", "Git UI" },
+		["<leader>gc"] = { "<cmd>lua require('custom.utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
 	},
 }
 M.code = {

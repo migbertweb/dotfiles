@@ -154,4 +154,5 @@ return {
 			require("toggleterm").setup()
 		end,
 	},
+  ["davidsierradz/cmp-conventionalcommits"] = {},
 }
