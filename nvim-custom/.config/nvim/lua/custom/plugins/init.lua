@@ -87,8 +87,8 @@ return {
 	-- tpope/vim-fugitive gestion de Git desde vim
 	["tpope/vim-fugitive"] = {
 		disable = false,
-		after = "base46",
-		keys = { "g" },
+		-- after = "base46",
+		-- keys = { "g" },
 	},
 	-- archivos .Env
 	["tpope/vim-dotenv"] = {
