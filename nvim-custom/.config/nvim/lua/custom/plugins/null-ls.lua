@@ -2,7 +2,9 @@ local null_ls = require("null-ls")
 local b = null_ls.builtins
 
 local sources = {
-
+  -- code_actions de Git
+  b.code_actions.gitsigns,
+  -- prettier codigo
 	b.formatting.prettierd.with({
 		filetypes = {
 			"vue",
