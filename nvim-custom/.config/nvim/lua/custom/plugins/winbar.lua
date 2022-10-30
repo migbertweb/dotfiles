@@ -1,7 +1,7 @@
 local M = {}
 
 local navic = require("nvim-navic")
-local colors = require("base46").get_theme_tb "base_30"
+local colors = require("base46").get_theme_tb("base_30")
 
 local mod = ""
 local ChevronRight = ">"

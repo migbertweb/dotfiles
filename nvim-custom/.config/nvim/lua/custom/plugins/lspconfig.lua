@@ -1,5 +1,7 @@
 -- custom.plugins.lspconfig
 local utils = require("core.utils")
+-- local ih = require("inlay-hints")
+
 -- local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local on_attach = function(client, bufnr)
@@ -16,6 +18,7 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.signatureHelpProvider then
 		require("nvchad_ui.signature").setup(client)
 	end
+	-- ih.on_attach(client, bufnr)
 end
 
 local lspconfig = require("lspconfig")
@@ -45,6 +48,18 @@ for _, lsp in ipairs(servers) do
 		on_attach = on_attach,
 		capabilities = capabilities,
 		handlers = handlers,
+		settings = {
+			Lua = {
+				hint = {
+					enable = true,
+				},
+			},
+			intelephense = {
+				hint = {
+					enable = true,
+				},
+			},
+		},
 		init_options = {
 			onlyAnalyzeProjectsWithOpenFiles = true,
 			suggestFromUnimportedLibraries = false,
@@ -61,7 +76,7 @@ lspconfig.emmet_ls.setup({
 	handlers = handlers,
 	filetypes = {
 		"html",
-    "blade",
+		"blade",
 		"typescriptreact",
 		"typescript",
 		"javascriptreact",
@@ -72,14 +87,15 @@ lspconfig.emmet_ls.setup({
 		"less",
 	},
 })
-----
+
+------
 lspconfig.html.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	handlers = handlers,
 	filetypes = {
 		"html",
-    "blade",
+		"blade",
 		"typescriptreact",
 		"typescript",
 		"javascriptreact",

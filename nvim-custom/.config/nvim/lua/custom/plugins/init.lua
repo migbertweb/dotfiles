@@ -34,23 +34,18 @@ return {
 		end,
 	},
 	-- Auto install mason-null-ls
-	["jayp0521/mason-null-ls.nvim"] = {
-		after = {
-			"null-ls.nvim",
-		},
-		config = function()
-			require("mason-null-ls").setup({
-				automatic_installation = true,
-			})
-		end,
-	},
+	-- ["jayp0521/mason-null-ls.nvim"] = {
+	-- 	after = {
+	-- 		"null-ls.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("mason-null-ls").setup({
+	-- 			automatic_installation = true,
+	-- 		})
+	-- 	end,
+	-- },
 	-- nvim-Notify - notificaciones en nvim
 	["rcarriga/nvim-notify"] = {
-		after = {
-			"base46",
-			"nvim-lspconfig",
-			"mason.nvim",
-		},
 		config = function()
 			require("custom.plugins.nvim-notify").setup()
 		end,
@@ -87,7 +82,7 @@ return {
 	-- tpope/vim-fugitive gestion de Git desde vim
 	["tpope/vim-fugitive"] = {
 		disable = false,
-		-- after = "base46",
+		after = "base46",
 		-- keys = { "g" },
 	},
 	-- archivos .Env
@@ -127,6 +122,7 @@ return {
 			require("custom.plugins.laravel").setup()
 		end,
 	},
+	-- helpers para la Documentacion de codigo
 	["danymat/neogen"] = {
 		cmd = "Neogen",
 		module = "neogen",
@@ -134,6 +130,7 @@ return {
 			require("custom.plugins.neogen").setup()
 		end,
 	},
+
 	["kkoomen/vim-doge"] = {
 		run = ":call doge#install()",
 		cmd = { "DogeGenerate", "DogeCreateDocStandard" },
@@ -141,6 +138,7 @@ return {
 			require("custom.plugins.doge").setup()
 		end,
 	},
+	-- markdown-preview y visor de diagramas (UML - Mermaid Diagram y PlantUML)
 	["iamcco/markdown-preview.nvim"] = {
 		run = function()
 			vim.fn["mkdp#util#install"]()
@@ -149,10 +147,34 @@ return {
 		cmd = { "MarkdownPreview" },
 		requires = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
 	},
+	-- Terminal para mis propios script
 	["akinsho/toggleterm.nvim"] = {
 		config = function()
 			require("toggleterm").setup()
 		end,
 	},
-  ["davidsierradz/cmp-conventionalcommits"] = {},
+	-- autocompletado para commits
+	["davidsierradz/cmp-conventionalcommits"] = {},
+	-- Explorador de Base de Datos
+	["tpope/vim-dadbod"] = {
+		opt = true,
+		requires = {
+			"kristijanhusak/vim-dadbod-ui",
+			"kristijanhusak/vim-dadbod-completion",
+		},
+		config = function()
+			require("custom.plugins.dadbod").setup()
+		end,
+		cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+	},
+	-- ["simrat39/inlay-hints.nvim"] = {
+	-- 	config = function()
+	-- 		require("custom.plugins.inlay-hints").setup()
+	-- 	end,
+	-- },
+	["lvimuser/lsp-inlayhints.nvim"] = {
+		config = function()
+			require("lsp-inlayhints").setup()
+		end,
+	},
 }

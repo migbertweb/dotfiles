@@ -15,6 +15,15 @@ M.lazygit = {
 		["<leader>gc"] = { "<cmd>lua require('custom.utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
 	},
 }
+M.database = {
+	n = {
+		["<leader>d"] = { "Database" },
+		["<leader>du"] = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+		["<leader>df"] = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+		["<leader>dr"] = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+		["<leader>dq"] = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+	},
+}
 M.code = {
 	n = {
 		["<leader>c"] = { "Code Doc" },
