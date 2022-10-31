@@ -81,6 +81,7 @@ M.mason = {
 		"dockerfile-language-server",
 		-- comunes
 		"prettierd",
+		"prettier",
 		-- JSON
 		"fixjson",
 		-- lua stuff
@@ -89,8 +90,10 @@ M.mason = {
 		-- C#
 		-- "omnisharp",
 		-- web dev
+		"djlint",
 		"intelephense",
 		"css-lsp",
+		"blade-formatter",
 		"html-lsp",
 		"typescript-language-server",
 		"deno",

@@ -2,13 +2,17 @@ local null_ls = require("null-ls")
 local b = null_ls.builtins
 
 local sources = {
-  -- code_actions de Git
-  b.code_actions.gitsigns,
-  -- prettier codigo
-	b.formatting.prettierd.with({
+	-- HTML
+	b.formatting.tidy,
+	-- blade
+	b.formatting.blade_formatter,
+	-- code_actions de Git
+	b.code_actions.gitsigns,
+	-- prettier codigo
+	b.formatting.prettier.with({
 		filetypes = {
 			"vue",
-      "blade",
+			"blade",
 			"css",
 			"scss",
 			"less",
@@ -39,8 +43,8 @@ local sources = {
 	}), -- diagnostics.pylint, --pip install pylint
 
 	-- HTML Django Jinja template
-	-- b.formatting.djlint, -- pip install djlint
-	-- b.diagnostics.djlint, -- pip install djlint
+	b.formatting.djlint, -- pip install djlint
+	b.diagnostics.djlint, -- pip install djlint
 
 	--JSON
 	b.formatting.fixjson, -- npm install -g fixjson
@@ -66,11 +70,11 @@ M.setup = function()
 		debug = true,
 		sources = sources,
 		-- format on save
-		on_attach = function(client)
-			if client.server_capabilities.document_formatting then
-				vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
-			end
-		end,
+		-- on_attach = function(client)
+		-- 	if client.server_capabilities.document_formatting then
+		-- 		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
+		-- 	end
+		-- end,
 	})
 end
 
