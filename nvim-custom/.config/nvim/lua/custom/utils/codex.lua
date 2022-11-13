@@ -2,7 +2,7 @@ local Job = require("plenary.job")
 
 local M = {}
 
-local API_KEY_FILE = vim.env.HOME .. "/.config/nvim/lua/custom/utils/env"
+local API_KEY_FILE = vim.env.HOME .. "/.config/codex/env"
 local OPENAI_URL = "https://api.openai.com/v1/engines/davinci-codex/completions"
 -- local OPENAI_URL = "https://api.openai.com/v1/engines/cushman-codex/completions"
 local MAX_TOKENS = 300
