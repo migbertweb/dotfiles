@@ -1,12 +1,12 @@
-local opt = vim.opt
--- setlocal expandtab
--- setlocal tabstop=2
--- setlocal softtabstop=2
--- setlocal shiftwidth=2
+vim.bo.shiftwidth = 4
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 4
+vim.bo.expandtab = true
+vim.bo.textwidth = 0
+vim.bo.autoindent = true
+vim.bo.smartindent = true
 
--- Indenting
-opt.expandtab = true
-opt.shiftwidth = 4
-opt.smartindent = true
-opt.tabstop = 4
-opt.softtabstop = 4
+vim.cmd [[
+    compiler python
+    " nnoremap <buffer> <leader>rr :silent make <bar> redraw!<cr>
+]]

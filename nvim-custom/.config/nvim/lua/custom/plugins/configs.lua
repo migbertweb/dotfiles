@@ -56,9 +56,17 @@ M.alpha = {
 	headerPaddingBottom = { type = "padding", val = 2 },
 }
 M.telescope = {
-	extensions_list = { "themes", "terms", "file_browser", "project", "notify", "laravel" },
+	extensions_list = { "media_files", "themes", "terms", "file_browser", "project", "notify", "laravel" },
 }
 M.cmp = {
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "nvim_lua" },
+		{ name = "path" },
+		{ name = "cmp_tabnine" },
+	},
 	formatting = {
 		format = function(_, vim_item)
 			local icons = require("nvchad_ui.icons").lspkind
@@ -70,6 +78,7 @@ M.cmp = {
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
 				path = "[path]",
+				cmp_tabnine = "[TNine]",
 			})[_.source.name]
 			return vim_item
 		end,

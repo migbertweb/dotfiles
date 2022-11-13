@@ -36,7 +36,7 @@ M.telescope = {
 	plugin = true,
 
 	n = {
-		["<leader>f"] = { "+Telescope" },
+		["<leader>f"] = { "Telescope" },
 		-- find
 		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
 		["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
@@ -51,7 +51,26 @@ M.telescope = {
 			"<cmd> :lua require'telescope'.extensions.project.project{ display_type = 'full'}<CR>",
 			"冷Projects",
 		},
+		["<leader>fm"] = {
+			"<cmd> :lua require('telescope').extensions.media_files.media_files()<CR>",
+			"冷Media Files",
+		},
 	},
 }
-
+M.lspconfig = {
+	plugin = true,
+	n = {
+		["<leader>f"] = { "Telescope" },
+	},
+}
+M.rnvimr = {
+	n = {
+		["<C-,>"] = { "<cmd> :RnvimrToggle <cr>", "Ranger" },
+	},
+}
+M.codex = {
+	n = {
+		["<leader>gz"] = { "<Cmd>lua require('custom.utils.codex').complete()<CR>", "Codex OpenAI" },
+	},
+}
 return M

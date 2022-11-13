@@ -2,7 +2,9 @@ local null_ls = require("null-ls")
 local b = null_ls.builtins
 
 local sources = {
-	-- HTML
+	-- Print ENV variables
+	b.hover.printenv,
+  -- HTML
 	b.formatting.tidy,
 	-- blade
 	b.formatting.blade_formatter,
