@@ -1,10 +1,4 @@
 {
-  "name": "friendly-",
-  "engines": {
-    "vscode": "^1.11.0"
-  },
-  "contributes": {
-    "": [
       {
         "language": [
           "plaintext",
@@ -410,6 +404,4 @@
         "language": "dockerfile",
         "path": "./docker/docker_file.json"
       }
-    ]
-  }
 }

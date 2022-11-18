@@ -1,7 +1,7 @@
 local g = vim.g
 
 -- load your globals, autocmds here or anything .__.
-g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets/"
+g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets"
 g.loaded_python3_provider = 1
 g.python3_host_prog = "$HOME/proyectos/python/env-django/bin/python"
 
@@ -81,3 +81,5 @@ api.nvim_create_autocmd("LspAttach", {
 --            autocmd FileType *.blade.php setlocal html
 --          augroup END
 --        ]])
+--
+

@@ -177,6 +177,9 @@ super + Print
 super + w 
   firefox
 
+super + g 
+  /usr/bin/google-chrome-stable
+
 super + n 
   thunar  
 

@@ -51,7 +51,7 @@ M.telescope = {
 			"<cmd> :lua require'telescope'.extensions.project.project{ display_type = 'full'}<CR>",
 			"冷Projects",
 		},
-		["<leader>fm"] = {
+		["<leader>fz"] = {
 			"<cmd> :lua require('telescope').extensions.media_files.media_files()<CR>",
 			"冷Media Files",
 		},

@@ -6,7 +6,7 @@ vim.bo.textwidth = 0
 vim.bo.autoindent = true
 vim.bo.smartindent = true
 
-vim.cmd [[
-    compiler python
-    " nnoremap <buffer> <leader>rr :silent make <bar> redraw!<cr>
-]]
+-- vim.cmd [[
+--     compiler python
+--     " nnoremap <buffer> <leader>rr :silent make <bar> redraw!<cr>
+-- ]]
