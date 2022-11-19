@@ -60,14 +60,14 @@ local function get_location()
 	end
 	return ""
 end
-
+-- winbar con navic
 function M.get_winbar()
 	if excludes() then
 		return ""
 	end
 	if navic.is_available() then
 		return "%#WinBarSeparator#"
-			.. "%="
+			-- .. "%="
 			.. ""
 			.. "%*"
 			.. get_modified()
@@ -76,7 +76,7 @@ function M.get_winbar()
 			.. ""
 			.. "%*"
 	else
-		return "%#WinBarSeparator#" .. "%=" .. "" .. "%*" .. get_modified() .. "%#WinBarSeparator#" .. "" .. "%*"
+		return "%#WinBarSeparator#" .. "" .. "%*" .. get_modified() .. "%#WinBarSeparator#" .. "" .. "%*"
 	end
 end
 

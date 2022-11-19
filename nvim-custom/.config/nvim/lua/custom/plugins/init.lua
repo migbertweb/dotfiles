@@ -194,9 +194,14 @@ return {
 			require("custom.plugins.tabnine")
 		end,
 	},
- ["rafamadriz/friendly-snippets"] = {
-    disable = false,
-  },
-
+	-- snippets de la comunidad
+	["rafamadriz/friendly-snippets"] = {
+		disable = false,
+	},
+	-- resaltar palabras similares
+	["RRethy/vim-illuminate"] = {
+		config = function()
+			require("custom.plugins.illuminate")
+		end,
+	},
 }
-

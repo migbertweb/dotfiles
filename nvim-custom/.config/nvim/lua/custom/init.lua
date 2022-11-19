@@ -1,5 +1,7 @@
 local g = vim.g
-
+local opt = vim.opt
+----
+opt.hlsearch = true
 -- load your globals, autocmds here or anything .__.
 g.luasnippets_path = "/home/migbert/.config/nvim/lua/custom/snippets"
 g.loaded_python3_provider = 1

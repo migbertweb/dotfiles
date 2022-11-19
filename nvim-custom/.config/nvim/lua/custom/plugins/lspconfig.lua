@@ -7,14 +7,14 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
-
+	-- contex navigation winbar
 	if client.server_capabilities.documentSymbolProvider then
 		local navic = require("nvim-navic")
 		navic.attach(client, bufnr)
 	end
-
+	-- load mapping for lsp
 	utils.load_mappings("lspconfig", { buffer = bufnr })
-
+	-- signatureHelpProvider
 	if client.server_capabilities.signatureHelpProvider then
 		require("nvchad_ui.signature").setup(client)
 	end
