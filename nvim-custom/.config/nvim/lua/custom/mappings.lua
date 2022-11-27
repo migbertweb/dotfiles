@@ -15,13 +15,18 @@ M.lazygit = {
 		["<leader>gc"] = { "<cmd>lua require('custom.utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
 	},
 }
+M.lazydocker = {
+	n = {
+		["<leader>lk"] = { "<cmd>lua require('custom.utils.term').docker_client_toggle()<CR>", "Docker UI" },
+	},
+}
 M.database = {
 	n = {
 		["<leader>d"] = { "Database" },
-		["<leader>du"] = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+		["<leader>du"] = { "<Cmd>DBUIToggle<Cr>", "Mostrar DB-UI" },
 		["<leader>df"] = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
 		["<leader>dr"] = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
-		["<leader>dq"] = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+		["<leader>dq"] = { "<Cmd>DBUILastQueryInfo<Cr>", "Ultima DB-query" },
 	},
 }
 M.code = {

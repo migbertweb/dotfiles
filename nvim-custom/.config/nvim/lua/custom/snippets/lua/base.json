@@ -1,0 +1,7 @@
+{
+  "Module estructure": {
+    "prefix": "mod",
+    "body": ["module estructure$0"],
+    "description": "Creates Module Lua"
+  }
+}

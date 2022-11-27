@@ -18,7 +18,6 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.signatureHelpProvider then
 		require("nvchad_ui.signature").setup(client)
 	end
-	-- ih.on_attach(client, bufnr)
 end
 
 local lspconfig = require("lspconfig")
@@ -35,19 +34,20 @@ local servers = {
 	-- "clangd",
 	"yamlls",
 	"dockerls",
+	"tailwindcss",
 }
 -- LSP settings (for overriding per client)
-local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover),
-	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help),
-}
-
+-- local handlers = {
+-- 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover),
+-- 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help),
+-- }
+require("custom.plugins.lsp.handlers").setup()
 -- Do not forget to use the on_attach function
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		handlers = handlers,
+
 		settings = {
 			Lua = {
 				hint = {
@@ -67,13 +67,14 @@ for _, lsp in ipairs(servers) do
 		},
 	})
 end
-
+if servers.name == "sumneko_lua" then
+	require("lua-dev").setup()
+end
 local util = require("lspconfig/util")
 ------
 lspconfig.html.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	handlers = handlers,
 	filetypes = {
 		-- "html",
 		"blade",
@@ -88,7 +89,6 @@ lspconfig.html.setup({
 lspconfig.emmet_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	handlers = handlers,
 	filetypes = {
 		-- "html",
 		"blade",
@@ -107,7 +107,6 @@ lspconfig.emmet_ls.setup({
 lspconfig.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	handlers = handlers,
 	setting = {
 		python = {
 			analysis = {

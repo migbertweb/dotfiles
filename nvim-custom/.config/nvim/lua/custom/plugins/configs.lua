@@ -44,6 +44,11 @@ M.alpha = {
 			button("SPC f f", "  Buscar Archivo  ", ":Telescope find_files<CR>"),
 			button("SPC f o", "  Recientes  ", ":Telescope oldfiles<CR>"),
 			button("SPC f w", "  Buscar Palabras  ", ":Telescope live_grep<CR>"),
+			button(
+				"SPC f w",
+				"冷 Proyectos  ",
+				":lua require'telescope'.extensions.project.project{ display_type = 'full'}<CR>"
+			),
 			button("SPC b m", "  Marcadores  ", ":Telescope marks<CR>"),
 			button("SPC t h", "  Temas  ", ":Telescope themes<CR>"),
 			button("SPC e s", "  Configuracion", ":e $MYVIMRC | :cd %:p:h <CR>"),
@@ -66,6 +71,7 @@ M.cmp = {
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "cmp_tabnine" },
+		{ name = "nvim_lsp_signature_help" },
 	},
 	formatting = {
 		format = function(_, vim_item)
@@ -79,12 +85,12 @@ M.cmp = {
 				nvim_lua = "[Lua]",
 				path = "[path]",
 				cmp_tabnine = "[TNine]",
+				nvim_lsp_signature_help = "[Signature]",
 			})[_.source.name]
 			return vim_item
 		end,
 	},
 }
-
 M.mason = {
 	ensure_installed = {
 		"dockerfile-language-server",
@@ -109,6 +115,7 @@ M.mason = {
 		"emmet-ls",
 		"json-lsp",
 		"eslint-lsp",
+		"tailwindcss-language-server",
 		-- shell
 		-- "shfmt",
 		-- "shellcheck",

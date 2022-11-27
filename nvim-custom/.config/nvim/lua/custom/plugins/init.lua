@@ -204,4 +204,8 @@ return {
 			require("custom.plugins.illuminate")
 		end,
 	},
+	-- Lua-dev
+	["folke/lua-dev.nvim"] = {},
+	-- autocompletado de signature-help
+	["hrsh7th/cmp-nvim-lsp-signature-help"] = {},
 }

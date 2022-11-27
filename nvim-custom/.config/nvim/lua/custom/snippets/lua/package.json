@@ -1,0 +1,21 @@
+{
+  "name": "lua-snippets",
+  "displayName": "lua-snippets",
+  "description": "Lua Snippets",
+  "version": "0.1",
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "snippets",
+    "lua"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./base.json"
+      },
+    ]
+  }
+}
