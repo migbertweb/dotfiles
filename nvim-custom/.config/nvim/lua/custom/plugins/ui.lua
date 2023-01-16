@@ -14,4 +14,15 @@ return {
 		local pos = fn.col(".")
 		return st_modules.cursor_position() .. "lin:" .. current_line .. "/" .. total_line .. " col:" .. pos
 	end,
+
+	LSP_status = function()
+		if rawget(vim, "lsp") then
+			for _, client in ipairs(vim.lsp.buf_get_clients()) do
+				if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+					return (vim.o.columns > 100 and "%#St_LspStatus#" .. "   LSP ~ " .. client.name .. " ")
+						or "   LSP "
+				end
+			end
+		end
+	end,
 }

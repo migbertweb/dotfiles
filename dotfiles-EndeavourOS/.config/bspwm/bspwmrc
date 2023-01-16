@@ -39,6 +39,7 @@ bspc rule -a firefox desktop='^2' follow=on focus=on
 bspc rule -a chromium desktop='^2' follow=on focus=on
 bspc rule -a Google-chrome desktop='^2' follow=on focus=on
 bspc rule -a Vivaldi desktop='^2' follow=on focus=on
+bspc rule -a megasync desktop='^3' follow=on focus=on state=floating
 
 ## 3 > files (always open file manager on workspace-3)
 declare -a files=(Pcmanfm Thunar qBittorrent)

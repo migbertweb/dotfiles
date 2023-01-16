@@ -187,13 +187,13 @@ return {
 	},
 	["kevinhwang91/rnvimr"] = {},
 	-- Autocompletado con IA
-	["tzachar/cmp-tabnine"] = {
-		after = "nvim-cmp",
-		run = "./install.sh",
-		config = function()
-			require("custom.plugins.tabnine")
-		end,
-	},
+	-- ["tzachar/cmp-tabnine"] = {
+	-- 	after = "nvim-cmp",
+	-- 	run = "./install.sh",
+	-- 	config = function()
+	-- 		require("custom.plugins.tabnine")
+	-- 	end,
+	-- },
 	-- snippets de la comunidad
 	["rafamadriz/friendly-snippets"] = {
 		disable = false,
@@ -208,4 +208,10 @@ return {
 	["folke/lua-dev.nvim"] = {},
 	-- autocompletado de signature-help
 	["hrsh7th/cmp-nvim-lsp-signature-help"] = {},
+	-- ChatGPT de OpenIA
+	["terror/chatgpt.nvim"] = {
+		disable = true,
+		after = "base46",
+		run = "pip install -r requirements.txt",
+	},
 }

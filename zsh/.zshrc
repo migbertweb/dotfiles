@@ -126,8 +126,9 @@ sleep 2
 #####################################################
 ##### ALIAS
 #####################################################
+
 #
-alias egrep='grep -E'
+alias v='nvim'
 ##
 alias gp=gitpush
 alias glog='git log --all --graph --decorate --oneline --abbrev-commit'
