@@ -129,6 +129,7 @@ sleep 2
 
 #
 alias v='nvim'
+alias ,,='cd ~'
 ##
 alias gp=gitpush
 alias glog='git log --all --graph --decorate --oneline --abbrev-commit'
