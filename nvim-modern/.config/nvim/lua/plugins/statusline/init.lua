@@ -1,0 +1,56 @@
+return {
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+
+    config = function()
+      local components = require "plugins.statusline.components"
+
+      require("lualine").setup {
+        options = {
+          icons_enabled = true,
+          theme = "auto",
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
+          disabled_filetypes = {
+            statusline = { "alpha", "lazy" },
+            winbar = {
+              "help",
+              "alpha",
+              "lazy",
+            },
+          },
+          always_divide_middle = true,
+          globalstatus = true,
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { components.git_repo, "branch", "filename" },
+          lualine_c = { components.diff, components.diagnostics, components.separator, components.lsp_client },
+          lualine_x = { components.spaces, "encoding", "fileformat", "filetype", "progress" },
+          lualine_y = {},
+          lualine_z = { "location" },
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { "filename" },
+          lualine_x = { "location" },
+          lualine_y = {},
+          lualine_z = {},
+        },
+        tabline = {
+          lualine_a = { "buffers" },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = { "tabs" },
+        },
+        --       tabline = {},
+        winbar = {},
+        extensions = { "nvim-tree", "toggleterm", "quickfix" },
+      }
+    end,
+  },
+}
