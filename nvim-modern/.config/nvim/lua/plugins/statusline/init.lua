@@ -10,8 +10,8 @@ return {
         options = {
           icons_enabled = true,
           theme = "auto",
-          component_separators = { left = "", right = "" },
-          section_separators = { left = "", right = "" },
+          component_separators = {},
+          section_separators = {},
           disabled_filetypes = {
             statusline = { "alpha", "lazy" },
             winbar = {
@@ -25,9 +25,16 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { components.git_repo, "branch", "filename" },
-          lualine_c = { components.diff, components.diagnostics, components.separator, components.lsp_client },
-          lualine_x = { components.spaces, "encoding", "fileformat", "filetype", "progress" },
+          lualine_b = { components.git_repo, "branch" },
+          lualine_c = {
+            components.diff,
+            components.diagnostics,
+            components.noice_command,
+            components.noice_mode,
+            components.separator,
+            components.lsp_client,
+          },
+          lualine_x = { "filename", components.spaces, "encoding", "fileformat", "filetype", "progress" },
           lualine_y = {},
           lualine_z = { "location" },
         },
@@ -39,16 +46,6 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        tabline = {
-          lualine_a = { "buffers" },
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = { "tabs" },
-        },
-        --       tabline = {},
-        winbar = {},
         extensions = { "nvim-tree", "toggleterm", "quickfix" },
       }
     end,

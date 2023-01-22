@@ -17,7 +17,7 @@ return {
     priority = 1000,
     config = function()
       local tokyonight = require "tokyonight"
-      tokyonight.setup { style = "storm" }
+      tokyonight.setup { style = "night" }
       tokyonight.load()
     end,
   },
@@ -25,12 +25,10 @@ return {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
-    priority = 1000,
   },
   {
     "ellisonleao/gruvbox.nvim",
     lazy = false,
-    priority = 1000,
     config = function()
       require("gruvbox").setup()
     end,
