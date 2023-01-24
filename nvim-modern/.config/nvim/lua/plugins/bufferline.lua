@@ -1,9 +1,12 @@
 return {
   "akinsho/nvim-bufferline.lua",
   event = "VeryLazy",
+  keys = {
+    { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Prox Buffer" },
+  },
   opts = {
     options = {
-      mode = "tabs", -- tabs or buffers
+      mode = "buffers", -- tabs or buffers
       numbers = "buffer_id",
       diagnostics = "nvim_lsp",
       always_show_bufferline = false,

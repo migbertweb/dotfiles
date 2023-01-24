@@ -31,6 +31,7 @@ return {
           },
         },
         dockerls = {},
+        emmet_ls = {},
       },
       setup = {},
     },
