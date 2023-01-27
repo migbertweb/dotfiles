@@ -6,13 +6,13 @@
 DIR="$HOME/.config/bspwm"
 rofi_cmd="rofi -theme $DIR/rofi/themes/powermenu.rasi"
 uptime=$(uptime -p | sed -e 's/up //g')
-
+ 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-logout=""
+shutdown=" "
+reboot=""
+lock=""
+suspend="⏾"
+logout=" "
 
 # Get user confirmation 
 get_confirmation() {
