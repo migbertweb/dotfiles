@@ -3,7 +3,6 @@ return {
   cmd = { "NvimTreeToggle" },
   keys = {
     { "<leader>fe", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
-    { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
   },
   opts = {
     disable_netrw = false,
@@ -20,7 +19,7 @@ return {
     update_focused_file = {
       enable = true,
       update_root = true,
-    }, -- prueba
+    },
     actions = {
       open_file = {
         quit_on_open = true,

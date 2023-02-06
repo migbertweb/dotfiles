@@ -1,7 +1,7 @@
 local indent = 2
 
 vim.o.formatoptions = "jcroqlnt"
-vim.o.shortmess = "filnxtToOFWIc"
+vim.o.shortmess = "filnxtToOFWIcC"
 vim.opt.breakindent = true
 vim.opt.cmdheight = 1
 vim.opt.clipboard = "unnamedplus" -- Access system clipboard
@@ -33,7 +33,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.splitbelow = true
---vim.opt.splitkeep = "screen"
+vim.opt.splitkeep = "screen" -- Neovim 0.9
 vim.opt.splitright = true
 vim.opt.tabstop = indent
 vim.opt.termguicolors = true
