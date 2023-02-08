@@ -59,6 +59,7 @@ return {
         "ruff",
         "debugpy",
         "codelldb",
+        "php-debug-adapter",
       },
     },
     config = function(_, opts)

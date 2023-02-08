@@ -25,8 +25,8 @@ BSPWM_ABC='#C778DD'
 BSPWM_PFC='#98C379'
 
 ## Bspwm appearance
-BSPWM_BORDER='2'
-BSPWM_GAP='5'
+BSPWM_BORDER='1'
+BSPWM_GAP='3'
 BSPWM_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
@@ -101,7 +101,7 @@ for i in ${comm[@]}; do
    bspc rule -a $i desktop='^6' follow=on focus=on; done
 
 ## 7 > media (always open media apps on workspace-7)
-declare -a media=(Audacity Music MPlayer Lxmusic obs)
+declare -a media=(Audacity Music vlc Vlc kodi.bin Kodi.bin mpv MPlayer Lxmusic obs)
 for i in ${media[@]}; do
    bspc rule -a $i desktop='^7' state=floating follow=on focus=on; done
 

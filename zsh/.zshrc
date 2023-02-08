@@ -156,7 +156,7 @@ alias ..="cd .."
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 alias mkdir="mkdir -p"
 alias fm='ranger'
-alias ls="exa --color=auto --icons"
+# alias ls="exa --color=auto --icons"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
