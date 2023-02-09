@@ -3,7 +3,7 @@
 if true then return {
 
   -- -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+--  { "ellisonleao/gruvbox.nvim" },
 
   -- Configure LazyVim to load gruvbox
   -- {
@@ -12,13 +12,13 @@ if true then return {
   --     colorscheme = "gruvbox",
   --   },
   -- },
-{
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      table.insert(opts.sections.lualine_c, "😄")
-    end,
-  },
+-- {
+--     "nvim-lualine/lualine.nvim",
+--     event = "VeryLazy",
+--     opts = function(_, opts)
+--       table.insert(opts.sections.lualine_c, "😄")
+--     end,
+--   },
 
 } 
 end

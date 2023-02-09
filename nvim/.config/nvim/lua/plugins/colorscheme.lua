@@ -4,4 +4,6 @@ return {
     lazy = true,
     opts = { style = "night" },
   },
+  -- -- add gruvbox
+  { "ellisonleao/gruvbox.nvim" },
 }
