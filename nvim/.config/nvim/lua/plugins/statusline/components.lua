@@ -18,7 +18,7 @@ return {
   git_repo = {
     function()
       if vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true" then
-        return vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
+        return icons.ui.Folder .. "  " .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
       end
       return ""
     end,
@@ -31,6 +31,12 @@ return {
   diff = {
     "diff",
     colored = false,
+              symbols = {
+                added = icons.git.LineAdded,
+                modified = icons.git.LineModified,
+                removed = icons.git.LineRemoved,
+              },
+
   },
   diagnostics = {
     "diagnostics",

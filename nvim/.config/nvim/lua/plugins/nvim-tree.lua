@@ -1,10 +1,4 @@
 return {
-  --disable Neo-tree
-
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
   -- install nvim-tree
   {
     "nvim-tree/nvim-tree.lua",
@@ -25,7 +19,7 @@ return {
         enable = true,
       },
       view = {
-        adaptive_size = false,
+        adaptive_size = true,
         hide_root_folder = false,
         --		width = 25,
         mappings = {

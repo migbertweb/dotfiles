@@ -5,7 +5,6 @@ return {
 
     config = function()
       local components = require("plugins.statusline.components")
-
       require("lualine").setup({
         options = {
           icons_enabled = true,
@@ -33,10 +32,10 @@ return {
             components.separator,
             components.lsp_client,
           },
-          lualine_x = { components.diff, components.noice_command, components.noice_mode, components.spaces, "encoding", "fileformat", "progress" },
+          lualine_x = {components.noice_mode, components.diff, components.spaces, "encoding", "fileformat", "progress" },
           lualine_y = {},
           lualine_z = { "location" },
-        },
+        }, --cambio
         inactive_sections = {
           lualine_a = {},
           lualine_b = {},
