@@ -1,7 +1,6 @@
 return {
   {
     "SmiteshP/nvim-navic",
-    lazy = true,
     opts = function()
       return {
         separator = " ",
