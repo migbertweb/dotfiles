@@ -37,8 +37,8 @@ super + {f,w,e}
 	{thunar,google-chrome-stable,leafpad}
 
 # Terminal Apps
-ctrl + alt + {v,r,h}
-	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger,htop}
+super + alt + {v,r,h}
+	kitty --config ~/.config/bspwm/kitty/kitty.conf -e {nvim,ranger,htop}
 
 # Color Picker
 super + p
