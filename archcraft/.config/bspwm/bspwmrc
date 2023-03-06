@@ -129,7 +129,7 @@ bspc rule -a stalonetray state=floating manage=off
 ## Autostart -------------------------------------------------#
 
 # Kill if already running
-killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager bspc conky udiskie nm-applet
+killall -9 xsettingsd cryptkeeper sxhkd dunst ksuperkey xfce4-power-manager bspc conky udiskie nm-applet
 
 # Lauch xsettingsd daemon
 xsettingsd --config="$BSPDIR"/xsettingsd &
@@ -169,6 +169,9 @@ exec nm-applet &
 
 # Start udiskie
 exec udiskie -t &
+
+# start cryptkeeper para gestion de EncFS
+exec cryptkeeper &
 
 # Start bspwm scripts
 bspbar

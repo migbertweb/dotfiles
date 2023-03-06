@@ -41,7 +41,11 @@ vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.updatetime = 200
 vim.opt.wildmode = "longest:full,full"
-
+vim.opt.wrap = true
+vim.opt.colorcolumn = 80
+-- vim.g.colorcolumn = 100 -- lua
+-- set colorcolumn=100
+-- vim.api.nvim_set_option('colorcolumn', 80)
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })

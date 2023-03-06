@@ -10,6 +10,6 @@ DIR="$HOME/.config/bspwm"
 CONFIG="$DIR/alacritty/alacritty.yml"
 
 alacritty --class 'Music,Music' --config-file "$CONFIG" \
-		  -o window.dimensions.columns=109 window.dimensions.lines=22 \
+		  -o window.dimensions.columns=129 window.dimensions.lines=32 \
 		  -e ~/.ncmpcpp/scripts/ncmpcpp-art
 

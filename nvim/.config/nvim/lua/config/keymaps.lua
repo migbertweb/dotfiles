@@ -17,3 +17,6 @@ local function map(mode, lhs, rhs, opts)
 end
 
 map("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+map("n", "<leader>tk", function() Util.float_term({ "lazydocker" }) end, { desc = "LazyDocker" })
+--map("n", "<leader>tt", function() Util.float_term({ "tokei" }, { cwd = Util.get_root() }) end, { desc = "Tokei" })
+map("n", "<leader>tn", function() Util.float_term({ "navi" }) end, { desc = "Navi" })
