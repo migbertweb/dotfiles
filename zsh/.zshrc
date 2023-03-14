@@ -146,7 +146,7 @@ alias gitdc=gitdeletecommit
 
 alias actnvim=actualizarnvim
 alias instalar='sudo pacman --needed -Sy'
-alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mtar='tar -zcvf' # mtar <archive_compress>
 alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
 alias z='zip -r' # z <archive_compress> <file_list>
