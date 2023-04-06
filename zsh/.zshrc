@@ -128,7 +128,12 @@ sleep 2
 #####################################################
 ##### ALIAS
 #####################################################
-
+#######
+#pacman
+alias instalar='sudo pacman --needed -Sy'
+alias upgrade='sudo pacman -Syu'
+alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
+alias limpiarpacman='sudo pacman -Scc'
 #
 alias v='nvim'
 alias ,,='cd ~'
@@ -144,8 +149,6 @@ alias gitd=gitdelete
 alias gitm=gitmerge
 alias gitdc=gitdeletecommit
 
-alias actnvim=actualizarnvim
-alias instalar='sudo pacman --needed -Sy'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mtar='tar -zcvf' # mtar <archive_compress>
 alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
@@ -167,7 +170,6 @@ alias v='nvim'
 alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
-alias upgrade='sudo pacman -Syu'
 ###################
 # Alias SAIL
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
