@@ -8,8 +8,10 @@ return {
         options = {
           icons_enabled = true,
           theme = "auto",
-          component_separators = '',
-          section_separators = '',
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
+          -- component_separators = '',
+          -- section_separators = '',
           disabled_filetypes = {
             statusline = { "alpha", "lazy" },
             winbar = {
@@ -33,11 +35,11 @@ return {
                 left = 1, right = 0 }
             },
             { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-            components.diagnostics,
-            components.separator,
-            components.lsp_client,
+            components.diff,
+            -- components.separator,
+            -- components.lsp_client,
           },
-          lualine_x = { components.noice_mode, components.diff, components.spaces, "encoding", "fileformat", "progress" },
+          lualine_x = { components.noice_mode, components.lsp_client, components.diagnostics, components.spaces, "encoding", "fileformat", "progress" },
           lualine_y = {},
           lualine_z = { "location" },
         }, --cambio

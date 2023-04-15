@@ -36,8 +36,8 @@ wallpaper="$wdir/wallpaper"
 polybar_font='JetBrains Mono:size=10;3'
 
 # Rofi
-rofi_font='Iosevka 10'
-rofi_icon='Zafiro'
+rofi_font='Iosevka 11'
+rofi_icon='Tela-circle-nord-dark'
 
 # Terminal
 terminal_font_name='JetBrainsMono Nerd Font'
@@ -61,10 +61,11 @@ dunst_origin='top-right'
 dunst_font='JetBrains Mono 10'
 dunst_border='2'
 dunst_separator='2'
+dunst_corner_radius='35'
 
 # Picom
 picom_backend='glx'
-picom_corner='2'
+picom_corner='5'
 picom_shadow_r='14'
 picom_shadow_o='0.30'
 picom_shadow_x='-12'
@@ -78,5 +79,5 @@ bspwm_nbc="$background"
 bspwm_abc="$color5"
 bspwm_pfc="$color2"
 bspwm_border='2'
-bspwm_gap='10'
+bspwm_gap='4'
 bspwm_sratio='0.50'

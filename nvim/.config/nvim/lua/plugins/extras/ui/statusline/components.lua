@@ -30,7 +30,7 @@ return {
   },
   diff = {
     "diff",
-    colored = false,
+    colored = true,
     symbols = {
       added = icons.git.LineAdded,
       modified = icons.git.LineModified,
@@ -96,7 +96,8 @@ return {
         end
       end
       table.sort(client_names)
-      return icons.ui.Code .. "  " .. table.concat(client_names, ", ") .. " " .. icons.ui.Code
+      -- return icons.ui.Code .. "  " .. table.concat(client_names, ", ") .. " " .. icons.ui.Code
+      return  table.concat(client_names, ", ") 
     end,
     -- icon = icons.ui.Code,
     colored = true,
