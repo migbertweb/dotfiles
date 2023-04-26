@@ -3,11 +3,14 @@
 -- Add any additional options here
 --------------------------------------------
 
-vim.o.colorcolumn = "80"
+-- vim.o.colorcolumn = "80"
 -- vim.o.wrap = true
-vim.o.shortmess = "filnxtToOFWIcC"
+-- vim.o.shortmess = "filnxtToOFWIcC"
 vim.o.relativenumber = false
-
+--
+vim.opt.laststatus = 2
+vim.opt.showtabline = 2
+vim.opt.termguicolors = true
 -- añadiendo opciones para DBui
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_show_database_icon = 1

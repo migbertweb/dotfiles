@@ -1,3 +1,4 @@
+-- configuracion de gitsings
 return {
   {
     "lewis6991/gitsigns.nvim",

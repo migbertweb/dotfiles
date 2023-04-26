@@ -1,32 +1,30 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    config = function()
+    opts = function()
+      local icons = require("lazyvim.config").icons
+      local Util = require("lazyvim.util")
       local components = require("plugins.extras.ui.statusline.components")
-      require("lualine").setup({
+
+      return {
         options = {
-          icons_enabled = true,
           theme = "auto",
-          component_separators = { left = '', right = '' },
-          section_separators = { left = '', right = '' },
-          -- component_separators = '',
-          -- section_separators = '',
-          disabled_filetypes = {
-            statusline = { "alpha", "lazy" },
-            winbar = {
-              "help",
-              "alpha",
-              "lazy",
-            },
-          },
-          always_divide_middle = true,
           globalstatus = true,
+          disabled_filetypes = { statusline = { "dashboard", "alpha" } },
         },
         sections = {
           lualine_a = { "mode" },
           lualine_b = { components.git_repo, "branch" },
           lualine_c = {
+            {
+              "diagnostics",
+              symbols = {
+                error = icons.diagnostics.Error,
+                warn = icons.diagnostics.Warn,
+                info = icons.diagnostics.Info,
+                hint = icons.diagnostics.Hint,
+              },
+            },
             {
               "filetype",
               icon_only = true,
@@ -35,24 +33,61 @@ return {
                 left = 1, right = 0 }
             },
             { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-            components.diff,
-            -- components.separator,
-            -- components.lsp_client,
+            -- stylua: ignore
+            -- {
+            --   function() return require("nvim-navic").get_location() end,
+            --   cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+            -- },
           },
-          lualine_x = { components.noice_mode, components.lsp_client, components.diagnostics, components.spaces, "encoding", "fileformat", "progress" },
-          lualine_y = {},
-          lualine_z = { "location" },
-        }, --cambio
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
+          lualine_x = {
+            -- stylua: ignore
+            {
+              function() return require("noice").api.status.command.get() end,
+              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+              color = Util.fg("Statement"),
+            },
+            -- stylua: ignore
+            {
+              function() return require("noice").api.status.mode.get() end,
+              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+              color = Util.fg("Constant"),
+            },
+            -- stylua: ignore
+            {
+              function() return "  " .. require("dap").status() end,
+              cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+              color = Util.fg("Debug"),
+            },
+            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
+            {
+              "diff",
+              symbols = {
+                added = icons.git.added,
+                modified = icons.git.modified,
+                removed = icons.git.removed,
+              },
+            },
+            components.lsp_client,
+            {
+              function()
+                return "󰘦" .. vim.fn["codeium#GetStatusString"]()
+              end,
+
+            },
+          },
+          lualine_y = {
+            { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
+            { "location", padding = { left = 0, right = 1 } },
+          },
+          lualine_z = {
+            function()
+              return " " .. os.date("%R")
+            end,
+          },
         },
         winbar = {
           lualine_a = {
+            -- stylua: ignore
             {
               function() return require("nvim-navic").get_location() end,
               cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
@@ -64,16 +99,9 @@ return {
           lualine_y = {},
           lualine_z = {}
         },
-        inactive_winbar = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {}
-        },
-        extensions = { "nvim-tree", "toggleterm", "quickfix" },
-      })
+        inactive_winbar = {},
+        extensions = { "nvim-tree", "neo-tree", "lazy" },
+      }
     end,
-  },
+  }
 }

@@ -67,70 +67,70 @@ return {
       end,
     },
   },
-  {
-    "telescope.nvim",
-    keys =
-    {
-      {
-        "<leader>e",
-        "<cmd>:Telescope file_browser path=%:p:h select_buffer=true<cr>",
-        desc = "Telescope File-Browser"
-      }
-    },
-    dependencies = {
-      "nvim-telescope/telescope-file-browser.nvim",
-      config = function()
-        require("telescope").setup {
-          extensions = {
-            file_browser = {
-              -- theme = "ivy",
-              -- disables netrw and use telescope-file-browser in its place
-              hijack_netrw = true,
-              mappings = {
-                ["i"] = {
-                  -- your custom insert mode mappings
-                },
-                ["n"] = {
-                  -- your custom normal mode mappings
-                },
-              },
-            },
-          },
-        }
-
-        require("telescope").load_extension("file_browser")
-      end,
-    },
-  },
-  {
-    "telescope.nvim",
-    keys = {
-      {
-        "<C-p>",
-        "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>",
-        desc = "Telescope Projets"
-      }
-    },
-    dependencies = {
-      "nvim-telescope/telescope-project.nvim",
-      config = function()
-        require('telescope').setup {
-          extensions = {
-            project = {
-              base_dirs = {
-                { '~/proyectos/', max_depth = 4 },
-              },
-              hidden_files = true, -- default: false
-              -- theme = "ivy",
-              order_by = "asc",
-              results_title = false,
-              search_by = "title",
-              sync_with_nvim_tree = false, -- default false
-            }
-          }
-        }
-        require 'telescope'.load_extension('project')
-      end,
-    },
-  },
+  -- {
+  --   "telescope.nvim",
+  --   keys =
+  --   {
+  --     {
+  --       "<leader>te",
+  --       "<cmd>:Telescope file_browser path=%:p:h select_buffer=true<cr>",
+  --       desc = "Telescope File-Browser"
+  --     }
+  --   },
+  --   dependencies = {
+  --     "nvim-telescope/telescope-file-browser.nvim",
+  --     config = function()
+  --       require("telescope").setup {
+  --         extensions = {
+  --           file_browser = {
+  --             -- theme = "ivy",
+  --             -- disables netrw and use telescope-file-browser in its place
+  --             hijack_netrw = true,
+  --             mappings = {
+  --               ["i"] = {
+  --                 -- your custom insert mode mappings
+  --               },
+  --               ["n"] = {
+  --                 -- your custom normal mode mappings
+  --               },
+  --             },
+  --           },
+  --         },
+  --       }
+  --
+  --       require("telescope").load_extension("file_browser")
+  --     end,
+  --   },
+  -- },
+  -- {
+  --   "telescope.nvim",
+  --   keys = {
+  --     {
+  --       "<C-p>",
+  --       "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>",
+  --       desc = "Telescope Projets"
+  --     }
+  --   },
+  --   dependencies = {
+  --     "nvim-telescope/telescope-project.nvim",
+  --     config = function()
+  --       require('telescope').setup {
+  --         extensions = {
+  --           project = {
+  --             base_dirs = {
+  --               { '~/proyectos/', max_depth = 4 },
+  --             },
+  --             hidden_files = true, -- default: false
+  --             -- theme = "ivy",
+  --             order_by = "asc",
+  --             results_title = false,
+  --             search_by = "title",
+  --             sync_with_nvim_tree = false, -- default false
+  --           }
+  --         }
+  --       }
+  --       require 'telescope'.load_extension('project')
+  --     end,
+  --   },
+  -- },
 }

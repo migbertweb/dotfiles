@@ -1,4 +1,4 @@
-local icons = require("config.icons")
+local icons = require("plugins.extras.ui.statusline.icons")
 --
 local function fg(name)
   return function()
@@ -11,14 +11,14 @@ return {
   spaces = {
     function()
       local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-      return icons.kinds.Tab .. " " .. shiftwidth
+      return icons.ui.Tab .. " " .. shiftwidth
     end,
     padding = 1,
   },
   git_repo = {
     function()
       if vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true" then
-        return icons.ui.Github .. " " .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
+        return icons.ui.Folder .. "  " .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
       end
       return ""
     end,
@@ -96,9 +96,8 @@ return {
         end
       end
       table.sort(client_names)
-      return icons.ui.Tool ..
-          " " ..
-          table.concat(client_names, ", ") -- return table.concat(client_names, ", ")
+      -- return icons.ui.Code .. "  " .. table.concat(client_names, ", ") .. " " .. icons.ui.Code
+      return  table.concat(client_names, ", ") 
     end,
     -- icon = icons.ui.Code,
     colored = true,
@@ -125,3 +124,4 @@ return {
     color = fg("Statement"),
   },
 }
+

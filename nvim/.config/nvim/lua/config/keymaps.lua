@@ -20,3 +20,6 @@ map("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader>tk", function() Util.float_term({ "lazydocker" }) end, { desc = "LazyDocker" })
 --map("n", "<leader>tt", function() Util.float_term({ "tokei" }, { cwd = Util.get_root() }) end, { desc = "Tokei" })
 map("n", "<leader>tn", function() Util.float_term({ "navi" }) end, { desc = "Navi" })
+-- floating terminal
+map("n", "<leader>ft", function() Util.float_term({ cwd = Util.get_root() }, { border = "single" }) end,
+  { desc = "Terminal (root dir)" })

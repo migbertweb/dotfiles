@@ -100,6 +100,7 @@ return {
     FolderOpen = "",
     FolderSymlink = "",
     Forward = "",
+    Github = " ",
     Gear = "",
     History = "",
     Lightbulb = "",
@@ -127,6 +128,7 @@ return {
     TriangleShortArrowLeft = "",
     TriangleShortArrowRight = "",
     TriangleShortArrowUp = "",
+    Tool = " ",
   },
   diagnostics = {
     BoldError = "",
