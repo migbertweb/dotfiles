@@ -23,11 +23,11 @@ export SUDO_PROMPT="Su contraseña Sr: "
 #####################################################
 ##### VirtualEnv de Python
 ####################################################
-# export WORKON_HOME=$HOME/.virtualenvs
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PATH="/usr/bin/python3:$PATH"
 # export PROJECT_HOME=$HOME/proyectos/python
 # source /bin/virtualenvwrapper.sh
-
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
 ###################################################
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode
@@ -246,3 +246,9 @@ bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+#####################################################
+# pyenv
+######################################################
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

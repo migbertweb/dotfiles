@@ -16,7 +16,7 @@ return {
       dashboard.section.buttons.val = {
         dashboard.button("f", " " .. " Buscar Archivo", ":Telescope find_files <CR>"),
         dashboard.button("n", " " .. " Nuevo", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("c", " " .. " Config", ":Telescope file_browser path=~/.config/nvim/lua/ <CR>"),
+        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
         dashboard.button("r", " " .. " Recientes", ":Telescope oldfiles <CR>"),
         dashboard.button("p", " " .. " Proyectos", ":Telescope projects <CR>"),
         dashboard.button("s", "勒" .. " Restaurar Sesion", [[:lua require("persistence").load() <cr>]]),

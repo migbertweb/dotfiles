@@ -13,7 +13,7 @@ return {
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
         },
         sections = {
-          lualine_a = { "mode" },
+          lualine_a = { "mode", components.venv },
           lualine_b = { components.git_repo, "branch" },
           lualine_c = {
             {
@@ -67,22 +67,21 @@ return {
                 removed = icons.git.removed,
               },
             },
-            components.lsp_client,
+          },
+          lualine_y = {
             {
               function()
                 return "󰘦" .. vim.fn["codeium#GetStatusString"]()
               end,
-
             },
-          },
-          lualine_y = {
-            { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
-            { "location", padding = { left = 0, right = 1 } },
+            components.lsp_client,
           },
           lualine_z = {
-            function()
-              return " " .. os.date("%R")
-            end,
+            { "progress", separator = "",                   padding = { left = -1, right = -1 } },
+            { "location", padding = { left = 0, right = 0 } },
+            -- function()
+            --   return " " .. os.date("%R")
+            -- end,
           },
         },
         winbar = {
@@ -100,7 +99,7 @@ return {
           lualine_z = {}
         },
         inactive_winbar = {},
-        extensions = { "nvim-tree", "neo-tree", "lazy" },
+        extensions = { "nvim-tree", "neo-tree", "lazy", "toggleterm", "trouble" },
       }
     end,
   }

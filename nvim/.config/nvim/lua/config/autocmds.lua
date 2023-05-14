@@ -3,3 +3,19 @@
 -- Add any additional autocmds here
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+--   pattern = { "*.py" },
+--   callback = function() vim.cmd([[PyLspActivateVenv]]) end,
+-- })
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   desc = "Auto select virtualenv Nvim open",
+--   pattern = "*",
+--   callback = function()
+--     local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
+--     if venv ~= "" then
+--       require("venv-selector").retrieve_from_cache()
+--     end
+--   end,
+--   once = true,
+-- })

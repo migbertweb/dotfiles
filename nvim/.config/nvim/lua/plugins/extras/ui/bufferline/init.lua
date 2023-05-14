@@ -13,6 +13,10 @@ return {
               .. (diag.warning and icons.Warn .. diag.warning or "")
           return vim.trim(ret)
         end,
+        indicator = {
+          --  icon = '▎', -- this should be omitted if indicator style is not 'icon'
+          style = 'underline',       --'icon' | 'underline' | 'none',
+        },
         offsets = {
           {
             filetype = "NvimTree",

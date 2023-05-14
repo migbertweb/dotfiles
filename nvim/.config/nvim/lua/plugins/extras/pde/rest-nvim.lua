@@ -5,8 +5,8 @@ return {
         event = "VeryLazy",
         keys = {
             { "<leader>rx", "<Plug>RestNvim<cr>",        desc = " Consultar API-rest" },
-            { "<leader>rw", "<Plug>RestNvimPreview<cr>", desc = "  Ver cUrl consulta" },
-            { "<leader>rl", "<Plug>RestNvimLast<cr>",    desc = "勒Reload Ultimo API-Rest" },
+            { "<leader>rw", "<Plug>RestNvimPreview<cr>", desc = " Ver cUrl consulta" },
+            { "<leader>rl", "<Plug>RestNvimLast<cr>",    desc = "勒 Reload Ultimo API-Rest" },
         },
         config = function()
           require("rest-nvim").setup({

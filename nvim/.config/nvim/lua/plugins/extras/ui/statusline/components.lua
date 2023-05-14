@@ -18,7 +18,7 @@ return {
   git_repo = {
     function()
       if vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true" then
-        return icons.ui.Github .. " " .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
+        return icons.ui.Github .. "" .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
       end
       return ""
     end,
@@ -97,8 +97,8 @@ return {
       end
       table.sort(client_names)
       return icons.ui.Tool ..
-          " " ..
-          table.concat(client_names, ", ") -- return table.concat(client_names, ", ")
+          "" ..
+          table.concat(client_names, ",") -- return table.concat(client_names, ", ")
     end,
     -- icon = icons.ui.Code,
     colored = true,
@@ -124,4 +124,28 @@ return {
     end,
     color = fg("Statement"),
   },
+  venv = {
+    function()
+      local clients = {}
+      local icon = icons.kind.Python
+      local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+
+      for _, client in pairs(buf_clients) do
+        if client.name == "pyright" then
+          -- Check if lsp was initialized with py_lsp
+          if client.config.settings.python["pythonPath"] ~= nil then
+            local venv_name = client.config.settings.python.venv_name
+            clients[#clients + 1] = icon .. venv_name
+          end
+          -- else
+          --   clients[#clients + 1] = icon .. client.name
+        end
+      end
+      return table.concat(clients, ' ')
+    end,
+    colored = true,
+    on_click = function()
+      vim.cmd([[PyLspCurrentVenv]])
+    end,
+  }
 }

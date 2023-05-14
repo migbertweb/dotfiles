@@ -25,6 +25,7 @@ return {
     Operator = "",
     Package = "",
     Property = "",
+    Python = " ",
     Reference = "",
     Snippet = "",
     String = "",
