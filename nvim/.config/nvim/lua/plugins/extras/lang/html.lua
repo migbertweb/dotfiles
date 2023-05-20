@@ -28,7 +28,7 @@ return {
       return {
         sources = {
           --  nls.builtins.formatting.tidy,
-          -- nls.builtins.formatting.prettierd,
+          nls.builtins.formatting.prettierd,
           nls.builtins.diagnostics.tidy,
         },
       }

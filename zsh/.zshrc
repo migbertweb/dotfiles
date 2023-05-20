@@ -4,6 +4,29 @@
  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
  fi
+################################################
+#### NVIMS
+#################################################
+# git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
+# git clone git@github.com:nvim-lua/kickstart.nvim.git ~/.config/kickstart
+# git clone https://github.com/NvChad/NvChad ~/.config/NvChad --depth 1
+# git clone https://github.com/LazyVim/starter ~/.config/LazyVim
+alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+function nvims() {
+  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+bindkey -s ^a "nvims\n"
 #####################################################
 ##### PATH
 #####################################################
