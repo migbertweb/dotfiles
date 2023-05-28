@@ -1,5 +1,4 @@
 return {
-  {
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "ThePrimeagen/harpoon" },
     enabled = true,
@@ -111,6 +110,5 @@ return {
           },
         },
       },
-    }
-  },
+    },
 }

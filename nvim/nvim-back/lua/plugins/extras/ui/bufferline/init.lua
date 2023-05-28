@@ -1,5 +1,4 @@
 return {
-  {
     "akinsho/bufferline.nvim",
     enabled = true,
     opts = {
@@ -37,4 +36,3 @@ return {
       },
     },
   }
-}

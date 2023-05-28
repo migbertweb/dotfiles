@@ -12,25 +12,19 @@ return {
   -- null-ls para Diagnostic y Formatting
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function()
+    opts = function(_, opts)
       local nls = require("null-ls")
-      return {
-        sources = {
-          nls.builtins.diagnostics.hadolint
-        },
-      }
+      table.insert(opts.sources, nls.builtins.diagnostics.hadolint)
     end,
   },
   -- instalar los linter y Formateadores
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "hadolint",
-      },
-    },
+    opts = function(_, opts)
+      table.insert(opts.ensure_installed, "hadolint")
+    end,
   },
-  -- Instalar treesitter Parser para PHP
+  -- Instalar treesitter Parser
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -39,5 +33,4 @@ return {
       end
     end,
   },
-
 }

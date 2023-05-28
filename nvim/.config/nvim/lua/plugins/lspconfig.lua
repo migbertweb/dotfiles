@@ -1,0 +1,9 @@
+return {
+  "neovim/nvim-lspconfig",
+  opts = {
+    format = {
+      formatting_options = nil,
+      timeout_ms = 15000,
+    },
+  },
+}

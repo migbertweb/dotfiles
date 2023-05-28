@@ -4,31 +4,44 @@ return {
     lazy = true,
     opts = {
       -- transparent = true,
-      style = "night"
+      style = "night",
     },
   },
   -- -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
+  -- Add dracula
   {
     "Mofiqul/dracula.nvim",
     opts = {
       italic_comment = true,
     },
   },
+  -- add vscode theme
   {
-  "Mofiqul/vscode.nvim",
-      opts = {
-       transparent = true,
+    "Mofiqul/vscode.nvim",
+    opts = {
+      transparent = true,
       italic_comment = true,
     },
   },
+  -- add Monokai-pro theme
   {
-  "https://gitlab.com/__tpb/monokai-pro.nvim",
+    "https://gitlab.com/__tpb/monokai-pro.nvim",
   },
+  -- add Tokyodark
+  {
+    "tiagovla/tokyodark.nvim",
+    config = function()
+      vim.g.tokyodark_enable_italic_comment = true
+      vim.g.tokyodark_enable_italic = true
+      vim.g.tokyodark_color_gamma = "0.8"
+    end,
+  },
+  -- config colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "tokyonight",
     },
-  }
+  },
 }

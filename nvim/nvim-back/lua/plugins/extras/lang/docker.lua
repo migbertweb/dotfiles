@@ -3,33 +3,41 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      -- make sure mason installs the server
       servers = {
-        intelephense = {},
+        dockerls = {},
       },
     },
   },
   -- null-ls para Diagnostic y Formatting
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
+    opts = function()
       local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }))
+      return {
+        sources = {
+          nls.builtins.diagnostics.hadolint
+        },
+      }
     end,
   },
   -- instalar los linter y Formateadores
   {
     "williamboman/mason.nvim",
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, "phpcs")
-    end,
+    opts = {
+      ensure_installed = {
+        "hadolint",
+      },
+    },
   },
-  -- Instalar treesitter Parser
+  -- Instalar treesitter Parser para PHP
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "php" })
+        vim.list_extend(opts.ensure_installed, { "dockerfile" })
       end
     end,
   },
+
 }

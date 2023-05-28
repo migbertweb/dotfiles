@@ -3,6 +3,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      -- make sure mason installs the server
       servers = {
         intelephense = {},
       },
@@ -11,19 +12,27 @@ return {
   -- null-ls para Diagnostic y Formatting
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
+    opts = function()
       local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }))
+      return {
+        sources = {
+          --          nls.builtins.formatting.pint,
+          nls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" }, }),
+        },
+      }
     end,
   },
-  -- instalar los linter y Formateadores
+  -- instalar los linter y Format
   {
     "williamboman/mason.nvim",
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, "phpcs")
-    end,
+    opts = {
+      ensure_installed = {
+        "phpcs",
+        "pint",
+      },
+    },
   },
-  -- Instalar treesitter Parser
+  -- Instalar treesitter Parser para PHP
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
