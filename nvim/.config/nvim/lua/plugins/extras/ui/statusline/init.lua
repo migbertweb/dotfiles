@@ -1,3 +1,17 @@
+local colors = {
+  bg = "#202328",
+  fg = "#bbc2cf",
+  yellow = "#ECBE7B",
+  cyan = "#008080",
+  darkblue = "#081633",
+  green = "#98be65",
+  orange = "#FF8800",
+  violet = "#a9a1e1",
+  magenta = "#c678dd",
+  blue = "#51afef",
+  red = "#ec5f67",
+}
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -8,38 +22,52 @@ return {
 
       return {
         options = {
-          theme = "auto",
+          icons_enabled = true,
+          component_separators = {},
+          section_separators = {},
+          theme = {
+            normal = {
+              a = { fg = colors.fg, bg = colors.bg },
+              b = { fg = colors.fg, bg = colors.bg },
+              z = { fg = colors.fg, bg = colors.bg },
+            },
+            inactive = { a = { fg = colors.fg, bg = colors.bg } },
+          },
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
         },
         sections = {
-          lualine_a = { "mode", components.venv },
-          lualine_b = { components.git_repo, "branch" },
-          lualine_c = {
+          lualine_a = {
             {
-              "diagnostics",
-              symbols = {
-                error = icons.diagnostics.Error,
-                warn = icons.diagnostics.Warn,
-                info = icons.diagnostics.Info,
-                hint = icons.diagnostics.Hint,
-              },
+              function()
+                return "▊"
+              end,
+              color = { fg = colors.blue }, -- Sets highlighting of component
+              padding = { left = 0, right = 1 }, -- We don't need space before this
             },
+            components.mode_evil,
+          },
+          lualine_b = { "branch", components.diagnostics },
+          lualine_c = {
             {
               "filetype",
               icon_only = true,
               separator = "",
               padding = {
-                left = 1, right = 0 }
+                left = 1,
+                right = 0,
+              },
             },
-            { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-            -- stylua: ignore
-            -- {
-            --   function() return require("nvim-navic").get_location() end,
-            --   cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
-            -- },
+            {
+              "filename",
+              shorting_target = 20,
+              path = 0,
+              symbols = { modified = "  ", readonly = "", unnamed = "" },
+            },
           },
           lualine_x = {
+            components.lsp_client,
+            components.separator,
             -- stylua: ignore
             {
               function() return require("noice").api.status.command.get() end,
@@ -58,7 +86,6 @@ return {
               cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
               color = Util.fg("Debug"),
             },
-            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
             {
               "diff",
               symbols = {
@@ -67,18 +94,36 @@ return {
                 removed = icons.git.removed,
               },
             },
+            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
           },
           lualine_y = {
             {
               function()
-                return "󰘦" .. vim.fn["codeium#GetStatusString"]()
+                return "󰘦 " .. vim.fn["codeium#GetStatusString"]()
               end,
+              color = { fg = colors.magenta },
             },
-            components.lsp_client,
           },
           lualine_z = {
-            { "progress", separator = "",                   padding = { left = -1, right = -1 } },
-            { "location", padding = { left = 0, right = 0 } },
+            components.spaces,
+            components.position,
+            { "progress", separator = "", padding = { left = 1, right = 0 } },
+            { "encoding" },
+            { "fileformat" },
+            {
+              function()
+                return vim.api.nvim_get_option_value("filetype", { buf = 0 })
+              end,
+            },
+            components.venv,
+            components.liveserver,
+            {
+              function()
+                return "▊"
+              end,
+              color = { fg = colors.blue }, -- Sets highlighting of component
+              padding = { left = 1, right = 0 }, -- We don't need space before this
+            },
             -- function()
             --   return " " .. os.date("%R")
             -- end,
@@ -96,11 +141,11 @@ return {
           lualine_c = {},
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {}
+          lualine_z = {},
         },
         inactive_winbar = {},
         extensions = { "nvim-tree", "neo-tree", "lazy", "toggleterm", "trouble" },
       }
     end,
-  }
+  },
 }

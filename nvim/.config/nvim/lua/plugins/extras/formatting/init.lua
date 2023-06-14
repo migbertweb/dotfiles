@@ -3,7 +3,7 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.formatting.deno_fmt)
+      table.insert(opts.sources, nls.builtins.formatting.deno_fmt.with({ extra_args = {"--single-quote", "--no-semicolons"}}))
       table.insert(opts.sources, nls.builtins.formatting.prettier.with({ filetypes = { "html", "markdown", "css" } }))
     end,
   },

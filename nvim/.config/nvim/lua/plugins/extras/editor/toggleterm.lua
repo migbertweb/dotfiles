@@ -16,7 +16,7 @@ return {
     persist_size = true,
     direction = "horizontal", -- "float",
     float_opts = {
-      border = 'curved',      -- | ... other options supported by win open
+      border = "curved", -- | ... other options supported by win open
     },
     winbar = {
       enabled = false,

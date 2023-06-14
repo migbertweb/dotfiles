@@ -4,6 +4,8 @@ return {
     "HiPhish/nvim-ts-rainbow2",
   },
   opts = {
+    matchup = {
+    enable = true,},
     rainbow = {
       enable = true,
       -- list of languages you want to disable the plugin for

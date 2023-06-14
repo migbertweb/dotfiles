@@ -46,7 +46,7 @@ export SUDO_PROMPT="Su contraseña Sr: "
 #####################################################
 ##### VirtualEnv de Python
 ####################################################
-export PATH="/usr/bin/python3:$PATH"
+export PATH="/usr/bin/python:$PATH"
 # export PROJECT_HOME=$HOME/proyectos/python
 # source /bin/virtualenvwrapper.sh
 fpath+=~/.zfunc
@@ -167,7 +167,7 @@ alias gitu=gitpush
 alias glog=gitlog
 alias gbranch='git branch'
 alias gcheck='git checkout'
-alias gs='git status'
+alias gs='git status -s'
 alias gitd=gitdelete
 alias gitm=gitmerge
 alias gitdc=gitdeletecommit
@@ -272,6 +272,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 #####################################################
 # pyenv
 ######################################################
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# source /usr/share/nvm/init-nvm.sh
+# eval "$(pyenv virtualenv-init -)"

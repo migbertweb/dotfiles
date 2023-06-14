@@ -2,9 +2,13 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 --------------------------------------------
-vim.g.python3_host_prog = "/usr/bin/python3"
-vim.o.colorcolumn = "80"
+-- Providers
+vim.g.python3_host_prog = "/usr/bin/python"
+-- options
+vim.o.colorcolumn = "79"
 vim.o.relativenumber = false
+vim.o.mousemoveevent = true
+vim.o.updatetime = 200
 --------------------------------------------
 -- añadiendo opciones para DBui
 vim.g.db_ui_use_nerd_fonts = 1

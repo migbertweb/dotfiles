@@ -8,7 +8,7 @@ return {
         pyright = {
           settings = {
             python = {
-              pythonPath = "/usr/bin/python3",
+              pythonPath = "/usr/bin/python",
               analysis = {
                 autoSearchPaths = true,
                 diagnosticMode = "workspace",

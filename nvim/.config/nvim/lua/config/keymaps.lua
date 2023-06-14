@@ -23,3 +23,4 @@ map("n", "<leader>tn", function() Util.float_term({ "navi" }) end, { desc = "Nav
 -- floating terminal
 map("n", "<leader>ft", function() Util.float_term({ cwd = Util.get_root() }, { border = "single" }) end,
   { desc = "Terminal (root dir)" })
+

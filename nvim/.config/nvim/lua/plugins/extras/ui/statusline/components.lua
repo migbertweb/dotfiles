@@ -1,4 +1,46 @@
+local liveserver_status = require("config.utils")
 local icons = require("config.icons")
+local colors = {
+  bg = "#202328",
+  fg = "#bbc2cf",
+  yellow = "#ECBE7B",
+  cyan = "#008080",
+  darkblue = "#081633",
+  green = "#98be65",
+  orange = "#FF8800",
+  violet = "#a9a1e1",
+  magenta = "#c678dd",
+  blue = "#51afef",
+  red = "#ec5f67",
+}
+-- Icons and colors from mode_evil component
+local mode_i = {
+  n = "󰣇 ",
+  i = " ",
+  c = " ",
+  v = " ",
+}
+local mode_c = function()
+  -- auto change color according to neovims mode
+  local mode_color = {
+    n = colors.red,
+    i = colors.green,
+    v = colors.blue,
+    c = colors.magenta,
+    no = colors.red,
+    s = colors.orange,
+    S = colors.orange,
+    ic = colors.yellow,
+    R = colors.violet,
+    Rv = colors.violet,
+    cv = colors.red,
+    ce = colors.red,
+    r = colors.cyan,
+    rm = colors.cyan,
+    t = colors.red,
+  }
+  return { fg = mode_color[vim.fn.mode()] }
+end
 --
 local function fg(name)
   return function()
@@ -8,17 +50,30 @@ local function fg(name)
 end
 
 return {
+  mode_evil = {
+    function()
+      return mode_i[vim.fn.mode()]
+    end,
+    color = mode_c,
+    padding = { right = 1 },
+  },
+  position = {
+    function()
+      local lin = vim.fn.line(".")
+      local col = vim.fn.col(".")
+      return "ln " .. lin .. ", col " .. col
+    end,
+  },
   spaces = {
     function()
-      local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-      return icons.kinds.Tab .. " " .. shiftwidth
+      local shiftwidth = vim.api.nvim_get_option_value("shiftwidth", { buf = 0 })
+      return icons.ui.Tab .. " " .. shiftwidth
     end,
-    padding = 1,
   },
   git_repo = {
     function()
       if vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true" then
-        return icons.ui.Github .. "" .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
+        return icons.misc.Repo .. "" .. vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
       end
       return ""
     end,
@@ -96,12 +151,10 @@ return {
         end
       end
       table.sort(client_names)
-      return icons.ui.Tool ..
-          "" ..
-          table.concat(client_names, ",") -- return table.concat(client_names, ", ")
+      return icons.ui.Tool .. "" .. table.concat(client_names, ",") -- return table.concat(client_names, ", ")
     end,
     -- icon = icons.ui.Code,
-    colored = true,
+    color = { fg = colors.fg },
     on_click = function()
       vim.cmd([[LspInfo]])
     end,
@@ -129,23 +182,48 @@ return {
       local clients = {}
       local icon = icons.kind.Python
       local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+      local pyv = vim.fn.trim(vim.fn.system("python -V | cut -c 8-13"))
 
       for _, client in pairs(buf_clients) do
         if client.name == "pyright" then
           -- Check if lsp was initialized with py_lsp
           if client.config.settings.python["pythonPath"] ~= nil then
             local venv_name = client.config.settings.python.venv_name
-            clients[#clients + 1] = icon .. venv_name
+            clients[#clients + 1] = icon .. venv_name .. " " .. pyv
           end
           -- else
           --   clients[#clients + 1] = icon .. client.name
         end
       end
-      return table.concat(clients, ' ')
+      return table.concat(clients, " ")
     end,
-    colored = true,
+    color = { fg = colors.orange },
     on_click = function()
       vim.cmd([[PyLspCurrentVenv]])
     end,
-  }
+  },
+  liveserver = {
+    function()
+      local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+      local set = {}
+      local function make_set(array)
+        for _, val in ipairs(array) do
+          set[val] = true
+        end
+        return set
+      end
+      set = make_set({ "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" })
+      if set[filetype] then
+        return liveserver_status.liveserver()
+      end
+      return ""
+    end,
+    colored = true,
+  },
+  pyversion = {
+    function()
+      local pyv = vim.fn.trim(vim.fn.system("python -V | cut -c 8-13"))
+      return pyv
+    end,
+  },
 }

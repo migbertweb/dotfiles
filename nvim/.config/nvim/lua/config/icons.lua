@@ -118,7 +118,7 @@ return {
     Search = "",
     SignIn = "",
     SignOut = "",
-    Tab = "",
+    Tab = "󰌒",
     Table = "",
     Target = "",
     Telescope = "",
@@ -153,5 +153,7 @@ return {
     Smiley = "",
     Package = "",
     CircuitBoard = "",
+    Antenna = "󱄙 ",
+    Repo = "󰳏 ",
   },
 }

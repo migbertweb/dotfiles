@@ -6,6 +6,7 @@ return {
       -- make sure mason installs the server
       servers = {
         dockerls = {},
+        docker_compose_language_service = {},
       },
     },
   },
@@ -29,7 +30,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "dockerfile" })
+        vim.list_extend(opts.ensure_installed, { "dockerfile", "yaml" })
       end
     end,
   },
