@@ -226,4 +226,10 @@ return {
       return pyv
     end,
   },
+  flutter = {
+    function()
+      return vim.g.flutter_tools_decorations.app_version
+    end,
+    color = { fg = colors.blue },
+  }
 }
