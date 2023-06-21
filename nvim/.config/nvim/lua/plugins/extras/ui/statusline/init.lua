@@ -34,7 +34,10 @@ return {
             inactive = { a = { fg = colors.fg, bg = colors.bg } },
           },
           globalstatus = true,
-          disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+          disabled_filetypes = {
+            statusline = { "dashboard", "alpha" },
+            winbar = { "dashboard", "alpha" }
+          },
         },
         sections = {
           lualine_a = {
@@ -42,12 +45,15 @@ return {
               function()
                 return "▊"
               end,
-              color = { fg = colors.blue }, -- Sets highlighting of component
+              color = { fg = colors.blue },      -- Sets highlighting of component
               padding = { left = 0, right = 1 }, -- We don't need space before this
             },
             components.mode_evil,
           },
-          lualine_b = { "branch", components.diagnostics },
+          lualine_b = { "branch",
+            components.diagnostics,
+            components.flutter
+          },
           lualine_c = {
             {
               "filetype",
@@ -107,7 +113,7 @@ return {
           lualine_z = {
             components.spaces,
             components.position,
-            { "progress", separator = "", padding = { left = 1, right = 0 } },
+            { "progress",  separator = "", padding = { left = 1, right = 0 } },
             { "encoding" },
             { "fileformat" },
             {
@@ -121,7 +127,7 @@ return {
               function()
                 return "▊"
               end,
-              color = { fg = colors.blue }, -- Sets highlighting of component
+              color = { fg = colors.blue },      -- Sets highlighting of component
               padding = { left = 1, right = 0 }, -- We don't need space before this
             },
             -- function()
@@ -131,9 +137,18 @@ return {
         },
         winbar = {
           lualine_a = {
-            -- stylua: ignore
             {
-              function() return require("nvim-navic").get_location() end,
+              "filename",
+              path = 3,
+              file_status = false,
+            },
+            {
+              function()
+                local opts = {
+                  separator = "  "
+                }
+                return "=> " .. require("nvim-navic").get_location(opts)
+              end,
               cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
             },
           },
