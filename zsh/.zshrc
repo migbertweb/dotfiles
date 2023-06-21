@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
- if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
- fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 ################################################
 #### NVIMS
 #################################################
@@ -16,15 +16,15 @@ alias nvim-kick="NVIM_APPNAME=kickstart nvim"
 alias nvim-chad="NVIM_APPNAME=NvChad nvim"
 alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
+    items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
+    config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+    if [[ -z $config ]]; then
+        echo "Nothing selected"
+        return 0
+    elif [[ $config == "default" ]]; then
+        config=""
+    fi
+    NVIM_APPNAME=$config nvim $@
 }
 bindkey -s ^a "nvims\n"
 #####################################################
@@ -106,48 +106,48 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 # Git command
 # Subir cambios a git
 gitpush() {
-echo "########## Añadiendo cambios a Stage ##########"
-  git add -v .
-  sleep 1
-  echo "########## Estado del Commit ##########"
+    echo "########## Añadiendo cambios a Stage ##########"
+    git add -v .
+    sleep 1
+    echo "########## Estado del Commit ##########"
     git commit -m "$*"
     sleep 1
     echo "########## Subiendo cambios a Origin ##########"
     git push
     sleep 1
     echo "\n ########## Mostrando Log del repositorio ########## \n"
-git log -5 --graph --oneline --abbrev-commit --pretty=format:"%h - %an, %ar : %s"
-echo "Fin \n"
-  }
+    git log -5 --graph --oneline --abbrev-commit --pretty=format:"%h - %an, %ar : %s"
+    echo "Fin \n"
+}
 # borrar una rama Remota
 gitdelete() {
-  echo "\n ##### borrar rama remota ##### \n"
+    echo "\n ##### borrar rama remota ##### \n"
     git push origin --delete "$*"
     sleep 2
-   echo "\n ##### Mostrando Log del repositorio ##### \n"
-git log --all --graph --decorate --oneline --abbrev-commit
-  }
+    echo "\n ##### Mostrando Log del repositorio ##### \n"
+    git log --all --graph --decorate --oneline --abbrev-commit
+}
 # fusionar ramas de git
 gitmerge() {
-  echo "\n ##### Fusionar ramas de git ##### \n"
+    echo "\n ##### Fusionar ramas de git ##### \n"
     git merge --no-ff "$*"
     sleep 2
-   echo "\n ##### Mostrando Log del repositorio ##### \n"
-git log --all --graph --decorate --oneline --abbrev-commit
-  }
+    echo "\n ##### Mostrando Log del repositorio ##### \n"
+    git log --all --graph --decorate --oneline --abbrev-commit
+}
 # eliminar commit
 gitdeletecommit() {
-  echo "\n ##### borrar rama remota ##### \n"
+    echo "\n ##### borrar rama remota ##### \n"
     git push origin --delete "$*"
-   echo "\n ##### Mostrando Log del repositorio ##### \n"
-git log --all --graph --decorate --oneline --abbrev-commit
-  }
+    echo "\n ##### Mostrando Log del repositorio ##### \n"
+    git log --all --graph --decorate --oneline --abbrev-commit
+}
 # mostrar el log de git
 gitlog() {
-  echo "\n ##### Mostrando el Log Graph ##### \n"
-sleep 2
-  git log --all --graph --decorate --oneline --abbrev-commit
-  }
+    echo "\n ##### Mostrando el Log Graph ##### \n"
+    sleep 2
+    git log --all --graph --decorate --oneline --abbrev-commit
+}
 #####################################################
 ##### ALIAS
 #####################################################
@@ -179,7 +179,7 @@ alias z='zip -r' # z <archive_compress> <file_list>
 alias uz='unzip' # uz <archive_decompress> -d <dir>
 alias sr='source ~/.zshrc'
 alias ..="cd .."
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -p"
 alias fm='ranger'
 # alias ls="exa --color=auto --icons"
@@ -222,31 +222,31 @@ alias dkNls='docker network ls'
 alias dkNpr='docker network prune'
 alias dkNrm='docker network rm'
 # Docker Compose (c)
-  alias dkc='docker-compose'
-  alias dkcb='docker-compose build'
-  alias dkcB='docker-compose build --no-cache'
-  alias dkccf='docker-compose config'
-  alias dkccr='docker-compose create'
-  alias dkcd='docker-compose down'
-  alias dkcev='docker-compose events'
-  alias dkci='docker-compose images'
-  alias dkck='docker-compose kill'
-  alias dkcl='docker-compose logs'
-  alias dkcL='docker-compose logs -f'
-  alias dkcls='docker-compose ps'
-  alias dkcp='docker-compose pause'
-  alias dkcP='docker-compose unpause'
-  alias dkcpl='docker-compose pull'
-  alias dkcph='docker-compose push'
-  alias dkcpo='docker-compose port'
-  alias dkcps='docker-compose ps'
-    alias dkcsc='docker-compose scale'
-  alias dkcS='docker-compose restart'
-  alias dkct='docker-compose top'
-  alias dkcu='docker-compose up'
-  alias dkcU='docker-compose up -d'
-  alias dkcv='docker-compose version'
-  alias dkcx='docker-compose stop'
+alias dkc='docker-compose'
+alias dkcb='docker-compose build'
+alias dkcB='docker-compose build --no-cache'
+alias dkccf='docker-compose config'
+alias dkccr='docker-compose create'
+alias dkcd='docker-compose down'
+alias dkcev='docker-compose events'
+alias dkci='docker-compose images'
+alias dkck='docker-compose kill'
+alias dkcl='docker-compose logs'
+alias dkcL='docker-compose logs -f'
+alias dkcls='docker-compose ps'
+alias dkcp='docker-compose pause'
+alias dkcP='docker-compose unpause'
+alias dkcpl='docker-compose pull'
+alias dkcph='docker-compose push'
+alias dkcpo='docker-compose port'
+alias dkcps='docker-compose ps'
+alias dkcsc='docker-compose scale'
+alias dkcS='docker-compose restart'
+alias dkct='docker-compose top'
+alias dkcu='docker-compose up'
+alias dkcU='docker-compose up -d'
+alias dkcv='docker-compose version'
+alias dkcx='docker-compose stop'
 
 
 #####################################################
@@ -277,3 +277,26 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # eval "$(pyenv init -)"
 # source /usr/share/nvm/init-nvm.sh
 # eval "$(pyenv virtualenv-init -)"
+
+# #############################
+# Flutter config
+# ####################
+#android home
+export ANDROID_HOME=/usr/lib/Android
+export PATH=$ANDROID_HOME/cmdline-tools:$PATH
+export PATH=$ANDROID_HOME/cmdline-tools/tools/:$PATH
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+#android sdk root
+export ANDROID_SDK_ROOT=/usr/lib/Android
+export PATH=$ANDROID_SDK_ROOT:$PATH
+
+#flutter
+export FLUTTER_HOME=/usr/lib/flutter
+export PATH=$FLUTTER_HOME/bin:$PATH
+
+#gradle
+export GRADLE_HOME=/opt/gradle/gradle-8.1.1
+export PATH=$GRADLE_HOME/bin:$PATH
