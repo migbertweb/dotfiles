@@ -3,11 +3,12 @@ return {
         "rest-nvim/rest.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         event = "VeryLazy",
-        keys = {
-            { "<leader>rx", "<Plug>RestNvim<cr>",        desc = " Consultar API-rest" },
-            { "<leader>rw", "<Plug>RestNvimPreview<cr>", desc = " Ver cUrl consulta" },
-            { "<leader>rl", "<Plug>RestNvimLast<cr>",    desc = "勒 Reload Ultimo API-Rest" },
-        },
+        ft = "http",
+        --[[ keys = {
+          { "<leader>rx", "<Plug>RestNvim<cr>",        desc = " Consultar API-rest" },
+          { "<leader>rw", "<Plug>RestNvimPreview<cr>", desc = " Ver cUrl consulta" },
+          { "<leader>rl", "<Plug>RestNvimLast<cr>",    desc = "勒 Reload Ultimo API-Rest" }, 
+      }, ]]
         config = function()
           require("rest-nvim").setup({
               -- Open request results in a horizontal split
@@ -43,6 +44,13 @@ return {
               custom_dynamic_variables = {},
               yank_dry_run = true,
           })
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = "http",
+            callback = function ()
+              vim.keymap.set("n", "<leader>rx", require("rest-nvim").run, { desc = " Consultar API-rest", })
+              vim.keymap.set("n", "<leader>rl", require("rest-nvim").last, { desc = "勒 Reload Ultimo API-Rest", })
+            end
+        })
         end
     },
     -- Instalar treesitter Parser para rest-nvim
