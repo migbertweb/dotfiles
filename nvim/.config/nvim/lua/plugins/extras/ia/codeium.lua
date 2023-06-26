@@ -2,7 +2,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
-    build = ":Codeium Auth",
+    -- build = ":Codeium Auth",
     -- stylua: ignore
     config = function ()
       vim.g.codeium_disable_bindings = 1
