@@ -300,3 +300,23 @@ export PATH=$FLUTTER_HOME/bin:$PATH
 #gradle
 export GRADLE_HOME=/opt/gradle/gradle-8.1.1
 export PATH=$GRADLE_HOME/bin:$PATH
+
+# #############################
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/migbert/.dotnet/tools"
+
+# zsh parameter completion for the dotnet COMPLETE_IN_WORD
+_dotnet_zsh_complete(){
+    local completions=("$(dotnet complete "$words")")
+    # If the completion list is empty, just continue with filename selection
+    if [ -z "$completions" ]
+    then
+        _arguments '*::arguments: _normal'
+        return
+    fi
+    # This is not a variable assignment, don't remove spaces!
+    _values = "${(ps:\n:)completions}"
+}
+compdef _dotnet_zsh_complete dotnet
+
+#. ~/.dotnet-suggest-shim.zsh

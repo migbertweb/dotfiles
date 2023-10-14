@@ -173,6 +173,9 @@ exec udiskie -t &
 # start cryptkeeper para gestion de EncFS
 exec cryptkeeper &
 
+# start Kdeconnect para gestionar el telefono
+exec kdeconnect-indicator &
+
 # Start bspwm scripts
 bspbar
 bspcomp

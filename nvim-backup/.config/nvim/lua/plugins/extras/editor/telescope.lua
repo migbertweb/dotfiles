@@ -64,7 +64,7 @@ return {
       build = "make",
       config = function()
         require("telescope").load_extension("fzf")
-        -- require("telescope").load_extension("flutter")
+        require("telescope").load_extension("flutter")
       end,
     },
   },
