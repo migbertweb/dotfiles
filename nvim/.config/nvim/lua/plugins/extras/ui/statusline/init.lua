@@ -36,7 +36,7 @@ return {
           globalstatus = true,
           disabled_filetypes = {
             statusline = { "dashboard", "alpha" },
-            winbar = { "dashboard", "alpha" }
+            winbar = { "dashboard", "alpha" },
           },
         },
         sections = {
@@ -45,15 +45,12 @@ return {
               function()
                 return "▊"
               end,
-              color = { fg = colors.blue },      -- Sets highlighting of component
+              color = { fg = colors.blue }, -- Sets highlighting of component
               padding = { left = 0, right = 1 }, -- We don't need space before this
             },
             components.mode_evil,
           },
-          lualine_b = { "branch",
-            components.diagnostics,
-            components.flutter
-          },
+          lualine_b = { "branch", components.diagnostics, components.flutter },
           lualine_c = {
             {
               "filetype",
@@ -78,19 +75,19 @@ return {
             {
               function() return require("noice").api.status.command.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = Util.fg("Statement"),
+              color = Util.ui.fg("Statement"),
             },
             -- stylua: ignore
             {
               function() return require("noice").api.status.mode.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = Util.fg("Constant"),
+              color = Util.ui.fg("Constant"),
             },
             -- stylua: ignore
             {
               function() return "  " .. require("dap").status() end,
               cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = Util.fg("Debug"),
+              color = Util.ui.fg("Debug"),
             },
             {
               "diff",
@@ -100,7 +97,11 @@ return {
                 removed = icons.git.removed,
               },
             },
-            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
+            {
+              require("lazy.status").updates,
+              cond = require("lazy.status").has_updates,
+              color = Util.ui.fg("Special"),
+            },
           },
           lualine_y = {
             {
@@ -113,7 +114,7 @@ return {
           lualine_z = {
             components.spaces,
             components.position,
-            { "progress",  separator = "", padding = { left = 1, right = 0 } },
+            { "progress", separator = "", padding = { left = 1, right = 0 } },
             { "encoding" },
             { "fileformat" },
             {
@@ -127,7 +128,7 @@ return {
               function()
                 return "▊"
               end,
-              color = { fg = colors.blue },      -- Sets highlighting of component
+              color = { fg = colors.blue }, -- Sets highlighting of component
               padding = { left = 1, right = 0 }, -- We don't need space before this
             },
             -- function()
@@ -145,11 +146,13 @@ return {
             {
               function()
                 local opts = {
-                  separator = "  "
+                  separator = "  ",
                 }
                 return "=> " .. require("nvim-navic").get_location(opts)
               end,
-              cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+              cond = function()
+                return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+              end,
             },
           },
           lualine_b = {},

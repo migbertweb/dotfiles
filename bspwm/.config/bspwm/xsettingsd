@@ -2,7 +2,6 @@
 
 Net/ThemeName "Arc-Dark"
 Net/IconThemeName "Tela-circle-nord-dark"
-Gtk/CursorThemeName "Future"
 Net/EnableEventSounds "0"
 Net/EnableInputFeedbackSounds "0"
 Xft/DPI "-1"
