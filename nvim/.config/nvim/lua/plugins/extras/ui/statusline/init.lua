@@ -104,12 +104,7 @@ return {
             },
           },
           lualine_y = {
-            {
-              function()
-                return "󰘦 " .. vim.fn["codeium#GetStatusString"]()
-              end,
-              color = { fg = colors.magenta },
-            },
+          Util.lualine.cmp_source("codeium"),
           },
           lualine_z = {
             components.spaces,

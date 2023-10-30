@@ -29,7 +29,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
     { import = "lazyvim.plugins.extras.util.dot" },
+    { import = "lazyvim.plugins.extras.editor.navic" },
+    { import = "lazyvim.plugins.extras.coding.codeium" },
     -- { import = "lazyvim.plugins.extras.linting.eslint" },
+    --------------------------------------------------------
+    -- Seccion para sus propios Plugins
     -- import/override with your plugins
     { import = "plugins.lspconfig" },
     -- mis extras
