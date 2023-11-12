@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-##
-## BSPWM config file for Archcraft
-
 ## General ---------------------------------------------------#
-
 ## Bspwm config directory
 BSPDIR="$HOME/.config/bspwm"
 
@@ -17,7 +12,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 #wmname LG3D
 
 ## Current theme ---------------------------------------------#
-
 ## Bspwm colors
 BSPWM_FBC='#5294E2'
 BSPWM_NBC='#1E2128'
@@ -30,7 +24,6 @@ BSPWM_GAP='4'
 BSPWM_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
-
 ## Manager Workspaces
 workspaces() {
     name=1
@@ -65,13 +58,12 @@ bspc config presel_feedback true
 bspc wm --adopt-orphans
 
 ## Window rules ----------------------------------------------#
-
 # remove all rules first
 bspc rule -r *:*
 
 ## 1 > terminal (always open terminal on workspace-1)
 bspc rule -a Alacritty desktop='^1' follow=on focus=on
-bspc rule -a kitty state=fullscreen desktop='^1' follow=on focus=on
+bspc rule -a kitty desktop='^1' follow=on focus=on
 bspc rule -a Xfce4-terminal desktop='^1' follow=on focus=on
 
 ## 2 > web (always open web browser on workspace-2)
@@ -127,7 +119,6 @@ bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off
 
 ## Autostart -------------------------------------------------#
-
 # Kill if already running
 killall -9 xsettingsd cryptkeeper sxhkd dunst ksuperkey xfce4-power-manager bspc conky udiskie nm-applet
 
