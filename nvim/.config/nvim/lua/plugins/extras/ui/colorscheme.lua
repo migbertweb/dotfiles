@@ -36,11 +36,16 @@ return {
       vim.g.tokyodark_color_gamma = "0.8"
     end,
   },
+  { 
+  "rose-pine/neovim",
+  name = "rose-pine"
+  },
+  { "EdenEast/nightfox.nvim" },
   -- config colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "rose-pine",
     },
   },
 }

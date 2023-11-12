@@ -34,6 +34,8 @@ return {
       table.insert(opts.ensure_installed, "yapf")
     end,
   },
+  
+  
   {
     "HallerPatrick/py_lsp.nvim",
     keys = {
