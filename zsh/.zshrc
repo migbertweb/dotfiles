@@ -50,7 +50,6 @@ export PATH="/usr/bin/python:$PATH"
 # export PROJECT_HOME=$HOME/proyectos/python
 # source /bin/virtualenvwrapper.sh
 fpath+=~/.zfunc
-autoload -Uz compinit && compinit
 ###################################################
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode
@@ -66,12 +65,14 @@ setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 # enable completion features
 autoload -Uz compinit
 compinit -i
+
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$HOME/.config/zsh/.zcompcache"
 ####################################################
 # Define completers
+zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
@@ -99,8 +100,39 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+# source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source /usr/share/doc/pkgfile/command-not-found.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
+####################################################
+#------ Pacman Command not Found
+###################################################
+# function command_not_found_handler {
+#     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+#     printf 'zsh: command not found: %s\n' "$1"
+#     local entries=(
+#         ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
+#     )
+#     if (( ${#entries[@]} ))
+#     then
+#         printf "${bright}$1${reset} may be found in the following packages:\n"
+#         local pkg
+#         for entry in "${entries[@]}"
+#         do
+#             # (repo package version file)
+#             local fields=(
+#                 ${(0)entry}
+#             )
+#             if [[ "$pkg" != "${fields[2]}" ]]
+#             then
+#                 printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+#             fi
+#             printf '    /%s\n' "${fields[4]}"
+#             pkg="${fields[2]}"
+#         done
+#     fi
+#     return 127
+# }
 #####################################################
 ##### FUNCIONES BASH
 #####################################################
