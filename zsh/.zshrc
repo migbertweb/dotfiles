@@ -4,34 +4,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-################################################
-#### NVIMS
-#################################################
-# git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
-# git clone git@github.com:nvim-lua/kickstart.nvim.git ~/.config/kickstart
-# git clone https://github.com/NvChad/NvChad ~/.config/NvChad --depth 1
-# git clone https://github.com/LazyVim/starter ~/.config/LazyVim
-#alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
-#alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-#alias nvim-chad="NVIM_APPNAME=NvChad nvim"
-#alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-#function nvims() {
-#    items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-#    config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-#    if [[ -z $config ]]; then
-#        echo "Nothing selected"
-#        return 0
-#    elif [[ $config == "default" ]]; then
-#        config=""
-#    fi
-#    NVIM_APPNAME=$config nvim $@
-#}
-#bindkey -s ^a "nvims\n"
 #####################################################
 ##### PATH
 #####################################################
-#export $(gnome-keyring-daemon --daemonize --start)
-###
 export PATH="$HOME/.local/bin:$PATH"
 # export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export DENO_INSTALL="/home/migbert/.deno"
@@ -96,44 +71,14 @@ setopt share_history          # share command history data
 #####################################################
 ##### SOURCE PLUGINS
 #####################################################
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/fzf/key-bindings.zsh
+#source /usr/share/fzf/completion.zsh
 # source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# source /usr/share/doc/pkgfile/command-not-found.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 ####################################################
-#------ Pacman Command not Found
-###################################################
-# function command_not_found_handler {
-#     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-#     printf 'zsh: command not found: %s\n' "$1"
-#     local entries=(
-#         ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
-#     )
-#     if (( ${#entries[@]} ))
-#     then
-#         printf "${bright}$1${reset} may be found in the following packages:\n"
-#         local pkg
-#         for entry in "${entries[@]}"
-#         do
-#             # (repo package version file)
-#             local fields=(
-#                 ${(0)entry}
-#             )
-#             if [[ "$pkg" != "${fields[2]}" ]]
-#             then
-#                 printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-#             fi
-#             printf '    /%s\n' "${fields[4]}"
-#             pkg="${fields[2]}"
-#         done
-#     fi
-#     return 127
-# }
-#####################################################
 ##### FUNCIONES BASH
 #####################################################
 # Git command
@@ -185,11 +130,13 @@ gitlog() {
 ##### ALIAS
 #####################################################
 #######
+alias bat='batcat'
 #pacman
-alias instalar='sudo pacman --needed -Sy'
-alias upgrade='sudo pacman -Syu'
+alias instalar='sudo apt-get install'
+alias desintalar='sudo apt-get remove'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove -y && sudo apt-get autoclean'
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
-alias limpiarpacman='sudo pacman -Scc'
+alias limpiarapt='sudo apt-get autoclean'
 #
 alias v='nvim'
 alias ,,='cd ~'
@@ -261,7 +208,6 @@ alias dkcB='docker-compose build --no-cache'
 alias dkccf='docker-compose config'
 alias dkccr='docker-compose create'
 alias dkcd='docker-compose down'
-alias dkcev='docker-compose events'
 alias dkci='docker-compose images'
 alias dkck='docker-compose kill'
 alias dkcl='docker-compose logs'
@@ -269,28 +215,19 @@ alias dkcL='docker-compose logs -f'
 alias dkcls='docker-compose ps'
 alias dkcp='docker-compose pause'
 alias dkcP='docker-compose unpause'
-alias dkcpl='docker-compose pull'
-alias dkcph='docker-compose push'
 alias dkcpo='docker-compose port'
 alias dkcps='docker-compose ps'
-alias dkcsc='docker-compose scale'
 alias dkcS='docker-compose restart'
 alias dkct='docker-compose top'
 alias dkcu='docker-compose up'
 alias dkcU='docker-compose up -d'
-alias dkcv='docker-compose version'
 alias dkcx='docker-compose stop'
 
 
 #####################################################
-# init starship
-# eval "$(starship init zsh)"
-# setup starship custom prompt
-# export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
-#####################################################
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
 #####################################################
 # Buscador FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -301,7 +238,7 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+#source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 #####################################################
 # pyenv
 ######################################################
@@ -315,41 +252,65 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Flutter config
 # ####################
 #android home
-export ANDROID_HOME=/usr/lib/Android
-export PATH=$ANDROID_HOME/cmdline-tools:$PATH
-export PATH=$ANDROID_HOME/cmdline-tools/tools/:$PATH
-export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
-export PATH=$ANDROID_HOME/emulator/:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
+# export ANDROID_HOME=/usr/lib/Android
+# export PATH=$ANDROID_HOME/cmdline-tools:$PATH
+# export PATH=$ANDROID_HOME/cmdline-tools/tools/:$PATH
+# export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+# export PATH=$ANDROID_HOME/emulator/:$PATH
+# export PATH=$ANDROID_HOME/platform-tools:$PATH
 
 #android sdk root
-export ANDROID_SDK_ROOT=/usr/lib/Android
-export PATH=$ANDROID_SDK_ROOT:$PATH
+# export ANDROID_SDK_ROOT=/usr/lib/Android
+# export PATH=$ANDROID_SDK_ROOT:$PATH
 
 #flutter
-export FLUTTER_HOME=/usr/lib/flutter
-export PATH=$FLUTTER_HOME/bin:$PATH
+# export FLUTTER_HOME=/usr/lib/flutter
+# export PATH=$FLUTTER_HOME/bin:$PATH
 
 #gradle
-export GRADLE_HOME=/opt/gradle/gradle-8.1.1
-export PATH=$GRADLE_HOME/bin:$PATH
+# export GRADLE_HOME=/opt/gradle/gradle-8.1.1
+# export PATH=$GRADLE_HOME/bin:$PATH
 
 # #############################
 # Add .NET Core SDK tools
-export PATH="$PATH:/home/migbert/.dotnet/tools"
+# export PATH="$PATH:/home/migbert/.dotnet/tools"
 
 # zsh parameter completion for the dotnet COMPLETE_IN_WORD
-_dotnet_zsh_complete(){
-    local completions=("$(dotnet complete "$words")")
-    # If the completion list is empty, just continue with filename selection
-    if [ -z "$completions" ]
-    then
-        _arguments '*::arguments: _normal'
-        return
-    fi
-    # This is not a variable assignment, don't remove spaces!
-    _values = "${(ps:\n:)completions}"
-}
-compdef _dotnet_zsh_complete dotnet
+# _dotnet_zsh_complete(){
+#     local completions=("$(dotnet complete "$words")")
+#     # If the completion list is empty, just continue with filename selection
+#     if [ -z "$completions" ]
+#     then
+#         _arguments '*::arguments: _normal'
+#         return
+#     fi
+#     # This is not a variable assignment, don't remove spaces!
+#     _values = "${(ps:\n:)completions}"
+# }
+# compdef _dotnet_zsh_complete dotnet
+################################################
+#### NVIMS
+#################################################
+# git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/AstroNvim
+# git clone git@github.com:nvim-lua/kickstart.nvim.git ~/.config/kickstart
+# git clone https://github.com/NvChad/NvChad ~/.config/NvChad --depth 1
+# git clone https://github.com/LazyVim/starter ~/.config/LazyVim
+#alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
+#alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+#alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+#alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+#function nvims() {
+#    items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
+#    config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+#    if [[ -z $config ]]; then
+#        echo "Nothing selected"
+#        return 0
+#    elif [[ $config == "default" ]]; then
+#        config=""
+#    fi
+#    NVIM_APPNAME=$config nvim $@
+#}
+#bindkey -s ^a "nvims\n"
 
 #. ~/.dotnet-suggest-shim.zsh
+
