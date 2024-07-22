@@ -4,7 +4,8 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-      phpactor = {},
+        -- phpactor = {},
+        intelephense = {},
       },
     },
   },
@@ -36,4 +37,4 @@ return {
       end
     end,
   },
- }
+}
