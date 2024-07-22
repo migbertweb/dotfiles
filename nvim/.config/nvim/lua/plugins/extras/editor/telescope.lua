@@ -6,23 +6,23 @@ local TelescopePrompt = {
   },
   TelescopePromptNormal = {
     fg = "#F8F8F2",
-    bg = '#2d303e',
+    bg = "#2d303e",
   },
   TelescopePromptBorder = {
     fg = "#2d303e",
-    bg = '#2d303e',
+    bg = "#2d303e",
   },
   TelescopePromptTitle = {
-    fg = '#282A36',
-    bg = '#ff7070',
+    fg = "#282A36",
+    bg = "#ff7070",
   },
   TelescopePreviewTitle = {
-    fg = '#282A36',
-    bg = '#50fa7b',
+    fg = "#282A36",
+    bg = "#50fa7b",
   },
   TelescopeResultsTitle = {
-    fg = '#70907b',
-    bg = '#222430',
+    fg = "#70907b",
+    bg = "#222430",
   },
 }
 for hl, col in pairs(TelescopePrompt) do
@@ -68,6 +68,40 @@ return {
       end,
     },
   },
+  {
+    "telescope.nvim",
+    keys = {
+      {
+        "<leader>gk",
+        "<cmd>:Telescope conventional_commits<cr>",
+        desc = "Conventional Commit",
+      },
+    },
+    dependencies = {
+      "olacin/telescope-cc.nvim",
+      config = function()
+        -- require("telescope").setup({
+        --   extensions = {
+        --     conventional_commits = {
+        --       -- theme = "ivy", -- custom theme
+        --       action = function(entry)
+        --         -- entry = {
+        --         --     display = "feat       A new feature",
+        --         --     index = 7,
+        --         --     ordinal = "feat",
+        --         --     value = feat"
+        --         -- }
+        --         vim.print(entry)
+        --       end,
+        --       include_body_and_footer = false, -- Add prompts for commit body and footer
+        --     },
+        --   },
+        -- })
+        require("telescope").load_extension("conventional_commits")
+      end,
+    },
+  },
+
   -- {
   --   "telescope.nvim",
   --   keys =
