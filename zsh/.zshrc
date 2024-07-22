@@ -134,7 +134,7 @@ alias bat='batcat'
 #pacman
 alias instalar='sudo apt-get install'
 alias desintalar='sudo apt-get remove'
-alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove -y && sudo apt-get autoclean'
+alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get autoremove -y && sudo apt-get autoclean'
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
 alias limpiarapt='sudo apt-get autoclean'
 #
@@ -162,7 +162,7 @@ alias ..="cd .."
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -p"
 alias fm='ranger'
-# alias ls="exa --color=auto --icons"
+alias ls="exa --long --color=auto --icons --all --header --git --no-permissions --no-user --grid --sort=type"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
@@ -202,6 +202,7 @@ alias dkNls='docker network ls'
 alias dkNpr='docker network prune'
 alias dkNrm='docker network rm'
 # Docker Compose (c)
+alias docker-compose='docker compose'
 alias dkc='docker-compose'
 alias dkcb='docker-compose build'
 alias dkcB='docker-compose build --no-cache'
