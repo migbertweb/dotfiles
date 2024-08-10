@@ -1,15 +1,18 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
---------------------------------------------
+------------------------------------------------------------------
+-- LSP Server to use for PHP.
+-- Set to "intelephense" to use intelephense instead of phpactor.
+vim.g.lazyvim_php_lsp = "intelephense"
+------------------------------------------------------------------
 -- Providers
-vim.g.python3_host_prog = "/usr/bin/python"
+vim.g.python3_host_prog = "/usr/bin/python3"
 -- options
 vim.o.colorcolumn = "79"
 vim.o.relativenumber = false
 vim.o.mousemoveevent = true
 vim.o.updatetime = 200
---------------------------------------------
+vim.o.redrawtime=10000
+vim.o.re=0
+------------------------------------------------------------------
 -- añadiendo opciones para DBui
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_show_database_icon = 1
@@ -43,3 +46,4 @@ vim.g.db_ui_icons = {
   connection_ok = "✓",
   connection_error = "✕",
 }
+------------------------------------------------------------------

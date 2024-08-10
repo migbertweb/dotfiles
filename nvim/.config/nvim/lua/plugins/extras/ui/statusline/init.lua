@@ -50,7 +50,17 @@ return {
             },
             components.mode_evil,
           },
-          lualine_b = { "branch", components.diagnostics, components.flutter },
+          lualine_b =
+ { 
+ {
+        function()
+        return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
+        end,
+        padding = { right = 1, left = 1 },
+        separator = { left = "", right = "" },
+    },
+"branch", components.diagnostics, components.flutter 
+},
           lualine_c = {
             {
               "filetype",
@@ -104,7 +114,7 @@ return {
             },
           },
           lualine_y = {
-          Util.lualine.cmp_source("codeium"),
+          LazyVim.lualine.cmp_source("codeium"),
           },
           lualine_z = {
             components.spaces,

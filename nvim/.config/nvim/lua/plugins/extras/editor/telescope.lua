@@ -71,32 +71,11 @@ return {
   {
     "telescope.nvim",
     keys = {
-      {
-        "<leader>gk",
-        "<cmd>:Telescope conventional_commits<cr>",
-        desc = "Conventional Commit",
-      },
+{ "<leader>C", "<cmd>:Telescope conventional_commits<cr>", desc = "+Conventional Commit" },
     },
     dependencies = {
       "olacin/telescope-cc.nvim",
       config = function()
-        -- require("telescope").setup({
-        --   extensions = {
-        --     conventional_commits = {
-        --       -- theme = "ivy", -- custom theme
-        --       action = function(entry)
-        --         -- entry = {
-        --         --     display = "feat       A new feature",
-        --         --     index = 7,
-        --         --     ordinal = "feat",
-        --         --     value = feat"
-        --         -- }
-        --         vim.print(entry)
-        --       end,
-        --       include_body_and_footer = false, -- Add prompts for commit body and footer
-        --     },
-        --   },
-        -- })
         require("telescope").load_extension("conventional_commits")
       end,
     },

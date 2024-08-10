@@ -82,6 +82,15 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 ##### FUNCIONES BASH
 #####################################################
 # Git command
+# Commit
+gitcommit(){
+    echo "########## Añadiendo cambios a Stage ##########"
+    git add -v .
+    sleep 1
+    echo "########## Commit ##########"
+    git commit -m "$*"
+    sleep 1
+}
 # Subir cambios a git
 gitpush() {
     echo "########## Añadiendo cambios a Stage ##########"
@@ -129,18 +138,22 @@ gitlog() {
 #####################################################
 ##### ALIAS
 #####################################################
-#######
+##############
 alias bat='batcat'
 #pacman
-alias instalar='sudo apt-get install'
-alias desintalar='sudo apt-get remove'
-alias upgrade='sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get autoremove -y && sudo apt-get autoclean'
+alias instalar='sudo nala install'
+alias desintalar='sudo nala remove'
+alias upgrade='sudo nala update && sudo nala upgrade -y --purge && sudo nala autoremove -y'
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
-alias limpiarapt='sudo apt-get autoclean'
 #
 alias v='nvim'
 alias ,,='cd ~'
-##
+###########
+## Alias Git
+###########
+alias gi='git init'
+alias ga='git add .'
+alias gc=gitcommit
 alias gp=gitpush
 alias glog='git log --all --graph --decorate --oneline --abbrev-commit'
 alias gitu=gitpush
@@ -162,7 +175,7 @@ alias ..="cd .."
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -p"
 alias fm='ranger'
-alias ls="exa --long --color=auto --icons --all --header --git --no-permissions --no-user --grid --sort=type"
+alias ls="exa --long --color=auto --icons --all --git --no-permissions --no-user --grid --sort=type"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
@@ -174,7 +187,8 @@ alias mv='mv -v'
 alias cp='cp -vr'
 alias rm='rm -vr'
 ###################
-# Alias SAIL
+# Alias Laravel
+alias pas="php artisan serve"
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 #####################################################
 # Alias DOCKER

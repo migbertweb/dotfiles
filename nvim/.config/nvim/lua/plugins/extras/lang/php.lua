@@ -1,40 +1,63 @@
 return {
-  -- instalar el servidor LSP
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        -- phpactor = {},
-        intelephense = {},
-      },
+-------------- NVIM-DAP --------------
+{
+  "mfussenegger/nvim-dap",
+  optional = true,
+  opts = function()
+    local dap = require("dap")
+    local path = require("mason-registry").get_package("php-debug-adapter"):get_install_path()
+    dap.adapters.php = {
+      type = "executable",
+      command = "node",
+      args = { path .. "/extension/out/phpDebug.js" },
+    }
+  end,
+},
+------------------------------------------------------
+-------------- NONE-LS --------------
+{
+  "nvimtools/none-ls.nvim",
+  optional = true,
+  opts = function(_, opts)
+    local nls = require("null-ls")
+    opts.sources = opts.sources or {}
+    -- table.insert(opts.sources, nls.builtins.formatting.phpcsfixer)
+    -- table.insert(opts.sources, nls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }))
+    table.insert(opts.sources, nls.builtins.formatting.pint)
+  end,
+},
+------------------------------------------------------
+-------------- MASON --------------
+{
+  "williamboman/mason.nvim",
+  opts = {
+    ensure_installed = {
+      "phpcs",
+      "php-cs-fixer",
+      "pint",
     },
   },
-  -- null-ls para Diagnostic y Formatting
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      -- table.insert(opts.sources, nls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }))
-      -- table.insert(opts.sources, nls.builtins.formatting.phpcsfixer.with({ extra_args = { "--rules=@PSR12" } }))
-      table.insert(opts.sources, nls.builtins.formatting.pint)
-    end,
+},
+------------------------------------------------------
+-------------- NVIM-LINT --------------
+{
+  "mfussenegger/nvim-lint",
+  optional = true,
+  opts = {
+    linters_by_ft = {
+      php = { "phpcs" },
+    },
   },
-  -- instalar los linter y Formateadores
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      -- table.insert(opts.ensure_installed, "phpcs")
-      -- table.insert(opts.ensure_installed, "php-cs-fixer")
-      table.insert(opts.ensure_installed, "pint")
-    end,
+},
+------------------------------------------------------
+-------------- CONFORM --------------
+{
+  "stevearc/conform.nvim",
+  optional = true,
+  opts = {
+    formatters_by_ft = {
+      php = { "php_cs_fixer" },
+    },
   },
-  -- Instalar treesitter Parser
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "php" })
-      end
-    end,
-  },
+},
 }

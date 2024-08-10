@@ -1,36 +1,30 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
---
--- function _G.set_terminal_keymaps()
---   local opts = { buffer = 0 }
---   vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
---   vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
---   vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
---   vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
---   vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
---   vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
---   vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
--- end
---
--- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
--- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
---
--- CursorHold,CursorHoldI diagnostic.open_float
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
--- config barbecue: Gain better performance when moving the cursor around
-  
---   vim.api.nvim_create_autocmd({
---     "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
---     "BufWinEnter",
---     "CursorHold",
---     "InsertLeave",
-  
---     -- include this if you have set `show_modified` to `true`
---     "BufModifiedSet",
---   }, {
---     group = vim.api.nvim_create_augroup("barbecue.updater", {}),
---     callback = function()
---       require("barbecue.ui").update()
---     end,
---   })
+------------ BLADE ---------------------------
+-- Define an autocmd group for the blade workaround
+local augroup = vim.api.nvim_create_augroup("lsp_blade_workaround", { clear = true })
+-- Autocommand to temporarily change 'blade' filetype to 'php' when opening for LSP server activation
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup,
+  pattern = "*.blade.php",
+  callback = function()
+    vim.bo.filetype = "php"
+  end,
+})
+-- Additional autocommand to switch back to 'blade' after LSP has attached
+vim.api.nvim_create_autocmd("LspAttach", {
+  pattern = "*.blade.php",
+  callback = function(args)
+    vim.schedule(function()
+      -- Check if the attached client is 'intelephense'
+      for _, client in ipairs(vim.lsp.get_active_clients()) do
+        if client.name == "intelephense" and client.attached_buffers[args.buf] then
+          vim.api.nvim_buf_set_option(args.buf, "filetype", "blade")
+          -- update treesitter parser to blade
+          vim.api.nvim_buf_set_option(args.buf, "syntax", "blade")
+          break
+        end
+      end
+    end)
+  end,
+})
+-------------------------------------------------
