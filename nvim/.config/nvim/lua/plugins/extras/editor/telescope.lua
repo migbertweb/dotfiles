@@ -10,18 +10,18 @@ local TelescopePrompt = {
   },
   TelescopePromptBorder = {
     fg = "#2d303e",
-    bg = "#2d303e",
+    bg = "#364649",
   },
   TelescopePromptTitle = {
     fg = "#282A36",
-    bg = "#ff7070",
+    bg = "#F07167",
   },
   TelescopePreviewTitle = {
     fg = "#282A36",
-    bg = "#50fa7b",
+    bg = "#0081A7",
   },
   TelescopeResultsTitle = {
-    fg = "#70907b",
+    fg = "#00AFB9",
     bg = "#222430",
   },
 }
@@ -64,14 +64,13 @@ return {
       build = "make",
       config = function()
         require("telescope").load_extension("fzf")
-        -- require("telescope").load_extension("flutter")
       end,
     },
   },
   {
     "telescope.nvim",
     keys = {
-{ "<leader>C", "<cmd>:Telescope conventional_commits<cr>", desc = "+Conventional Commit" },
+      { "<leader>C", "<cmd>:Telescope conventional_commits<cr>", desc = "+Conventional Commit" },
     },
     dependencies = {
       "olacin/telescope-cc.nvim",
@@ -80,71 +79,4 @@ return {
       end,
     },
   },
-
-  -- {
-  --   "telescope.nvim",
-  --   keys =
-  --   {
-  --     {
-  --       "<leader>te",
-  --       "<cmd>:Telescope file_browser path=%:p:h select_buffer=true<cr>",
-  --       desc = "Telescope File-Browser"
-  --     }
-  --   },
-  --   dependencies = {
-  --     "nvim-telescope/telescope-file-browser.nvim",
-  --     config = function()
-  --       require("telescope").setup {
-  --         extensions = {
-  --           file_browser = {
-  --             -- theme = "ivy",
-  --             -- disables netrw and use telescope-file-browser in its place
-  --             hijack_netrw = true,
-  --             mappings = {
-  --               ["i"] = {
-  --                 -- your custom insert mode mappings
-  --               },
-  --               ["n"] = {
-  --                 -- your custom normal mode mappings
-  --               },
-  --             },
-  --           },
-  --         },
-  --       }
-  --
-  --       require("telescope").load_extension("file_browser")
-  --     end,
-  --   },
-  -- },
-  -- {
-  --   "telescope.nvim",
-  --   keys = {
-  --     {
-  --       "<C-p>",
-  --       "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>",
-  --       desc = "Telescope Projets"
-  --     }
-  --   },
-  --   dependencies = {
-  --     "nvim-telescope/telescope-project.nvim",
-  --     config = function()
-  --       require('telescope').setup {
-  --         extensions = {
-  --           project = {
-  --             base_dirs = {
-  --               { '~/proyectos/', max_depth = 4 },
-  --             },
-  --             hidden_files = true, -- default: false
-  --             -- theme = "ivy",
-  --             order_by = "asc",
-  --             results_title = false,
-  --             search_by = "title",
-  --             sync_with_nvim_tree = false, -- default false
-  --           }
-  --         }
-  --       }
-  --       require 'telescope'.load_extension('project')
-  --     end,
-  --   },
-  -- },
 }

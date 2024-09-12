@@ -29,8 +29,6 @@ return {
         ["scss"] = { "prettier" },
         ["less"] = { "prettier" },
         ["html"] = { "prettier" },
-        ["json"] = { "prettier" },
-        ["jsonc"] = { "prettier" },
         ["yaml"] = { "prettier" },
         ["markdown"] = { "deno_fmt" },
         ["markdown.mdx"] = { "deno_fmt" },

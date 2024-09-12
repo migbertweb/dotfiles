@@ -1,8 +1,10 @@
 ------------------------------------------------------------------
 -- LSP Server to use for PHP.
 -- Set to "intelephense" to use intelephense instead of phpactor.
-vim.g.lazyvim_php_lsp = "intelephense"
+-- vim.g.lazyvim_php_lsp = "intelephense"
 ------------------------------------------------------------------
+-- Local Leader
+vim.g.maplocalleader = ","
 -- Providers
 vim.g.python3_host_prog = "/usr/bin/python3"
 -- options

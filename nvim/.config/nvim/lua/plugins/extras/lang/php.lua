@@ -15,45 +15,44 @@ return {
 },
 ------------------------------------------------------
 -------------- NONE-LS --------------
-{
-  "nvimtools/none-ls.nvim",
-  optional = true,
-  opts = function(_, opts)
-    local nls = require("null-ls")
-    opts.sources = opts.sources or {}
+--{
+--  "nvimtools/none-ls.nvim",
+--  optional = true,
+--  opts = function(_, opts)
+--    local nls = require("null-ls")
+--    opts.sources = opts.sources or {}
     -- table.insert(opts.sources, nls.builtins.formatting.phpcsfixer)
     -- table.insert(opts.sources, nls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }))
-    table.insert(opts.sources, nls.builtins.formatting.pint)
-  end,
-},
+--    table.insert(opts.sources, nls.builtins.formatting.pint)
+--  end,
+--},
 ------------------------------------------------------
 -------------- MASON --------------
 {
   "williamboman/mason.nvim",
   opts = {
     ensure_installed = {
-      "phpcs",
+--      "phpcs",
       "php-cs-fixer",
-      "pint",
+--      "pint",
     },
   },
 },
 ------------------------------------------------------
 -------------- NVIM-LINT --------------
-{
-  "mfussenegger/nvim-lint",
-  optional = true,
-  opts = {
-    linters_by_ft = {
-      php = { "phpcs" },
-    },
-  },
-},
+--{
+--  "mfussenegger/nvim-lint",
+--  optional = true,
+--  opts = {
+--    linters_by_ft = {
+--      php = { "phpcs" },
+--    },
+--  },
+--},
 ------------------------------------------------------
 -------------- CONFORM --------------
 {
-  "stevearc/conform.nvim",
-  optional = true,
+ "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
       php = { "php_cs_fixer" },

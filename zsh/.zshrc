@@ -12,6 +12,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export DENO_INSTALL="/home/migbert/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
+export PATH="$PATH:/snap/bin"
 #####################################################
 ##### ENV
 #####################################################

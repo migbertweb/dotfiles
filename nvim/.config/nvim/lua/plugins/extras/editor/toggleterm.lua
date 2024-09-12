@@ -1,12 +1,12 @@
 return {
   "akinsho/toggleterm.nvim",
-  keys = {
-    { [[<C-\>]] },
+ keys = {
+    --{ [[<C-\>]] },
     { "<leader>0", "<Cmd>2ToggleTerm<Cr>", desc = "Terminal #2" },
   },
   cmd = { "ToggleTerm", "TermExec" },
   opts = {
-    size = 15,
+    size = 12,
     hide_numbers = true,
     open_mapping = [[<C-\>]],
     shade_filetypes = {},
@@ -26,24 +26,4 @@ return {
     },
   },
 }
---
---
--- return
--- {
---   {
---     'akinsho/toggleterm.nvim',
---     version = "*",
---     enabled = true,
---     keys = {
---       {
---         "<C-t>",
---         function()
---           require("toggleterm").toggle()
---         end,
---       }
---     },
---     opts = {
---       --[[ things you want to change go here]]
---     },
---   }
--- }
+
