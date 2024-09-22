@@ -8,12 +8,14 @@ vim.g.maplocalleader = ","
 -- Providers
 vim.g.python3_host_prog = "/usr/bin/python3"
 -- options
-vim.o.colorcolumn = "79"
+-- vim.o.colorcolumn = "79"
 vim.o.relativenumber = false
 vim.o.mousemoveevent = true
 vim.o.updatetime = 200
 vim.o.redrawtime=10000
 vim.o.re=0
+------------------------------------------------------------------
+vim.g.lazyvim_picker = "telescope"
 ------------------------------------------------------------------
 -- añadiendo opciones para DBui
 vim.g.db_ui_use_nerd_fonts = 1
@@ -49,3 +51,11 @@ vim.g.db_ui_icons = {
   connection_error = "✕",
 }
 ------------------------------------------------------------------
+-- vim.g.matchup_matchparen_offscreen = { method = 'popup' }
+ vim.g.matchup_surround_enabled = 1 -- Habilitar envolvente
+
+-- Configuración para mostrar una línea visual
+-- vim.cmd [[
+--  highlight MatchParenCur guibg=none gui=underline cterm=underline
+--  highlight MatchWord guibg=none gui=underline cterm=underline
+-- ]]

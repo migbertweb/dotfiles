@@ -86,3 +86,10 @@ end
 function LspPhpactorBlackfireFinish()
     local _, _ = vim.lsp.buf_request_sync(0, "blackfire/finish", {})
 end
+-------------------------------------------------
+-------------------------------------------------
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = {'*.blade.php','*.json','*.html'},
+  group = group,
+  command = 'setlocal wrap'
+})

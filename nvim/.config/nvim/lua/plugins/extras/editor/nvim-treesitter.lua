@@ -1,11 +1,14 @@
 return {
+{
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "HiPhish/nvim-ts-rainbow2",
   },
   opts = {
     matchup = {
-    enable = true,},
+    enable = true,
+include_match_words = true,
+},
     rainbow = {
       enable = true,
       -- list of languages you want to disable the plugin for
@@ -22,4 +25,20 @@ return {
       -- strategy = require('ts-rainbow').strategy.global,
     },
   },
+},
+{
+"windwp/nvim-ts-autotag",
+  event = "LazyFile",
+  opts = {
+aliases = {
+    ["blade"] = "html",
+  },
+},
+},
+{
+  "andymass/vim-matchup",
+  setup = function()
+ 
+  end,
+},
 }

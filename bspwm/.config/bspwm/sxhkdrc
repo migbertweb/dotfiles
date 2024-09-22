@@ -34,7 +34,7 @@ super + {m,n,r,s,t,u,x}
 
 # Launch Apps
 super + {f,w,e}
-	{thunar,firefox,leafpad}
+	{thunar,chromium,leafpad}
 
 # Terminal Apps
 super + alt + {v,r,h}

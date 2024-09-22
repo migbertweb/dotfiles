@@ -71,6 +71,7 @@ bspc rule -a firefox desktop='^2' follow=on focus=on
 bspc rule -a firefox-esr desktop='^2' follow=on focus=on
 bspc rule -a Firefox-esr desktop='^2' follow=on focus=on
 bspc rule -a chromium desktop='^2' follow=on focus=on
+bspc rule -a Chromium desktop='^2' follow=on focus=on
 bspc rule -a opera desktop='^2' follow=on focus=on
 bspc rule -a Opera desktop='^2' follow=on focus=on
 bspc rule -a google-chrome-stable desktop='^2' follow=on focus=on
