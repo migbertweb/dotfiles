@@ -5,7 +5,7 @@ return {
   init = function()
     vim.g.neo_tree_remove_legacy_commands = true
   end,
- keys = {
+keys = {
    {
      "<C-f>",
      function()
@@ -29,6 +29,7 @@ return {
         handler = function(file)
           vim.cmd("edit " .. file)
           print(file, " Creado ")
+  vim.cmd("Neotree close")
         end,
       },
     },

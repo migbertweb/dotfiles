@@ -85,7 +85,7 @@ for i in ${files[@]}; do
 done
 
 ## 4 > code (always open editors on workspace-4)
-declare -a code=(Geany code-oss mousepad Mousepad)
+declare -a code=(Geany code-oss mousepad gedit Gedit Mousepad)
 for i in ${code[@]}; do
   bspc rule -a $i desktop='^4' follow=on focus=on
 done
@@ -146,9 +146,10 @@ fi
 sxhkd -c "$BSPDIR"/sxhkdrc &
 
 # Enable Super Keys For Menu
-snap run ksuperkey -e 'Super_L=Alt_L|F1' &
-snap run ksuperkey -e 'Super_R=Alt_L|F1' &
-
+#snap run ksuperkey -e 'Super_L=Alt_L|F1' &
+#snap run ksuperkey -e 'Super_R=Alt_L|F1' &
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
 # Start bitwarden
 # snap run bitwarden &
 

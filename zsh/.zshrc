@@ -72,8 +72,8 @@ setopt share_history          # share command history data
 #####################################################
 ##### SOURCE PLUGINS
 #####################################################
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #source /usr/share/fzf/key-bindings.zsh
 #source /usr/share/fzf/completion.zsh
 # source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -139,14 +139,30 @@ gitlog() {
 #####################################################
 ##### ALIAS
 #####################################################
-##############
 alias bat='batcat'
-#pacman
-alias instalar='sudo nala install'
-alias desintalar='sudo nala remove'
-alias upgrade='sudo nala update && sudo nala upgrade -y --purge && sudo nala autoremove -y'
+alias cl='clear'
+# APT
+#instalar='sudo nala install'
+#alias desintalar='sudo nala remove'
+#alias upgrade='sudo nala update && sudo nala upgrade -y --purge && sudo nala autoremove -y'
+#####################################################  
+# PACMAN	
+alias instalar='sudo pacman -Sy'
+alias quitar='sudo pacman -Rs'
+alias quitartodo='sudo pacman -Rns'
+# Actualizar sistema actualizando la base de datos de paquetes previamente (Uso recomendado).
+alias upgrade='sudo pacman -Syyu --noconfirm && sudo pacman-optimize'
+# Paquetes huérfanos (Ya no son dependencia de ningún paquete).
+#alias p-huerfanos='sudo pacman -Qtdq'                # Lista paquetes huérfanos.
+alias phuerfanos='sudo pacman -Rs $(pacman -Qtdq)'  # Elimina paquetes huérfanos.
+# Elimina de la cache todos los paquetes menos los actualmente instalados. (Impide un Rollback).
+# Permite también quitar repositorios no utilizados.
+alias pclean='sudo pacman -Sc'
+alias plimp='sudo pacman -Scc'  # Solo en casos de necesidad (Ej. Disco duro lleno).
+# Optimizar base de datos de pacman (fragmentación).
+# pacman-optimize
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
-#
+#####################################################
 alias v='nvim'
 alias ,,='cd ~'
 ###########

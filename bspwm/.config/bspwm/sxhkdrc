@@ -4,7 +4,7 @@
 
 ##---------- Keybindings for bspwm ----------##
 
-# Terminal (alacritty)
+# Terminal (kitty)
 super + Return
 	bspterm
 
@@ -34,7 +34,7 @@ super + {m,n,r,s,t,u,x}
 
 # Launch Apps
 super + {f,w,e}
-	{thunar,chromium,leafpad}
+	{thunar,chromium,gedit}
 
 # Terminal Apps
 super + alt + {v,r,h}

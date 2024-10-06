@@ -71,7 +71,6 @@ require("lazy").setup({
     { import = "plugins.extras.lang.bash" },
     { import = "plugins.extras.lang.css" },
     { import = "plugins.extras.lang.emmet_ls" },
---    { import = "plugins.extras.lang.html" },
     { import = "plugins.extras.lang.php" },
   },
   defaults = {

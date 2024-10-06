@@ -2,6 +2,16 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+ phpactor = {
+        root_dir = require('lspconfig').util.root_pattern("composer.json", ".git"),
+        filetypes = { "php" },  -- Limitar solo a archivos PHP, sin incluir .blade.php
+        settings = {
+          phpactor = {
+            filetypes = { "php" },  -- Aquí también puedes limitar los tipos de archivo
+            exclude = { "*.blade.php", "blade" },  -- Excluir archivos .blade.php
+          }
+        }
+      },
 tailwindcss = {
         -- exclude a filetype from the default_config
         filetypes_exclude = { "markdown", "php" },
