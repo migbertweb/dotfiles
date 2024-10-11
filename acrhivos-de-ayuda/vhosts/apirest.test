@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@apirest.test
+    DocumentRoot "/home/migbert/proyectos/www/apirest/public"
+    ServerName apirest.test
+    ServerAlias apirest.test
+    ErrorLog "/var/log/httpd/apirest-error_log"
+    CustomLog "/var/log/httpd/apirest-access_log" common
+
+    <Directory "/home/migbert/proyectos/www/apirest">
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
