@@ -87,6 +87,9 @@ Virt-manager)
 Thunar)
   result "desktop=^2 follow=on"
   ;;
+Geany)
+  result "desktop=^4 follow=on"
+  ;;
 kitty)
   result "desktop=^1 follow=on"
   ;;

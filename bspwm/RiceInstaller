@@ -301,7 +301,7 @@ printf "Copying files to respective directories..\n"
 [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
 [ ! -d ~/.local/share ] && mkdir -p ~/.local/share
 
-for dirs in ~/dotfiles/config/*; do
+for dirs in ~/dotfiles/bspwm/config/*; do
   dir_name=$(basename "$dirs")
   # If the directory is nvim and the user doesn't want to try it, skip this loop
   if [[ $dir_name == "nvim" && $try_nvim != "y" ]]; then
@@ -317,7 +317,7 @@ for dirs in ~/dotfiles/config/*; do
 done
 
 for folder in applications asciiart fonts startup-page; do
-  if cp -R ~/dotfiles/misc/$folder ~/.local/share/ 2>>RiceError.log; then
+  if cp -R ~/dotfiles/bspwm/misc/$folder ~/.local/share/ 2>>RiceError.log; then
     printf "%s%s%s %sfolder copied succesfully!%s\n" "${BLD}" "${CYE}" "$folder" "${CGR}" "${CNC}"
     sleep 1
   else
@@ -326,7 +326,7 @@ for folder in applications asciiart fonts startup-page; do
   fi
 done
 
-if cp -R ~/dotfiles/misc/bin ~/.local/ 2>>RiceError.log; then
+if cp -R ~/dotfiles/bspwm/misc/bin ~/.local/ 2>>RiceError.log; then
   printf "%s%sbin %sfolder copied succesfully!%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
   sleep 1
 else
@@ -334,7 +334,7 @@ else
   sleep 1
 fi
 
-if cp -R ~/dotfiles/misc/firefox/* ~/.mozilla/firefox/*.default-release/ 2>>RiceError.log; then
+if cp -R ~/dotfiles/bspwm/misc/firefox/* ~/.mozilla/firefox/*.default-release/ 2>>RiceError.log; then
   printf "%s%sFirefox theme %scopied succesfully!%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
   sleep 1
 else
@@ -342,7 +342,7 @@ else
   sleep 1
 fi
 
-if cp -R ~/dotfiles/home/.icons "$HOME" 2>>RiceError.log; then
+if cp -R ~/dotfiles/bspwm/home/.icons "$HOME" 2>>RiceError.log; then
   printf "%s%s.icons folder %scopied succesfully!%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
   sleep 1
 else
@@ -352,8 +352,8 @@ fi
 
 sed -i "s/user_pref(\"browser.startup.homepage\", \"file:\/\/\/home\/z0mbi3\/.local\/share\/startup-page\/index.html\")/user_pref(\"browser.startup.homepage\", \"file:\/\/\/home\/$USER\/.local\/share\/startup-page\/index.html\")/" "$HOME"/.mozilla/firefox/*.default-release/user.js
 sed -i "s/name: 'gh0stzk'/name: '$USER'/" "$HOME"/.local/share/startup-page/config.js
-cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
-cp -f "$HOME"/dotfiles/home/.gtkrc-2.0 "$HOME"
+cp -f "$HOME"/dotfiles/bspwm/home/.zshrc "$HOME"
+cp -f "$HOME"/dotfiles/bspwm/home/.gtkrc-2.0 "$HOME"
 fc-cache -rv >/dev/null 2>&1
 
 printf "\n\n%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"

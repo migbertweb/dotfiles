@@ -63,6 +63,9 @@ bspc rule -a Conky state=floating manage=off
 # Load current theme
 "${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
 
+# Kill if already running
+killall -9 conky udiskie
+
 # Launch sxhkd daemon
 pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc & }
 
