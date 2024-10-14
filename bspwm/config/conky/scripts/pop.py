@@ -1,7 +1,7 @@
 import subprocess
 
 pop = subprocess.run(
-    'batcat ~/.cache/conky-weather.json | jq ".list | .[0] | .pop"',
+    'bat ~/.cache/conky-weather.json | jq ".list | .[0] | .pop"',
     shell=True,
     check=True,
     capture_output=True,
