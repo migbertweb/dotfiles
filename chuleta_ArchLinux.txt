@@ -1,0 +1,64 @@
+sudo pacman -Syyu
+
+AÑADIR CHAOTIC-AUR
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com && echo '-----Siguiente---------' && sudo pacman-key --lsign-key 3056513887B78AEB &&  echo '-----Siguiente---------' && sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' && echo '-----Siguiente---------' &&  sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
+sudo nano /etc/pacman.conf
+(adding at the end) the following to /etc/pacman.conf:
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+
+ACTUALIZAR:
+sudo pacman -Syyu
+
+HABILITAR AUR E INSTALAR YAY
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+yay -Syu
+
+INSTALAR PAQUETES PRIMORDIALES
+sudo pacman -S --needed xorg-server xorg-xinit bspwm sxhkd dmenu nitrogen picom arandr conky jq sed curl udiskie xsettingsd dunst dex feh rofi polybar network-manager-applet mpc mpd ncmpcpp imagemagick xdotool nitrogen scrot pavucontrol ksuperkey plank stow plymouth vlc thunderbird xz bzip2 p7zip lbzip2 lrzip arj lzop cpio unrar jasper lame libdca libdv gst-libav libtheora libvorbis libxv wavpack x264 xvidcore libmad libmpeg2 a52dec faac faad2 flac gimp inkscape fd ripgrep nodejs npm docker xclip xsel base-devel geany kitty neovim ranger zsh ffmpegthumbnailer bat exa && echo '--------- Instalar Google chrome ------' && sudo pacman -S google-chrome
+
+CONFIGURAR ZSH:
+echo '----- shell por defecto -------' && echo $SHELL && echo '------Lista de shell en el sistema -------' && chsh -l
+chsh -s /usr/bin/zsh
+
+CONFIGURAR PLYMOUTH
+sudo nano /etc/mkinitcpio.conf
+añadir: plymouth despues de udev
+sudo mkinitcpio -p linux
+
+sudo nano /etc/default/grub
+quitar el grub_timeout a 0
+añadir
+splash rd.udev.log_priority=3 vt.global_cursor_default=0
+despues de quiet
+en GRUB_GFXMODE=1366x768
+guardar y cerrar
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+INSTALAR PAMAC (OPCIONAL)
+sudo pacman -S pamac
+
+configurar Docker:
+sudo systemctl enable docker.service && sudo systemctl start docker.service
+-----
+añadir mi usuario:
+sudo usermod -aG docker migbert && newgrp docker
+-----
+cambiar el directorio root de docker:
+sudo systemctl stop docker
+-----
+sudo mkdir -p /etc/docker && sudo nano /etc/docker/daemon.json
+añadir:
+{
+  "data-root": "/mnt/docker"
+}
+cerrar y guardar
+permisos del directorio
+sudo chown -R root:docker /mnt/docker
+----
+sudo systemctl daemon-reload && echo '-------Demonio recargado--------' && sudo systemctl restart docker && echo '-------docker service reiniciado---------' && echo '-------Directorio root de Docker:--------' && docker info | grep "Docker Root Dir"
+
+----
+gh0stzk-dotfiles
