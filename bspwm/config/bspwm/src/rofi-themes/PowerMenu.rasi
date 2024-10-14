@@ -1,0 +1,120 @@
+// # z0mbi3 - https://github.com/gh0stzk/dotfiles
+
+configuration {
+	hover-select:				true;
+	me-select-entry:			"";
+	me-accept-entry:			"MousePrimary";
+}
+
+@import "shared.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       500px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+     border-radius:               12px;
+    border-color:                @selected;
+    cursor:                      "default";   
+    background-color:            @background;
+    //border-radius: 				 6px;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     30px;
+    background-color:            @background;
+    children:                    [ "inputbar", "message","listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     15px;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "prompt" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    font:                        "JetBrainsMono Nerd Font Bold 14";
+    str:                         "  ";
+     border-radius:               20px;
+   padding:                     12px 16px 12px 12px;
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+
+prompt {
+    enabled:                     true;
+      border-radius:               20px;
+   padding:                     12px;
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      2px solid;
+    border-radius:               20px;
+    border-color:                @selected;  
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       2;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     15px;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    padding:                     16px;
+    border:                      0px solid;
+    border-radius:               20px;
+    background-color:            @bg-alt;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element-text {
+
+    background-color:            transparent;
+    text-color:                  inherit;
+     font:                        "JetBrainsMono Nerd Font Bold 11";
+   cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
