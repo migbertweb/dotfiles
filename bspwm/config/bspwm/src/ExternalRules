@@ -55,7 +55,7 @@ RangerTerm)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 MusicTerm)
-  dimensions=$(calculate_dimensions 41 48)
+  dimensions=$(calculate_dimensions 78 71)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 FetchTerm)

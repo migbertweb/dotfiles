@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-#  ██╗  ██╗ █████╗ ██████╗ ██╗      █████╗     ██████╗ ██╗ ██████╗███████╗
-#  ██║ ██╔╝██╔══██╗██╔══██╗██║     ██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
-#  █████╔╝ ███████║██████╔╝██║     ███████║    ██████╔╝██║██║     █████╗
-#  ██╔═██╗ ██╔══██║██╔══██╗██║     ██╔══██║    ██╔══██╗██║██║     ██╔══╝
-#  ██║  ██╗██║  ██║██║  ██║███████╗██║  ██║    ██║  ██║██║╚██████╗███████╗
-#  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  ███╗   ███╗ █████╗ ██████╗ ██╗███████╗ ██████╗ ██╗         ██████╗ ██╗ ██████╗███████╗
+#  ████╗ ████║██╔══██╗██╔══██╗██║██╔════╝██╔═══██╗██║         ██╔══██╗██║██╔════╝██╔════╝
+#  ██╔████╔██║███████║██████╔╝██║███████╗██║   ██║██║         ██████╔╝██║██║     █████╗
+#  ██║╚██╔╝██║██╔══██║██╔══██╗██║╚════██║██║   ██║██║         ██╔══██╗██║██║     ██╔══╝
+#  ██║ ╚═╝ ██║██║  ██║██║  ██║██║███████║╚██████╔╝███████╗    ██║  ██║██║╚██████╗███████╗
+#  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚══════╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
 #  Author  :  z0mbi3
 #  Url     :  https://github.com/gh0stzk/dotfiles
 #  About   :  This file will configure and launch the rice.
@@ -16,35 +16,35 @@
 # Current Rice
 read -r RICE <"$HOME"/.config/bspwm/.rice
 
-# Vars config for Karla Rice
+# Vars config for Marisol Rice
 # Bspwm border		# Normal border color	# Focused border color
-BORDER_WIDTH="3" NORMAL_BC="#353c52" FOCUSED_BC="#5884d4"
+BORDER_WIDTH="2" NORMAL_BC="#ff79c6" FOCUSED_BC="#bd93f9"
 
-# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|fals
+# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
 P_FADE="false" P_SHADOWS="false" P_CORNER_R="0" SHADOW_C="#000000" ANIMATIONS="true"
 
-# (Zombie-Night) colorscheme
-bg="#0E1113" fg="#afb1db"
+# (Dracula) colorscheme
+bg="#282a36" fg="#f8f8f2"
 
-black="#353c52" red="#e7034a" green="#61b33e" yellow="#ffb964"
-blackb="#353c52" redb="#e71c5b" greenb="#6fb352" yellowb="#ffb964"
+black="#21222c" red="#ff5555" green="#50fa7b" yellow="#f1fa8c"
+blackb="#6272a4" redb="#ff6e6e" greenb="#69ff94" yellowb="#ffffa5"
 
-blue="#5884d4" magenta="#7a44e3" cyan="#7df0f0" white="#faf7ff"
-blueb="#5f90ea" magentab="#8656e3" cyanb="#97f0f0" whiteb="#fdfcff"
+blue="#bd93f9" magenta="#ff79c6" cyan="#8be9fd" white="#f8f8f2"
+blueb="#d6acff" magentab="#ff92df" cyanb="#a4ffff" whiteb="#ffffff"
 
 # Gtk theme vars
-gtk_theme="z0mbi3Night-zk" gtk_icons="Sweet-Rainbow" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-z0mbi3Night"
+gtk_theme="Dracula-zk" gtk_icons="Dracula" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-Dracula"
 
 # Set bspwm configuration
 set_bspwm_config() {
   bspc config border_width ${BORDER_WIDTH}
-  bspc config top_padding 48
+  bspc config top_padding 34
   bspc config bottom_padding 1
   bspc config left_padding 1
   bspc config right_padding 1
   bspc config normal_border_color "${NORMAL_BC}"
   bspc config focused_border_color "${FOCUSED_BC}"
-  bspc config presel_feedback_color "${magenta}"
+  bspc config presel_feedback_color "${blue}"
 }
 
 # Terminal colors
@@ -57,7 +57,7 @@ foreground = "${fg}"
 
 # Cursor colors
 [colors.cursor]
-cursor = "${magentab}"
+cursor = "${magenta}"
 text = "${bg}"
 
 # Normal colors
@@ -88,23 +88,23 @@ EOF
 # The basic colors
 foreground              ${fg}
 background              ${bg}
-selection_foreground    ${fg}
-selection_background    ${magentab}
+selection_foreground    ${bg}
+selection_background    ${magenta}
 
 # Cursor colors
-cursor                  ${magentab}
+cursor                  ${magenta}
 cursor_text_color       ${bg}
 
 # URL underline color when hovering with mouse
-url_color               ${cyan}
+url_color               ${blue}
 
 # Kitty window border colors
 active_border_color     ${magenta}
-inactive_border_color   ${black}
+inactive_border_color   ${blackb}
 bell_border_color       ${yellow}
 
 # Tab bar colors
-active_tab_foreground   ${fg}
+active_tab_foreground   ${bg}
 active_tab_background   ${magenta}
 inactive_tab_foreground ${fg}
 inactive_tab_background ${black}
@@ -160,7 +160,7 @@ set_picom_config() {
     -e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/"
 
   sed -i "$picom_rules_file" \
-    -e "101s/	opacity = .*/	opacity = 0.95;/"
+    -e "101s/	opacity = .*/	opacity = 1;/"
 
   if [[ "$ANIMATIONS" = "true" ]]; then
     sed -i "$picom_rules_file" \
@@ -182,12 +182,12 @@ set_dunst_config() {
   dunst_config_file="$HOME/.config/bspwm/src/config/dunstrc"
 
   sed -i "$dunst_config_file" \
-    -e "s/transparency = .*/transparency = 8/g" \
-    -e "s/icon_theme = .*/icon_theme = \"Candy, Adwaita\"/g" \
+    -e "s/transparency = .*/transparency = 0/g" \
+    -e "s/icon_theme = .*/icon_theme = \"${gtk_icons}, Adwaita\"/g" \
     -e "s/frame_color = .*/frame_color = \"${bg}\"/g" \
-    -e "s/separator_color = .*/separator_color = \"${blue}\"/g" \
+    -e "s/separator_color = .*/separator_color = \"${cyanb}\"/g" \
     -e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
-    -e "s/foreground='.*'/foreground='${magenta}'/g"
+    -e "s/foreground='.*'/foreground='${cyanb}'/g"
 
   sed -i '/urgency_low/Q' "$dunst_config_file"
   cat >>"$dunst_config_file" <<-_EOF_
@@ -212,14 +212,14 @@ set_dunst_config() {
 set_eww_colors() {
   cat >"$HOME"/.config/bspwm/eww/colors.scss <<EOF
 \$bg: ${bg};
-\$bg-alt: #111517;
+\$bg-alt: #2f3240;
 \$fg: ${fg};
 \$black: ${black};
 \$red: ${red};
 \$green: ${green};
 \$yellow: ${yellow};
-\$blue: ${blueb};
-\$magenta: ${magentab};
+\$blue: ${blue};
+\$magenta: ${magenta};
 \$cyan: ${cyanb};
 \$archicon: #0f94d2;
 EOF
@@ -230,19 +230,19 @@ set_launchers() {
   sed -i "$HOME"/.config/bspwm/src/config/jgmenurc \
     -e "s/color_menu_bg = .*/color_menu_bg = ${bg}/" \
     -e "s/color_norm_fg = .*/color_norm_fg = ${fg}/" \
-    -e "s/color_sel_bg = .*/color_sel_bg = #111517/" \
+    -e "s/color_sel_bg = .*/color_sel_bg = #2f3240/" \
     -e "s/color_sel_fg = .*/color_sel_fg = ${fg}/" \
-    -e "s/color_sep_fg = .*/color_sep_fg = ${black}/"
+    -e "s/color_sep_fg = .*/color_sep_fg = ${blue}/"
 
   # Rofi launchers
   cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
-// Rofi colors for Karla
+// Rofi colors for Marisol
 
 * {
     font: "JetBrainsMono NF Bold 9";
-    background: ${bg}F7;
-    bg-alt: #111517;
-    background-alt: ${bg}F5;
+    background: ${bg};
+    bg-alt: #2f3240;
+    background-alt: ${bg}E0;
     foreground: ${fg};
     selected: ${blue};
     active: ${green};
@@ -297,10 +297,15 @@ launch_theme() {
   # Launch polybar
   sleep 0.1
   for mon in $(polybar --list-monitors | cut -d":" -f1); do
-    (MONITOR=$mon polybar -q karla-bar -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
-    (MONITOR=$mon polybar -q karla-bar2 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
-    (MONITOR=$mon polybar -q karla-bar3 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
+    (MONITOR=$mon polybar -q masterchief-bar -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
+    (MONITOR=$mon polybar -q masterchief-bar2 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
+    (MONITOR=$mon polybar -q masterchief-bar3 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
   done
+  # # Launch polybar
+  # sleep 0.1
+  # for mon in $(polybar --list-monitors | cut -d":" -f1); do
+  #   MONITOR=$mon polybar -q marisol -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini &
+  # done
 }
 
 ### Apply Configurations

@@ -10,5 +10,5 @@
     active: #50fa7b;
     urgent: #ff6e6e;
 
-    img-background: url("~/.config/bspwm/rices/piro/rofi.webp", width);
+    img-background: url("~/.config/bspwm/rices/masterchief/rofi.webp", width);
 }

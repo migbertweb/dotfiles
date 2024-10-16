@@ -28,7 +28,7 @@ super + @space
 #####
 
 # Apps (browser, editor, filemanager)
-super + {w,e,t}
+super + {w,e,n}
 	OpenApps {--browser,--editor,--filemanager}
 
 # Terminal apps (ranger, nvim, ncmpcpp)
