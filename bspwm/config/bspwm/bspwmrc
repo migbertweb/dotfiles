@@ -37,7 +37,7 @@ done
 
 bspc config external_rules_command "${HOME}"/.config/bspwm/src/ExternalRules
 
-bspc config window_gap 5
+bspc config window_gap 3
 bspc config split_ratio 0.51
 bspc config single_monocle true
 bspc config borderless_monocle false
@@ -63,6 +63,9 @@ bspc rule -a Conky state=floating manage=off
 # Load current theme
 "${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
 
+# Kill if already running
+killall -9 conky udiskie
+
 # Launch sxhkd daemon
 pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc & }
 
@@ -81,8 +84,12 @@ pidof -q greenclip || { greenclip daemon & }
 # Launch polkit
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
 
-# Dex autostart
-dex -a -s ~/.config/autostart/
+# App start
+# start bitwarden
+pidof -q bitwarden-desktop || { bitwarden-desktop & }
+
+# start nextcloud
+pidof -q nextcloud || { "/usr/bin/nextcloud" --background & }
 
 # Start Conky
 pidof -q conky || { ~/.config/conky/conkyx-start.sh & }

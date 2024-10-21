@@ -55,7 +55,7 @@ RangerTerm)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 MusicTerm)
-  dimensions=$(calculate_dimensions 41 48)
+  dimensions=$(calculate_dimensions 78 71)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 FetchTerm)
@@ -87,6 +87,15 @@ Virt-manager)
 Thunar)
   result "desktop=^2 follow=on"
   ;;
+Geany)
+  result "desktop=^4 follow=on"
+  ;;
+mousepad)
+  result "desktop=^4 follow=on"
+  ;;
+Mousepad)
+  result "desktop=^4 follow=on"
+  ;;
 kitty)
   result "desktop=^1 follow=on"
   ;;
@@ -101,6 +110,9 @@ Transmission-gtk)
   ;;
 Spotify)
   result "state=floating desktop=^6 follow=on center=on"
+  ;;
+Deezer)
+  result "desktop=^5 follow=on"
   ;;
 esac
 

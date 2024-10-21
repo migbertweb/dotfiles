@@ -28,7 +28,7 @@ super + @space
 #####
 
 # Apps (browser, editor, filemanager)
-super + {w,e,t}
+super + {w,e,n}
 	OpenApps {--browser,--editor,--filemanager}
 
 # Terminal apps (ranger, nvim, ncmpcpp)
@@ -60,7 +60,8 @@ super + alt + o
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k}
-	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
+{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill}
+# {systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
 
 # Hide/Show Bar (Polybar and/or eww)
 super + alt + {h,u}
@@ -139,7 +140,10 @@ super + {t,shift + t,s,f}
 ctrl + alt {m,x,s,p}
 	bspc node -g {marked,locked,sticky,private}
 
-# Hide/Unhide Window
+# Toggle beetwen floating & tiled
+super + alt + f
+     bspc node -t "~"{floating,tiled}
+
 ctrl + alt + h
 	BspHideNode
 
@@ -159,7 +163,7 @@ super + {Left,Right}
 
 # focus or send to the given desktop
 super + {_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '^{1-9,10}' '--follow'
 
 # Send focused Node to workspace directionally
 super + alt + {Left,Right}
