@@ -79,6 +79,9 @@ case "$1" in
 --soundcontrol)
   pavucontrol
   ;;
+--powermanager)
+  xfce4-power-manager-settings
+  ;;
   # Eww Widgets
 --KeyHelp)
   eww -c "$WIDGET_DIR" open --toggle csheet

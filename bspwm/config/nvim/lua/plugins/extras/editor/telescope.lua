@@ -79,4 +79,16 @@ return {
       end,
     },
   },
+  {
+    "telescope.nvim",
+    keys = {
+      { "<C-n>", "<cmd>:Telescope file_browser<cr>", desc = "File Browser" },
+    },
+    dependencies = {
+      "nvim-telescope/telescope-file-browser.nvim",
+      config = function()
+        require("telescope").load_extension("file_browser")
+      end,
+    },
+  },
 }

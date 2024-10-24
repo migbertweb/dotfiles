@@ -2,17 +2,17 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
- phpactor = {
-        root_dir = require('lspconfig').util.root_pattern("composer.json", ".git"),
-        filetypes = { "php" },  -- Limitar solo a archivos PHP, sin incluir .blade.php
+      phpactor = {
+        root_dir = require("lspconfig").util.root_pattern("composer.json", ".git"),
+        filetypes = { "php" }, -- Limitar solo a archivos PHP, sin incluir .blade.php
         settings = {
           phpactor = {
-            filetypes = { "php" },  -- Aquí también puedes limitar los tipos de archivo
-            exclude = { "*.blade.php", "blade" },  -- Excluir archivos .blade.php
-          }
-        }
+            filetypes = { "php" }, -- Aquí también puedes limitar los tipos de archivo
+            exclude = { "*.blade.php", "blade" }, -- Excluir archivos .blade.php
+          },
+        },
       },
-tailwindcss = {
+      tailwindcss = {
         -- exclude a filetype from the default_config
         filetypes_exclude = { "markdown", "php" },
         -- add additional filetypes to the default_config
@@ -29,10 +29,7 @@ tailwindcss = {
             },
             workspace = {
               library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = false,
-                [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = false,
-                [vim.fn.stdpath("data") .. "/lazy/LazyVim/lua/lazyvim"] = false,
-                [vim.fn.stdpath("data") .. "/lazy"] = false,
+                vim.fn.expand("$VIMRUNTIME/lua"),
               },
               maxPreload = 100000,
               preloadFileSize = 10000,

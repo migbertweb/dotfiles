@@ -68,7 +68,7 @@ bindkey "^I" expand-or-complete-with-dots
 #  ├─┤│└─┐ │ │ │├┬┘└┬┘
 #  ┴ ┴┴└─┘ ┴ └─┘┴└─ ┴
 HISTFILE=~/.config/zsh/zhistory
-HISTSIZE=5000
+HISTSIZE=999
 SAVEHIST=5000
 HISTDUP=erase
 setopt appendhistory
@@ -124,27 +124,31 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^[[3~' delete-char
 
-#  ┌─┐┬ ┬┌─┐┌┐┌┌─┐┌─┐  ┌┬┐┌─┐┬─┐┌┬┐┬┌┐┌┌─┐┬  ┌─┐  ┌┬┐┬┌┬┐┬  ┌─┐
-#  │  ├─┤├─┤││││ ┬├┤    │ ├┤ ├┬┘│││││││├─┤│  └─┐   │ │ │ │  ├┤
-#  └─┘┴ ┴┴ ┴┘└┘└─┘└─┘   ┴ └─┘┴└─┴ ┴┴┘└┘┴ ┴┴─┘└─┘   ┴ ┴ ┴ ┴─┘└─┘
-function xterm_title_precmd () {
-	print -Pn -- '\e]2;%n@%m %~\a'
-	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
-}
-
-function xterm_title_preexec () {
-	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
-	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
-}
-
-if [[ "$TERM" == (kitty*|alacritty*|tmux*|screen*|xterm*) ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
-fi
 
 #  ┌─┐┬  ┬┌─┐┌─┐
 #  ├─┤│  │├─┤└─┐
 #  ┴ ┴┴─┘┴┴ ┴└─┘
+#####################################
+############ Tmux ###################
+# Iniciar o adjuntar a una sesión de tmux
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
+# Listar sesiones
+alias tls='tmux ls'
+# Desconectar de una sesión
+alias td='tmux detach'
+# Terminar una sesión
+alias tk='tmux kill-session -t'
+# Crear una nueva ventana en la sesión actual
+alias tnew='tmux new-window'
+# Cerrar un panel
+alias tkillp='tmux kill-pane'
+# Sincronizar paneles (para que todos reciban los mismos comandos)
+alias tsync-on='tmux set-window-option synchronize-panes on'
+alias tsync-off='tmux set-window-option synchronize-panes off'
+# Renombrar sesión
+alias tname='tmux rename-session -t'
+############ GIT ####################
 # Subir cambios a git
 gitpush() {
     echo "########## Añadiendo cambios a Stage ##########"
@@ -161,21 +165,21 @@ gitpush() {
     echo "Fin \n"
 }
 alias mirrors="sudo reflector --verbose --latest 5 --country 'United States' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
-#alias update="paru -Syu --nocombinedupgrade"
+
 alias update="paru -Syu --nocombinedupgrade"
+
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 alias music="ncmpcpp"
 
-alias cat="bat --theme=base16"
-#alias ls='eza --icons=always --color=always -a'
-alias ls="exa --long --color=auto --icons --all --git --no-permissions --no-user --grid --sort=type"
+## ---- Eza (better ls) -----
+alias ls="eza --long --color=auto --icons --all --git --no-time --no-filesize --no-permissions --no-user --grid --sort=type"
 alias ll='eza --icons=always --color=always -la'
 
 alias gitu=gitpush
 
-# alias bat='batcat'
 alias cl='clear'
+
 #####################################################
 # PACMAN
 alias instalar='sudo pacman -Sy'
@@ -206,3 +210,66 @@ alias pas="php artisan serve"
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
 # $HOME/.local/bin/colorscript -r
 
+#################################
+############# FZF ###############
+#################################
+
+source <(fzf --zsh)
+
+
+# --- setup fzf theme ---
+fg="#CBE0F0"
+bg="#011628"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
+cyan="#2CF9ED"
+
+
+# -- Use fd instead of fzf --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+###############
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ----- Bat (better cat) -----
+
+export BAT_THEME=tokyonight_night
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+
+alias cd="z"
