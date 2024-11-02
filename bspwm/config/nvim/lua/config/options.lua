@@ -12,10 +12,10 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 vim.o.relativenumber = false
 vim.o.mousemoveevent = true
 vim.o.updatetime = 200
-vim.o.redrawtime=10000
-vim.o.re=0
+vim.o.redrawtime = 10000
+vim.o.re = 0
 ------------------------------------------------------------------
-vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "fzf"
 ------------------------------------------------------------------
 -- añadiendo opciones para DBui
 vim.g.db_ui_use_nerd_fonts = 1
@@ -52,7 +52,7 @@ vim.g.db_ui_icons = {
 }
 ------------------------------------------------------------------
 -- vim.g.matchup_matchparen_offscreen = { method = 'popup' }
- vim.g.matchup_surround_enabled = 1 -- Habilitar envolvente
+vim.g.matchup_surround_enabled = 1 -- Habilitar envolvente
 
 -- Configuración para mostrar una línea visual
 -- vim.cmd [[

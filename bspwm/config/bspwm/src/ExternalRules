@@ -69,11 +69,11 @@ mpv)
   dimensions=$(calculate_dimensions 53 53)
   result "state=floating focus=on center=on rectangle=$dimensions"
   ;;
-Viewnior)
+Viewnior | Bitwarden | keepassxc | Keepassxc)
   result "state=floating focus=on center=on"
   ;;
-TelegramDesktop)
-  result "desktop=^4 follow=on"
+TelegramDesktop | thunderbird)
+  result "desktop=^5 follow=on"
   ;;
 retroarch)
   result "state=pseudo_tiled desktop=^6"
@@ -90,29 +90,23 @@ Thunar)
 Geany)
   result "desktop=^4 follow=on"
   ;;
-mousepad)
-  result "desktop=^4 follow=on"
-  ;;
 Mousepad)
   result "desktop=^4 follow=on"
   ;;
 kitty)
   result "desktop=^1 follow=on"
   ;;
-firefox | Navigator)
-  result "desktop=^3 follow=on"
-  ;;
-Google-chrome)
+firefox | Navigator | Google-chrome)
   result "desktop=^3 follow=on"
   ;;
 Transmission-gtk)
   result "desktop=^6 follow=on"
   ;;
-Spotify)
+Spotify | Deezer)
   result "state=floating desktop=^6 follow=on center=on"
   ;;
-Deezer)
-  result "desktop=^5 follow=on"
+Inkscape | Gimp)
+  result "desktop=^6 follow=on"
   ;;
 esac
 

@@ -89,7 +89,10 @@ pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable --no-d
 
 # App start
 # start bitwarden
-pidof -q bitwarden-desktop || { bitwarden-desktop & }
+# pidof -q bitwarden-desktop || { bitwarden-desktop & }
+
+# start keepassxc
+pidof -q keepassxc || { keepassxc & }
 
 # start nextcloud
 pidof -q nextcloud || { "/usr/bin/nextcloud" --background & }

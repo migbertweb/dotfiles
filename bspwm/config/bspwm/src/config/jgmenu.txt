@@ -36,6 +36,7 @@ Editor,OpenApps --editor,standard-notes
 Neovim,OpenApps --nvim,nvim
 Firefox,OpenApps --browser,firefox
 Retroarch,retroarch,retroarch
+Power Manager,xfce4-power-manager-settings,battery
 
 ^tag(wg)
 User Card,OpenApps --usercard,system-users

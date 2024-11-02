@@ -7,7 +7,7 @@ configuration {
 	application-fallback-icon: 	"Adwaita";
     show-icons:                 true;
 	drun-display-format:        "{name}";
-	disable-history:            false;
+	disable-history:            true;
 	sidebar-mode: 				false;
 	
 	hover-select:				true;
@@ -24,13 +24,13 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       650px;
+    width:                       550px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               18px;
+    border-radius:               6px;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -83,14 +83,14 @@ entry {
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Buscar";
+    placeholder:                 "Search";
     placeholder-color:           inherit;
 }
 
 listview {
     enabled:                     true;
-    columns:                     2;
-    lines:                       6;
+    columns:                     3;
+    lines:						 5;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
