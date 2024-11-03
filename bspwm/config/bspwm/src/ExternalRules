@@ -69,7 +69,7 @@ mpv)
   dimensions=$(calculate_dimensions 53 53)
   result "state=floating focus=on center=on rectangle=$dimensions"
   ;;
-Viewnior | Bitwarden | keepassxc | Keepassxc)
+Viewnior | Bitwarden | keepassxc | Keepassxc | wireguird | Wireguird)
   result "state=floating focus=on center=on"
   ;;
 TelegramDesktop | thunderbird)

@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-#  ███████╗███╗   ███╗██╗██╗     ██╗ █████╗     ██████╗ ██╗ ██████╗███████╗
-#  ██╔════╝████╗ ████║██║██║     ██║██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
-#  █████╗  ██╔████╔██║██║██║     ██║███████║    ██████╔╝██║██║     █████╗
-#  ██╔══╝  ██║╚██╔╝██║██║██║     ██║██╔══██║    ██╔══██╗██║██║     ██╔══╝
-#  ███████╗██║ ╚═╝ ██║██║███████╗██║██║  ██║    ██║  ██║██║╚██████╗███████╗
-#  ╚══════╝╚═╝     ╚═╝╚═╝╚══════╝╚═╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
-#  Author  :  z0mbi3
-#  Url     :  https://github.com/gh0stzk/dotfiles
+#
+# ██████╗ ██╗██████╗  ██████╗     ██████╗ ██╗ ██████╗███████╗
+# ██╔══██╗██║██╔══██╗██╔═══██╗    ██╔══██╗██║██╔════╝██╔════╝
+# ██████╔╝██║██████╔╝██║   ██║    ██████╔╝██║██║     █████╗
+# ██╔═══╝ ██║██╔══██╗██║   ██║    ██╔══██╗██║██║     ██╔══╝
+# ██║     ██║██║  ██║╚██████╔╝    ██║  ██║██║╚██████╗███████╗
+# ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝     ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#
+#  Author  :  migbertweb
+#  Url     :  https://github.com/migbertweb/dotfiles
 #  About   :  This file will configure and launch the rice.
 #
 
@@ -16,12 +18,12 @@
 # Current Rice
 read -r RICE <"$HOME"/.config/bspwm/.rice
 
-# Vars config for Emilia Rice
+# Vars config for Piro Rice
 # Bspwm border		# Normal border color	# Focused border color
-BORDER_WIDTH="0" NORMAL_BC="#414868" FOCUSED_BC="#bb9af7"
+BORDER_WIDTH="1" NORMAL_BC="#414868" FOCUSED_BC="#a9b1d6"
 
 # Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
-P_FADE="true" P_SHADOWS="false" P_CORNER_R="6" SHADOW_C="#000000" ANIMATIONS="true"
+P_FADE="true" P_SHADOWS="true" P_CORNER_R="4" SHADOW_C="#000000" ANIMATIONS="true"
 
 # (Tokyo Night) colorscheme
 bg="#1a1b26" fg="#c0caf5"
@@ -38,8 +40,8 @@ gtk_theme="TokyoNight-zk" gtk_icons="TokyoNight-SE" gtk_cursor="Qogirr-Dark" gea
 # Set bspwm configuration
 set_bspwm_config() {
   bspc config border_width ${BORDER_WIDTH}
-  bspc config top_padding 40
-  bspc config bottom_padding 1
+  bspc config top_padding 36
+  bspc config bottom_padding 2
   bspc config left_padding 1
   bspc config right_padding 1
   bspc config normal_border_color "${NORMAL_BC}"
@@ -160,7 +162,7 @@ set_picom_config() {
     -e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/"
 
   sed -i "$picom_rules_file" \
-    -e "101s/	opacity = .*/	opacity = 1;/"
+    -e "101s/	opacity = .*/	opacity = 0.95;/"
 
   if [[ "$ANIMATIONS" = "true" ]]; then
     sed -i "$picom_rules_file" \
@@ -236,7 +238,7 @@ set_launchers() {
 
   # Rofi launchers
   cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
-// Rofi colors for Emilia
+// Rofi colors for Piro
 
 * {
     font: "JetBrainsMono NF Bold 9";
