@@ -21,7 +21,7 @@ read -r RICE <"$HOME"/.config/bspwm/.rice
 
 # Vars config for Marisol Rice
 # Bspwm border		# Normal border color	# Focused border color
-BORDER_WIDTH="3" NORMAL_BC="#ff79c6" FOCUSED_BC="#bd93f9"
+BORDER_WIDTH="2" NORMAL_BC="#ff79c6" FOCUSED_BC="#bd93f9"
 
 # Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
 P_FADE="true" P_SHADOWS="true" P_CORNER_R="4" SHADOW_C="#000000" ANIMATIONS="true"
@@ -41,7 +41,7 @@ gtk_theme="Dracula-zk" gtk_icons="Dracula" gtk_cursor="Qogirr-Dark" geany_theme=
 # Set bspwm configuration
 set_bspwm_config() {
   bspc config border_width ${BORDER_WIDTH}
-  bspc config top_padding 34
+  bspc config top_padding 31
   bspc config bottom_padding 1
   bspc config left_padding 1
   bspc config right_padding 1

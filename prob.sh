@@ -16,33 +16,25 @@ logo() {
     Mis Dotfiles\n\n"
   printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
-########## ---------- Enabling MPD service ---------- ##########
+customdeps=(gh0stzk-gtk-themes gh0stzk-cursor-qogirr \
+			gh0stzk-icons-beautyline gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha gh0stzk-icons-dracula gh0stzk-icons-glassy \
+			gh0stzk-icons-gruvbox-plus-dark gh0stzk-icons-hack gh0stzk-icons-luv gh0stzk-icons-sweet-rainbow gh0stzk-icons-tokyo-night \
+			gh0stzk-icons-vimix-white gh0stzk-icons-zafiro gh0stzk-icons-zafiro-purple)
 
-logo "Enabling mpd service"
-
-# Verifica si el servicio mpd está habilitado a nivel global (sistema)
-if systemctl is-enabled --quiet mpd.service; then
-  printf "\n%s%sDisabling and stopping the global mpd service%s\n" "${BLD}" "${CBL}" "${CNC}"
-  sudo systemctl stop mpd.service
-  sudo systemctl disable mpd.service
-fi
-
-printf "\n%s%sEnabling and starting the user-level mpd service%s\n" "${BLD}" "${CYE}" "${CNC}"
-systemctl --user enable --now mpd.service
-
-printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 2
-
-########## --------- Changing shell to zsh ---------- ##########
-
-logo "Changing default shell to zsh"
-
-if [[ $SHELL != "/usr/bin/zsh" ]]; then
-  printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
-  # Cambia la shell a zsh
-  chsh -s /usr/bin/zsh
-  printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
-fi
-zsh
+printf "%s%sChecking for required custom packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
+for cpaquete in "${customdeps[@]}"; do
+    if ! is_installed "$cpaquete"; then
+        if sudo pacman -S "$cpaquete" --noconfirm >/dev/null 2>> RiceError.log; then
+            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CBL}" "${CNC}"
+            sleep 1
+        else
+            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+            sleep 1
+        fi
+    else
+        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$cpaquete" "${CGR}" "${CNC}"
+        sleep 1
+    fi
+done
+sleep 5
+clear

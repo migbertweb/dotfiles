@@ -47,7 +47,7 @@ FloaTerm)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 Updating)
-  dimensions=$(calculate_dimensions 35 47)
+  dimensions=$(calculate_dimensions 65 55)
   result "state=floating sticky=on center=on rectangle=$dimensions"
   ;;
 RangerTerm)
@@ -59,14 +59,14 @@ MusicTerm)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 FetchTerm)
-  dimensions=$(calculate_dimensions 21 58)
+  dimensions=$(calculate_dimensions 31 58)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 RiceEditor)
   result "state=floating focus=on center=on"
   ;;
 mpv)
-  dimensions=$(calculate_dimensions 53 53)
+  dimensions=$(calculate_dimensions 73 73)
   result "state=floating focus=on center=on rectangle=$dimensions"
   ;;
 Viewnior | Bitwarden | keepassxc | Keepassxc | wireguird | Wireguird)
@@ -99,7 +99,7 @@ kitty)
 firefox | Navigator | Google-chrome)
   result "desktop=^3 follow=on"
   ;;
-Transmission-gtk)
+Transmission-gtk | Evince)
   result "desktop=^6 follow=on"
   ;;
 Spotify | Deezer)

@@ -7,7 +7,7 @@
     background-alt: #1a1b26E0;
     foreground: #c0caf5;
     selected: #7aa2f7;
-    active: #9ece6a;
+    active: #8fcc4c;
     urgent: #f7768e;
 
     img-background: url("~/.config/bspwm/rices/piro/rofi.webp", width);

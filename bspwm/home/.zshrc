@@ -117,7 +117,6 @@ command_not_found_handler() {
 #  ┌─┐┬  ┬ ┬┌─┐┬┌┐┌┌─┐
 #  ├─┘│  │ ││ ┬││││└─┐
 #  ┴  ┴─┘└─┘└─┘┴┘└┘└─┘
-#source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh

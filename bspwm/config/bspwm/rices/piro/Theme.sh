@@ -23,24 +23,25 @@ read -r RICE <"$HOME"/.config/bspwm/.rice
 BORDER_WIDTH="1" NORMAL_BC="#414868" FOCUSED_BC="#a9b1d6"
 
 # Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
-P_FADE="true" P_SHADOWS="true" P_CORNER_R="4" SHADOW_C="#000000" ANIMATIONS="true"
+P_FADE="true" P_SHADOWS="true" P_CORNER_R="8" SHADOW_C="#000000" ANIMATIONS="true"
 
 # (Tokyo Night) colorscheme
 bg="#1a1b26" fg="#c0caf5"
 
-black="#15161e" red="#f7768e" green="#9ece6a" yellow="#e0af68"
-blackb="#414868" redb="#f7768e" greenb="#9ece6a" yellowb="#e0af68"
+black="#15161e" red="#f7768e" green="#8fcc4c" yellow="#e0af68"
+blackb="#414868" redb="#f7768e" greenb="#81cf2e" yellowb="#e0af68"
 
-blue="#7aa2f7" magenta="#bb9af7" cyan="#7dcfff" white="#a9b1d6"
-blueb="#7aa2f7" magentab="#bb9af7" cyanb="#7dcfff" whiteb="#c0caf5"
+blue="#7aa2f7" magenta="#bb9af7" cyan="#8be9fd" white="#f4f9fe"
+blueb="#7aa2f7" magentab="#bb9af7" cyanb="#a4ffff" whiteb="#f7f8f9"
 
 # Gtk theme vars
-gtk_theme="TokyoNight-zk" gtk_icons="TokyoNight-SE" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"
+#gtk_theme="TokyoNight-zk" gtk_icons="Luv-Folders" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"
+gtk_theme="Decayce-zk" gtk_icons="Luv-Folders" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"
 
 # Set bspwm configuration
 set_bspwm_config() {
   bspc config border_width ${BORDER_WIDTH}
-  bspc config top_padding 36
+  bspc config top_padding 34
   bspc config bottom_padding 2
   bspc config left_padding 1
   bspc config right_padding 1
