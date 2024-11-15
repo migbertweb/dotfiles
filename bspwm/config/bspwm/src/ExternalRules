@@ -69,7 +69,7 @@ mpv)
   dimensions=$(calculate_dimensions 73 73)
   result "state=floating focus=on center=on rectangle=$dimensions"
   ;;
-Viewnior | Bitwarden | keepassxc | Keepassxc | wireguird | Wireguird)
+Viewnior | Bitwarden | keepassxc | Keepassxc | ristretto | Ristretto | wireguird | Wireguird)
   result "state=floating focus=on center=on"
   ;;
 TelegramDesktop | thunderbird)
@@ -105,7 +105,7 @@ Transmission-gtk | Evince)
 Spotify | Deezer)
   result "state=floating desktop=^6 follow=on center=on"
   ;;
-Inkscape | Gimp)
+Inkscape | Gimp*)
   result "desktop=^6 follow=on"
   ;;
 esac

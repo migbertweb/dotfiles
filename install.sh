@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Definir variables de formato
+BLD="\033[1m"
+CYE="\033[33m"
+CNC="\033[0m"
+
 logo() {
 
   local text="${1:?}"
@@ -82,9 +87,8 @@ dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh fzf gvf
   papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject ranger tldr zoxide fd
   redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd
   ttf-joypixels ttf-terminus-nerd ttf-ubuntu-mono-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs
-  xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot
-  xorg-xwininfo zsh google-chrome gimp inkscape thunderbird docker docker-compose php stow ripgrep
-  fastfetch udiskie keepassxc nextcloud-client ffmpegthumbnailer plank vlc unrar p7zip lrzip sed curl lazygit dex)
+  xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot 
+  xorg-xwininfo zsh stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip lrzip sed curl lazygit dex)
 
 is_installed() {
   pacman -Q "$1" &>/dev/null
@@ -108,7 +112,7 @@ done
 sleep 5
 clear
 
-########## ---------- Add my repo to pacman.conf ---------- ##########
+########## ---------- Add repo gh0stzk pacman.conf ---------- ##########
 
 logo "Añadiendo el repositorio de gh0stzk"
 
@@ -252,27 +256,6 @@ echo "Proceso completado. Los archivos han sido linkeados y el backup está en $
 sleep 2
 clear
 
-##################### configurar zsh ############################
-logo "Configurar ZSH"
-# crear carpeta .zsh y clonar los plugins y powerlevel10k
-echo 'Configurando ZSH'
-mkdir -p ~/.zsh
-echo 'clonando zsh-autosuggestions'
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-sleep 1
-echo 'clonando zsh-history-substring-search'
-git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-history-substring-search
-sleep 1
-echo 'clonando zsh-syntax-highlighting'
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-sleep 1
-echo "Instalando oh-my-posh"
-paru -S oh-my-posh --skipreview --noconfirm
-sleep 2
-echo 'zsh configurado'
-sleep 2
-clear
-
 ########## ---------- Installing others ---------- ##########
 
 logo "installing Eww, tdrop & xqp"
@@ -350,28 +333,3 @@ systemctl --user enable --now mpd.service
 printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
-
-################################################################
-logo "configurar Docker:"
-sleep 1
-echo "habilitando servicio Docker"
-sudo systemctl enable docker.service && sudo systemctl start docker.service
------
-sleep 2
-echo "añadir mi usuario a Docker Group"
-sudo usermod -aG docker migbert && newgrp docker
-sleep 2
-clear
-########## --------- Changing shell to zsh ---------- ##########
-
-logo "Changing default shell to zsh"
-
-if [[ $SHELL != "/usr/bin/zsh" ]]; then
-  printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
-  # Cambia la shell a zsh
-  chsh -s /usr/bin/zsh
-  printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
-fi
-zsh

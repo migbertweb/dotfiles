@@ -1,6 +1,6 @@
-Net/ThemeName "Decayce-zk"
-Net/IconThemeName "Luv-Folders"
-Gtk/CursorThemeName "Qogirr-Dark"
+Net/ThemeName "Yaru-Teal"
+Net/IconThemeName "WhiteSur-dark"
+Gtk/CursorThemeName "Yaru-Teal"
 Gtk/DecorationLayout ":"
 Xft/Hinting 1
 Xft/HintStyle "hintslight"

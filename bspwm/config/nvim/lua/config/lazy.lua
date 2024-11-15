@@ -51,7 +51,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.outline" },
     { import = "lazyvim.plugins.extras.editor.fzf" },
     -------------------
-    { import = "lazyvim.plugins.extras.coding.codeium" },
+    { import = "lazyvim.plugins.extras.ai.codeium" },
+    -------------------
     { import = "lazyvim.plugins.extras.coding.yanky" },
     -------------------
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
