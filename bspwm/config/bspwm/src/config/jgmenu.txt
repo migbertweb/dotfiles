@@ -36,7 +36,8 @@ Editor,OpenApps --editor,standard-notes
 Neovim,OpenApps --nvim,nvim
 Firefox,OpenApps --browser,firefox
 Retroarch,retroarch,retroarch
-Power Manager,xfce4-power-manager-settings,battery
+Power Manager,xfce4-power-manager-settings,battery-full-charging
+Control de Brillo,OpenApps --kbd_control,keyboard-brightness
 
 ^tag(wg)
 User Card,OpenApps --usercard,system-users

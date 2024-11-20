@@ -36,7 +36,7 @@ blueb="#7aa2f7" magentab="#bb9af7" cyanb="#a4ffff" whiteb="#f7f8f9"
 
 # Gtk theme vars
 #gtk_theme="TokyoNight-zk" gtk_icons="Luv-Folders" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"
-gtk_theme="Yaru-Teal" gtk_icons="WhiteSur-dark" gtk_cursor="Yaru-Teal" geany_theme="z0mbi3-TokyoNight"
+gtk_theme="Orchis-Teal-Dark-Compact" gtk_icons="Tela-circle-dracula-dark" gtk_cursor="Yaru-Teal" geany_theme="z0mbi3-TokyoNight"
 
 # Set bspwm configuration
 set_bspwm_config() {

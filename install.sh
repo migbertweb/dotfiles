@@ -84,10 +84,10 @@ logo "Instalando paquetes necesarios.."
 
 dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh fzf gvfs-mtp firefox geany git kitty imagemagick jq
   jgmenu libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib bluez bluez-utils polkit-gnome gnome-keyring
-  papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject ranger tldr zoxide fd
-  redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd
-  ttf-joypixels ttf-terminus-nerd ttf-ubuntu-mono-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs
-  xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot 
+  papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject ranger tldr zoxide fd xclip lxappearance
+  redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd xdg-desktop-portal
+  xdg-desktop-portal-gtk ttf-joypixels ttf-terminus-nerd ttf-ubuntu-mono-nerd ueberzug webp-pixbuf-loader xdg-user-dirs
+  xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot pokemon-colorscripts-git
   xorg-xwininfo zsh stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip lrzip sed curl lazygit dex)
 
 is_installed() {

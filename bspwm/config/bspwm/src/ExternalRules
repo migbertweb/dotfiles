@@ -50,8 +50,12 @@ Updating)
   dimensions=$(calculate_dimensions 65 55)
   result "state=floating sticky=on center=on rectangle=$dimensions"
   ;;
+Kbd_control)
+  dimensions=$(calculate_dimensions 48 65)
+  result "state=floating sticky=on center=on rectangle=$dimensions"
+  ;;
 RangerTerm)
-  dimensions=$(calculate_dimensions 51 34)
+  dimensions=$(calculate_dimensions 91 84)
   result "state=floating center=on rectangle=$dimensions"
   ;;
 MusicTerm)
@@ -99,13 +103,13 @@ kitty)
 firefox | Navigator | Google-chrome)
   result "desktop=^3 follow=on"
   ;;
-Transmission-gtk | Evince)
+Transmission-gtk | Evince | Atril)
   result "desktop=^6 follow=on"
   ;;
 Spotify | Deezer)
   result "state=floating desktop=^6 follow=on center=on"
   ;;
-Inkscape | Gimp*)
+Inkscape | Gimp* | libreoffice*)
   result "desktop=^6 follow=on"
   ;;
 esac

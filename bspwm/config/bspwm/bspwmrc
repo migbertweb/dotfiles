@@ -103,4 +103,8 @@ pidof -q conky || { ~/.config/conky/conkyx-start.sh & }
 # Start udiskie
 pidof -q udiskie || { udiskie -t & }
 
+# Start zdg-desktop-portal
+pidof -q xdg-desktop-portal-gtk || { xdg-desktop-portal-gtk & }
+pidof -q xdg-desktop-portal || { xdg-desktop-portal & }
+
 # End one time code

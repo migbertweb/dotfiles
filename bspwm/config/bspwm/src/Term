@@ -91,6 +91,9 @@ case $MY_TERM in
             "--fetch")
                 kitty --class=FetchTerm -e ~/.local/bin/sysfetch
                 ;;
+"--kbd_control")
+                kitty --class=Kbd_control -e ~/.config/bspwm/src/kbd_backlight.sh
+                ;;
         esac
         ;;
 esac

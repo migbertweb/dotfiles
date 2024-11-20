@@ -51,6 +51,9 @@ case "$1" in
 --ranger)
   Term --ranger
   ;;
+--kbd_control)
+  Term --kbd_control
+  ;;
 --nvim)
   Term --nvim
   ;;

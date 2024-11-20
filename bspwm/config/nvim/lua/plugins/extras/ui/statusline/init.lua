@@ -35,8 +35,8 @@ return {
           },
           globalstatus = true,
           disabled_filetypes = {
-            statusline = { "dashboard", "alpha" },
-            winbar = { "dashboard", "alpha" },
+            statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
+            winbar = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
           },
         },
         sections = {
