@@ -31,8 +31,8 @@ bg="#1a1b26" fg="#c0caf5"
 black="#15161e" red="#f7768e" green="#8fcc4c" yellow="#e0af68"
 blackb="#414868" redb="#f7768e" greenb="#81cf2e" yellowb="#e0af68"
 
-blue="#7aa2f7" magenta="#bb9af7" cyan="#8be9fd" white="#f4f9fe"
-blueb="#7aa2f7" magentab="#bb9af7" cyanb="#a4ffff" whiteb="#f7f8f9"
+blue="#61A3B1" magenta="#bb9af7" cyan="#93E5E5" white="#F9FCFE"
+blueb="#6FBACA" magentab="#bb9af7" cyanb="#a4ffff" whiteb="#f7f8f9"
 
 # Gtk theme vars
 #gtk_theme="TokyoNight-zk" gtk_icons="Luv-Folders" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"

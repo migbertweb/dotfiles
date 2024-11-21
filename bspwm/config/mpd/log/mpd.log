@@ -292,3 +292,148 @@ Nov 06 07:50 : update: added /a-ha - Take On Me (Official Video) Remastered in 4
 Nov 06 08:22 : player: played "Romeo Santos - Utopia [2019-Album]/08 Amor Enterrado.mp3"
 Nov 06 08:23 : player: played "Romeo Santos - Utopia [2019-Album]/08 Amor Enterrado.mp3"
 Nov 09 14:46 : player: played "Romeo Santos - Utopia [2019-Album]/13 Inmortal.mp3"
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/09 Me Quedo.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/08 Amor Enterrado.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/07 Ileso.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/06 El Beso Que No Le Di.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/05 Millonario.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/04 La Demanda.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/03 Payasos.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/02 Canalla.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/01 Intro_ Soy Dominicano.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/13 Inmortal.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/12 Bellas (feat. Romeo Santos).mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/11 Años Luz.mp3
+Nov 20 16:02 : update: removing Romeo Santos - Utopia [2019-Album]/10 Los Últimos.mp3
+Nov 20 16:02 : inotify: music directory was removed - cannot continue to watch it
+Nov 20 17:02 : exception: inotify_add_watch() has failed: No such file or directory
+Nov 20 20:10 : exception: Failed to access /home/migbert/Música: No such file or directory
+Nov 20 20:10 : exception: Failed to access /home/migbert/Música: No such file or directory
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:10 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:10 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:10 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:10 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:10 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:10 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:10 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:11 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3; Failed to open '/home/migbert/Música/The_Mind_Orchestra_-_Enchanters_Nightshade.mp3': No such file or directory
+Nov 20 20:11 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:11 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:11 : exception: Failed to access /home/migbert/Música: No such file or directory
+Nov 20 20:12 : exception: Failed to access /home/migbert/Música: No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3; Failed to open '/home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3': No such file or directory
+Nov 20 20:12 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3; Failed to open '/home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3': No such file or directory
+Nov 20 20:12 : player: played "Equilibrium_-_Ron_Gelinas.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3; Failed to open '/home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3': No such file or directory
+Nov 20 20:12 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3; Failed to open '/home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3': No such file or directory
+Nov 20 20:12 : player: played "Equilibrium_-_Ron_Gelinas.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3; Failed to open '/home/migbert/Música/Dile_Cuanto_la_Quiero_-_igmar.mp3': No such file or directory
+Nov 20 20:12 : player: played "Dile_Cuanto_la_Quiero_-_igmar.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3; Failed to open '/home/migbert/Música/LEEONA_-_LEEONA_-_Do_I.mp3': No such file or directory
+Nov 20 20:12 : player: played "LEEONA_-_LEEONA_-_Do_I.mp3"
+Nov 20 20:12 : exception: Failed to decode /home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3; Failed to open '/home/migbert/Música/Equilibrium_-_Ron_Gelinas.mp3': No such file or directory
+Nov 20 20:12 : player: played "Equilibrium_-_Ron_Gelinas.mp3"
+Nov 20 20:12 : exception: Failed to access /home/migbert/Música: No such file or directory
+Nov 20 20:15 : exception: Failed to access /home/migbert/Música: No such file or directory
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/02 Canalla.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/01 Intro_ Soy Dominicano.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/06 El Beso Que No Le Di.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/11 Años Luz.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/05 Millonario.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/10 Los Últimos.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/03 Payasos.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/07 Ileso.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/09 Me Quedo.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/12 Bellas (feat. Romeo Santos).mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/13 Inmortal.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/08 Amor Enterrado.mp3
+Nov 20 20:21 : update: added Romeo Santos - Utopia [2019-Album]/04 La Demanda.mp3
+Nov 20 20:21 : player: played "The_Mind_Orchestra_-_Enchanters_Nightshade.mp3"
+Nov 20 20:22 : player: played "Romeo Santos - Utopia [2019-Album]/02 Canalla.mp3"

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Definir variables de formato
-BLD="\033[1m"
-CYE="\033[33m"
-CNC="\033[0m"
-
 logo() {
 
   local text="${1:?}"
@@ -61,7 +56,8 @@ clear
 
 
 # Lista de dependencias
-dependencias=(btop google-chrome gimp inkscape thunderbird docker docker-compose php keepassxc nextcloud-client plank vlc syncthing)
+dependencias=(btop google-chrome gimp inkscape thunderbird docker docker-compose php keepassxc nextcloud-client
+ plank vlc syncthing obs-studio telegram-desktop signal-desktop)
 
 # Función para verificar si un paquete ya está instalado
 is_installed() {
@@ -142,7 +138,7 @@ logo "configurar Docker:"
 sleep 1
 echo "habilitando servicio Docker"
 sudo systemctl enable docker.service && sudo systemctl start docker.service
------
+##-----
 sleep 2
 echo "añadir mi usuario a Docker Group"
 sudo usermod -aG docker migbert && newgrp docker

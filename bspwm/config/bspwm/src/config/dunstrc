@@ -36,7 +36,7 @@ font = JetBrainsMono NF Medium 9
 line_height = 0
 
 markup = full
-format = "<span size='xx-large' font_desc='Cantarell 9' weight='bold' foreground='#7aa2f7'>%s</span>\n%b"
+format = "<span size='xx-large' font_desc='Cantarell 9' weight='bold' foreground='#61A3B1'>%s</span>\n%b"
 alignment = center
 vertical_alignment = center
 
@@ -89,7 +89,7 @@ foreground = "#8fcc4c"
 [urgency_normal]
 timeout = 5
 background = "#1a1b26"
-foreground = "#f4f9fe"
+foreground = "#F9FCFE"
 
 [urgency_critical]
 timeout = 0
