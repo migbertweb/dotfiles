@@ -57,7 +57,7 @@ clear
 
 # Lista de dependencias
 dependencias=(btop google-chrome gimp inkscape thunderbird docker docker-compose php keepassxc nextcloud-client
- plank vlc syncthing obs-studio telegram-desktop signal-desktop)
+ plank vlc syncthing obs-studio telegram-desktop signal-desktop openshot)
 
 # Función para verificar si un paquete ya está instalado
 is_installed() {
