@@ -109,7 +109,7 @@ Transmission-gtk | Evince | Atril)
 Spotify | Deezer)
   result "state=floating desktop=^6 follow=on center=on"
   ;;
-Inkscape | Gimp* | libreoffice* | obs | steam)
+Inkscape | Gimp* | libreoffice* | obs | steam | Shotcut | shotcut)
   result "desktop=^6 follow=on"
   ;;
 esac
