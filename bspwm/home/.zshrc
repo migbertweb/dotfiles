@@ -168,24 +168,25 @@ gitpush() {
 }
 alias mirrors="sudo reflector --verbose --latest 5 --country 'United States' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 
-alias update="paru -Syu --nocombinedupgrade"
 
-alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-
-alias music="ncmpcpp"
 
 ## ---- Eza (better ls) -----
 alias ls="eza --long --color=auto --icons --all --git --no-time --no-filesize --no-permissions --no-user --grid --sort=type"
 alias ll='eza --icons=always --color=always -la'
 
+## ---- GIT -----
 alias gitu=gitpush
+alias gst='git status -s -b && git log --oneline --decorate -n 5'
 
 alias cl='clear'
+alias music="ncmpcpp"
+alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 #####################################################
 # PACMAN
+alias update="paru -Syu --skipreview --nocombinedupgrade"
 alias instalar='sudo pacman -Sy'
-alias quitar='sudo pacman -Rs'
+alias remover='sudo pacman -Rs'
 alias quitartodo='sudo pacman -Rns'
 # Actualizar sistema actualizando la base de datos de paquetes previamente (Uso recomendado).
 alias upgrade='sudo pacman -Syyu --noconfirm'
@@ -194,7 +195,7 @@ alias upgrade='sudo pacman -Syyu --noconfirm'
 alias phuerfanos='sudo pacman -Rs $(pacman -Qtdq)'  # Elimina paquetes huérfanos.
 # Elimina de la cache todos los paquetes menos los actualmente instalados. (Impide un Rollback).
 # Permite también quitar repositorios no utilizados.
-alias pclean='sudo pacman -Sc'
+alias limpiar-pacman='sudo pacman -Sc'
 alias plimp='sudo pacman -Scc'  # Solo en casos de necesidad (Ej. Disco duro lleno).
 # Optimizar base de datos de pacman (fragmentación).
 # pacman-optimize
