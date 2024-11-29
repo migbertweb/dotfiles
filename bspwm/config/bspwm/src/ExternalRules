@@ -54,6 +54,10 @@ Kbd_control)
   dimensions=$(calculate_dimensions 48 65)
   result "state=floating sticky=on center=on rectangle=$dimensions"
   ;;
+clima)
+  dimensions=$(calculate_dimensions 95 90)
+  result "state=floating sticky=on center=on rectangle=$dimensions"
+  ;;
 RangerTerm)
   dimensions=$(calculate_dimensions 91 84)
   result "state=floating center=on rectangle=$dimensions"

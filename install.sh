@@ -82,13 +82,13 @@ clear
 
 logo "Instalando paquetes necesarios.."
 
-dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh fzf gvfs-mtp firefox geany git kitty imagemagick jq
+dependencias=(alacritty base-devel bat brightnessctl bspwm dunst feh fzf gvfs-mtp firefox geany git kitty imagemagick
   jgmenu libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib bluez bluez-utils polkit-gnome gnome-keyring
-  papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject ranger tldr zoxide fd xclip lxappearance
-  redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd xdg-desktop-portal
+  papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject ranger tldr zoxide fd xclip lxappearance jq
+  redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd xdg-desktop-portal ffmpeg
   xdg-desktop-portal-gtk ttf-joypixels ttf-terminus-nerd ttf-ubuntu-mono-nerd ueberzug webp-pixbuf-loader xdg-user-dirs
   xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot pokemon-colorscripts-git
-  xorg-xwininfo zsh stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip lrzip sed curl lazygit dex)
+  xorg-xwininfo zsh stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip lrzip sed curl lazygit dex eza)
 
 is_installed() {
   pacman -Q "$1" &>/dev/null

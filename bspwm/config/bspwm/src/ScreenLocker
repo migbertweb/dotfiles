@@ -14,12 +14,12 @@
 TEMP_IMAGE="/tmp/i3lock.jpg"
 
 # Colors
-bg=282a36
-fg=f8f8f2
-ring=bd93f9
-wrong=ff5555
-date=f8f8f2
-verify=50fa7b
+bg=1a1b26
+fg=c0caf5
+ring=15161e
+wrong=f7768e
+date=c0caf5
+verify=8fcc4c
 
 default_lockscreen() {
 
@@ -31,7 +31,7 @@ default_lockscreen() {
     --insidewrong-color=$wrong --ringwrong-color=$wrong --line-uses-inside \
     --keyhl-color=$verify --separator-color=$verify --bshl-color=$verify \
     --time-str="%I:%M" --time-size=140 --date-str="%a, %d %b" \
-    --date-size=45 --verif-text="Verifying Password..." --wrong-text="Wrong Password!" \
+    --date-size=35 --verif-text="Verifying Password..." --wrong-text="Wrong Password!" \
     --noinput-text="" --greeter-text="Type the password to Unlock" --ind-pos="300:610" \
     --time-font="JetBrainsMono NF:style=Bold" --date-font="JetBrainsMono NF" --verif-font="JetBrainsMono NF" \
     --greeter-font="JetBrainsMono NF" --wrong-font="JetBrainsMono NF" --verif-size=23 \
@@ -65,7 +65,7 @@ rice_lockscreen() {
     --insidewrong-color=$wrong --ringwrong-color=$wrong --line-uses-inside \
     --keyhl-color=$verify --separator-color=$verify --bshl-color=$verify \
     --time-str="%I:%M" --time-size=140 --date-str="%a, %d %b" \
-    --date-size=45 --verif-text="Verifying Password..." --wrong-text="Wrong Password!" \
+    --date-size=35 --verif-text="Verifying Password..." --wrong-text="Wrong Password!" \
     --noinput-text="" --greeter-text="Type the password to Unlock" --ind-pos="300:610" \
     --time-font="JetBrainsMono NF:style=Bold" --date-font="JetBrainsMono NF" --verif-font="JetBrainsMono NF" \
     --greeter-font="JetBrainsMono NF" --wrong-font="JetBrainsMono NF" --verif-size=23 \

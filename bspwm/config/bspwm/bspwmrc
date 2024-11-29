@@ -85,11 +85,9 @@ pidof -q greenclip || { greenclip daemon & }
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
 
 # Launch power manager
-pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable --no-daemon & }
+#pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable --no-daemon & }
 
 # App start
-# start bitwarden
-# pidof -q bitwarden-desktop || { bitwarden-desktop & }
 
 # start keepassxc
 pidof -q keepassxc || { keepassxc & }
@@ -103,8 +101,14 @@ pidof -q conky || { ~/.config/conky/conkyx-start.sh & }
 # Start udiskie
 pidof -q udiskie || { udiskie -t & }
 
+# Start udiskie
+pidof -q telegram-desktop || { telegram-desktop -startintray & }
+
 # Start zdg-desktop-portal
 pidof -q xdg-desktop-portal-gtk || { xdg-desktop-portal-gtk & }
 pidof -q xdg-desktop-portal || { xdg-desktop-portal & }
+
+~/.config/bspwm/src/adjust_brightness.sh >>~/.config/bspwm/src/adjust_brightness.log 2>&1 &
+disown
 
 # End one time code

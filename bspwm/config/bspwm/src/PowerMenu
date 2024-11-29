@@ -25,7 +25,7 @@ case $chosen in
   systemctl reboot
   ;;
 " Bloquear")
-  ScreenLocker
+  ScreenLocker --rice
   ;;
 " Suspender")
   mpc -q pause

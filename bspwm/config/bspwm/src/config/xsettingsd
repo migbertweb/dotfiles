@@ -1,6 +1,6 @@
 Net/ThemeName "Orchis-Teal-Dark-Compact"
 Net/IconThemeName "Tela-circle-dracula-dark"
-Gtk/CursorThemeName "Yaru-Teal"
+Gtk/CursorThemeName "Qogirr-Dark"
 Gtk/DecorationLayout ":"
 Xft/Hinting 1
 Xft/HintStyle "hintslight"

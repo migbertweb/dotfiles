@@ -56,8 +56,8 @@ clear
 
 
 # Lista de dependencias
-dependencias=(btop google-chrome gimp inkscape thunderbird docker docker-compose php keepassxc nextcloud-client
- plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut)
+dependencias=(btop google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php
+ keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut)
 
 # Función para verificar si un paquete ya está instalado
 is_installed() {
@@ -154,6 +154,21 @@ printf "\n%s%sHabilitando e iniciando el servicio syncthing a nivel de usuario%s
 
 # Habilitar e iniciar el servicio
 systemctl --user enable --now syncthing.service
+
+# Confirmación de la acción realizada
+printf "%s%s¡Listo!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+
+# Pausar durante 2 segundos y limpiar la pantalla
+sleep 2
+clear
+
+########## ---------- Enabling auto-cpufreq y tlp service ---------- ##########
+
+logo "Habilitando los servicios auto-cpufreq y tlp"
+
+# Habilitar e iniciar el servicio
+sudo systemctl enable --now auto-cpufreq.service
+sudo systemctl enable --now tlp.service
 
 # Confirmación de la acción realizada
 printf "%s%s¡Listo!%s\n\n" "${BLD}" "${CGR}" "${CNC}"

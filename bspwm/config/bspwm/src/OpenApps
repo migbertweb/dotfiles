@@ -54,6 +54,9 @@ case "$1" in
 --kbd_control)
   Term --kbd_control
   ;;
+--clima)
+  Term --clima
+  ;;
 --nvim)
   Term --nvim
   ;;
