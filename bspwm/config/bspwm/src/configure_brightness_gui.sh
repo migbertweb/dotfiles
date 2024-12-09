@@ -64,8 +64,10 @@ CRITICAL_BATTERY_THRESHOLD=$(get_input "Nivel de batería crítica (%)" "20")
 
 echo
 echo -e "${CYAN}Tiempo para suspender el sistema (en segundos):${RESET}"
-SUSPEND_TIME_SECONDS=$(get_input "Tiempo para suspender" "600")
+SUSPEND_TIME_SECONDS=$(get_input "Tiempo para suspender" "900")
 SUSPEND_TIME=$(convert_to_milliseconds "$SUSPEND_TIME_SECONDS")
+SUSPEND_TIME_BAT_SECONDS=$(get_input "Tiempo para suspender con bateria" "420")
+SUSPEND_TIME_BAT=$(convert_to_milliseconds "$SUSPEND_TIME_BAT_SECONDS")
 
 # Guardar configuración
 echo
@@ -83,6 +85,7 @@ BATTERY_IDLE_TIME=$BATTERY_IDLE_TIME
 LOW_BATTERY_THRESHOLD=$LOW_BATTERY_THRESHOLD
 CRITICAL_BATTERY_THRESHOLD=$CRITICAL_BATTERY_THRESHOLD
 SUSPEND_TIME=$SUSPEND_TIME
+SUSPEND_TIME_BAT=$SUSPEND_TIME_BAT
 EOL
 
 # Resumen
@@ -106,6 +109,7 @@ echo -e "  - Batería crítica: ${CYAN}${CRITICAL_BATTERY_THRESHOLD}%${RESET}"
 
 echo -e "${YELLOW}Suspensión automática:${RESET}"
 echo -e "  - Tiempo para suspender: ${CYAN}${SUSPEND_TIME}s${RESET}"
+echo -e "  - Tiempo para suspender en bateria: ${CYAN}${SUSPEND_TIME_BAT}s${RESET}"
 echo
 # Confirmación final
 echo -e "${CYAN}============================================="
@@ -115,11 +119,5 @@ echo -e "${GREEN}¡Configuración guardada exitosamente!${RESET}"
 echo -e "${GREEN}El archivo se guardó en: $CONFIG_FILE${RESET}"
 echo -e "${RED}=========================================${RESET}"
 echo
-# Tarea de suspensión en segundo plano
-# echo -e "${CYAN}Iniciando monitoreo para suspensión automática...${RESET}"
 #
-# (
-#   sleep "$SUSPEND_TIME"
-#   systemctl suspend
-# ) &
 echo

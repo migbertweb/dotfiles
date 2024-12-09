@@ -7,18 +7,19 @@
 monitor = 0
 follow = mouse
 
-#width = 300
-#height = 300
+width = (0, 400)
+height = (0, 200)
 origin = top-right
-offset = 10x72
+offset = (20, 60)
 scale = 0
 
 notification_limit = 20
 indicate_hidden = yes
 
 transparency = 0
+corner_radius = 6
 
-gap_size = 3
+gap_size = 4
 separator_height = 1
 separator_color = "#bb9af7"
 
@@ -27,7 +28,7 @@ horizontal_padding = 15
 text_icon_padding = 0
 
 frame_width = 0
-frame_color = "#1a1b26"
+frame_color = "#222330"
 
 sort = no
 idle_threshold = 0
@@ -36,7 +37,7 @@ font = JetBrainsMono NF Medium 9
 line_height = 0
 
 markup = full
-format = "<span size='xx-large' font_desc='Cantarell 9' weight='bold' foreground='#61A3B1'>%s</span>\n%b"
+format = "<span size='xx-large' font_desc='Cantarell 9' weight='bold' foreground='#7aa2f7'>%s</span>\n%b"
 alignment = center
 vertical_alignment = center
 
@@ -63,8 +64,6 @@ browser = /usr/bin/xdg-open
 always_run_script = true
 ignore_dbusclose = false
 
-corner_radius = 5
-
 force_xinerama = false
 
 mouse_left_click = close_current
@@ -84,12 +83,12 @@ class = Dunst
 [urgency_low]
 timeout = 3
 background = "#1a1b26"
-foreground = "#8fcc4c"
+foreground = "#9ece6a"
 
 [urgency_normal]
 timeout = 5
 background = "#1a1b26"
-foreground = "#F9FCFE"
+foreground = "#a9b1d6"
 
 [urgency_critical]
 timeout = 0

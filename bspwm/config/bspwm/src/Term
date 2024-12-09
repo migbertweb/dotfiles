@@ -79,17 +79,17 @@ case $MY_TERM in
   "--checkupdates")
     kitty --hold --class=Updating -e Updates --print-updates
     ;;
-  "--ranger")
-    kitty --hold --class=RangerTerm -e ranger
+  "--yazi")
+    kitty --hold --name=YaziTerm --class=FloaTerm -e yazi
     ;;
   "--nvim")
     kitty -e nvim
     ;;
   "--music")
-    kitty --class=MusicTerm -e ncmpcpp
+    kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp
     ;;
   "--fetch")
-    kitty --class=FetchTerm -e ~/.local/bin/sysfetch
+    kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch
     ;;
   "--kbd_control")
     kitty --class=Kbd_control -e ~/.config/bspwm/src/kbd_backlight.sh

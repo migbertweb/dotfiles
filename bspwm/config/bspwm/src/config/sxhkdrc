@@ -8,7 +8,7 @@
 #
 
 # Show help
-F1
+alt + F1
 	OpenApps --KeyHelp
 
 #|||----- Applications -----|||#
@@ -31,13 +31,14 @@ super + @space
 super + {w,e,n}
 	OpenApps {--browser,--editor,--filemanager}
 
-# Terminal apps (ranger, nvim, ncmpcpp)
-super + {r,v,k}
-	OpenApps {--ranger,--nvim,--music}
+# Terminal apps (yazi, nvim, ncmpcpp)
+super + {y,v,m}
+	OpenApps --{yazi,nvim,music}
 
-# Pavucontrol
-shift + alt + p
-	OpenApps --soundcontrol
+
+# Media apps (Pavucontrol, Telegram, Whatsapp)
+super + {p,t,w}
+	OpenApps --{soundcontrol,telegram,whats}
 
 
 #|||----- System Keybindings -----|||#
@@ -111,6 +112,10 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 XF86Audio{Next,Prev,Play,Stop}
 	MediaControl {--next,--previous,--toggle,--stop}
 
+
+# Keyboard Layout Applet
+super + alt + k
+	OpenApps --keyboard
 
 #|||----- Bspwm hotkeys -----|||#
 

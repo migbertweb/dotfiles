@@ -1,199 +1,178 @@
 #!/usr/bin/env bash
-#
-# ██████╗ ██╗██████╗  ██████╗     ██████╗ ██╗ ██████╗███████╗
-# ██╔══██╗██║██╔══██╗██╔═══██╗    ██╔══██╗██║██╔════╝██╔════╝
-# ██████╔╝██║██████╔╝██║   ██║    ██████╔╝██║██║     █████╗
-# ██╔═══╝ ██║██╔══██╗██║   ██║    ██╔══██╗██║██║     ██╔══╝
-# ██║     ██║██║  ██║╚██████╔╝    ██║  ██║██║╚██████╗███████╗
-# ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝     ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
-#
-#  Author  :  migbertweb
-#  Url     :  https://github.com/migbertweb/dotfiles
+#  ███████╗███╗   ███╗██╗██╗     ██╗ █████╗     ██████╗ ██╗ ██████╗███████╗
+#  ██╔════╝████╗ ████║██║██║     ██║██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
+#  █████╗  ██╔████╔██║██║██║     ██║███████║    ██████╔╝██║██║     █████╗
+#  ██╔══╝  ██║╚██╔╝██║██║██║     ██║██╔══██║    ██╔══██╗██║██║     ██╔══╝
+#  ███████╗██║ ╚═╝ ██║██║███████╗██║██║  ██║    ██║  ██║██║╚██████╗███████╗
+#  ╚══════╝╚═╝     ╚═╝╚═╝╚══════╝╚═╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  Author  :  z0mbi3
+#  Url     :  https://github.com/gh0stzk/dotfiles
 #  About   :  This file will configure and launch the rice.
 #
 
-# Terminate existing processes if necessary.
-. "${HOME}"/.config/bspwm/src/Process.bash
-
 # Current Rice
-read -r RICE <"$HOME"/.config/bspwm/.rice
+read -r RICE < "$HOME"/.config/bspwm/.rice
 
-# Vars config for Piro Rice
-# Bspwm border		# Normal border color	# Focused border color
-BORDER_WIDTH="1" NORMAL_BC="#414868" FOCUSED_BC="#a9b1d6"
-
-# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
-P_FADE="true" P_SHADOWS="true" P_CORNER_R="8" SHADOW_C="#000000" ANIMATIONS="true"
-
-# (Tokyo Night) colorscheme
-bg="#1a1b26" fg="#c0caf5"
-
-black="#15161e" red="#f7768e" green="#8fcc4c" yellow="#e0af68"
-blackb="#414868" redb="#f7768e" greenb="#81cf2e" yellowb="#e0af68"
-
-blue="#61A3B1" magenta="#bb9af7" cyan="#93E5E5" white="#F9FCFE"
-blueb="#6FBACA" magentab="#bb9af7" cyanb="#a4ffff" whiteb="#f7f8f9"
-
-# Gtk theme vars
-#gtk_theme="TokyoNight-zk" gtk_icons="Luv-Folders" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"
-gtk_theme="Orchis-Teal-Dark-Compact" gtk_icons="Tela-circle-dracula-dark" gtk_cursor="Qogirr-Dark" geany_theme="z0mbi3-TokyoNight"
+# Load sources
+. "${HOME}"/.config/bspwm/src/Process.bash
+. "${HOME}"/.config/bspwm/rices/${RICE}/theme-config.bash
+. "${HOME}"/.config/bspwm/src/WallEngine.bash
 
 # Set bspwm configuration
 set_bspwm_config() {
-  bspc config border_width ${BORDER_WIDTH}
-  bspc config top_padding 34
-  bspc config bottom_padding 2
-  bspc config left_padding 1
-  bspc config right_padding 1
-  bspc config normal_border_color "${NORMAL_BC}"
-  bspc config focused_border_color "${FOCUSED_BC}"
-  bspc config presel_feedback_color "${blue}"
+	bspc config border_width ${BORDER_WIDTH}
+	bspc config top_padding 50
+	bspc config bottom_padding 1
+	bspc config left_padding 1
+	bspc config right_padding 1
+	bspc config normal_border_color "${NORMAL_BC}"
+	bspc config focused_border_color "${FOCUSED_BC}"
+	bspc config presel_feedback_color "${blue}"
 }
 
 # Terminal colors
 set_term_config() {
-  cat >"$HOME"/.config/alacritty/rice-colors.toml <<EOF
-# Default colors
-[colors.primary]
-background = "${bg}"
-foreground = "${fg}"
+	sed -i "$HOME"/.config/alacritty/fonts.toml \
+		-e "s/size = .*/size = $term_font_size/" \
+		-e "s/family = .*/family = \"$term_font_name\"/"
 
-# Cursor colors
-[colors.cursor]
-cursor = "${fg}"
-text = "${bg}"
+	cat >"$HOME"/.config/alacritty/rice-colors.toml <<-EOF
+		# Default colors
+		[colors.primary]
+		background = "${bg}"
+		foreground = "${fg}"
 
-# Normal colors
-[colors.normal]
-black = "${black}"
-red = "${red}"
-green = "${green}"
-yellow = "${yellow}"
-blue = "${blue}"
-magenta = "${magenta}"
-cyan = "${cyan}"
-white = "${white}"
+		# Cursor colors
+		[colors.cursor]
+		cursor = "${fg}"
+		text = "${bg}"
 
-# Bright colors
-[colors.bright]
-black = "${blackb}"
-red = "${redb}"
-green = "${greenb}"
-yellow = "${yellowb}"
-blue = "${blueb}"
-magenta = "${magentab}"
-cyan = "${cyanb}"
-white = "${whiteb}"
-EOF
+		# Normal colors
+		[colors.normal]
+		black = "${black}"
+		red = "${red}"
+		green = "${green}"
+		yellow = "${yellow}"
+		blue = "${blue}"
+		magenta = "${magenta}"
+		cyan = "${cyan}"
+		white = "${white}"
 
-  # Set kitty colorscheme
-  cat >"$HOME"/.config/kitty/current-theme.conf <<EOF
-# The basic colors
-foreground              ${fg}
-background              ${bg}
-selection_foreground    ${bg}
-selection_background    ${magenta}
+		# Bright colors
+		[colors.bright]
+		black = "${blackb}"
+		red = "${redb}"
+		green = "${greenb}"
+		yellow = "${yellowb}"
+		blue = "${blueb}"
+		magenta = "${magentab}"
+		cyan = "${cyanb}"
+		white = "${whiteb}"
+	EOF
 
-# Cursor colors
-cursor                  ${fg}
-cursor_text_color       ${bg}
+	# Set kitty colorscheme
+	cat >"$HOME"/.config/kitty/current-theme.conf <<-EOF
+		# The basic colors
+		foreground              ${fg}
+		background              ${bg}
+		selection_foreground    ${bg}
+		selection_background    ${magenta}
 
-# URL underline color when hovering with mouse
-url_color               ${blue}
+		# Cursor colors
+		cursor                  ${fg}
+		cursor_text_color       ${bg}
 
-# Kitty window border colors
-active_border_color     ${magenta}
-inactive_border_color   ${blackb}
-bell_border_color       ${yellow}
+		# URL underline color when hovering with mouse
+		url_color               ${blue}
 
-# Tab bar colors
-active_tab_foreground   ${bg}
-active_tab_background   ${magenta}
-inactive_tab_foreground ${white}
-inactive_tab_background ${black}
-tab_bar_background      ${bg}
+		# Kitty window border colors
+		active_border_color     ${magenta}
+		inactive_border_color   ${blackb}
+		bell_border_color       ${yellow}
 
-# The 16 terminal colors
+		# Tab bar colors
+		active_tab_foreground   ${bg}
+		active_tab_background   ${magenta}
+		inactive_tab_foreground ${white}
+		inactive_tab_background ${black}
+		tab_bar_background      ${bg}
 
-# black
-color0 ${black}
-color8 ${blackb}
+		# The 16 terminal colors
 
-# red
-color1 ${red}
-color9 ${redb}
+		# black
+		color0 ${black}
+		color8 ${blackb}
 
-# green
-color2  ${green}
-color10 ${greenb}
+		# red
+		color1 ${red}
+		color9 ${redb}
 
-# yellow
-color3  ${yellow}
-color11 ${yellowb}
+		# green
+		color2  ${green}
+		color10 ${greenb}
 
-# blue
-color4  ${blue}
-color12 ${blueb}
+		# yellow
+		color3  ${yellow}
+		color11 ${yellowb}
 
-# magenta
-color5  ${magenta}
-color13 ${magentab}
+		# blue
+		color4  ${blue}
+		color12 ${blueb}
 
-# cyan
-color6  ${cyan}
-color14 ${cyanb}
+		# magenta
+		color5  ${magenta}
+		color13 ${magentab}
 
-# white
-color7  ${white}
-color15 ${whiteb}
-EOF
+		# cyan
+		color6  ${cyan}
+		color14 ${cyanb}
 
-  pidof -q kitty && killall -USR1 kitty
+		# white
+		color7  ${white}
+		color15 ${whiteb}
+	EOF
+
+	pidof -q kitty && killall -USR1 kitty
 }
 
 # Set compositor configuration
 set_picom_config() {
-  picom_conf_file="$HOME/.config/bspwm/src/config/picom.conf"
-  picom_rules_file="$HOME/.config/bspwm/src/config/picom-rules.conf"
+	picom_conf_file="$HOME/.config/bspwm/src/config/picom.conf"
+	picom_animations_file="$HOME/.config/bspwm/src/config/picom-animations.conf"
 
-  sed -i "$picom_conf_file" \
-    -e "s/shadow = .*/shadow = ${P_SHADOWS};/" \
-    -e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/" \
-    -e "s/fading = .*/fading = ${P_FADE};/" \
-    -e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/"
+	sed -i "$picom_conf_file" \
+		-e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/" \
+		-e "s/^corner-radius = .*/corner-radius = ${P_CORNER_R}/" \
+		-e "/#-term-opacity-switch/s/.*#-/\t\topacity = $P_TERM_OPACITY;\t#-/" \
+		-e "/#-shadow-switch/s/.*#-/\t\tshadow = ${P_SHADOWS};\t#-/" \
+		-e "/#-fade-switch/s/.*#-/\t\tfade = ${P_FADE};\t#-/" \
+		-e "/#-blur-switch/s/.*#-/\t\tblur-background = ${P_BLUR};\t#-/" \
+		-e "/picom-animations/c\\${P_ANIMATIONS}include \"picom-animations.conf\""
 
-  sed -i "$picom_rules_file" \
-    -e "101s/	opacity = .*/	opacity = 0.95;/"
-
-  if [[ "$ANIMATIONS" = "true" ]]; then
-    sed -i "$picom_rules_file" \
-      -e '/picom-animations/c\@include "picom-animations.conf"'
-
-    sed -i "$picom_conf_file" \
-      -e "s/no-fading-openclose = .*/no-fading-openclose = true/"
-  else
-    sed -i "$picom_rules_file" \
-      -e '/picom-animations/c\#@include "picom-animations.conf"'
-
-    sed -i "$picom_conf_file" \
-      -e "s/no-fading-openclose = .*/no-fading-openclose = false/"
-  fi
+	sed -i "$picom_animations_file" \
+		-e "/#-dunst-close-preset/s/.*#-/\t\t\tpreset = \"fly-out\";\t#-/" \
+		-e "/#-dunst-close-direction/s/.*#-/\t\t\tdirection = \"up\";\t#-/" \
+		-e "/#-dunst-open-preset/s/.*#-/\t\t\tpreset = \"fly-in\";\t#-/" \
+		-e "/#-dunst-open-direction/s/.*#-/\t\t\tdirection = \"up\";\t#-/"
 }
 
 # Set dunst config
 set_dunst_config() {
-  dunst_config_file="$HOME/.config/bspwm/src/config/dunstrc"
+	dunst_config_file="$HOME/.config/bspwm/src/config/dunstrc"
 
-  sed -i "$dunst_config_file" \
-    -e "s/transparency = .*/transparency = 0/g" \
-    -e "s/icon_theme = .*/icon_theme = \"${gtk_icons}, Adwaita\"/g" \
-    -e "s/frame_color = .*/frame_color = \"${bg}\"/g" \
-    -e "s/separator_color = .*/separator_color = \"${magenta}\"/g" \
-    -e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
-    -e "s/foreground='.*'/foreground='${blue}'/g"
+	sed -i "$dunst_config_file" \
+		-e "s/origin = .*/origin = ${dunst_origin}/" \
+		-e "s/offset = .*/offset = ${dunst_offset}/" \
+		-e "s/transparency = .*/transparency = ${dunst_transparency}/" \
+		-e "s/^corner_radius = .*/corner_radius = ${dunst_corner_radius}/" \
+		-e "s/frame_width = .*/frame_width = ${dunst_border}/" \
+		-e "s/frame_color = .*/frame_color = \"#222330\"/" \
+		-e "s/font = .*/font = ${dunst_font}/" \
+		-e "s/foreground='.*'/foreground='${blue}'/" \
+		-e "s/icon_theme = .*/icon_theme = \"${gtk_icons}, Adwaita\"/"
 
-  sed -i '/urgency_low/Q' "$dunst_config_file"
-  cat >>"$dunst_config_file" <<-_EOF_
+	sed -i '/urgency_low/Q' "$dunst_config_file"
+	cat >>"$dunst_config_file" <<-_EOF_
 		[urgency_low]
 		timeout = 3
 		background = "${bg}"
@@ -209,107 +188,90 @@ set_dunst_config() {
 		background = "${bg}"
 		foreground = "${red}"
 	_EOF_
+
+	dunstctl reload "$dunst_config_file"
 }
 
 # Set eww colors
 set_eww_colors() {
-  cat >"$HOME"/.config/bspwm/eww/colors.scss <<EOF
-\$bg: ${bg};
-\$bg-alt: #222330;
-\$fg: ${fg};
-\$black: ${blackb};
-\$red: ${red};
-\$green: ${green};
-\$yellow: ${yellow};
-\$blue: ${blue};
-\$magenta: ${magenta};
-\$cyan: ${cyan};
-\$archicon: #0f94d2;
-EOF
+	cat >"$HOME"/.config/bspwm/eww/colors.scss <<-EOF
+		\$bg: ${bg};
+		\$bg-alt: #222330;
+		\$fg: ${fg};
+		\$black: ${blackb};
+		\$red: ${red};
+		\$green: ${green};
+		\$yellow: ${yellow};
+		\$blue: ${blue};
+		\$magenta: ${magenta};
+		\$cyan: ${cyan};
+		\$archicon: #0f94d2;
+	EOF
 }
 
 set_launchers() {
-  # Jgmenu
-  sed -i "$HOME"/.config/bspwm/src/config/jgmenurc \
-    -e "s/color_menu_bg = .*/color_menu_bg = ${bg}/" \
-    -e "s/color_norm_fg = .*/color_norm_fg = ${fg}/" \
-    -e "s/color_sel_bg = .*/color_sel_bg = #222330/" \
-    -e "s/color_sel_fg = .*/color_sel_fg = ${fg}/" \
-    -e "s/color_sep_fg = .*/color_sep_fg = ${blackb}/"
+	# Jgmenu
+	sed -i "$HOME"/.config/bspwm/src/config/jgmenurc \
+		-e "s/color_menu_bg = .*/color_menu_bg = ${bg}/" \
+		-e "s/color_norm_fg = .*/color_norm_fg = ${fg}/" \
+		-e "s/color_sel_bg = .*/color_sel_bg = #222330/" \
+		-e "s/color_sel_fg = .*/color_sel_fg = ${fg}/" \
+		-e "s/color_sep_fg = .*/color_sep_fg = ${blackb}/"
 
-  # Rofi launchers
-  cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
-// Rofi colors for Piro
+	# Rofi launchers
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<-EOF
+		// Rofi colors for Emilia
 
-* {
-    font: "JetBrainsMono NF Bold 9";
-    background: ${bg};
-    bg-alt: #222330;
-    background-alt: ${bg}E0;
-    foreground: ${fg};
-    selected: ${blue};
-    active: ${green};
-    urgent: ${red};
+		* {
+		    font: "JetBrainsMono NF Bold 9";
+		    background: ${bg};
+		    bg-alt: #222330;
+		    background-alt: ${bg}E0;
+		    foreground: ${fg};
+		    selected: ${blue};
+		    active: ${green};
+		    urgent: ${red};
 
-    img-background: url("~/.config/bspwm/rices/${RICE}/rofi.webp", width);
-}
-EOF
-  # Screenlock colors
-  sed -i "$HOME"/.config/bspwm/src/ScreenLocker \
-    -e "s/bg=.*/bg=${bg:1}/" \
-    -e "s/fg=.*/fg=${fg:1}/" \
-    -e "s/ring=.*/ring=${black:1}/" \
-    -e "s/wrong=.*/wrong=${red:1}/" \
-    -e "s/date=.*/date=${fg:1}/" \
-    -e "s/verify=.*/verify=${green:1}/"
+		    img-background: url("~/.config/bspwm/rices/${RICE}/rofi.webp", width);
+		}
+	EOF
+
+	# Screenlock colors
+	sed -i "$HOME"/.config/bspwm/src/ScreenLocker \
+		-e "s/bg=.*/bg=${bg:1}/" \
+		-e "s/fg=.*/fg=${fg:1}/" \
+		-e "s/ring=.*/ring=${black:1}/" \
+		-e "s/wrong=.*/wrong=${red:1}/" \
+		-e "s/date=.*/date=${fg:1}/" \
+		-e "s/verify=.*/verify=${green:1}/"
 }
 
 set_appearance() {
-  # Set the gtk theme corresponding to rice
-  if pidof -q xsettingsd; then
-    sed -i "$HOME"/.config/bspwm/src/config/xsettingsd \
-      -e "s|Net/ThemeName .*|Net/ThemeName \"$gtk_theme\"|" \
-      -e "s|Net/IconThemeName .*|Net/IconThemeName \"$gtk_icons\"|" \
-      -e "s|Gtk/CursorThemeName .*|Gtk/CursorThemeName \"$gtk_cursor\"|"
-  else
-    sed -i "$HOME"/.config/gtk-3.0/settings.ini \
-      -e "s/gtk-theme-name=.*/gtk-theme-name=$gtk_theme/" \
-      -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=$gtk_icons/" \
-      -e "s/gtk-cursor-theme-name=.*/gtk-cursor-theme-name=$gtk_cursor/"
+	# Set the gtk theme corresponding to rice
+	sed -i "$HOME"/.config/bspwm/src/config/xsettingsd \
+		-e "s|Net/ThemeName .*|Net/ThemeName \"$gtk_theme\"|" \
+		-e "s|Net/IconThemeName .*|Net/IconThemeName \"$gtk_icons\"|" \
+		-e "s|Gtk/CursorThemeName .*|Gtk/CursorThemeName \"$gtk_cursor\"|"
 
-    sed -i "$HOME"/.gtkrc-2.0 \
-      -e "s/gtk-theme-name=.*/gtk-theme-name=\"$gtk_theme\"/" \
-      -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=\"$gtk_icons\"/" \
-      -e "s/gtk-cursor-theme-name=.*/gtk-cursor-theme-name=\"$gtk_cursor\"/"
-  fi
+	sed -i -e "s/Inherits=.*/Inherits=$gtk_cursor/" "$HOME"/.icons/default/index.theme
 
-  sed -i -e "s/Inherits=.*/Inherits=$gtk_cursor/" "$HOME"/.icons/default/index.theme
-
-  # Reload daemon and apply gtk theme
-  pidof -q xsettingsd && killall -HUP xsettingsd
-  xsetroot -cursor_name left_ptr
+	# Reload daemon and apply gtk theme
+	pkill -1 xsettingsd
+	xsetroot -cursor_name left_ptr
 }
 
 # Apply Geany Theme
-set_geany() {
-  sed -i ${HOME}/.config/geany/geany.conf \
-    -e "s/color_scheme=.*/color_scheme=$geany_theme.conf/g"
+set_geany(){
+	sed -i ${HOME}/.config/geany/geany.conf \
+		-e "s/color_scheme=.*/color_scheme=$geany_theme.conf/g"
 }
 
 # Launch theme
 launch_theme() {
-
-  # Set random wallpaper for actual rice
-  feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
-
-  # Launch dunst notification daemon
-  dunst -config "${HOME}"/.config/bspwm/src/config/dunstrc &
-
-  # Launch polybar
-  sleep 0.1
-  for mon in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$mon polybar -q emi-bar -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini &
-  done
+	# Launch polybar
+	for mon in $(polybar --list-monitors | cut -d":" -f1); do
+		MONITOR=$mon polybar -q emi-bar -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini &
+	done
 }
 
 ### Apply Configurations
@@ -317,9 +279,9 @@ launch_theme() {
 set_bspwm_config
 set_term_config
 set_picom_config
+set_appearance
 set_dunst_config
 set_eww_colors
 set_launchers
-set_appearance
 set_geany
 launch_theme

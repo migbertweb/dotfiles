@@ -37,7 +37,7 @@ done
 
 bspc config external_rules_command "${HOME}"/.config/bspwm/src/ExternalRules
 
-bspc config window_gap 3
+bspc config window_gap 2
 bspc config split_ratio 0.51
 bspc config single_monocle true
 bspc config borderless_monocle false
@@ -108,7 +108,6 @@ pidof -q telegram-desktop || { telegram-desktop -startintray & }
 pidof -q xdg-desktop-portal-gtk || { xdg-desktop-portal-gtk & }
 pidof -q xdg-desktop-portal || { xdg-desktop-portal & }
 
-~/.config/bspwm/src/adjust_brightness.sh >>~/.config/bspwm/src/adjust_brightness.log 2>&1 &
-disown
+~/.config/bspwm/src/adjust_brightness >>~/.config/bspwm/src/adjust_brightness.log 2>&1
 
 # End one time code

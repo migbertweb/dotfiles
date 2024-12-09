@@ -256,65 +256,31 @@ echo "Proceso completado. Los archivos han sido linkeados y el backup está en $
 sleep 2
 clear
 
-########## ---------- Installing others ---------- ##########
+########## ---------- Installing AUR dependencies ---------- ##########
 
-logo "installing Eww, tdrop & xqp"
+logo "Installing AUR dependencies."
 
-# Installing tdrop for scratchpads
-if command -v tdrop >/dev/null 2>&1; then
-  printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling tdrop, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S tdrop-git --skipreview --noconfirm
-fi
+aur_apps=(tdrop-git xqp rofi-greenclip xwinwrap-0.9-bin ttf-maple i3lock-color simple-mtpfs eww-git)
 
-# Installing xqp
-if command -v xqp >/dev/null 2>&1; then
-  printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling xqp, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S xqp --skipreview --noconfirm
-fi
+printf "%s%sChecking for required packages...%s\n\n" "${BLD}" "${CBL}" "${CNC}"
+for aur_package in "${aur_apps[@]}"; do
+    if ! is_installed "$aur_package"; then
+        if 
+ "$aur_package" 2> >(tee -a "$ERROR_LOG"); then
+            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CBL}" "${CNC}"
+        else
+            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+            log_error "Failed to install package: $aur_package"
+        fi
+        sleep 1
+    else
+        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$aur_package" "${CGR}" "${CNC}"
+        sleep 1
+    fi
+done
+sleep 3
+clear
 
-# Installing rofi-greenclip
-if pacman -Qq rofi-greenclip >/dev/null 2>&1; then
-  printf "\n%s%srofi-greenclip is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling rofi-greenclip, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S rofi-greenclip --skipreview --noconfirm
-fi
-
-# Installing ttf-maple
-if pacman -Qq ttf-maple >/dev/null 2>&1; then
-  printf "\n%s%sttf-maple is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling ttf-maple, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S ttf-maple --skipreview --noconfirm
-fi
-
-# Installing i3lock-color
-if pacman -Qq i3lock-color >/dev/null 2>&1; then
-  printf "\n%s%si3lock-color is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling i3lock-color, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S i3lock-color --skipreview --noconfirm
-fi
-
-# Installing simple-mtpfs
-if pacman -Qq simple-mtpfs >/dev/null 2>&1; then
-  printf "\n%s%ssimple-mtpfs is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling simple-mtpfs, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S simple-mtpfs --skipreview --noconfirm
-fi
-
-# Installing Eww
-if pacman -Qq eww-git >/dev/null 2>&1; then
-  printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-else
-  printf "\n%s%sInstalling Eww, this will take some time.. !%s\n" "${BLD}" "${CBL}" "${CNC}"
-  paru -S eww-git --skipreview --noconfirm
-fi
 
 ########## ---------- Enabling MPD service ---------- ##########
 
