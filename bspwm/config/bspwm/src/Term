@@ -95,7 +95,7 @@ case $MY_TERM in
     kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp
     ;;
   "--fetch")
-    kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch
+    kitty --name=FetchTerm --class=FetchTerm -e ~/.local/bin/sysfetch
     ;;
   "--kbd_control")
     kitty --class=Kbd_control -e ~/.config/bspwm/src/kbd_backlight.sh
@@ -104,10 +104,10 @@ case $MY_TERM in
     kitty --class=clima -e ~/.config/bspwm/src/clima.sh
     ;;
   "--scratch")
-    tdrop -ma -w 70% -h 35% -y 0 -x 15% -n 0 --class scratch kitty --class=Scratch
+    tdrop -ma -w 70% -h 55% -y 0 -x 15% -n 0 --class scratch kitty --class=Scratch
     ;;
   "--yaziscratch")
-    tdrop -ma -w 80% -h 35% -y 0 -x 10% -n 1 --class scratch kitty --class=Scratch -e yazi
+    tdrop -ma -w 80% -h 65% -y 0 -x 10% -n 1 --class scratch kitty --class=Scratch -e yazi
     ;;
   esac
   ;;

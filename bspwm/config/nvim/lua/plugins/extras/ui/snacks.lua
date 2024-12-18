@@ -46,7 +46,7 @@ return {
         {
           pane = 2,
           section = "terminal",
-          cmd = "pokemon-colorscripts -r --no-title; sleep .1",
+          cmd = "fastfetch --config minimal",
           height = 8,
           indent = 14,
           padding = 1,
