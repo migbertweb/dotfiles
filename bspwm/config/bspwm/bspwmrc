@@ -37,21 +37,24 @@ done
 
 bspc config external_rules_command "${HOME}"/.config/bspwm/src/ExternalRules
 
-bspc config window_gap 2
-bspc config split_ratio 0.51
+bspc config window_gap 5
+bspc config split_ratio 0.53
 bspc config single_monocle true
 bspc config borderless_monocle false
 bspc config gapless_monocle false
 
+bspc config automatic_scheme longest_side
+bspc config initial_polarity second_child
+bspc config removal_adjustment true
+
 bspc config focus_follows_pointer true
 bspc config pointer_follows_focus false
-bspc config pointer_motion_interval 5
+bspc config pointer_motion_interval 7
 bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
-bspc rule -a scratch sticky=on state=floating focus=on
 bspc rule -a Conky state=floating manage=off
 #  ╔═╗╦ ╦╔╦╗╔═╗╔═╗╔╦╗╔═╗╦═╗╔╦╗
 #  ╠═╣║ ║ ║ ║ ║╚═╗ ║ ╠═╣╠╦╝ ║
@@ -85,7 +88,7 @@ pidof -q greenclip || { greenclip daemon & }
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
 
 # Launch power manager
-#pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable --no-daemon & }
+pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable --no-daemon & }
 
 # App start
 
@@ -108,6 +111,6 @@ pidof -q telegram-desktop || { telegram-desktop -startintray & }
 pidof -q xdg-desktop-portal-gtk || { xdg-desktop-portal-gtk & }
 pidof -q xdg-desktop-portal || { xdg-desktop-portal & }
 
-~/.config/bspwm/src/adjust_brightness >>~/.config/bspwm/src/adjust_brightness.log 2>&1
+#~/.config/bspwm/src/adjust_brightness >>~/.config/bspwm/src/adjust_brightness.log 2>&1
 
 # End one time code

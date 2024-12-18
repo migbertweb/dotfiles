@@ -63,6 +63,12 @@ case $MY_TERM in
   "--fetch")
     alacritty --class FetchTerm,FetchTerm -e ~/.local/bin/sysfetch
     ;;
+  "--scratch")
+    tdrop -ma -w 70% -h 35% -y 0 -x 15% -n 0 --class scratch alacritty --class=Scratch
+    ;;
+  "--yaziscratch")
+    tdrop -ma -w 80% -h 35% -y 0 -x 10% -n 1 --class scratch alacritty --class=Scratch -e yazi
+    ;;
   esac
   ;;
 "kitty")
@@ -96,6 +102,12 @@ case $MY_TERM in
     ;;
   "--clima")
     kitty --class=clima -e ~/.config/bspwm/src/clima.sh
+    ;;
+  "--scratch")
+    tdrop -ma -w 70% -h 35% -y 0 -x 15% -n 0 --class scratch kitty --class=Scratch
+    ;;
+  "--yaziscratch")
+    tdrop -ma -w 80% -h 35% -y 0 -x 10% -n 1 --class scratch kitty --class=Scratch -e yazi
     ;;
   esac
   ;;

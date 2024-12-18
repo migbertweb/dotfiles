@@ -48,8 +48,8 @@ case "$1" in
 --android)
   AndroidMount
   ;;
---ranger)
-  Term --ranger
+    --yazi)
+        Term --yazi
   ;;
 --kbd_control)
   Term --kbd_control

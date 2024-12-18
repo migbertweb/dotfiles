@@ -26,7 +26,7 @@ whiteb="#c0caf5"
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
 NORMAL_BC="#414868"		# Normal border color
-FOCUSED_BC="#bb9af7"	# Focused border color
+FOCUSED_BC="#26A269"	# Focused border color
 
 # Terminal font & size
 term_font_size="10"
@@ -39,7 +39,7 @@ SHADOW_C="#000000"		# Shadow color
 P_CORNER_R="6"			# Corner radius (0 = disabled)
 P_BLUR="true"			# Blur true|false
 P_ANIMATIONS="@"		# (@ = enable) (# = disable)
-P_TERM_OPACITY="1.0"	# Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
+P_TERM_OPACITY="0.9"	# Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
 
 # Dunst
 dunst_offset='(20, 60)'

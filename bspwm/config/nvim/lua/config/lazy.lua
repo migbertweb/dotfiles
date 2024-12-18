@@ -33,6 +33,7 @@ require("lazy").setup({
     -------------------
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
+    { import = "lazyvim.plugins.extras.ui.smear-cursor" },
     -------------------
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.formatting.black" },
@@ -52,6 +53,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.fzf" },
     -------------------
     { import = "lazyvim.plugins.extras.ai.codeium" },
+    { import = "lazyvim.plugins.extras.ai.supermaven" },
     -------------------
     { import = "lazyvim.plugins.extras.coding.yanky" },
     -------------------

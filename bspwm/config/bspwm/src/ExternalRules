@@ -83,14 +83,8 @@ Viewnior | Bitwarden | keepassxc | Keepassxc | ristretto | Ristretto | wireguird
 TelegramDesktop | thunderbird | signal | Signal | signal-desktop | Signal-desktop)
   result "desktop=^5 follow=on"
   ;;
-retroarch)
-  result "state=pseudo_tiled desktop=^6"
-  ;;
 pavucontrol)
   result "state=floating center=on"
-  ;;
-Virt-manager)
-  result "state=floating desktop=^5 follow=on center=on"
   ;;
 Thunar)
   result "desktop=^2 follow=on"
@@ -107,14 +101,14 @@ kitty)
 firefox | Navigator | Google-chrome)
   result "desktop=^3 follow=on"
   ;;
-Transmission-gtk | Evince | Atril)
+Evince | Atril)
   result "desktop=^6 follow=on"
-  ;;
-Spotify | Deezer)
-  result "state=floating desktop=^6 follow=on center=on"
   ;;
 Inkscape | Gimp* | libreoffice* | obs | steam | Shotcut | shotcut)
   result "desktop=^6 follow=on"
+  ;;
+Scratch)
+  result "state=floating focus=on sticky=on"
   ;;
 esac
 

@@ -57,8 +57,10 @@ super + alt + t
 
 # Scratchpad
 super + alt + o
-	tdrop -a -w 70% -h 35% -y 0 -x 15%  --class scratch alacritty --class=scratch
-
+	Term --scratch
+# Yazi Scratchpad
+super + alt + y
+	Term --yaziscratch
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k}
 {systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill}
@@ -131,26 +133,23 @@ super + {_,shift + }q
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
 
-#####
+# ----- Node states and flags ----- #
 
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# set the window state
-super + {t,shift + t,s,f}
+# Set the node state
+alt + {t,shift + t,a,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
-ctrl + alt {m,x,s,p}
+# Set the node flags
+alt + {m,x,s,p}
 	bspc node -g {marked,locked,sticky,private}
+
+# Hide/Unhide node
+alt + h
+	BspHideNode
 
 # Toggle beetwen floating & tiled
 super + alt + f
      bspc node -t "~"{floating,tiled}
-
-ctrl + alt + h
-	BspHideNode
 
 #####
 

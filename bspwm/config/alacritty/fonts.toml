@@ -3,7 +3,7 @@ size = 10
 
 builtin_box_drawing = true
 
-normal = { family = "JetBrainsMono Nerd Font"
-bold = { family = "JetBrainsMono Nerd Font"
-italic = { family = "JetBrainsMono Nerd Font"
-bold_italic = { family = "JetBrainsMono Nerd Font"
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+
