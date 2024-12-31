@@ -62,9 +62,8 @@ super + alt + o
 super + alt + y
 	Term --yaziscratch
 # Power off, Reboot, Log out, Lockscreen, kill an app
-ctrl + super + alt + {p,r,q,l,k}
-{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill}
-# {systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
+ctrl + super + alt + {p,r,q,l,k,s}
+	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill,SoftReload}
 
 # Hide/Show Bar (Polybar and/or eww)
 super + alt + {h,u}

@@ -52,9 +52,9 @@ show_indicators = yes
 enable_recursive_icon_lookup = true
 icon_theme = "Tela-circle-dracula-dark, Adwaita"
 icon_position = left
-min_icon_size = 60
-max_icon_size = 90
-icon_corner_radius = 6
+min_icon_size = 50
+max_icon_size = 70
+icon_corner_radius = 10
 
 sticky_history = yes
 history_length = 25

@@ -48,8 +48,8 @@ case "$1" in
 --android)
   AndroidMount
   ;;
-    --yazi)
-        Term --yazi
+--yazi)
+  Term --yazi
   ;;
 --kbd_control)
   Term --kbd_control
@@ -71,7 +71,7 @@ case "$1" in
   thunar
   ;;
 --browser)
-  google-chrome-stable
+  brave
   ;;
 --editor)
   geany

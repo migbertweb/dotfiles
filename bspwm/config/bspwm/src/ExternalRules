@@ -55,7 +55,7 @@ Kbd_control)
   result "state=floating sticky=on center=on rectangle=$dimensions"
   ;;
 clima)
-  dimensions=$(calculate_dimensions 95 90)
+  dimensions=$(calculate_dimensions 75 82)
   result "state=floating sticky=on center=on rectangle=$dimensions"
   ;;
 YaziTerm)
@@ -80,8 +80,11 @@ mpv)
 Viewnior | Bitwarden | keepassxc | Keepassxc | ristretto | Ristretto | wireguird | Wireguird)
   result "state=floating focus=on center=on"
   ;;
-TelegramDesktop | thunderbird | signal | Signal | signal-desktop | Signal-desktop)
+thunderbird)
   result "desktop=^5 follow=on"
+  ;;
+TelegramDesktop | signal | Signal | signal-desktop | Signal-desktop)
+  result "state=floating center=on follow=on rectangle=1300x700+1054+593"
   ;;
 pavucontrol)
   result "state=floating center=on"
@@ -98,13 +101,13 @@ Mousepad)
 kitty)
   result "desktop=^1 follow=on"
   ;;
-firefox | Navigator | Google-chrome)
+firefox | Navigator | Google-chrome | brave | Brave-browser | brave-browser | Brave-Browser)
   result "desktop=^3 follow=on"
   ;;
 Evince | Atril)
   result "desktop=^6 follow=on"
   ;;
-Inkscape | Gimp* | libreoffice* | obs | steam | Shotcut | shotcut)
+Inkscape | Gimp* | libreoffice* | wine | wineserver | obs | steam | Shotcut | shotcut)
   result "desktop=^6 follow=on"
   ;;
 Scratch)
