@@ -51,6 +51,9 @@ case "$1" in
 --yazi)
   Term --yazi
   ;;
+--ranger)
+  Term --ranger
+  ;;
 --kbd_control)
   Term --kbd_control
   ;;
@@ -71,7 +74,7 @@ case "$1" in
   thunar
   ;;
 --browser)
-  brave
+  firefox
   ;;
 --editor)
   geany

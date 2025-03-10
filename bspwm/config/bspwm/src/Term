@@ -88,6 +88,9 @@ case $MY_TERM in
   "--yazi")
     kitty --hold --name=YaziTerm --class=FloaTerm -e yazi
     ;;
+  "--ranger")
+    kitty --hold --name=RangerTerm --class=FloaTerm -e ranger
+    ;;
   "--nvim")
     kitty -e nvim
     ;;
@@ -108,6 +111,9 @@ case $MY_TERM in
     ;;
   "--yaziscratch")
     tdrop -ma -w 80% -h 65% -y 0 -x 10% -n 1 --class scratch kitty --class=Scratch -e yazi
+    ;;
+  "--rangerscratch")
+    tdrop -ma -w 80% -h 65% -y 0 -x 10% -n 1 --class scratch kitty --class=Scratch -e ranger
     ;;
   esac
   ;;

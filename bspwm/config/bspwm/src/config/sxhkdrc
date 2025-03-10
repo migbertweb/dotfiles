@@ -32,8 +32,8 @@ super + {w,e,n}
 	OpenApps {--browser,--editor,--filemanager}
 
 # Terminal apps (yazi, nvim, ncmpcpp)
-super + {y,v,m}
-	OpenApps --{yazi,nvim,music}
+super + {r,y,v,m}
+	OpenApps --{ranger,yazi,nvim,music}
 
 
 # Media apps (Pavucontrol, Telegram, Whatsapp)
@@ -61,6 +61,10 @@ super + alt + o
 # Yazi Scratchpad
 super + alt + y
 	Term --yaziscratch
+# Ranger Scratchpad
+super + alt + e
+	Term --rangerscratch
+
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k,s}
 	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill,SoftReload}
