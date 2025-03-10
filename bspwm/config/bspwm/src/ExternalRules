@@ -84,7 +84,7 @@ thunderbird)
   result "desktop=^5 follow=on"
   ;;
 TelegramDesktop | signal | Signal | signal-desktop | Signal-desktop)
-  result "state=floating center=on follow=on rectangle=1300x700+1054+593"
+  result "state=floating center=on follow=on rectangle=1300x680+1054+593"
   ;;
 pavucontrol)
   result "state=floating center=on"

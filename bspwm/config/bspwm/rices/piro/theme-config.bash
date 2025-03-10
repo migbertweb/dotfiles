@@ -50,7 +50,7 @@ dunst_font='JetBrainsMono NF Medium 9'
 dunst_border='0'
 
 # Gtk theme vars
-gtk_theme="Orchis-Teal-Dark-Compact"
+gtk_theme="Dracula-slim"
 gtk_icons="Tela-circle-dracula-dark"
 gtk_cursor="Qogirr-Dark"
 geany_theme="z0mbi3-TokyoNight"
