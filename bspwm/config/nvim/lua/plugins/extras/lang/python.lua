@@ -18,7 +18,10 @@ return {
         },
       },
     },
+
   },
+--
+
   -- null-ls para Diagnostic y Formatting
   {
     "nvimtools/none-ls.nvim",
@@ -34,40 +37,4 @@ return {
       table.insert(opts.ensure_installed, "yapf")
     end,
   },
-  
-  
-  {
-    "HallerPatrick/py_lsp.nvim",
-    keys = {
-      {
-        "<leader>vl",
-        "<cmd>:PyLspFindVenvs<cr>",
-        desc = "Find Venvs",
-      },
-      {
-        "<leader>va",
-        "<cmd>:PyLspActivateVenv<cr>",
-        desc = "Activate Venv",
-      },
-      {
-        "<leader>vd",
-        "<cmd>:PyLspDeactivateVenv<cr>",
-        desc = "DeActivate Venv",
-      },
-      {
-        "<leader>vr",
-        "<cmd>:PyRun<cr>",
-        desc = "Run Python Script",
-      },
-      {
-        "<leader>vc",
-        "<cmd>:PyLspCreateVenv<cr>",
-        desc = "Create Virtual Env",
-      },
-    },
-    opts = {
-      host_python = "/usr/bin/python3",
-      default_venv_name = ".venv, venv",
-    },
-  },
-}
+ }

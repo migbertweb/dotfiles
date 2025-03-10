@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Definir variables de formato
-BLD="\033[1m"
-CYE="\033[33m"
-CNC="\033[0m"
+# BLD="\033[1m"
+# CYE="\033[33m"
+# CNC="\033[0m"
 
 logo() {
 
@@ -19,7 +19,7 @@ logo() {
 ╚═╝     ╚═╝╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   
                                                         
     Mis Dotfiles\n\n"
-  printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
+  printf ' %s [%s%s %s%s %s]%s\n\n' "${text}"
 }
 
 ########## ---------- You must not run this as root ---------- ##########
@@ -121,17 +121,17 @@ SigLevel = Optional TrustAll
 Server = http://gh0stzk.github.io/pkgs/x86_64"
 
 if ! grep -q "\[gh0stzk-dotfiles\]" /etc/pacman.conf; then
-    if echo -e "\n$REPO_CONTENT" | sudo tee -a /etc/pacman.conf >/dev/null 2>> RiceError.log; then
-		printf "%s%sgh0stzk-dotfiles%s repository added succesfully.%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
-		sudo pacman -Syy
-		sleep 1
-	else
-		printf "%s%sFailded to add custom repo. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${CBL}" "${CYE}" "${CNC}"
-		sleep 1
-	fi
+  if echo -e "\n$REPO_CONTENT" | sudo tee -a /etc/pacman.conf >/dev/null 2>>RiceError.log; then
+    printf "%s%sgh0stzk-dotfiles%s repository added succesfully.%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
+    sudo pacman -Syy
+    sleep 1
+  else
+    printf "%s%sFailded to add custom repo. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${CBL}" "${CYE}" "${CNC}"
+    sleep 1
+  fi
 else
-	printf "My custom repo already exists in your pacman.conf"
-	sleep 1
+  printf "My custom repo already exists in your pacman.conf"
+  sleep 1
 fi
 sleep 5
 clear
@@ -140,25 +140,25 @@ clear
 
 logo "Instalando paquetes necesarios del repositorio gh0stzk"
 
-customdeps=(gh0stzk-gtk-themes gh0stzk-cursor-qogirr \
-			gh0stzk-icons-beautyline gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha gh0stzk-icons-dracula gh0stzk-icons-glassy \
-			gh0stzk-icons-gruvbox-plus-dark gh0stzk-icons-hack gh0stzk-icons-luv gh0stzk-icons-sweet-rainbow gh0stzk-icons-tokyo-night \
-			gh0stzk-icons-vimix-white gh0stzk-icons-zafiro gh0stzk-icons-zafiro-purple)
+customdeps=(gh0stzk-gtk-themes gh0stzk-cursor-qogirr
+  gh0stzk-icons-beautyline gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha gh0stzk-icons-dracula gh0stzk-icons-glassy
+  gh0stzk-icons-gruvbox-plus-dark gh0stzk-icons-hack gh0stzk-icons-luv gh0stzk-icons-sweet-rainbow gh0stzk-icons-tokyo-night
+  gh0stzk-icons-vimix-white gh0stzk-icons-zafiro gh0stzk-icons-zafiro-purple)
 
 printf "%s%sChecking for required custom packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
 for cpaquete in "${customdeps[@]}"; do
-    if ! is_installed "$cpaquete"; then
-        if sudo pacman -S "$cpaquete" --noconfirm >/dev/null 2>> RiceError.log; then
-            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CBL}" "${CNC}"
-            sleep 1
-        else
-            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
-            sleep 1
-        fi
+  if ! is_installed "$cpaquete"; then
+    if sudo pacman -S "$cpaquete" --noconfirm >/dev/null 2>>RiceError.log; then
+      printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CBL}" "${CNC}"
+      sleep 1
     else
-        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$cpaquete" "${CGR}" "${CNC}"
-        sleep 1
+      printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+      sleep 1
     fi
+  else
+    printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$cpaquete" "${CGR}" "${CNC}"
+    sleep 1
+  fi
 done
 sleep 5
 clear
@@ -264,23 +264,23 @@ aur_apps=(tdrop-git xqp rofi-greenclip xwinwrap-0.9-bin ttf-maple i3lock-color s
 
 printf "%s%sChecking for required packages...%s\n\n" "${BLD}" "${CBL}" "${CNC}"
 for aur_package in "${aur_apps[@]}"; do
-    if ! is_installed "$aur_package"; then
-        if 
- "$aur_package" 2> >(tee -a "$ERROR_LOG"); then
-            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CBL}" "${CNC}"
-        else
-            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
-            log_error "Failed to install package: $aur_package"
-        fi
-        sleep 1
+  if ! is_installed "$aur_package"; then
+    if
+      "$aur_package" 2> >(tee -a "$ERROR_LOG")
+    then
+      printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CBL}" "${CNC}"
     else
-        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$aur_package" "${CGR}" "${CNC}"
-        sleep 1
+      printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+      log_error "Failed to install package: $aur_package"
     fi
+    sleep 1
+  else
+    printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$aur_package" "${CGR}" "${CNC}"
+    sleep 1
+  fi
 done
 sleep 3
 clear
-
 
 ########## ---------- Enabling MPD service ---------- ##########
 

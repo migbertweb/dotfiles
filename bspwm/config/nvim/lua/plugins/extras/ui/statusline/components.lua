@@ -179,29 +179,19 @@ return {
   },
   venv = {
     function()
-      local clients = {}
-      local icon = icons.kind.Python
-      local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
-      local pyv = vim.fn.trim(vim.fn.system("python -V | cut -c 8-13"))
-
-      for _, client in pairs(buf_clients) do
-        if client.name == "pyright" then
-          -- Check if lsp was initialized with py_lsp
-          if client.config.settings.python["pythonPath"] ~= nil then
-            local venv_name = client.config.settings.python.venv_name
-            clients[#clients + 1] = icon .. venv_name .. " " .. pyv
-          end
-          -- else
-          --   clients[#clients + 1] = icon .. client.name
-        end
+      local venv = require("venv-selector").venv()
+      if venv and venv ~= "" then
+        return " " .. vim.fn.fnamemodify(venv, ":t") -- Solo el nombre del venv
       end
-      return table.concat(clients, " ")
+      return ""
     end,
     color = { fg = colors.orange },
-    on_click = function()
-      vim.cmd([[PyLspCurrentVenv]])
-     end,
+    --  on_click = function()
+    --    vim.cmd([[PyLspCurrentVenv]])
+    -- end,
   },
+
+  --
   liveserver = {
     function()
       local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
@@ -231,5 +221,5 @@ return {
       return vim.g.flutter_tools_decorations.app_version
     end,
     color = { fg = colors.blue },
-  }
+  },
 }

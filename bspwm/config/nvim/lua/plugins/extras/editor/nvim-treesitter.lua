@@ -22,7 +22,7 @@ return {
           -- 'rainbow-tags-react',
         },
         -- Highlight the entire buffer all at once
-        -- strategy = require('ts-rainbow').strategy.global,
+        -- strategy = require("ts-rainbow").strategy.global,
       },
     },
   },

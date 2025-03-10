@@ -455,3 +455,5 @@ Dec 29 15:46 : player: played "Romeo Santos - Utopia [2019-Album]/06 El Beso Que
 Dec 29 15:47 : player: played "Romeo Santos - Utopia [2019-Album]/06 El Beso Que No Le Di.mp3"
 Dec 31 10:08 : ffmpeg/mov,mp4,m4a,3gp,3g2,mj2: stream 0, timescale not set
 Dec 31 10:08 : update: added Spotube/La Llorona - Carmen Goett.m4a
+Mar 09 19:31 : exception: Failed to open '/home/migbert/.config/mpd/state': No such file or directory
+Mar 09 19:32 : player: played "Romeo Santos - Utopia [2019-Album]/02 Canalla.mp3"

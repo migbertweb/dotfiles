@@ -17,6 +17,12 @@ vim.o.re = 0
 ------------------------------------------------------------------
 vim.g.lazyvim_picker = "fzf"
 ------------------------------------------------------------------
+-- LSP Server to use for Python.
+-- Set to "basedpyright" to use basedpyright instead of pyright.
+vim.g.lazyvim_python_lsp = "pyright"
+-- Set to "ruff_lsp" to use the old LSP implementation version.
+vim.g.lazyvim_python_ruff = "ruff"
+------------------------------------------------------------------
 -- añadiendo opciones para DBui
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_show_database_icon = 1

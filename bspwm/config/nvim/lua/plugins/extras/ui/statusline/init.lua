@@ -11,6 +11,13 @@ local colors = {
   blue = "#51afef",
   red = "#ec5f67",
 }
+--local function get_venv_name()
+--  local venv = require("venv-selector").venv()
+--  if venv and venv ~= "" then
+--    return " " .. vim.fn.fnamemodify(venv, ":t") -- Solo el nombre del venv
+--  end
+--  return ""
+--end
 
 return {
   {
@@ -51,16 +58,10 @@ return {
             components.mode_evil,
           },
           lualine_b = {
-            {
-              function()
-                return vim.g.remote_neovim_host and ("Remote: %s"):format(vim.uv.os_gethostname()) or ""
-              end,
-              padding = { right = 1, left = 1 },
-              separator = { left = "", right = "" },
-            },
             "branch",
             components.diagnostics,
             components.flutter,
+            components.venv,
           },
           lualine_c = {
             {
@@ -128,7 +129,6 @@ return {
                 return vim.api.nvim_get_option_value("filetype", { buf = 0 })
               end,
             },
-            components.venv,
             components.liveserver,
             {
               function()
