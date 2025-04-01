@@ -2,7 +2,7 @@ mpd/.config/mpd/mpd.state
 mpd/.config/mpd/playlists/
 mpd/.config/mpd/mpd.db
 nvim/.config/nvim/lazy-lock.json
-nvim/.config/nvim/lazy-lock.json
 bspwm/config/zsh/zhistory
 bspwm/config/mpd/state
 RiceError.log
+bspwm/config/nvim/lazy-lock.json

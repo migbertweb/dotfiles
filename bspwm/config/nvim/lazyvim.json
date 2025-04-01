@@ -39,7 +39,6 @@
     "plugins.extras.editor.neotree",
     "plugins.extras.editor.nvim-treesitter",
     "plugins.extras.editor.toggleterm",
-    "plugins.extras.lang.bash",
     "plugins.extras.lang.html",
     "plugins.extras.lang.php",
     "plugins.extras.lang.python",

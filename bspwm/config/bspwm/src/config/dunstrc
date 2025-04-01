@@ -21,7 +21,7 @@ corner_radius = 6
 
 gap_size = 4
 separator_height = 1
-separator_color = "#bb9af7"
+separator_color = "#a4ffff"
 
 padding = 15
 horizontal_padding = 15

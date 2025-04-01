@@ -24,22 +24,22 @@ cyanb="#7dcfff"
 whiteb="#c0caf5"
 
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
-NORMAL_BC="#414868"		# Normal border color
-FOCUSED_BC="#26A269"	# Focused border color
+BORDER_WIDTH="0"     # Bspwm border
+NORMAL_BC="#414868"  # Normal border color
+FOCUSED_BC="#26A269" # Focused border color
 
 # Terminal font & size
 term_font_size="10"
 term_font_name="JetBrainsMono Nerd Font"
 
 # Picom options
-P_FADE="true"			# Fade true|false
-P_SHADOWS="true"		# Shadows true|false
-SHADOW_C="#000000"		# Shadow color
-P_CORNER_R="6"			# Corner radius (0 = disabled)
-P_BLUR="true"			# Blur true|false
-P_ANIMATIONS="@"		# (@ = enable) (# = disable)
-P_TERM_OPACITY="0.9"	# Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
+P_FADE="true"        # Fade true|false
+P_SHADOWS="true"     # Shadows true|false
+SHADOW_C="#000000"   # Shadow color
+P_CORNER_R="6"       # Corner radius (0 = disabled)
+P_BLUR="true"        # Blur true|false
+P_ANIMATIONS="@"     # (@ = enable) (# = disable)
+P_TERM_OPACITY="0.9" # Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
 
 # Dunst
 dunst_offset='(20, 60)'
@@ -50,7 +50,8 @@ dunst_font='JetBrainsMono NF Medium 9'
 dunst_border='0'
 
 # Gtk theme vars
-gtk_theme="Dracula-slim"
+gtk_theme="Orchis-Teal-Dark-Compact"
+# gtk_theme="Dracula-slim"
 gtk_icons="Tela-circle-dracula-dark"
 gtk_cursor="Qogirr-Dark"
 geany_theme="z0mbi3-TokyoNight"
