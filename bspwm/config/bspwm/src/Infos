@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Configuración
-INTERVAL=15 # 5 minutos (300 segundos) entre cambios
+INTERVAL=180 # 5 minutos (300 segundos) entre cambios
 WEATHER_SCRIPT="./.config/bspwm/src/Weather"
 RSS_FEED="https://g1.globo.com/rss/g1/sc/santa-catarina/" # Cambia por tu fuente RSS real
 ALERTS_URL="https://apiprevmet3.inmet.gov.br/avisos/rss"
@@ -34,7 +34,7 @@ get_weather() {
 ########################################################
 get_rss() {
 	local cache_file="$CACHE_DIR/rss"
-	local max_length=50
+	local max_length=40
 
 	# Regenerar caché si está vacío, dañado o expirado
 	if [ ! -f "$cache_file" ] ||
@@ -67,7 +67,7 @@ get_rss() {
 # Función NUEVA para alertas climáticas INMET
 get_alerts() {
 	local cache_file="$CACHE_DIR/alerts"
-	local max_length=60
+	local max_length=40
 
 	if [ -f "$cache_file" ] && [ $(($(date +%s) - $(stat -c %Y "$cache_file"))) -lt 900 ]; then
 		mapfile -t alerts <"$cache_file"

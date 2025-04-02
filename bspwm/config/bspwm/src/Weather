@@ -8,11 +8,13 @@ check_if_empty() {
   [[ -z "$1" ]] && echo "0" || echo "$1"
 }
 
-KEY="8b05d62206f459e1d298cbe5844d7d87"
+KEY="8c5e491a43b64ecb16ffed40f5c60695"
 CITY="Joinville, BR"
+CITYID="3459712"
+LANG="es"
 CITYN=$(encode_to_url_format "$CITY")
 UNITS="metric" # Available "metric" "imperial"
-WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?q=$CITYN&appid=$KEY&units=$UNITS&lang=es")
+WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?id=$CITYID&appid=$KEY&units=$UNITS&lang=$LANG")
 
 WEATHER_DESC=$(echo "$WEATHER" | jq -r ".weather[0].main")
 WEATHER_DESC2=$(echo "$WEATHER" | jq -r ".weather[0].description")
