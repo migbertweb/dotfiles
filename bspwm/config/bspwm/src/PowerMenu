@@ -1,38 +1,39 @@
 #!/usr/bin/env bash
 
 options=(
-  " Bloquear"
-  " Suspender"
-  " Salir"
-  " Reiniciar"
-  " Apagar"
+    "󰍁"
+    ""
+    "󰗽"
+    "󰜉"
+    "󰐥"
 )
 
 rofi_cmd() {
-  rofi -dmenu \
-    -p "Goodbye ${USER}" \
-    -mesg "Uptime: $(uptime -p | sed -e 's/up //g')" \
-    -theme "$HOME"/.config/bspwm/src/rofi-themes/PowerMenu.rasi
+	rofi -dmenu \
+		-p "Goodbye ${USER}" \
+		-mesg "Uptime: $(uptime -p | sed -e 's/up //g')" \
+		-no-click-to-exit \
+		-theme "$HOME"/.config/bspwm/src/rofi-themes/PowerMenu.rasi
 }
 
 chosen=$(printf "%s\n" "${options[@]}" | rofi_cmd)
 
 case $chosen in
-" Apagar")
-  systemctl poweroff
-  ;;
-" Reiniciar")
-  systemctl reboot
-  ;;
-" Bloquear")
-  ScreenLocker --rice
-  ;;
-" Suspender")
-  mpc -q pause
-  amixer set Master mute
-  systemctl suspend
-  ;;
-" Salir")
-  bspc quit
-  ;;
+    "󰐥")
+        systemctl poweroff
+        ;;
+    "󰜉")
+        systemctl reboot
+        ;;
+    "󰍁")
+        ScreenLocker
+        ;;
+    "")
+        mpc -q pause
+        amixer set Master mute
+        systemctl suspend
+        ;;
+    "󰗽")
+        bspc quit
+        ;;
 esac

@@ -21,21 +21,6 @@ class=$2
 instance=$3
 consequences=$4
 
-# Function to calculate dimensions based on percentages
-calculate_dimensions() {
-	local width_percent=$1
-	local height_percent=$2
-
-	# Get screen dimensions
-	read -r screen_width screen_height < <(xdpyinfo | awk '/dimensions:/ {print $2}' | tr 'x' ' ')
-
-	# Calculate dimensions in pixels
-	local width=$(((screen_width * width_percent + 50) / 100))
-	local height=$(((screen_height * height_percent + 50) / 100))
-
-	printf '%dx%d+0+0\n' "$width" "$height"
-}
-
 result() {
 	eval "$consequences"
 	[ "$state" ] || echo "$1"
@@ -43,51 +28,25 @@ result() {
 
 case "$class" in
 FloaTerm)
-	dimensions=$(calculate_dimensions 81 82)
-	result "state=floating center=on rectangle=$dimensions"
+	result "state=floating center=on rectangle=1050x599+0+0"
 	;;
 Updating)
-	dimensions=$(calculate_dimensions 65 55)
-	result "state=floating sticky=on center=on rectangle=$dimensions"
+	result "state=floating sticky=on center=on rectangle=390x405+0+0"
 	;;
-Kbd_control)
-	dimensions=$(calculate_dimensions 48 65)
-	result "state=floating sticky=on center=on rectangle=$dimensions"
-	;;
-clima)
-	dimensions=$(calculate_dimensions 75 82)
-	result "state=floating sticky=on center=on rectangle=$dimensions"
-	;;
-YaziTerm)
-	dimensions=$(calculate_dimensions 91 84)
-	result "state=floating center=on rectangle=$dimensions"
-	;;
-MusicTerm)
-	dimensions=$(calculate_dimensions 78 71)
-	result "state=floating center=on rectangle=$dimensions"
-	;;
-FetchTerm)
-	dimensions=$(calculate_dimensions 31 58)
-	result "state=floating center=on rectangle=$dimensions"
+Scratch)
+	result "state=floating focus=on sticky=on"
 	;;
 RiceEditor)
 	result "state=floating focus=on center=on"
 	;;
 mpv)
-	dimensions=$(calculate_dimensions 73 73)
-	result "state=floating focus=on center=on rectangle=$dimensions"
+	result "state=floating focus=on center=on rectangle=723x407+0+0"
 	;;
-Viewnior | Bitwarden | keepassxc | Keepassxc | ristretto | Ristretto | wireguird | Wireguird)
+Viewnior)
 	result "state=floating focus=on center=on"
 	;;
-thunderbird)
-	result "desktop=^5 follow=on"
-	;;
-TelegramDesktop | signal | Signal | signal-desktop | Signal-desktop)
-	result "state=floating center=on follow=on rectangle=1300x680+1054+593"
-	;;
-VirtualBox | virtualbox | VirtualBox_Manager | virtualbox-manager)
-	result "desktop=^8 state=floating center=on follow=on rectangle=1300x680+1054+593"
+TelegramDesktop)
+	result "state=floating center=on desktop=^5 follow=on rectangle=1300x680+1054+593"
 	;;
 pavucontrol)
 	result "state=floating center=on"
@@ -95,16 +54,33 @@ pavucontrol)
 Thunar)
 	result "desktop=^2 follow=on"
 	;;
-Geany)
-	result "desktop=^4 follow=on"
+firefox | Navigator)
+	result "desktop=^3 follow=on"
 	;;
-Mousepad)
-	result "desktop=^4 follow=on"
+	##### Custom Rules #####
+clima)
+	dimensions=$(calculate_dimensions 75 82)
+	result "state=floating sticky=on center=on rectangle=1060x600+0+0"
+	;;
+Kbd_control)
+	result "state=floating sticky=on center=on rectangle=723x407+0+0"
+	;;
+Bitwarden | keepassxc | Keepassxc | ristretto | Ristretto | wireguird | Wireguird)
+	result "state=floating focus=on center=on"
+	;;
+thunderbird)
+	result "desktop=^5 follow=on"
+	;;
+signal | Signal | signal-desktop | Signal-desktop)
+	result "state=floating center=on follow=on rectangle=1300x680+1054+593"
+	;;
+VirtualBox | virtualbox | VirtualBox_Manager | virtualbox-manager)
+	result "desktop=^8 state=floating center=on follow=on rectangle=1300x680+1054+593"
 	;;
 kitty)
 	result "desktop=^1 follow=on"
 	;;
-firefox | Navigator | Google-chrome | brave | Brave-browser | brave-browser | Brave-Browser)
+Google-chrome | brave | Brave-browser | brave-browser | Brave-Browser)
 	result "desktop=^3 follow=on"
 	;;
 Evince | Atril)
@@ -113,13 +89,28 @@ Evince | Atril)
 Inkscape | Gimp* | libreoffice* | wine | wineserver | obs | steam | Shotcut | shotcut)
 	result "desktop=^6 follow=on"
 	;;
-Scratch)
-	result "state=floating focus=on sticky=on"
+Geany)
+	result "desktop=^4 follow=on"
+	;;
+Mousepad)
+	result "desktop=^4 follow=on"
 	;;
 esac
 
 case "$instance" in
 Toolkit)
 	result "state=floating sticky=on rectangle=500x290+1054+593"
+	;;
+YaziTerm)
+	result "state=floating center=on rectangle=900x542+0+0"
+	;;
+RangerTerm)
+	result "state=floating center=on rectangle=900x542+0+0"
+	;;
+MusicTerm)
+	result "state=floating center=on rectangle=956x543+0+0"
+	;;
+FetchTerm)
+	result "state=floating center=on rectangle=369x601+0+0"
 	;;
 esac

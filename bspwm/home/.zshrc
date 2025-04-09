@@ -7,16 +7,17 @@ fi
 #
 #
 export VISUAL="${EDITOR}"
-export EDITOR='geany'
+export EDITOR='nvim'
 export BROWSER='firefox'
-export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
 export SUDO_PROMPT="Deploying root access for %u. Password pls: "
-export BAT_THEME="base16"
+# ----- Bat (better cat) -----
+export BAT_THEME=tokyonight_night
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
-#
+# INSTALACION DE ZINIT
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -40,11 +41,6 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-# Self update
-# zinit self-update
-# Increase the number of jobs in a concurrent-set to 40
-# zinit update --parallel 40
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -62,24 +58,59 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:*' fzf-flags --style=full --height=90% --pointer '>' \
+                --color 'pointer:green:bold,bg+:-1:,fg+:green:bold,info:blue:bold,marker:yellow:bold,hl:gray:bold,hl+:yellow:bold' \
+                --input-label ' Search ' --color 'input-border:blue,input-label:blue:bold' \
+                --list-label ' Results ' --color 'list-border:green,list-label:green:bold' \
+                --preview-label ' Preview ' --color 'preview-border:magenta,preview-label:magenta:bold'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always -a $realpath'
+zstyle ':fzf-tab:complete:eza:*' fzf-preview 'eza -1 --icons=always --color=always -a $realpath'
+zstyle ':fzf-tab:complete:bat:*' fzf-preview 'bat --color=always --theme=base16 $realpath'
+zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
+zstyle ':fzf-tab:*' accept-line enter
 
 # ALIAS
+############ GIT ####################
+# Subir cambios a git
+gitpush() {
+    echo "########## Añadiendo cambios a Stage ##########"
+    git add -v .
+    sleep 1
+    echo "########## Estado del Commit ##########"
+    git commit -m "$*"
+    sleep 1
+    echo "########## Subiendo cambios a Origin ##########"
+    git push
+    sleep 1
+    echo "\n ########## Mostrando Log del repositorio ########## \n"
+    git log -5 --graph --oneline --abbrev-commit --pretty=format:"%h - %an, %ar : %s"
+    echo "Fin \n"
+}
+## ---- GIT -----
+alias gitu=gitpush
+alias gst='git status -s -b && git log --oneline --decorate -n 5'
+## Alias
 alias mirrors="sudo reflector --verbose --latest 5 --country 'United States' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 alias update="paru -Syu --nocombinedupgrade"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias music="ncmpcpp"
-alias cat="bat --theme=base16"
+alias cat="bat"
 alias ls='exa --long --color=auto --icons --git --no-time --no-filesize --no-permissions --no-user --grid --sort=type'
 alias la='exa --long --color=auto --icons --all --git --no-time --no-filesize --no-permissions --no-user --grid --sort=type'
 alias ll='eza --icons=always --color=always -la'
 alias v='nvim'
 alias cl='clear'
-
+# PACMAN
+alias update="paru -Syu --skipreview --nocombinedupgrade"
+alias instalar='sudo pacman -Sy'
+# pacman-optimize
+alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+source <(kubectl completion zsh)

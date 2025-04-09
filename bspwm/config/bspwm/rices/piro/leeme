@@ -1,0 +1,75 @@
+cambios:
+##### cambios en Picom para el Plank
+	{
+		match = "window_type = 'dock'";
+		corner-radius = 0;
+		fade = true;
+		shadow = false;  ## agregar esto
+	},
+##### OpenApps  cambiar para usar Brave
+        ##### Mis Apps #####
+    --ranger)
+	    Term --ranger
+	    ;;
+    --powermanager)
+	    xfce4-power-manager-settings
+	    ;;
+    --kbd_control)
+	    Term --kbd_control
+	    ;;
+	--clima)
+		Term --clima
+		;;
+##### ExternalRules
+##### Custom Rules #####
+	clima)
+		dimensions=$(calculate_dimensions 75 82)
+		result "state=floating sticky=on center=on rectangle=1060x600+0+0"
+		;;
+    Conky)
+	    result "state=floating manage=off"
+	    ;;
+    Kbd_control)
+	    result "state=floating sticky=on center=on rectangle=723x407+0+0"
+	    ;;
+   Bitwarden | keepassxc | Keepassxc | ristretto | Ristretto | wireguird | Wireguird)
+		result "state=floating focus=on center=on"
+		;;
+	thunderbird)
+		result "desktop=^5 follow=on"
+		;;
+	signal | Signal | signal-desktop | Signal-desktop)
+		result "state=floating center=on follow=on rectangle=1300x680+1054+593"
+		;;
+	VirtualBox | virtualbox | VirtualBox_Manager | virtualbox-manager)
+		result "desktop=^8 state=floating center=on follow=on rectangle=1300x680+1054+593"
+		;;
+	kitty)
+		result "desktop=^1 follow=on"
+		;;
+	Navigator | Google-chrome | brave | Brave-browser | brave-browser | Brave-Browser)
+		result "desktop=^3 follow=on"
+		;;
+	Evince | Atril)
+		result "desktop=^6 follow=on"
+		;;
+	Inkscape | Gimp* | libreoffice* | wine | wineserver | obs | steam | Shotcut | shotcut)
+		result "desktop=^6 follow=on"
+		;;
+	Geany)
+		result "desktop=^4 follow=on"
+		;;
+	Mousepad)
+		result "desktop=^4 follow=on"
+		;;
+##### TERM
+            ##### Custom Term #####
+            "--kbd_control")
+                kitty --class=Kbd_control -e ~/.config/bspwm/rices/piro/scripts/kbd_backlight.sh
+                ;;
+            "--clima")
+                kitty --class=clima -e ~/.config/bspwm/rices/piro/scripts/clima.sh
+                ;;
+            "--rangerscratch")
+                tdrop -ma -w 80% -h 65% -y 0 -x 10% -n 1 --class scratch kitty --class=Scratch -e ranger
+                ;;

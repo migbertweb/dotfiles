@@ -11,73 +11,49 @@
 alt + F1
 	OpenApps --KeyHelp
 
-#|||----- Applications -----|||#
+############################
+# ----- Applications ----- #
+############################
 
-# Open Terminal (alacritty)
-super + Return
-	OpenApps --terminal
+# ----- Main Apps ----- #
 
-# Open floating Terminal
-super + alt + Return
-	OpenApps --floating
+# Open Terminal (Normal & Floating)
+super + {_,alt + }Return
+	OpenApps --{terminal,floating}
 
-# Application menu
+# App launcher
 super + @space
 	OpenApps --menu
-
-#####
-
-# Apps (browser, editor, filemanager)
-super + {w,e,n}
-	OpenApps {--browser,--editor,--filemanager}
-
-# Terminal apps (yazi, nvim, ncmpcpp)
-super + {r,y,v,m}
-	OpenApps --{ranger,yazi,nvim,music}
-
-
-# Media apps (Pavucontrol, Telegram, Whatsapp)
-super + {p,t,w}
-	OpenApps --{soundcontrol,telegram,whats}
-
-
-#|||----- System Keybindings -----|||#
 
 # Theme Selector
 alt + @space
 	RiceSelector
 
+# ----- Your Apps ----- #
+
+# Apps (browser, editor, filemanager)
+super + {b,e,f}
+	OpenApps --{browser,editor,filemanager}
+
+# Terminal apps (yazi, nvim, ncmpcpp)
+super + {n,y,v,m}
+	OpenApps --{ranger,yazi,nvim,music}
+
+# Media apps (Pavucontrol, Telegram, Whatsapp)
+super + {p,t,w}
+	OpenApps --{soundcontrol,telegram,whats}
+
+# Rice Editor App
+Super + r
+    RiceEditor
+
+# ----- Rofi Applets ----- #
+
 #Terminal Selector
 super + alt + t
 	Term --selecterm
 
-# jgmenu
-~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/config/jgmenu.txt --config-file=~/.config/bspwm/src/config/jgmenurc
-
-# Scratchpad
-super + alt + o
-	Term --scratch
-# Yazi Scratchpad
-super + alt + y
-	Term --yaziscratch
-# Ranger Scratchpad
-super + alt + e
-	Term --rangerscratch
-
-# Power off, Reboot, Log out, Lockscreen, kill an app
-ctrl + super + alt + {p,r,q,l,k,s}
-	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill,SoftReload}
-
-# Hide/Show Bar (Polybar and/or eww)
-super + alt + {h,u}
-	HideBar {-h,-u}
-
-# Change transparency on focused window
-ctrl + alt + {plus,minus,t}
-	picom-trans {-c -o +3,-c -o -1,-c -d}
-
-# Random wallpaper
+# Wallpaper selector
 super + alt + w
 	WallSelect
 
@@ -89,25 +65,55 @@ super + alt + a
 super + alt + n
 	OpenApps --netmanager
 
+# Bluetooth
+super + alt + b
+	OpenApps --bluetooth
+
 # Clipboard
 super + alt + c
 	OpenApps --clipboard
 
 # Screenshot
-super + s
+super + alt + s
 	OpenApps --screenshot
-
-# Bluetooth
-super + alt + b
-	OpenApps --bluetooth
 
 # PowerMenu
 super + alt + p
 	OpenApps --powermenu
 
+# Rofi style
+super + alt + l
+    RofiLauncher --choose-style
+
+# Keyboard Layout Applet
+super + alt + k
+	OpenApps --keyboard
+
+# ----- Environment Apps ----- #
+
+# Scratchpad
+super + alt + o
+	OpenApps --scratch
+
+# jgmenu
+~button3
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/config/jgmenu.txt --config-file=~/.config/bspwm/src/config/jgmenurc
+
+# Power off, Reboot, Log out, Lockscreen, kill an app
+ctrl + super + alt + {p,r,q,l,k,s}
+	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill,SoftReload}
+
+# Hide/Show Bar (Polybar and/or eww)
+super + alt + {h,u}
+	HideBar {-h,-u}
+
+# Change transparency on focused window
+ctrl + alt + {plus,minus,t}
+	picom-trans {-c -3,-c +3,-c -d}
+
 # Manage brightness
 XF86MonBrightness{Up,Down}
-    sh Brightness {up,down}
+	sh Brightness {up,down}
 
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -117,22 +123,19 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 XF86Audio{Next,Prev,Play,Stop}
 	MediaControl {--next,--previous,--toggle,--stop}
 
-
-# Keyboard Layout Applet
-super + alt + k
-	OpenApps --keyboard
-
-#|||----- Bspwm hotkeys -----|||#
+#####################
+# ----- Bspwm ----- #
+#####################
 
 # Reload BSPWM
 super + alt + r
 	bspc wm -r
 
-# close and kill
-super + {_,shift + }q
+# Close/Kill node
+super + {_,shift + }c
 	bspc node -{c,k}
 
-# Reload Keybindings
+# Reload sxhkd Keybinds
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
 
@@ -148,59 +151,54 @@ alt + {m,x,s,p}
 
 # Hide/Unhide node
 alt + h
-	BspHideNode
+	sh -c 'NHidden=$(bspc query -N -n .hidden -d focused); \
+	if [ -z "$NHidden" ]; then bspc node focused -g hidden=on; \
+	else bspc node "$NHidden" -g hidden=off; fi'
 
-# Toggle beetwen floating & tiled
-super + alt + f
-     bspc node -t "~"{floating,tiled}
+# ----- Focus/Swap Nodes ----- #
 
-#####
-
-# rotate desktop
-super + r
+# Rotate desktop
+super + Tab
 	bspc node @/ --rotate {90,-90}
-
-# Change focus of the Node or Swap Nodes
-shift + super {_,ctrl + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east}
 
 # Switch workspace
 super + {Left,Right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}
 
-# focus or send to the given desktop
-super + {_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}' '--follow'
+# Focus or send to the given desktop
+super + {_,ctrl + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Send focused Node to workspace directionally
-super + alt + {Left,Right}
+super + ctrl + {Left,Right}
 	bspc node -d {prev,next} '--follow'
 
-# focus the last node/desktop
-super + {comma,Tab}
+# Cycle focus through nodes.
+ctrl + Tab
+	bspc node -f next.local.!hidden.window
+
+# Swap Nodes
+ctrl + shift + {Left,Down,Up,Right}
+	bspc node -s {west,south,north,east}.local
+
+# Focus the last node/desktop
+ctrl + shift {comma,period}
 	bspc {node,desktop} -f last
 
-#####
+# Preselect the direction (horizontal, vertical or cancel)
+super + ctrl {h,v,q}
+	bspc node -p {east,south,cancel}
 
-# preselect the direction
-super + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+# ----- Expand/Shrink Nodes ----- #
 
-# cancel the preselection for the focused node
-super + alt + space
-	bspc node -p cancel
+# Expand node
+super + alt {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-#####
+# Shrink node
+super + shift {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# expand a window
-ctrl + alt {Left,Down,Up,Right}
-	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
-
-# contract a window
-ctrl + shift + alt + {Left,Down,Up,Right}
-	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
-
-# move a floating window
-shift + alt + {Left,Down,Up,Right}
-	bspc node -v {left -10 0,bottom 0 10,top 0 -10,right 10 0}
-
+# Move floating window
+alt + shift {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

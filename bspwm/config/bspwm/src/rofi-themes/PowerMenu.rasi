@@ -13,12 +13,10 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
+    width:                       50%;
     x-offset:                    0px;
     y-offset:                    0px;
-     border-radius:               12px;
-    border-color:                @selected;
-    cursor:                      "default";   
+    
     background-color:            @background;
     //border-radius: 				 6px;
 }
@@ -28,7 +26,7 @@ mainbox {
     spacing:                     15px;
     padding:                     30px;
     background-color:            @background;
-    children:                    [ "inputbar", "message","listview" ];
+    children:                    [ "inputbar", "listview" ];
 }
 
 inputbar {
@@ -43,42 +41,33 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    font:                        "JetBrainsMono Nerd Font Bold 14";
+    font:                        "JetBrainsMono Nerd Font Bold 11";
     str:                         "  ";
-     border-radius:               20px;
-   padding:                     12px 16px 12px 12px;
+    padding:                     12px 16px 12px 12px;
     background-color:            @urgent;
     text-color:                  @background;
 }
 
 prompt {
+	font:                        "JetBrainsMono Nerd Font Bold 11";
     enabled:                     true;
-      border-radius:               20px;
-   padding:                     12px;
+    padding:                     12px;
     background-color:            @active;
     text-color:                  @background;
 }
 
 message {
     enabled:                     true;
-    margin:                      0px;
-    padding:                     10px;
-    border:                      2px solid;
-    border-radius:               20px;
-    border-color:                @selected;  
+    padding:                     12px;
+    border-color:                @selected;
     background-color:            @background-alt;
     text-color:                  @foreground;
 }
-textbox {
-    background-color:            inherit;
-    text-color:                  inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
-}
+
 listview {
     enabled:                     true;
-    columns:                     3;
-    lines:                       2;
+    columns:                     5;
+    lines:                       1;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -96,20 +85,19 @@ listview {
 
 element {
     enabled:                     true;
-    padding:                     16px;
+    padding:                     40px 10px;
     border:                      0px solid;
-    border-radius:               20px;
+    border-radius:               0px;
     background-color:            @bg-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 
 element-text {
-
+    font:                        "Material Design Icons Desktop 36";
     background-color:            transparent;
     text-color:                  inherit;
-     font:                        "JetBrainsMono Nerd Font Bold 11";
-   cursor:                      inherit;
+    cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }

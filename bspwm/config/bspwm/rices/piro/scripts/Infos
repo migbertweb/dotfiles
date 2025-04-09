@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+
+# Configuración
+INTERVAL=120 # 5 minutos (300 segundos) entre cambios
+WEATHER_SCRIPT="$HOME/.config/bspwm/rices/piro/scripts/Weather"
+RSS_FEED="https://g1.globo.com/rss/g1/sc/santa-catarina/" # Cambia por tu fuente RSS real
+ALERTS_URL="https://apiprevmet3.inmet.gov.br/avisos/rss"
+CACHE_DIR="$HOME/.tmp/polybar_cache"
+USER_AGENT="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+# Crear directorio de caché si no existe
+mkdir -p "$CACHE_DIR"
+
+# Función para obtener el clima
+get_weather() {
+	# Usar caché si es reciente (2 minutos)
+	local cache_file="$CACHE_DIR/weather"
+	if [ -f "$cache_file" ] && [ $(($(date +%s) - $(stat -c %Y "$cache_file"))) -lt 120 ]; then
+		cat "$cache_file"
+		return
+	fi
+
+	local weather_output=$("$WEATHER_SCRIPT" wmodule 2>/dev/null)
+
+	if [ -n "$weather_output" ]; then
+		echo "$weather_output" >"$cache_file"
+		echo "$weather_output"
+	else
+		echo " Weather error"
+	fi
+}
+########################################################
+# Función para obtener titulares RSS (requiere xmllint)
+########################################################
+get_rss() {
+	local cache_file="$CACHE_DIR/rss"
+	local max_length=30
+
+	# Regenerar caché si está vacío, dañado o expirado
+	if [ ! -f "$cache_file" ] ||
+		[ $(($(date +%s) - $(stat -c %Y "$cache_file"))) -ge 1800 ] ||
+		grep -q "^$" "$cache_file"; then
+
+		curl -s "$RSS_FEED" |
+			xmllint --xpath '//item/title/text()' - 2>/dev/null |
+			sed 's/^/ /' |
+			awk '{gsub(/\n/, " "); print}' >"$cache_file"
+	fi
+
+	# Leer titulares y rotar
+	local headlines=()
+	mapfile -t headlines < <(grep -v "^$" "$cache_file")
+
+	local current_index=0
+	if [ -f "$CACHE_DIR/rss_index" ]; then
+		current_index=$(cat "$CACHE_DIR/rss_index")
+		current_index=$(((current_index + 1) % ${#headlines[@]}))
+	fi
+	echo "$current_index" >"$CACHE_DIR/rss_index"
+
+	# Mostrar titular formateado
+	local headline="${headlines[$current_index]}"
+	headline=$(echo "$headline" | tr -s ' ' | sed 's/^ *//;s/ *$//')
+	echo "${headline:0:$max_length}$([ ${#headline} -gt $max_length ] && echo "...")"
+}
+##########################
+# Función NUEVA para alertas climáticas INMET
+get_alerts() {
+	local cache_file="$CACHE_DIR/alerts"
+	local max_length=40
+
+	if [ -f "$cache_file" ] && [ $(($(date +%s) - $(stat -c %Y "$cache_file"))) -lt 900 ]; then
+		mapfile -t alerts <"$cache_file"
+	else
+		alerts=()
+		while IFS= read -r line; do
+			# Extrae el tipo de alerta y la severidad con este método robusto
+			if [[ "$line" =~ ^(Aviso|Alerta)\ de\ (.+?)\.\ .*?(Perigo\ Potencial|Perigo|Observar) ]]; then
+				tipo="${BASH_REMATCH[2]}"
+				severidad="${BASH_REMATCH[3]}"
+				alerts+=(" $tipo: $severidad")
+			fi
+		done < <(curl -s -A "$USER_AGENT" "$ALERTS_URL" |
+			xmllint --xpath '//item/title/text()' - 2>/dev/null |
+			head -2)
+
+		if [ ${#alerts[@]} -gt 0 ]; then
+			printf "%s\n" "${alerts[@]}" >"$cache_file"
+		else
+			echo " No hay alertas"
+			return
+		fi
+	fi
+
+	local index=$(($(date +%s) / 15 % ${#alerts[@]}))
+	echo "${alerts[$index]:0:$max_length}"
+}
+
+# Sistema de rotación entre las tres funciones
+counter=0
+while true; do
+	case $((counter % 3)) in
+	0) get_weather ;;
+	1) get_rss ;;
+	2) get_alerts ;;
+	esac
+
+	counter=$((counter + 1))
+	sleep "$INTERVAL"
+done

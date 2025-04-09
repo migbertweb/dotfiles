@@ -91,4 +91,29 @@ return {
       end,
     },
   },
+  {
+    "telescope.nvim",
+    keys = {
+      {
+        "<leader>ckf",
+        function()
+          require("telescope").extensions.diff.diff_files({ hidden = true })
+        end,
+        desc = "Diff File",
+      },
+      {
+        "<leader>ckc",
+        function()
+          require("telescope").extensions.diff.diff_current({ hidden = true })
+        end,
+        desc = "Diff Current",
+      },
+    },
+    dependencies = {
+      "jemag/telescope-diff.nvim",
+      config = function()
+        require("telescope").load_extension("diff")
+      end,
+    },
+  },
 }
