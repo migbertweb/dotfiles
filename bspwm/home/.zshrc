@@ -10,12 +10,16 @@ export VISUAL="${EDITOR}"
 export EDITOR='nvim'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
-export SUDO_PROMPT="Deploying root access for %u. Password pls: "
+export SUDO_PROMPT="Implementando acceso root para %u. Contraseña, por favor: "
 # ----- Bat (better cat) -----
 export BAT_THEME=tokyonight_night
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
+fi
+# composer path
+if [ -d "$HOME/.config/composer/vendor/bin" ] ;
+  then PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 # INSTALACION DE ZINIT
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -46,8 +50,8 @@ zinit cdreplay -q
 
 # OPTIONS
 HISTFILE=~/.config/zsh/zhistory
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=1000
+SAVEHIST=1000
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
@@ -60,7 +64,7 @@ setopt hist_find_no_dups
 # Completion styling
 #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
+zstyle ':completion:*' menu yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' fzf-flags --style=full --height=90% --pointer '>' \
@@ -110,7 +114,49 @@ alias update="paru -Syu --skipreview --nocombinedupgrade"
 alias instalar='sudo pacman -Sy'
 # pacman-optimize
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
+# 
+
+# KUBERNETES
+alias k='kubectl'
+alias kc='kubectl'
+alias kga='kubectl get --all-namespaces'
+alias klf='kubectl logs -f'
+alias kds='kubectl describe service'
+alias kgi='kubectl get ingress'
+alias kgiy='kubectl get ingress -o yaml'
+alias kgsc='kubectl get secrets'
+alias kgscy='kubectl get secrets -o yaml'
+alias kgs='kubectl get services'
+alias kgsy='kubectl get services -o yaml'
+alias kgp='kubectl get pods'
+alias kgpy='kubectl get pods -o yaml'
+alias ktp='kubectl top pods'
+# Deployments
+alias kdd='kubectl delete deployment'
+alias ked='kubectl edit deployments'
+alias kgd='kubectl get deployments'
+# endpoints
+alias kgep='kubectl get endpoints'
+# events
+alias kgev='kubectl get events'
+############# from file ################
+alias kaf='kubectl apply -f'
+alias kcf='kubectl create -f'
+alias kdf='kubectl delete -f'
+alias kef='kubectl edit -f'
+alias kdsf='kubectl describe -f'
+alias kgf='kubectl get -f'
+########################################
+alias kgns='kubectl get namespaces'
+alias kgnsy='kubectl get namespaces -o yaml'
+# Nodes
+alias kgn='kubectl get nodes'
+alias kgny='kubectl get nodes -o yaml'
+alias ktn='kubectl top nodes'
+########################################
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+#########################
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-source <(kubectl completion zsh)
+
