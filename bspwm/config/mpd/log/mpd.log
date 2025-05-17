@@ -875,3 +875,6 @@ Mar 15 00:59:12 : update: removing Mix - Fulanito/23 - Suavemente.webm
 Mar 15 00:59:26 : update: added Mix - Fulanito/26 - Sopa de caracol - banda blanca - video rmx - Dj Fredy Pro !!.mp3
 Mar 15 00:59:26 : update: updating Mix - Fulanito/25 - Nadie Se Muere.mp3
 Mar 15 00:59:26 : update: removing Mix - Fulanito/25 - Nadie Se Muere.webm
+2025-05-17T00:25:19 exception: inotify_add_watch("/mnt/personal/Música") failed: No such file or directory
+2025-05-17T00:42:58 exception: inotify_add_watch("/mnt/personal/Música") failed: No such file or directory
+2025-05-17T12:17:42 exception: inotify_add_watch("/mnt/personal/Música") failed: No such file or directory

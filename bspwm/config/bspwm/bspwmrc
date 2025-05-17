@@ -92,7 +92,7 @@ bspc rule -a conky state=floating manage=off
 
 # Start udiskie
 # Kill if already running
-killall -9 conky udiskie
+killall -9 udiskie
 pidof -q udiskie || { udiskie -t & }
 
 # Start Telegram

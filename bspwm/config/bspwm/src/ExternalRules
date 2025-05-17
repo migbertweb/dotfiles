@@ -54,7 +54,7 @@ pavucontrol)
 Thunar)
 	result "desktop=^2 follow=on"
 	;;
-firefox | Navigator)
+firefox | Navigator | Microsoft-edge)
 	result "desktop=^3 follow=on"
 	;;
 	##### Custom Rules #####
@@ -89,7 +89,7 @@ Evince | Atril)
 Inkscape | Gimp* | libreoffice* | wine | wineserver | obs | steam | Shotcut | shotcut)
 	result "desktop=^6 follow=on"
 	;;
-Geany)
+Geany | VSCodium)
 	result "desktop=^4 follow=on"
 	;;
 Mousepad)

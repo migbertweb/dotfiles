@@ -1,0 +1,14 @@
+[
+  "anweber.local-sync",
+  "garlicbreadcleric.pandoc-markdown-syntax",
+  "jeanp413.open-remote-ssh",
+  "mhutchie.git-graph",
+  "ms-ceintl.vscode-language-pack-es",
+  "ms-kubernetes-tools.vscode-kubernetes-tools",
+  "mtxr.sqltools",
+  "mtxr.sqltools-driver-mysql",
+  "mtxr.sqltools-driver-pg",
+  "mtxr.sqltools-driver-sqlite",
+  "redhat.vscode-yaml",
+  "zokugun.cron-tasks"
+]

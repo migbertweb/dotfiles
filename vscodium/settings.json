@@ -1,0 +1,20 @@
+{
+  "editor.wordWrap": "on",
+  "redhat.telemetry.enabled": true,
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "82.112.244.132",
+      "port": 8085,
+      "driver": "MariaDB",
+      "name": "myvps",
+      "username": "migbert",
+      "database": "mi_basedatos"
+    }
+  ],
+  "window.newWindowProfile": "Predeterminado"
+}
