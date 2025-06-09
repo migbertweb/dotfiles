@@ -78,7 +78,7 @@ pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-g
 ########## START CUSTOM APPS ##########
 #######################################
 # Launch power manager
-pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable --no-daemon & }
+pidof -q xfce4-power-manager || { xfce4-power-manager --sm-client-disable & }
 
 # start keepassxc
 pidof -q keepassxc || { keepassxc & }

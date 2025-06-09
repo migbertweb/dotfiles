@@ -1,0 +1,51 @@
+%YAML 1.2
+---
+scope: source.sql.interpolated.php
+version: 2
+hidden: true
+
+extends: Packages/SQL/SQL.sublime-syntax
+
+contexts:
+  prototype_without_comments:
+    - meta_prepend: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#interpolations
+
+  main:
+    - meta_prepend: true
+    # prevent stray bracket highlighting
+    - match: \)
+      scope: punctuation.section.group.end.sql
+
+###[ COMMENTS ]################################################################
+
+  inside-number-sign-comment:
+    - meta_append: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#interpolations
+
+  inside-double-dash-comment:
+    - meta_append: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#interpolations
+
+  inside-comment-docblock:
+    - meta_append: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#interpolations
+
+  inside-comment-block:
+    - meta_append: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#interpolations
+
+###[ LITERALS ]################################################################
+
+  inside-like-single-quoted-string:
+    - meta_prepend: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#string-interpolations
+
+  inside-single-quoted-string:
+    - meta_prepend: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#string-interpolations
+
+  string-interpolations:
+    # this context is included in anonymous string contexts
+    - meta_prepend: true
+    - include: Packages/PHP/PHP Source.sublime-syntax#string-interpolations

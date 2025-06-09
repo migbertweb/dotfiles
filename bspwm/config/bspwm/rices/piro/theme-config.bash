@@ -46,7 +46,7 @@ SHADOW_C="#000000"   # Shadow color
 P_CORNER_R="9"       # Corner radius (0 = disabled)
 P_BLUR="true"        # Blur true|false
 P_ANIMATIONS="@"     # (@ = enable) (# = disable)
-P_TERM_OPACITY="0.9" # Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
+P_TERM_OPACITY="1.0" # Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
 
 # Dunst
 dunst_offset='(20, 60)'
@@ -102,6 +102,6 @@ geany_theme="z0mbi3-TokyoNight"
 # - CustomAnimated (Set an animated wallpaper. "mp4, mkv, gif")
 # - Slideshow (Change randomly every 15 minutes your wallpaper from Walls rice directory)
 ENGINE="Slideshow"
-CUSTOM_DIR="/home/migbert/Imágenes/wallpapers"
+CUSTOM_DIR="/mnt/datos/Imagenes/Wallpapers"
 CUSTOM_WALL="/path/to/image"
 CUSTOM_ANIMATED="/home/z0mbi3/.config/bspwm/src/assets/animated_wall.mp4"

@@ -89,7 +89,7 @@ Evince | Atril)
 Inkscape | Gimp* | libreoffice* | wine | wineserver | obs | steam | Shotcut | shotcut)
 	result "desktop=^6 follow=on"
 	;;
-Geany | VSCodium)
+Geany | VSCodium | Code)
 	result "desktop=^4 follow=on"
 	;;
 Mousepad)

@@ -20,6 +20,7 @@ local colors = {
 --end
 
 return {
+  { 'AndreM222/copilot-lualine' },
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
@@ -52,7 +53,7 @@ return {
               function()
                 return "▊"
               end,
-              color = { fg = colors.blue }, -- Sets highlighting of component
+              color = { fg = colors.blue },      -- Sets highlighting of component
               padding = { left = 0, right = 1 }, -- We don't need space before this
             },
             components.mode_evil,
@@ -81,6 +82,7 @@ return {
             },
           },
           lualine_x = {
+
             components.lsp_client,
             components.separator,
             -- stylua: ignore
@@ -119,9 +121,10 @@ return {
             LazyVim.lualine.cmp_source("codeium"),
           },
           lualine_z = {
+            { "copilot" },
             components.spaces,
             components.position,
-            { "progress", separator = "", padding = { left = 1, right = 0 } },
+            { "progress",  separator = "", padding = { left = 1, right = 0 } },
             { "encoding" },
             { "fileformat" },
             {
@@ -134,7 +137,7 @@ return {
               function()
                 return "▊"
               end,
-              color = { fg = colors.blue }, -- Sets highlighting of component
+              color = { fg = colors.blue },      -- Sets highlighting of component
               padding = { left = 1, right = 0 }, -- We don't need space before this
             },
             -- function()

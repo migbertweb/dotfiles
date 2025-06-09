@@ -11,8 +11,17 @@ export EDITOR='nvim'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
 export SUDO_PROMPT="Implementando acceso root para %u. Contraseña, por favor: "
+
 # ----- Bat (better cat) -----
-export BAT_THEME=tokyonight_night
+export BAT_THEME=Dracula
+
+# ----- KUSTOMIZE -----
+export KUSTOMIZE_PLUGIN_HOME=$HOME/.config/kustomize/plugins
+export XDG_CONFIG_HOME=$HOME/.config
+export KUSTOMIZE_ENABLE_ALPHA_PLUGINS=true
+
+# ----- export sops -----
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
@@ -117,42 +126,95 @@ alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
 # 
 
 # KUBERNETES
-alias k='kubectl'
-alias kc='kubectl'
-alias kga='kubectl get --all-namespaces'
+alias kaf='kubectl apply -f'
+alias kdf='kubectl delete -f'
+alias kl='kubectl logs'
+alias kga='kubectl get all --all-namespaces'
 alias klf='kubectl logs -f'
 alias kds='kubectl describe service'
-alias kgi='kubectl get ingress'
-alias kgiy='kubectl get ingress -o yaml'
-alias kgsc='kubectl get secrets'
-alias kgscy='kubectl get secrets -o yaml'
-alias kgs='kubectl get services'
-alias kgsy='kubectl get services -o yaml'
-alias kgp='kubectl get pods'
-alias kgpy='kubectl get pods -o yaml'
-alias ktp='kubectl top pods'
-# Deployments
-alias kdd='kubectl delete deployment'
-alias ked='kubectl edit deployments'
-alias kgd='kubectl get deployments'
-# endpoints
-alias kgep='kubectl get endpoints'
-# events
-alias kgev='kubectl get events'
-############# from file ################
-alias kaf='kubectl apply -f'
-alias kcf='kubectl create -f'
-alias kdf='kubectl delete -f'
 alias kef='kubectl edit -f'
-alias kdsf='kubectl describe -f'
-alias kgf='kubectl get -f'
-########################################
+alias kcns='kubectl create namespace'
 alias kgns='kubectl get namespaces'
-alias kgnsy='kubectl get namespaces -o yaml'
-# Nodes
+alias kgan='kubectl get all --namespace'
+alias kdn='kubectl delete namespace'
 alias kgn='kubectl get nodes'
-alias kgny='kubectl get nodes -o yaml'
 alias ktn='kubectl top nodes'
+alias kgp='kubectl get pods'
+alias kgpn='kubectl get pods --namespace'
+alias kdp='kubectl describe pod'
+alias kdpn='kubectl describe pod --namespace'
+alias kgc='kubectl get certificates --all-namespaces'
+alias kgcn='kubectl get certificates --namespace'
+# HELM
+alias hla='helm list --all-namespaces'
+alias hu='helm uninstall'
+alias hi='helm install'
+alias hup='helm upgrade --install'
+alias hga='helm get all'
+
+################ SOPS PARA ENCRYPTAR ########################
+sops_encrypt() {
+    local input_file="$1"
+    local encrypt_success=false
+
+    # Verificar si el archivo ya está encriptado (extensión .enc.yaml)
+    if [[ "$input_file" == *.enc.yaml ]]; then
+        echo "❌ El archivo ya parece estar encriptado (.enc.yaml)"
+        return 1
+    fi
+
+    # Encriptar el archivo IN-PLACE (sin crear copia)
+    if sops --encrypt --age=$(cat ~/.config/sops/age/age-key.pub) -i "$input_file"; then
+        # Renombrar a .enc.yaml (manteniendo in-place)
+        mv "$input_file" "${input_file%.yaml}.enc.yaml"
+        echo "✅ Archivo encriptado y renombrado: ${input_file%.yaml}.enc.yaml"
+        return 0
+    else
+        echo "❌ Error al encriptar el archivo"
+        return 1
+    fi
+}
+
+sops_decrypt() {
+    local input_file="$1"
+    
+    # Verificar formato de archivo encriptado
+    if [[ "$input_file" != *.enc.yaml ]]; then
+        echo "❌ El archivo no parece estar encriptado (debe terminar en .enc.yaml)"
+        return 1
+    fi
+
+    local output_file="${input_file%.enc.yaml}.yaml"
+    
+    # Verificar si ya existe el archivo desencriptado
+    if [[ -f "$output_file" ]]; then
+        echo "⚠️  El archivo $output_file ya existe. ¿Sobrescribir? (y/n)"
+        read response
+        [[ "$response" != "y" ]] && echo "Operación cancelada." && return 1
+    fi
+
+    # Desencriptar (usando redirección para evitar modificar el original)
+    if sops --decrypt "$input_file" > "$output_file"; then
+        echo "✅ Archivo desencriptado: $output_file"
+        return 0
+    else
+        echo "❌ Error al desencriptar"
+        rm -f "$output_file"  # Limpiar archivo parcial si falla
+        return 1
+    fi
+}
+
+# Alias
+alias encrypt='sops_encrypt'
+alias decrypt='sops_decrypt'
+alias edit-encrypted='sops'
+alias ver-encrypted='sops --decrypt'
+##### Alias para kustomize #####
+alias kusto-b='kustomize build --enable-alpha-plugins --enable-exec'
+alias kustomize='kustomize --enable-alpha-plugins --enable-exec'
+alias kusfp='kustomize build --enable-alpha-plugins --enable-exec overlays/prod | kubectl apply -f -'
+alias kusfs='kustomize build --enable-alpha-plugins --enable-exec overlays/staging | kubectl apply -f -'
+alias kusfd='kustomize build --enable-alpha-plugins --enable-exec overlays/dev | kubectl apply -f -'
 ########################################
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 #########################
