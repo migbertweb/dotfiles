@@ -8,11 +8,11 @@ logo() {
 
 ███╗   ███╗██╗ ██████╗ ██████╗ ███████╗██████╗ ████████╗
 ████╗ ████║██║██╔════╝ ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝
-██╔████╔██║██║██║  ███╗██████╔╝█████╗  ██████╔╝   ██║   
-██║╚██╔╝██║██║██║   ██║██╔══██╗██╔══╝  ██╔══██╗   ██║   
-██║ ╚═╝ ██║██║╚██████╔╝██████╔╝███████╗██║  ██║   ██║   
-╚═╝     ╚═╝╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   
-                                                        
+██╔████╔██║██║██║  ███╗██████╔╝█████╗  ██████╔╝   ██║
+██║╚██╔╝██║██║██║   ██║██╔══██╗██╔══╝  ██╔══██╗   ██║
+██║ ╚═╝ ██║██║╚██████╔╝██████╔╝███████╗██║  ██║   ██║
+╚═╝     ╚═╝╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝
+
     Mis Dotfiles\n\n"
   printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
@@ -56,8 +56,7 @@ clear
 
 
 # Lista de dependencias
-dependencias=(btop google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php
- keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut)
+dependencias=(btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq dg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl)
 
 # Función para verificar si un paquete ya está instalado
 is_installed() {
@@ -187,7 +186,7 @@ if systemctl is-enabled --quiet "$SERVICE"; then
 else
   printf "El servicio %s no está habilitado. Habilitándolo e iniciándolo ahora...\n" "$SERVICE"
   sudo systemctl enable --now "$SERVICE"
-  
+
   # Verificar si el comando anterior tuvo éxito
   if [ $? -eq 0 ]; then
     printf "El servicio %s se habilitó e inició correctamente.\n" "$SERVICE"
@@ -203,7 +202,7 @@ if groups "$USER" | grep -qw "docker"; then
 else
   printf "El usuario %s no pertenece al grupo docker. Agregándolo ahora...\n" "$USER"
   sudo usermod -aG docker "$USER"
-  
+
   # Verificar si el comando anterior tuvo éxito
   if [ $? -eq 0 ]; then
     printf "El usuario %s fue agregado al grupo docker correctamente.\n" "$USER"
@@ -223,10 +222,10 @@ logo "Cambiando la shell predeterminada a zsh"
 if [[ $SHELL != "/usr/bin/zsh" ]]; then
   # Mostrar mensaje informativo
   printf "\n%s%sCambiando tu shell a zsh. Se requiere la contraseña de root.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
-  
+
   # Cambiar la shell a zsh
   chsh -s /usr/bin/zsh
-  
+
   # Confirmación de cambio de shell
   printf "%s%sShell cambiada a zsh. Por favor, reinicia el sistema.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 else
