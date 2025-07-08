@@ -78,7 +78,6 @@ is_installed() {
 
 # ───── 📦 Instalar dependencias con validación ─────
 install_dependencies() {
-    clear
     logo "Instalando paquetes necesarios desde los repositorios oficiales..."
     sleep 1
 
@@ -94,7 +93,7 @@ install_dependencies() {
 
     # Lista de paquetes necesarios
     dependencies="
-        btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted
+        btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync
     "
 
     printf "\n%b\n\n" "${BLD}${CBL}Verificando paquetes requeridos...${CNC}"
@@ -142,7 +141,6 @@ install_dependencies() {
 }
 # ───── 📥 Clonar dotfiles desde un repositorio ─────
 clone_dotfiles() {
-    clear
     logo "Descargando Dotfiles..."
 
     # Cambia esta URL por la de tu repositorio personal
@@ -174,7 +172,6 @@ clone_dotfiles() {
 
 # ───── 🗃️ Respaldar configuraciones existentes ─────
 backup_existing_config() {
-    clear
     logo "Respaldando configuraciones existentes..."
 
     fecha=$(date +%Y%m%d-%H%M%S)
@@ -297,7 +294,6 @@ configure_docker() {
     fi
 
     sleep 2
-    clear
 }
 
 # ───── 🔄 Habilitar Syncthing como servicio de usuario ─────
@@ -319,7 +315,6 @@ configure_syncthing() {
     fi
 
     sleep 2
-    clear
 }
 
 # ───── ⚡ Habilitar auto-cpufreq y TLP ─────
@@ -391,11 +386,6 @@ EOF
         sudo systemctl daemon-reload
         sudo systemctl start "$SERVICE_NAME"
     fi
-
-    echo ""
-    echo "${CBL}📊 Estado del servicio ZRAM:${CNC}"
-    sudo systemctl status "$SERVICE_NAME" --no-pager
-
     echo ""
     echo "${CBL}📈 Resumen actual de ZRAM:${CNC}"
     zramctl
