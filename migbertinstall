@@ -333,11 +333,13 @@ configure_zram() {
 
     CONFIG_FILE="/etc/systemd/zram-generator.conf"
 
-    # Verifica si se ejecuta como root
+    # Si no es root, intentar elevar permisos
     if [ "$(id -u)" -ne 0 ]; then
-        echo "${CRE}${BLD}Este script debe ejecutarse como root para configurar ZRAM.${CNC}"
-        echo "${CYE}Ejecuta nuevamente con 'sudo'.${CNC}"
-        return 1
+        echo "${CYE}🔐 Se requieren privilegios de superusuario. Solicitando...${CNC}"
+        if ! sudo -v; then
+            echo "${CRE}${BLD}No se pudo obtener acceso root. Abortando.${CNC}"
+            return 1
+        fi
     fi
 
     echo "${CBL}📄 Creando configuración ZRAM en:${CNC} ${CONFIG_FILE}"
@@ -363,6 +365,7 @@ EOF
 
     sleep 2
 }
+
 
 # ───── ▶️ Ejecución ─────
 main() {
