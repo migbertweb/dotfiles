@@ -1,0 +1,18 @@
+configuracion del sensor de huellas:
+
+sudo pacman -S fprintd libpam-fprintd
+
+configiurar sddm en /etc/pam.d/sddm
+agregar esto al inicio:
+auth 			[success=1 new_authtok_reqd=1 default=ignore]  	pam_unix.so try_first_pass likeauth nullok
+auth 			sufficient  	pam_fprintd.so
+
+y en sudo /etc/pam.d/sudo
+agregar esto al inicio:
+auth		sufficient  	pam_unix.so try_first_pass likeauth nullok
+auth    sufficient      pam_fprintd.so
+
+en /etc/pam.d/system-local-login
+
+auth		sufficient  	pam_unix.so try_first_pass likeauth nullok
+auth      sufficient pam_fprintd.so

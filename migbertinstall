@@ -1,0 +1,383 @@
+#!/bin/sh
+
+# ╔════════════════════════════════════╗
+# ║     Instalador de Dotfiles con     ║
+# ║         Stow - por migbert         ║
+# ╚════════════════════════════════════╝
+
+# ───── 🎨 Colores ─────
+CRE=$(tput setaf 1)   # Rojo
+CYE=$(tput setaf 3)   # Amarillo
+CGR=$(tput setaf 2)   # Verde
+CBL=$(tput setaf 4)   # Azul
+BLD=$(tput bold)      # Negrita
+CNC=$(tput sgr0)      # Reset
+
+# ───── 📁 Variables ─────
+DOTFILES_DIR="$HOME/dotfiles"
+BACKUP_DIR="$HOME/.dotfiles_backup"
+ERROR_LOG="$HOME/dotfiles_install_error.log"
+
+# ───── 🖼 Logo ─────
+logo() {
+
+  local text="${1:?}"
+  echo -en "
+
+
+███╗   ███╗██╗ ██████╗ ██████╗ ███████╗██████╗ ████████╗
+████╗ ████║██║██╔════╝ ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝
+██╔████╔██║██║██║  ███╗██████╔╝█████╗  ██████╔╝   ██║   
+██║╚██╔╝██║██║██║   ██║██╔══██╗██╔══╝  ██╔══██╗   ██║   
+██║ ╚═╝ ██║██║╚██████╔╝██████╔╝███████╗██║  ██║   ██║   
+╚═╝     ╚═╝╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   
+                                                        
+    Mis Dotfiles\n\n"
+  printf   "${BLD}${CRE}[ ${CYE}${text} ${CRE}]${CNC}\n\n"
+}
+logo() {
+    text="$1"
+    echo ""
+    echo "${BLD}${CYE}==> ${CBL}${text}${CNC}"
+}
+
+# ───── ⚠️ Registrar errores ─────
+log_error() {
+    msg=$1
+    ts=$(date +"%F %T")
+    echo "[${ts}] ERROR: $msg" >> "$ERROR_LOG"
+    echo "${CRE}${BLD}ERROR:${CNC} $msg" >&2
+}
+
+# ───── ✅ Verificaciones iniciales ─────
+initial_checks() {
+    if [ "$(id -u)" = 0 ]; then
+        log_error "No ejecutes este script como root."
+        exit 1
+    fi
+    if [ ! -d "$DOTFILES_DIR" ]; then
+        log_error "No se encontró el directorio '$DOTFILES_DIR'."
+        exit 1
+    fi
+        # Verificar directorio HOME
+    if [ "$PWD" != "$HOME" ]; then
+        log_error "El script debe ejecutarse desde el directorio HOME."
+        exit 1
+    fi
+    # Verificar conexión a internet
+    if ! ping -q -c 1 -W 1 8.8.8.8 >/dev/null 2>&1; then
+        log_error "No se detectó conexión a internet."
+        exit 1
+    fi
+}
+
+# ───── 🔍 Verifica si un paquete está instalado ─────
+is_installed() {
+    pacman -Q "$1" >/dev/null 2>&1
+}
+
+# ───── 📦 Instalar dependencias con validación ─────
+install_dependencies() {
+    clear
+    logo "Instalando paquetes necesarios desde los repositorios oficiales..."
+    sleep 1
+
+    # Actualizar mirrors si reflector está instalado
+    if is_installed reflector; then
+        printf "%b\n" "${BLD}${CGR}Actualizando lista de mirrors con reflector...${CNC}"
+        sudo reflector --verbose --age 12 --fastest 10 --score 10 --protocol https \
+                       --latest 8 --sort rate --save /etc/pacman.d/mirrorlist
+        sudo pacman -Syy
+    else
+        printf "%b\n" "${BLD}${CYE}Reflector no está instalado. Saltando actualización de mirrors...${CNC}"
+    fi
+
+    # Lista de paquetes necesarios
+    dependencies="
+        btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq dg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted
+    "
+
+    printf "\n%b\n\n" "${BLD}${CBL}Verificando paquetes requeridos...${CNC}"
+    sleep 1
+
+    # Buscar paquetes faltantes
+    missing_pkgs=""
+    for pkg in $dependencies; do
+        if ! is_installed "$pkg"; then
+            missing_pkgs="$missing_pkgs $pkg"
+            printf "  %b %b\n" "${BLD}${CYE}✘ $pkg${CNC}" "${CRE}(no instalado)${CNC}"
+        else
+            printf "  %b %b\n" "${BLD}${CGR}✔ $pkg${CNC}" "${CBL}(ya instalado)${CNC}"
+        fi
+    done
+
+    # Instalar si hay paquetes faltantes
+    if [ -n "$missing_pkgs" ]; then
+        total=$(echo "$missing_pkgs" | wc -w)
+        printf "\n%b %s\n\n" "${BLD}${CYE}Instalando $total paquetes faltantes...${CNC}" "$missing_pkgs"
+
+        if sudo pacman -S --noconfirm $missing_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
+            failed=""
+            for pkg in $missing_pkgs; do
+                is_installed "$pkg" || failed="$failed $pkg"
+            done
+
+            if [ -z "$failed" ]; then
+                printf "%b\n\n" "${BLD}${CGR}✅ ¡Todos los paquetes fueron instalados correctamente!${CNC}"
+            else
+                fail_count=$(echo "$failed" | wc -w)
+                printf "%b\n" "${BLD}${CRE}❌ Fallaron $fail_count paquetes:${CNC}"
+                printf "  %s\n" "$failed"
+            fi
+        else
+            log_error "Error crítico al instalar: $missing_pkgs"
+            printf "%b\n" "${BLD}${CRE}⚠️ Falló la instalación. Revisa el archivo de log.${CNC}"
+            return 1
+        fi
+    else
+        printf "\n%b\n" "${BLD}${CGR}✅ Todos los paquetes ya están instalados.${CNC}"
+    fi
+
+    sleep 2
+}
+# ───── 📥 Clonar dotfiles desde un repositorio ─────
+clone_dotfiles() {
+    clear
+    logo "Descargando Dotfiles..."
+
+    # Cambia esta URL por la de tu repositorio personal
+    repo_url="https://github.com/migbertweb/dotfiles"
+    repo_dir="$HOME/dotfiles"
+    timestamp=$(date +"%Y%m%d-%H%M%S")
+    sleep 1
+
+    # Si ya existe el directorio, hacer backup
+    if [ -d "$repo_dir" ]; then
+        backup_dir="${repo_dir}_respaldo_$timestamp"
+        printf "%b\n" "${BLD}${CYE}Directorio existente encontrado.${CNC}"
+        printf "%b\n" "${BLD}${CYE}Moviendo '$repo_dir' a '${CBL}${backup_dir}${CNC}'"
+        mv -v "$repo_dir" "$backup_dir"
+    fi
+
+    # Clonar desde el repositorio
+    printf "%b\n" "${BLD}${CBL}Clonando desde: ${repo_url}${CNC}"
+    if git clone --depth=1 "$repo_url" "$repo_dir" >> "$ERROR_LOG" 2>&1; then
+        printf "%b\n\n" "${BLD}${CGR}✅ Dotfiles clonados correctamente en '$repo_dir'${CNC}"
+    else
+        log_error "Fallo al clonar el repositorio: $repo_url"
+        printf "%b\n" "${BLD}${CRE}❌ Error al clonar. Revisa el log: ${CYE}$ERROR_LOG${CNC}"
+        return 1
+    fi
+
+    sleep 2
+}
+
+# ───── 🗃️ Respaldar configuraciones existentes ─────
+backup_existing_config() {
+    clear
+    logo "Respaldando configuraciones existentes..."
+
+    fecha=$(date +%Y%m%d-%H%M%S)
+    backup_folder="$HOME/.dotfiles_backup_$fecha"
+    mkdir -p "$backup_folder" 2>> "$ERROR_LOG"
+
+    printf "%b\n\n" "${BLD}${CYE}Directorio de respaldo: ${CBL}$backup_folder${CNC}"
+    sleep 1
+
+    # ── Función interna para mover ──
+    backup_item() {
+        tipo=$1
+        ruta=$2
+        nombre=$3
+
+        existe=0
+        [ "$tipo" = "d" ] && [ -d "$ruta" ] && existe=1
+        [ "$tipo" = "f" ] && [ -f "$ruta" ] && existe=1
+
+        if [ "$existe" -eq 1 ]; then
+            if mv "$ruta" "$backup_folder/${nombre}_${fecha}" 2>> "$ERROR_LOG"; then
+                printf " %b%s %s✔ Copia realizada%s\n" "$BLD" "$nombre" "$CGR" "$CNC"
+            else
+                log_error "Error al respaldar: $nombre"
+                printf " %b%s %s✘ Fallo al copiar%s\n" "$BLD$CRE" "$nombre" "$CYE" "$CNC"
+            fi
+        else
+            printf " %b%s %s(no encontrado)%s\n" "$BLD$CYE" "$nombre" "$CBL" "$CNC"
+        fi
+        sleep 0.3
+    }
+
+    # ── Carpetas de configuración principales ──
+    config_folders="
+        alacritty bat conky environment.d gtk-3.0 kitty mpd ncmpcpp nvim paru ranger tmux
+    "
+
+    for folder in $config_folders; do
+        backup_item d "$HOME/.config/$folder" "$folder"
+    done
+
+    # ── Archivos sueltos ──
+    single_files="
+        $HOME/.zshrc
+        $HOME/.gtkrc-2.0
+        $HOME/.icons
+    "
+
+    for item in $single_files; do
+        base=$(basename "$item")
+        [ "$base" = ".icons" ] && backup_item d "$item" "$base" || backup_item f "$item" "$base"
+    done
+
+    printf "\n%b\n\n" "${BLD}${CGR}✅ Respaldo completo.${CNC}"
+    sleep 2
+}
+
+
+# ───── 🧩 Enlazar dotfiles con Stow ─────
+stow_dotfiles() {
+    logo "🧩 Aplicando enlaces simbólicos con Stow..."
+
+    cd "$DOTFILES_DIR" || exit 1
+
+    # Enlazar contenido de config/ a ~/.config
+    if [ -d config ]; then
+        echo "→ Enlazando 'config' a ~/.config"
+        stow --target="$HOME/.config" config
+    fi
+
+    # Enlazar contenido de home/ a ~
+    if [ -d home ]; then
+        echo "→ Enlazando 'home' a ~"
+        stow --target="$HOME" home
+    fi
+
+    # Copiar contenido de misc/ a ~/.local/
+    if [ -d misc ]; then
+        echo "→ Copiando contenido de 'misc' a ~/.local/"
+        mkdir -p "$HOME/.local"
+        cp -rT misc "$HOME/.local"
+    fi
+
+    cd - >/dev/null || true
+}
+
+
+# ───── 🐳 Configuración de Docker ─────
+configure_docker() {
+    logo "Configurando Docker..."
+    sleep 1
+
+    echo "${BLD}${CBL}🔧 Habilitando servicio de Docker...${CNC}"
+    if sudo systemctl enable docker.service && sudo systemctl start docker.service; then
+        echo "${BLD}${CGR}✔ Docker habilitado y en ejecución.${CNC}"
+    else
+        log_error "No se pudo habilitar o iniciar el servicio docker.service"
+        return 1
+    fi
+
+    sleep 2
+
+    echo "${BLD}${CBL}👤 Añadiendo el usuario '$USER' al grupo 'docker'...${CNC}"
+    if sudo usermod -aG docker "$USER"; then
+        echo "${BLD}${CGR}✔ Usuario añadido al grupo docker.${CNC}"
+        echo "${CYE}⚠️ Es posible que necesites cerrar sesión o ejecutar 'newgrp docker' para aplicar el cambio.${CNC}"
+    else
+        log_error "No se pudo añadir el usuario '$USER' al grupo docker"
+        return 1
+    fi
+
+    sleep 2
+    clear
+}
+
+# ───── 🔄 Habilitar Syncthing como servicio de usuario ─────
+configure_syncthing() {
+    logo "Habilitando el servicio de SYNCTHING"
+
+    printf "\n%s%s🔧 Habilitando e iniciando syncthing (nivel usuario)...%s\n" "${BLD}" "${CYE}" "${CNC}"
+
+    if systemctl --user enable --now syncthing.service; then
+        printf "%s%s✅ ¡Syncthing habilitado correctamente!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+    else
+        log_error "No se pudo habilitar el servicio syncthing.service (usuario)"
+        return 1
+    fi
+
+    sleep 2
+    clear
+}
+
+# ───── ⚡ Habilitar auto-cpufreq y TLP ─────
+configure_power_services() {
+    logo "Habilitando servicios de optimización de energía"
+
+    echo "${BLD}${CBL}⚙️  Habilitando auto-cpufreq...${CNC}"
+    if sudo systemctl enable --now auto-cpufreq.service; then
+        echo "${CGR}✔ auto-cpufreq activo.${CNC}"
+    else
+        log_error "No se pudo habilitar auto-cpufreq.service"
+    fi
+
+    echo "${BLD}${CBL}⚙️  Habilitando TLP...${CNC}"
+    if sudo systemctl enable --now tlp.service; then
+        echo "${CGR}✔ TLP activo.${CNC}"
+    else
+        log_error "No se pudo habilitar tlp.service"
+    fi
+
+    sleep 2
+}
+# ───── 🧠 Habilitar ZRAM con systemd zram-generator ─────
+configure_zram() {
+    logo "Habilitando ZRAM"
+
+    CONFIG_FILE="/etc/systemd/zram-generator.conf"
+
+    # Verifica si se ejecuta como root
+    if [ "$(id -u)" -ne 0 ]; then
+        echo "${CRE}${BLD}Este script debe ejecutarse como root para configurar ZRAM.${CNC}"
+        echo "${CYE}Ejecuta nuevamente con 'sudo'.${CNC}"
+        return 1
+    fi
+
+    echo "${CBL}📄 Creando configuración ZRAM en:${CNC} ${CONFIG_FILE}"
+
+    sudo tee "$CONFIG_FILE" > /dev/null <<EOF
+[zram0]
+zram-size = ram * 0.25
+compression-algorithm = zstd
+swap-priority = 100
+EOF
+
+    echo "${CBL}🔄 Recargando systemd y activando ZRAM...${CNC}"
+    sudo systemctl daemon-reload
+    sudo systemctl start systemd-zram-setup@zram0
+
+    echo ""
+    echo "${CBL}📊 Estado del servicio ZRAM:${CNC}"
+    sudo systemctl status systemd-zram-setup@zram0 --no-pager
+
+    echo ""
+    echo "${CBL}📈 Resumen actual de ZRAM:${CNC}"
+    zramctl
+
+    sleep 2
+}
+
+# ───── ▶️ Ejecución ─────
+main() {
+    logo "🛠 Instalador de Dotfiles"
+    initial_checks
+    install_dependencies
+    clone_dotfiles  
+    backup_configs
+    stow_dotfiles
+    configure_docker
+    configure_syncthing
+    configure_power_services
+    configure_zram
+    echo "${BLD}${CGR}✅ Todo configurado. Reinicia tu sesión para aplicar los cambios.${CNC}"
+}
+
+
+main

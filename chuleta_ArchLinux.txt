@@ -2,38 +2,6 @@ sudo pacman -Syyu
 sudo nano /etc/sudoers
 y añadir: Defaults env_reset,pwfeedback
 
-AÑADIR CHAOTIC-AUR (el post-install ya lo hace)
-sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com && echo '-----Siguiente---------' && sudo pacman-key --lsign-key 3056513887B78AEB &&  echo '-----Siguiente---------' && sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' && echo '-----Siguiente---------' &&  sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-
-sudo nano /etc/pacman.conf
-(adding at the end) the following to /etc/pacman.conf:
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
-
-ACTUALIZAR:
-sudo pacman -Syyu
-
-INSTALAR PAQUETES PRIMORDIALES  (el post-install ya lo hace)
-sudo pacman -S --needed xorg-server xorg-xinit bspwm sxhkd dmenu nitrogen picom arandr conky jq sed curl udiskie xsettingsd dunst dex feh rofi polybar network-manager-applet mpc mpd ncmpcpp imagemagick xdotool nitrogen scrot pavucontrol ksuperkey plank stow plymouth vlc thunderbird xz bzip2 p7zip lbzip2 lrzip arj lzop cpio unrar jasper lame libdca libdv gst-libav libtheora libvorbis libxv wavpack x264 xvidcore libmad libmpeg2 a52dec faac faad2 flac gimp inkscape fd ripgrep nodejs npm docker xclip xsel base-devel geany kitty neovim ranger zsh ffmpegthumbnailer bat exa && echo '--------- Instalar Google chrome ------' && sudo pacman -S google-chrome
-
-CONFIGURAR ZSH: (el post-install ya lo hace)
-echo '----- shell por defecto -------' && echo $SHELL && echo '------Lista de shell en el sistema -------' && chsh -l
-chsh -s /usr/bin/zsh
-
-CONFIGURAR ZRAM:
-- Instalar zram-generator
-sudo pacman -S zram-generator
-- Configurar zram
-sudo nano /etc/systemd/zram-generator.conf
-añadir:
-[zram0]
-zram-size = ram
-compression-algorithm = zstd
-- agregar al inicio
-sudo systemctl enable systemd-zram-setup@zram0.service && sudo systemctl start systemd-zram-setup@zram0.service
-- verificar el zram:
-zramctl
-
 CONFIGURAR SYNCTHING (el post-install ya lo hace)
 - Instalar syncthing
 sudo pacman -S syncthing
@@ -60,10 +28,3 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 INSTALAR PAMAC (OPCIONAL)
 sudo pacman -S pamac
 
-configurar Docker:
-sudo systemctl enable docker.service && sudo systemctl start docker.service
------
-añadir mi usuario:
-sudo usermod -aG docker migbert && newgrp docker
-----
-gh0stzk-dotfiles
