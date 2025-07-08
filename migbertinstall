@@ -252,11 +252,11 @@ stow_dotfiles() {
     fi
 
     # Copiar contenido de misc/ a ~/.local/
-    if [ -d misc ]; then
-        echo "→ Copiando contenido de 'misc' a ~/.local/"
-        mkdir -p "$HOME/.local"
-        cp -rT misc "$HOME/.local"
-    fi
+   if [ -d misc ]; then
+    echo "→ Copiando contenido de 'misc' a ~/.local/ con rsync"
+    mkdir -p "$HOME/.local"
+    rsync -a misc/ "$HOME/.local/"
+fi
 
     cd - >/dev/null || true
 }
@@ -409,7 +409,7 @@ main() {
     initial_checks
     install_dependencies
     clone_dotfiles  
-    backup_configs
+    backup_existing_config
     stow_dotfiles
     configure_docker
     configure_syncthing
