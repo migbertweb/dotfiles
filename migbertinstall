@@ -35,11 +35,6 @@ logo() {
     Mis Dotfiles\n\n"
   printf   "${BLD}${CRE}[ ${CYE}${text} ${CRE}]${CNC}\n\n"
 }
-logo() {
-    text="$1"
-    echo ""
-    echo "${BLD}${CYE}==> ${CBL}${text}${CNC}"
-}
 
 # ───── ⚠️ Registrar errores ─────
 log_error() {
@@ -47,6 +42,14 @@ log_error() {
     ts=$(date +"%F %T")
     echo "[${ts}] ERROR: $msg" >> "$ERROR_LOG"
     echo "${CRE}${BLD}ERROR:${CNC} $msg" >&2
+}
+
+# ───── 🧾 Resultados por sección ─────
+SUMMARY=""
+add_summary() {
+    local status="$1"  # ✔, ❌, ⚠
+    local label="$2"   # Descripción
+    SUMMARY="${SUMMARY}${status} ${label}\n"
 }
 
 # ───── ✅ Verificaciones iniciales ─────
@@ -234,30 +237,50 @@ backup_existing_config() {
 stow_dotfiles() {
     logo "🧩 Aplicando enlaces simbólicos con Stow..."
 
-    cd "$DOTFILES_DIR" || exit 1
+    cd "$DOTFILES_DIR" || {
+        log_error "No se pudo acceder al directorio \$DOTFILES_DIR: $DOTFILES_DIR"
+        return 1
+    }
 
-    # Enlazar contenido de config/ a ~/.config
+    # Enlazar config/ a ~/.config
     if [ -d config ]; then
         echo "→ Enlazando 'config' a ~/.config"
-        stow --target="$HOME/.config" config
+        if stow --target="$HOME/.config" config; then
+            echo "${CGR}✔ Enlace de 'config' completado.${CNC}"
+        else
+            log_error "❌ Error al enlazar 'config' a ~/.config"
+        fi
+    else
+        echo "${CYE}⚠️  Carpeta 'config' no encontrada. Omitiendo...${CNC}"
     fi
 
-    # Enlazar contenido de home/ a ~
+    # Enlazar home/ a ~
     if [ -d home ]; then
         echo "→ Enlazando 'home' a ~"
-        stow --target="$HOME" home
+        if stow --target="$HOME" home; then
+            echo "${CGR}✔ Enlace de 'home' completado.${CNC}"
+        else
+            log_error "❌ Error al enlazar 'home' a ~"
+        fi
+    else
+        echo "${CYE}⚠️  Carpeta 'home' no encontrada. Omitiendo...${CNC}"
     fi
 
-    # Copiar contenido de misc/ a ~/.local/
-   if [ -d misc ]; then
-    echo "→ Copiando contenido de 'misc' a ~/.local/ con rsync"
-    mkdir -p "$HOME/.local"
-    rsync -a misc/ "$HOME/.local/"
-fi
+    # Copiar misc/ a ~/.local/
+    if [ -d misc ]; then
+        echo "→ Copiando contenido de 'misc' a ~/.local/ con rsync"
+        mkdir -p "$HOME/.local"
+        if rsync -a misc/ "$HOME/.local/"; then
+            echo "${CGR}✔ Copia de 'misc' completada.${CNC}"
+        else
+            log_error "❌ Error al copiar contenido de 'misc' a ~/.local/"
+        fi
+    else
+        echo "${CYE}⚠️  Carpeta 'misc' no encontrada. Omitiendo...${CNC}"
+    fi
 
     cd - >/dev/null || true
 }
-
 
 # ───── 🐳 Configuración de Docker ─────
 configure_docker() {
@@ -397,14 +420,27 @@ EOF
 main() {
     logo "🛠 Instalador de Dotfiles"
     initial_checks
-    install_dependencies
-    clone_dotfiles  
-    backup_existing_config
-    stow_dotfiles
-    configure_docker
-    configure_syncthing
-    configure_power_services
-    configure_zram
+
+    install_dependencies && add_summary "✔" "Dependencias verificadas e instaladas" || add_summary "❌" "Falló la instalación de dependencias"
+
+    clone_dotfiles && add_summary "✔" "Dotfiles clonados" || add_summary "❌" "Fallo al clonar los dotfiles"
+
+    backup_existing_config && add_summary "✔" "Configuraciones respaldadas" || add_summary "❌" "Error al respaldar configuraciones"
+
+    stow_dotfiles && add_summary "✔" "Dotfiles enlazados con Stow" || add_summary "❌" "Error al aplicar Stow"
+
+    configure_docker && add_summary "✔" "Docker configurado" || add_summary "❌" "Fallo en configuración de Docker"
+
+    configure_syncthing && add_summary "✔" "Syncthing habilitado" || add_summary "❌" "Fallo al habilitar Syncthing"
+
+    configure_power_services && add_summary "✔" "Servicios de energía habilitados" || add_summary "❌" "Fallo al habilitar servicios de energía"
+
+    configure_zram && add_summary "✔" "ZRAM habilitado" || add_summary "❌" "Fallo en configuración de ZRAM"
+
+    echo ""
+    echo "${BLD}${CBL}📋 Resumen de la instalación:${CNC}"
+    echo -e "${SUMMARY}"
+    
     echo "${BLD}${CGR}✅ Todo configurado. Reinicia tu sesión para aplicar los cambios.${CNC}"
 }
 
