@@ -81,6 +81,7 @@ is_installed() {
 
 # ───── 📦 Instalar dependencias con validación ─────
 install_dependencies() {
+    clear
     logo "Instalando paquetes necesarios desde los repositorios oficiales..."
     sleep 1
 
@@ -144,6 +145,7 @@ install_dependencies() {
 }
 # ───── 📥 Clonar dotfiles desde un repositorio ─────
 clone_dotfiles() {
+    clear
     logo "Descargando Dotfiles..."
 
     # Cambia esta URL por la de tu repositorio personal
@@ -175,6 +177,7 @@ clone_dotfiles() {
 
 # ───── 🗃️ Respaldar configuraciones existentes ─────
 backup_existing_config() {
+    clear
     logo "Respaldando configuraciones existentes..."
 
     fecha=$(date +%Y%m%d-%H%M%S)
@@ -235,6 +238,7 @@ backup_existing_config() {
 
 # ───── 🧩 Enlazar dotfiles con Stow ─────
 stow_dotfiles() {
+    clear
     logo "🧩 Aplicando enlaces simbólicos con Stow..."
 
     cd "$DOTFILES_DIR" || {
@@ -284,6 +288,7 @@ stow_dotfiles() {
 
 # ───── 🐳 Configuración de Docker ─────
 configure_docker() {
+    clear
     logo "Configurando Docker..."
     sleep 1
 
@@ -321,6 +326,7 @@ configure_docker() {
 
 # ───── 🔄 Habilitar Syncthing como servicio de usuario ─────
 configure_syncthing() {
+    clear
     logo "Habilitando el servicio de SYNCTHING"
 
     printf "\n%s%s🔧 Verificando estado de Syncthing (usuario)...%s\n" "${BLD}" "${CYE}" "${CNC}"
@@ -342,6 +348,7 @@ configure_syncthing() {
 
 # ───── ⚡ Habilitar auto-cpufreq y TLP ─────
 configure_power_services() {
+    clear
     logo "Habilitando servicios de optimización de energía"
 
     echo "${CBL}⚙️  Verificando estado de auto-cpufreq...${CNC}"
@@ -373,6 +380,7 @@ configure_power_services() {
 
 # ───── 🧠 Habilitar ZRAM con systemd zram-generator ─────
 configure_zram() {
+    clear
     logo "Habilitando ZRAM"
 
     CONFIG_FILE="/etc/systemd/zram-generator.conf"
@@ -414,6 +422,7 @@ EOF
     zramctl
 
     sleep 2
+    clear
 }
 
 # ───── ▶️ Ejecución ─────
