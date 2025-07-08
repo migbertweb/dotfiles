@@ -284,6 +284,31 @@ stow_dotfiles() {
 
     cd - >/dev/null || true
 }
+# ───── 📂 Copiar dotfiles/bspwm → ~/.config/bspwm (sin borrar nada) ─────
+merge_bspwm_config() {
+    SRC="$DOTFILES_DIR/bspwm"
+    DEST="$HOME/.config/bspwm"
+
+    logo "Actualizando configuración de BSPWM (sin borrar contenido)..."
+
+    if [ ! -d "$SRC" ]; then
+        log_error "No se encontró la carpeta '$SRC'."
+        add_summary "⚠" "No se encontró 'bspwm' en dotfiles"
+        return 1
+    fi
+
+    mkdir -p "$DEST"
+
+    echo "${CBL}📁 Copiando archivos desde '${SRC}' a '${DEST}'...${CNC}"
+    if rsync -a "$SRC/" "$DEST/" 2>> "$ERROR_LOG"; then
+        echo "${CGR}✔ Configuración de BSPWM actualizada (sin borrar archivos existentes).${CNC}"
+        add_summary "✔" "bspwm actualizado sin borrar"
+    else
+        log_error "Error al copiar archivos a ~/.config/bspwm"
+        add_summary "❌" "Error al actualizar bspwm"
+        return 1
+    fi
+}
 
 # ───── 🐳 Configuración de Docker ─────
 configure_docker() {
@@ -436,6 +461,8 @@ main() {
     backup_existing_config && add_summary "✔" "Configuraciones respaldadas" || add_summary "❌" "Error al respaldar configuraciones"
 
     stow_dotfiles && add_summary "✔" "Dotfiles enlazados con Stow" || add_summary "❌" "Error al aplicar Stow"
+    
+    merge_bspwm_config && add_summary "✔" "Configuración de BSPWM actualizada" || add_summary "❌" "Error al actualizar BSPWM"
 
     configure_docker && add_summary "✔" "Docker configurado" || add_summary "❌" "Fallo en configuración de Docker"
 
