@@ -15,7 +15,6 @@ CNC=$(tput sgr0)      # Reset
 
 # ───── 📁 Variables ─────
 DOTFILES_DIR="$HOME/dotfiles"
-BACKUP_DIR="$HOME/.dotfiles_backup"
 ERROR_LOG="$HOME/dotfiles_install_error.log"
 
 # ───── 🖼 Logo ─────
