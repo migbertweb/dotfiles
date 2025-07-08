@@ -94,7 +94,7 @@ install_dependencies() {
 
     # Lista de paquetes necesarios
     dependencies="
-        btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq dg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted
+        btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted
     "
 
     printf "\n%b\n\n" "${BLD}${CBL}Verificando paquetes requeridos...${CNC}"
@@ -267,23 +267,33 @@ configure_docker() {
     logo "Configurando Docker..."
     sleep 1
 
-    echo "${BLD}${CBL}🔧 Habilitando servicio de Docker...${CNC}"
-    if sudo systemctl enable docker.service && sudo systemctl start docker.service; then
-        echo "${BLD}${CGR}✔ Docker habilitado y en ejecución.${CNC}"
+    echo "${BLD}${CBL}🔧 Verificando estado del servicio Docker...${CNC}"
+    if systemctl is-enabled --quiet docker.service && systemctl is-active --quiet docker.service; then
+        echo "${CGR}✔ Docker ya está habilitado y en ejecución.${CNC}"
     else
-        log_error "No se pudo habilitar o iniciar el servicio docker.service"
-        return 1
+        echo "${CBL}🔧 Habilitando e iniciando Docker...${CNC}"
+        if sudo systemctl enable --now docker.service; then
+            echo "${CGR}✔ Docker habilitado y en ejecución.${CNC}"
+        else
+            log_error "No se pudo habilitar o iniciar el servicio docker.service"
+            return 1
+        fi
     fi
 
     sleep 2
 
-    echo "${BLD}${CBL}👤 Añadiendo el usuario '$USER' al grupo 'docker'...${CNC}"
-    if sudo usermod -aG docker "$USER"; then
-        echo "${BLD}${CGR}✔ Usuario añadido al grupo docker.${CNC}"
-        echo "${CYE}⚠️ Es posible que necesites cerrar sesión o ejecutar 'newgrp docker' para aplicar el cambio.${CNC}"
+    echo "${CBL}👤 Verificando si el usuario '$USER' ya pertenece al grupo 'docker'...${CNC}"
+    if groups "$USER" | grep -qw docker; then
+        echo "${CGR}✔ Usuario ya está en el grupo docker.${CNC}"
     else
-        log_error "No se pudo añadir el usuario '$USER' al grupo docker"
-        return 1
+        echo "${CBL}➕ Añadiendo usuario al grupo docker...${CNC}"
+        if sudo usermod -aG docker "$USER"; then
+            echo "${CGR}✔ Usuario añadido al grupo docker.${CNC}"
+            echo "${CYE}⚠️  Ejecuta 'newgrp docker' o cierra sesión para aplicar los cambios.${CNC}"
+        else
+            log_error "No se pudo añadir el usuario '$USER' al grupo docker"
+            return 1
+        fi
     fi
 
     sleep 2
@@ -294,13 +304,18 @@ configure_docker() {
 configure_syncthing() {
     logo "Habilitando el servicio de SYNCTHING"
 
-    printf "\n%s%s🔧 Habilitando e iniciando syncthing (nivel usuario)...%s\n" "${BLD}" "${CYE}" "${CNC}"
+    printf "\n%s%s🔧 Verificando estado de Syncthing (usuario)...%s\n" "${BLD}" "${CYE}" "${CNC}"
 
-    if systemctl --user enable --now syncthing.service; then
-        printf "%s%s✅ ¡Syncthing habilitado correctamente!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+    if systemctl --user is-enabled --quiet syncthing.service && systemctl --user is-active --quiet syncthing.service; then
+        printf "%s%s✔ Syncthing ya está habilitado y en ejecución.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
     else
-        log_error "No se pudo habilitar el servicio syncthing.service (usuario)"
-        return 1
+        printf "%s%s➕ Habilitando e iniciando syncthing.service...%s\n" "${BLD}" "${CBL}" "${CNC}"
+        if systemctl --user enable --now syncthing.service; then
+            printf "%s%s✅ ¡Syncthing habilitado correctamente!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+        else
+            log_error "No se pudo habilitar el servicio syncthing.service (usuario)"
+            return 1
+        fi
     fi
 
     sleep 2
@@ -311,29 +326,41 @@ configure_syncthing() {
 configure_power_services() {
     logo "Habilitando servicios de optimización de energía"
 
-    echo "${BLD}${CBL}⚙️  Habilitando auto-cpufreq...${CNC}"
-    if sudo systemctl enable --now auto-cpufreq.service; then
-        echo "${CGR}✔ auto-cpufreq activo.${CNC}"
+    echo "${CBL}⚙️  Verificando estado de auto-cpufreq...${CNC}"
+    if systemctl is-enabled --quiet auto-cpufreq.service && systemctl is-active --quiet auto-cpufreq.service; then
+        echo "${CGR}✔ auto-cpufreq ya está activo.${CNC}"
     else
-        log_error "No se pudo habilitar auto-cpufreq.service"
+        echo "${CBL}➕ Habilitando auto-cpufreq...${CNC}"
+        if sudo systemctl enable --now auto-cpufreq.service; then
+            echo "${CGR}✔ auto-cpufreq habilitado.${CNC}"
+        else
+            log_error "No se pudo habilitar auto-cpufreq.service"
+        fi
     fi
 
-    echo "${BLD}${CBL}⚙️  Habilitando TLP...${CNC}"
-    if sudo systemctl enable --now tlp.service; then
-        echo "${CGR}✔ TLP activo.${CNC}"
+    echo "${CBL}⚙️  Verificando estado de TLP...${CNC}"
+    if systemctl is-enabled --quiet tlp.service && systemctl is-active --quiet tlp.service; then
+        echo "${CGR}✔ TLP ya está activo.${CNC}"
     else
-        log_error "No se pudo habilitar tlp.service"
+        echo "${CBL}➕ Habilitando TLP...${CNC}"
+        if sudo systemctl enable --now tlp.service; then
+            echo "${CGR}✔ TLP habilitado.${CNC}"
+        else
+            log_error "No se pudo habilitar tlp.service"
+        fi
     fi
 
     sleep 2
 }
+
 # ───── 🧠 Habilitar ZRAM con systemd zram-generator ─────
 configure_zram() {
     logo "Habilitando ZRAM"
 
     CONFIG_FILE="/etc/systemd/zram-generator.conf"
+    SERVICE_NAME="systemd-zram-setup@zram0"
 
-    # Si no es root, intentar elevar permisos
+    # Solicitar privilegios si no se tiene
     if [ "$(id -u)" -ne 0 ]; then
         echo "${CYE}🔐 Se requieren privilegios de superusuario. Solicitando...${CNC}"
         if ! sudo -v; then
@@ -342,22 +369,32 @@ configure_zram() {
         fi
     fi
 
-    echo "${CBL}📄 Creando configuración ZRAM en:${CNC} ${CONFIG_FILE}"
-
-    sudo tee "$CONFIG_FILE" > /dev/null <<EOF
+    # Verificar si el archivo ya existe
+    if [ -f "$CONFIG_FILE" ]; then
+        echo "${CYE}⚠️  La configuración de ZRAM ya existe en:${CNC} $CONFIG_FILE"
+    else
+        echo "${CBL}📄 Creando configuración ZRAM en:${CNC} $CONFIG_FILE"
+        sudo tee "$CONFIG_FILE" > /dev/null <<EOF
 [zram0]
 zram-size = ram * 0.25
 compression-algorithm = zstd
 swap-priority = 100
 EOF
+    fi
 
-    echo "${CBL}🔄 Recargando systemd y activando ZRAM...${CNC}"
-    sudo systemctl daemon-reload
-    sudo systemctl start systemd-zram-setup@zram0
+    # Verificar si el servicio ya está habilitado y activo
+    echo "${CBL}🔄 Verificando estado de ${SERVICE_NAME}...${CNC}"
+    if systemctl is-enabled --quiet "$SERVICE_NAME" && systemctl is-active --quiet "$SERVICE_NAME"; then
+        echo "${CGR}✔ ZRAM ya está habilitado y activo.${CNC}"
+    else
+        echo "${CBL}➕ Activando ZRAM...${CNC}"
+        sudo systemctl daemon-reload
+        sudo systemctl start "$SERVICE_NAME"
+    fi
 
     echo ""
     echo "${CBL}📊 Estado del servicio ZRAM:${CNC}"
-    sudo systemctl status systemd-zram-setup@zram0 --no-pager
+    sudo systemctl status "$SERVICE_NAME" --no-pager
 
     echo ""
     echo "${CBL}📈 Resumen actual de ZRAM:${CNC}"
@@ -365,7 +402,6 @@ EOF
 
     sleep 2
 }
-
 
 # ───── ▶️ Ejecución ─────
 main() {
