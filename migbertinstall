@@ -546,7 +546,7 @@ main() {
     logo "🛠 Instalador de Dotfiles"
     initial_checks
 
-    #install_dependencies && add_summary "✔" "Dependencias verificadas e instaladas" || add_summary "❌" "Falló la instalación de dependencias"
+    install_dependencies && add_summary "✔" "Dependencias verificadas e instaladas" || add_summary "❌" "Falló la instalación de dependencias"
 
     clone_dotfiles && add_summary "✔" "Dotfiles clonados" || add_summary "❌" "Fallo al clonar los dotfiles"
 
