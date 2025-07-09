@@ -493,6 +493,7 @@ install_sddm_theme() {
 
     THEME_REPO="https://github.com/migbertweb/sddm-personal.git"
     TEMP_DIR="/tmp/sddm-theme-install"
+    SOURCE_SUBDIR="sddm-inspiration"
     TARGET_DIR="/usr/share/sddm/themes/mysddm"
     CONF_FILE="/etc/sddm.conf.d/sddm.conf"
 
@@ -516,30 +517,34 @@ install_sddm_theme() {
         return 1
     fi
 
-    echo "${CBL}📁 Copiando tema a: $TARGET_DIR${CNC}"
-    if sudo cp -r "$TEMP_DIR" "$TARGET_DIR" >> "$ERROR_LOG" 2>&1; then
-        echo "${CGR}✔ Tema copiado a $TARGET_DIR${CNC}"
-    else
-        log_error "Fallo al copiar tema SDDM a $TARGET_DIR"
-        add_summary "❌" "Error al copiar tema SDDM"
+    if [ ! -d "$TEMP_DIR/$SOURCE_SUBDIR" ]; then
+        log_error "Subcarpeta '$SOURCE_SUBDIR' no encontrada en el repositorio"
+        add_summary "❌" "No se encontró la carpeta '$SOURCE_SUBDIR'"
         return 1
     fi
 
-    echo "${CBL}🛠 Configurando SDDM para usar el tema...${CNC}"
+    echo "${CBL}📁 Copiando carpeta '$SOURCE_SUBDIR' como '$TARGET_DIR'...${CNC}"
+    if sudo cp -r "$TEMP_DIR/$SOURCE_SUBDIR" "$TARGET_DIR" >> "$ERROR_LOG" 2>&1; then
+        echo "${CGR}✔ Tema copiado correctamente a $TARGET_DIR${CNC}"
+    else
+        log_error "Fallo al copiar tema SDDM desde $SOURCE_SUBDIR a $TARGET_DIR"
+        add_summary "❌" "Error al copiar el tema SDDM"
+        return 1
+    fi
+
+    echo "${CBL}🛠 Configurando SDDM para usar el tema 'mysddm'...${CNC}"
     sudo mkdir -p "$(dirname "$CONF_FILE")"
     if echo -e "[Theme]\nCurrent=mysddm" | sudo tee "$CONF_FILE" >/dev/null; then
         echo "${CGR}✔ Archivo de configuración SDDM creado:${CNC} $CONF_FILE"
         add_summary "✔" "Tema SDDM instalado como 'mysddm'"
     else
-        log_error "Fallo al crear archivo $CONF_FILE"
+        log_error "Fallo al escribir $CONF_FILE"
         add_summary "❌" "No se pudo configurar SDDM"
         return 1
     fi
 
-    # Limpieza
     rm -rf "$TEMP_DIR"
 }
-
 
 # ───── ▶️ Ejecución ─────
 main() {
