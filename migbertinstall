@@ -523,11 +523,20 @@ install_sddm_theme() {
         return 1
     fi
 
-    echo "${CBL}📁 Copiando carpeta '$SOURCE_SUBDIR' como '$TARGET_DIR'...${CNC}"
-    if sudo cp -r "$TEMP_DIR/$SOURCE_SUBDIR" "$TARGET_DIR" >> "$ERROR_LOG" 2>&1; then
+    echo "${CBL}📁 Preparando tema en ${TARGET_DIR}${CNC}"
+    if [ -d "$TARGET_DIR" ]; then
+        echo "${CYE}⚠️  Tema 'mysddm' ya existe. Reemplazando...${CNC}"
+        if ! sudo rm -rf "$TARGET_DIR"; then
+            log_error "No se pudo eliminar tema existente en $TARGET_DIR"
+            add_summary "❌" "Error al reemplazar tema SDDM existente"
+            return 1
+        fi
+    fi
+
+    if sudo cp -r "$TEMP_DIR/$SOURCE_SUBDIR" "$TARGET_DIR"; then
         echo "${CGR}✔ Tema copiado correctamente a $TARGET_DIR${CNC}"
     else
-        log_error "Fallo al copiar tema SDDM desde $SOURCE_SUBDIR a $TARGET_DIR"
+        log_error "Fallo al copiar el tema SDDM"
         add_summary "❌" "Error al copiar el tema SDDM"
         return 1
     fi
@@ -535,7 +544,7 @@ install_sddm_theme() {
     echo "${CBL}🛠 Configurando SDDM para usar el tema 'mysddm'...${CNC}"
     sudo mkdir -p "$(dirname "$CONF_FILE")"
     if echo -e "[Theme]\nCurrent=mysddm" | sudo tee "$CONF_FILE" >/dev/null; then
-        echo "${CGR}✔ Archivo de configuración SDDM creado:${CNC} $CONF_FILE"
+        echo "${CGR}✔ Archivo de configuración creado en ${CONF_FILE}${CNC}"
         add_summary "✔" "Tema SDDM instalado como 'mysddm'"
     else
         log_error "Fallo al escribir $CONF_FILE"
