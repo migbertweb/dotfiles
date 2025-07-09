@@ -1,0 +1,13 @@
+[mailwatch-plugin]
+click_command=thunderbird
+new_messages_command=
+count_changed_command=
+normal_icon=internet-mail
+new_mail_icon=mailnag
+log_lines=200
+show_log_status=true
+auto_open_online_doc=false
+
+[mailwatch]
+nmailboxes=0
+

@@ -210,9 +210,7 @@ backup_existing_config() {
     }
 
     # ── Carpetas de configuración principales ──
-    config_folders="
-        alacritty bat conky environment.d gtk-3.0 kitty mpd ncmpcpp nvim paru ranger tmux
-    "
+    config_folders="alacritty bat conky environment.d gtk-3.0 kitty mpd ncmpcpp nvim paru ranger tmux plank Thunar xfce4"
 
     for folder in $config_folders; do
         backup_item d "$HOME/.config/$folder" "$folder"

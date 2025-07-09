@@ -1,0 +1,171 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <property name="dark-mode" type="bool" value="true"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="icon-size" type="uint" value="0"/>
+      <property name="size" type="uint" value="43"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="11"/>
+        <value type="int" value="2"/>
+        <value type="int" value="3"/>
+        <value type="int" value="4"/>
+        <value type="int" value="5"/>
+        <value type="int" value="12"/>
+        <value type="int" value="6"/>
+        <value type="int" value="14"/>
+        <value type="int" value="1"/>
+        <value type="int" value="13"/>
+        <value type="int" value="7"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
+      </property>
+      <property name="background-style" type="uint" value="1"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0"/>
+        <value type="double" value="0"/>
+        <value type="double" value="0"/>
+        <value type="double" value="0.71959459459459463"/>
+      </property>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-2" type="string" value="tasklist">
+      <property name="grouping" type="uint" value="1"/>
+      <property name="show-wireframes" type="bool" value="false"/>
+    </property>
+    <property name="plugin-3" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-4" type="string" value="pager"/>
+    <property name="plugin-5" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-6" type="string" value="systray">
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (50%)"/>
+        <value type="string" value="miniaplicación gestor de la red"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (100%)"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (86%)"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (82%)&#xA;conexión vpn activa"/>
+        <value type="string" value="nextcloud"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (83%)&#xA;conexión vpn activa"/>
+        <value type="string" value="keepassxc"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (94%)"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (87%)"/>
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (84%)"/>
+        <value type="string" value="sin conexión de red"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="blueman"/>
+        <value type="string" value="Nextcloud"/>
+        <value type="string" value="KeePassXC"/>
+      </property>
+    </property>
+    <property name="plugin-7" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-8" type="string" value="clock">
+      <property name="digital-layout" type="uint" value="1"/>
+      <property name="digital-date-font" type="string" value="JetBrains Mono 11"/>
+      <property name="digital-date-format" type="string" value="%d/%m/%Y"/>
+      <property name="digital-time-font" type="string" value="JetBrains Mono 12"/>
+    </property>
+    <property name="plugin-9" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-10" type="string" value="actions">
+      <property name="appearance" type="uint" value="0"/>
+      <property name="items" type="array">
+        <value type="string" value="-lock-screen"/>
+        <value type="string" value="-switch-user"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="-suspend"/>
+        <value type="string" value="-hibernate"/>
+        <value type="string" value="-hybrid-sleep"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="-shutdown"/>
+        <value type="string" value="-restart"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="+logout"/>
+        <value type="string" value="-logout-dialog"/>
+      </property>
+    </property>
+    <property name="plugin-11" type="string" value="whiskermenu">
+      <property name="view-mode" type="int" value="1"/>
+      <property name="launcher-show-name" type="bool" value="true"/>
+      <property name="menu-width" type="int" value="520"/>
+      <property name="menu-height" type="int" value="700"/>
+      <property name="menu-opacity" type="int" value="80"/>
+      <property name="category-icon-size" type="int" value="2"/>
+      <property name="launcher-icon-size" type="int" value="2"/>
+      <property name="position-profile-alternate" type="bool" value="true"/>
+      <property name="position-search-alternate" type="bool" value="true"/>
+      <property name="position-commands-alternate" type="bool" value="false"/>
+      <property name="position-categories-alternate" type="bool" value="true"/>
+      <property name="button-icon" type="string" value="distributor-logo-archlinux"/>
+      <property name="default-category" type="int" value="1"/>
+      <property name="hover-switch-category" type="bool" value="true"/>
+      <property name="stay-on-focus-out" type="bool" value="false"/>
+      <property name="recent-items-max" type="int" value="13"/>
+      <property name="favorites-in-recent" type="bool" value="true"/>
+      <property name="recent" type="array">
+        <value type="string" value="gparted.desktop"/>
+        <value type="string" value="org.gnome.seahorse.Application.desktop"/>
+        <value type="string" value="org.gnome.Cheese.desktop"/>
+        <value type="string" value="blueman-adapters.desktop"/>
+        <value type="string" value="plank.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-12" type="string" value="weather">
+      <property name="location" type="empty">
+        <property name="name" type="string" value="Joinville, Região Geográfica Imediata de Joinville"/>
+        <property name="latitude" type="string" value="-26.304490"/>
+        <property name="longitude" type="string" value="-48.848673"/>
+      </property>
+      <property name="msl" type="int" value="0"/>
+      <property name="timezone" type="string" value="America/Sao_Paulo"/>
+      <property name="offset" type="string" value="-03:00"/>
+      <property name="cache-max-age" type="int" value="172800"/>
+      <property name="power-saving" type="bool" value="true"/>
+      <property name="units" type="empty">
+        <property name="temperature" type="int" value="0"/>
+        <property name="pressure" type="int" value="0"/>
+        <property name="windspeed" type="int" value="0"/>
+        <property name="precipitation" type="int" value="0"/>
+        <property name="altitude" type="int" value="0"/>
+        <property name="apparent-temperature" type="int" value="2"/>
+      </property>
+      <property name="round" type="bool" value="true"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="tooltip-style" type="int" value="1"/>
+      <property name="forecast" type="empty">
+        <property name="layout" type="int" value="1"/>
+        <property name="days" type="int" value="3"/>
+      </property>
+      <property name="theme-dir" type="string" value="/usr/share/xfce4/weather/icons/liquid-dark"/>
+      <property name="scrollbox" type="empty">
+        <property name="show" type="bool" value="true"/>
+        <property name="animate" type="bool" value="true"/>
+        <property name="lines" type="int" value="1"/>
+        <property name="color" type="string" value="rgba(0,0,0,0)"/>
+        <property name="use-color" type="bool" value="false"/>
+      </property>
+    </property>
+    <property name="plugin-1" type="string" value="power-manager-plugin"/>
+    <property name="plugin-13" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="known-players" type="string" value="Microsoft Edge"/>
+    </property>
+    <property name="plugin-14" type="string" value="mailwatch"/>
+  </property>
+</channel>
