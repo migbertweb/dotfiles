@@ -1,1 +1,3 @@
-# mis dotfiles 
+# mis dotfiles
+
+con instalador
