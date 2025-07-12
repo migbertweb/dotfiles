@@ -17,6 +17,17 @@ CNC=$(tput sgr0)      # Reset
 DOTFILES_DIR="$HOME/dotfiles"
 ERROR_LOG="$HOME/dotfiles_install_error.log"
 
+ok() {
+    printf "\e[32m[✔] %s\e[0m\n" "$*"
+}
+
+skip() {
+    printf "\e[33m[⏭] %s\e[0m\n" "$*"
+}
+
+fail() {
+    printf "\e[31m[✖] %s\e[0m\n" "$*"
+}
 # ───── 🖼 Logo ─────
 logo() {
 
@@ -553,32 +564,59 @@ install_sddm_theme() {
     rm -rf "$TEMP_DIR"
 }
 
+fix_abnt2_slash_key() {
+    clear
+    logo "Fix Tecla / ? º en ThinkPad ABNT2 (keycode 105)"
+
+    if grep -qi thinkpad /sys/class/dmi/id/product_family; then
+        echo "Dispositivo ThinkPad detectado. Aplicando fix..."
+
+        echo "keycode 37 = slash question masculine" > "$HOME/.Xmodmap"
+
+        if ! grep -q 'xmodmap ~/.Xmodmap' "$HOME/.xprofile" 2>/dev/null; then
+            echo '[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap' >> "$HOME/.xprofile"
+        fi
+
+        xmodmap "$HOME/.Xmodmap"
+        ok "Tecla '/' '?' 'º' corregida exitosamente (keycode 105)"
+        return 0
+    else
+        skip "No es un ThinkPad. Saltando corrección de tecla '/'"
+        return 1
+    fi
+}
+
+
 # ───── ▶️ Ejecución ─────
 main() {
     logo "🛠 Instalador de Dotfiles"
     initial_checks
 
-    install_dependencies && add_summary "✔" "Dependencias verificadas e instaladas" || add_summary "❌" "Falló la instalación de dependencias"
+    # install_dependencies && add_summary "✔" "Dependencias verificadas e instaladas" || add_summary "❌" "Falló la instalación de dependencias"
 
-    clone_dotfiles && add_summary "✔" "Dotfiles clonados" || add_summary "❌" "Fallo al clonar los dotfiles"
+    # clone_dotfiles && add_summary "✔" "Dotfiles clonados" || add_summary "❌" "Fallo al clonar los dotfiles"
 
-    backup_existing_config && add_summary "✔" "Configuraciones respaldadas" || add_summary "❌" "Error al respaldar configuraciones"
+    # backup_existing_config && add_summary "✔" "Configuraciones respaldadas" || add_summary "❌" "Error al respaldar configuraciones"
 
-    stow_dotfiles && add_summary "✔" "Dotfiles enlazados con Stow" || add_summary "❌" "Error al aplicar Stow"
+    # stow_dotfiles && add_summary "✔" "Dotfiles enlazados con Stow" || add_summary "❌" "Error al aplicar Stow"
     
-    merge_bspwm_config && add_summary "✔" "Configuración de BSPWM actualizada" || add_summary "❌" "Error al actualizar BSPWM"
+    # merge_bspwm_config && add_summary "✔" "Configuración de BSPWM actualizada" || add_summary "❌" "Error al actualizar BSPWM"
 
-    configure_docker && add_summary "✔" "Docker configurado" || add_summary "❌" "Fallo en configuración de Docker"
+    # configure_docker && add_summary "✔" "Docker configurado" || add_summary "❌" "Fallo en configuración de Docker"
 
-    configure_syncthing && add_summary "✔" "Syncthing habilitado" || add_summary "❌" "Fallo al habilitar Syncthing"
+    # configure_syncthing && add_summary "✔" "Syncthing habilitado" || add_summary "❌" "Fallo al habilitar Syncthing"
 
-    configure_power_services && add_summary "✔" "Servicios de energía habilitados" || add_summary "❌" "Fallo al habilitar servicios de energía"
+    # configure_power_services && add_summary "✔" "Servicios de energía habilitados" || add_summary "❌" "Fallo al habilitar servicios de energía"
 
-    configure_zram && add_summary "✔" "ZRAM habilitado" || add_summary "❌" "Fallo en configuración de ZRAM"
+    # configure_zram && add_summary "✔" "ZRAM habilitado" || add_summary "❌" "Fallo en configuración de ZRAM"
 
-    install_icon_theme && add_summary "✔" "Tema de íconos Tela-circle instalado" || add_summary "❌" "Fallo al instalar tema de íconos"
+    # install_icon_theme && add_summary "✔" "Tema de íconos Tela-circle instalado" || add_summary "❌" "Fallo al instalar tema de íconos"
 
-    install_sddm_theme && add_summary "✔" "Tema SDDM instalado" || add_summary "❌" "Fallo al instalar tema SDDM"
+    # install_sddm_theme && add_summary "✔" "Tema SDDM instalado" || add_summary "❌" "Fallo al instalar tema SDDM"
+
+    # fix_abnt2_slash_key && add_summary "✔" "Tecla ABNT2 corregida" || add_summary "❌" "Fallo al corregir tecla ABNT2"
+
+    fix_abnt2_slash_key_keyd && add_summary "✔" "Keyd configurado para ABNT2" || add_summary "❌" "Fallo al configurar keyd"
 
     echo ""
     echo "${BLD}${CBL}📋 Resumen de la instalación:${CNC}"

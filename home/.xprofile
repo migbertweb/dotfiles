@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Tema de Qt
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Remapeo de teclas
+[ -f "$HOME/.Xmodmap" ] && xmodmap "$HOME/.Xmodmap" &
