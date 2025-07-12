@@ -17,6 +17,15 @@ CNC=$(tput sgr0)      # Reset
 DOTFILES_DIR="$HOME/dotfiles"
 ERROR_LOG="$HOME/dotfiles_install_error.log"
 
+# ───── 📄 Inicializar logging global ─────
+LOGFILE="$HOME/installer_log_$(date +%Y%m%d-%H%M%S).log"
+
+# Borrar log de errores previo si existe
+rm -f "$ERROR_LOG"
+
+# Redirigir toda la salida (stdout y stderr) al log y a la pantalla al mismo tiempo
+exec > >(tee -a "$LOGFILE") 2>&1
+
 ok() {
     printf "\e[32m[✔] %s\e[0m\n" "$*"
 }
@@ -485,9 +494,18 @@ install_icon_theme() {
     THEME_REPO="https://github.com/vinceliuice/Tela-circle-icon-theme.git"
     THEME_DIR="$HOME/.themes-src/Tela-circle-icon-theme"
     INSTALL_SCRIPT="install.sh"
+    ICON_DIR="/usr/share/icons/Tela-circle-dark"
 
     mkdir -p "$HOME/.themes-src"
 
+    # Verificar si ya está instalado el tema
+    if [ -d "$ICON_DIR" ]; then
+        echo "${CGR}✔ Tema de íconos 'Tela-circle' ya está instalado en el sistema.${CNC}"
+        add_summary "✔" "Tema de íconos ya presente, omitiendo instalación"
+        return 0
+    fi
+
+    # Clonar si no existe en caché local
     if [ -d "$THEME_DIR" ]; then
         echo "${CYE}⚠️  El tema ya está clonado en: $THEME_DIR${CNC}"
     else
@@ -501,6 +519,7 @@ install_icon_theme() {
         fi
     fi
 
+    # Ejecutar el instalador
     echo "${CBL}🎨 Ejecutando el instalador del tema de íconos...${CNC}"
     if [ -x "$THEME_DIR/$INSTALL_SCRIPT" ]; then
         if "$THEME_DIR/$INSTALL_SCRIPT" -a >>"$ERROR_LOG" 2>&1; then
@@ -517,6 +536,7 @@ install_icon_theme() {
         return 1
     fi
 }
+
 # ───── 💻 Instalar tema personalizado de SDDM ─────
 install_sddm_theme() {
     logo "Instalando tema SDDM personalizado"
@@ -526,6 +546,13 @@ install_sddm_theme() {
     SOURCE_SUBDIR="sddm-inspiration"
     TARGET_DIR="/usr/share/sddm/themes/mysddm"
     CONF_FILE="/etc/sddm.conf.d/sddm.conf"
+
+    # Verificar si ya está configurado
+    if [ -f "$CONF_FILE" ] && grep -q "Current=mysddm" "$CONF_FILE" && [ -d "$TARGET_DIR" ]; then
+        echo "${CGR}✔ El tema SDDM 'mysddm' ya está instalado y configurado.${CNC}"
+        add_summary "✔" "Tema SDDM ya presente, omitiendo instalación"
+        return 0
+    fi
 
     # Requiere root
     if [ "$(id -u)" -ne 0 ]; then
@@ -537,6 +564,7 @@ install_sddm_theme() {
         fi
     fi
 
+    # Clonar el repositorio
     echo "${CBL}🔄 Clonando el repositorio del tema...${CNC}"
     rm -rf "$TEMP_DIR"
     if git clone --depth=1 "$THEME_REPO" "$TEMP_DIR" >> "$ERROR_LOG" 2>&1; then
@@ -547,6 +575,7 @@ install_sddm_theme() {
         return 1
     fi
 
+    # Verificar subdirectorio esperado
     if [ ! -d "$TEMP_DIR/$SOURCE_SUBDIR" ]; then
         log_error "Subcarpeta '$SOURCE_SUBDIR' no encontrada en el repositorio"
         add_summary "❌" "No se encontró la carpeta '$SOURCE_SUBDIR'"
@@ -617,7 +646,13 @@ main() {
     echo ""
     echo "${BLD}${CBL}📋 Resumen de la instalación:${CNC}"
     echo -e "${SUMMARY}"
-    
+    echo ""
+    echo "${BLD}${CBL}📝 Log completo guardado en:${CNC} $LOGFILE"
+    if [ -s "$ERROR_LOG" ]; then
+    echo "${BLD}${CRE}⚠️ Se registraron errores. Revisá:${CNC} $ERROR_LOG"
+    else
+    echo "${BLD}${CGR}✔ Sin errores detectados.${CNC}"
+    fi
     echo "${BLD}${CGR}✅ Todo configurado. Reinicia tu sesión para aplicar los cambios.${CNC}"
 }
 
