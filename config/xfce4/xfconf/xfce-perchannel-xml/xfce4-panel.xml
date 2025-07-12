@@ -119,11 +119,8 @@
       <property name="recent-items-max" type="int" value="13"/>
       <property name="favorites-in-recent" type="bool" value="true"/>
       <property name="recent" type="array">
-        <value type="string" value="gparted.desktop"/>
-        <value type="string" value="org.gnome.seahorse.Application.desktop"/>
-        <value type="string" value="org.gnome.Cheese.desktop"/>
-        <value type="string" value="blueman-adapters.desktop"/>
         <value type="string" value="plank.desktop"/>
+        <value type="string" value="gparted.desktop"/>
       </property>
     </property>
     <property name="plugin-12" type="string" value="weather">

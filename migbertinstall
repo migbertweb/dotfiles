@@ -99,7 +99,7 @@ install_dependencies() {
     if is_installed reflector; then
         printf "%b\n" "${BLD}${CGR}Actualizando lista de mirrors con reflector...${CNC}"
         sudo reflector --verbose --age 12 --fastest 10 --score 10 --protocol https \
-                       --latest 8 --sort rate --save /etc/pacman.d/mirrorlist
+                       --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
         sudo pacman -Syy
     else
         printf "%b\n" "${BLD}${CYE}Reflector no está instalado. Saltando actualización de mirrors...${CNC}"
@@ -107,7 +107,7 @@ install_dependencies() {
 
     # Lista de paquetes necesarios
     dependencies="
-        btop conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync
+        btop viewnior conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc syncthing obs-studio telegram-desktop signal-desktop shotcut visual-studio-code-bin wireguird stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync
     "
 
     printf "\n%b\n\n" "${BLD}${CBL}Verificando paquetes requeridos...${CNC}"
