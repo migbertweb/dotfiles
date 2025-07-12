@@ -120,10 +120,10 @@ alias v='nvim'
 alias cl='clear'
 # PACMAN
 alias update="paru -Syu --skipreview --nocombinedupgrade"
-alias instalar='sudo pacman -Sy --skipreview --needed'
+alias instalar='sudo pacman -Sy --needed'
 # pacman-optimize
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
-# 
+#
 
 # KUBERNETES
 alias kaf='kubectl apply -f'
@@ -177,7 +177,7 @@ sops_encrypt() {
 
 sops_decrypt() {
     local input_file="$1"
-    
+
     # Verificar formato de archivo encriptado
     if [[ "$input_file" != *.enc.yaml ]]; then
         echo "❌ El archivo no parece estar encriptado (debe terminar en .enc.yaml)"
@@ -185,7 +185,7 @@ sops_decrypt() {
     fi
 
     local output_file="${input_file%.enc.yaml}.yaml"
-    
+
     # Verificar si ya existe el archivo desencriptado
     if [[ -f "$output_file" ]]; then
         echo "⚠️  El archivo $output_file ya existe. ¿Sobrescribir? (y/n)"
