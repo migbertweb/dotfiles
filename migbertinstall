@@ -162,6 +162,28 @@ install_dependencies() {
 
     sleep 2
 }
+
+# ───── 🛡️ Instalar WireGuird si no está presente ─────
+install_wireguird() {
+    logo "Instalando WireGuird"
+
+    if is_installed wireguird; then
+        echo "${CGR}✔ WireGuird ya está instalado.${CNC}"
+        add_summary "✔" "WireGuird ya presente, omitiendo instalación"
+        return 0
+    fi
+
+    echo "${CBL}🔍 Instalando paquete 'wireguird' desde los repositorios...${CNC}"
+    if paru -S --noconfirm --skipreview wireguird >>"$ERROR_LOG" 2>&1; then
+        echo "${CGR}✔ WireGuird instalado correctamente.${CNC}"
+        add_summary "✔" "WireGuird instalado"
+    else
+        log_error "Error al instalar wireguird con paru"
+        add_summary "❌" "Fallo al instalar WireGuird"
+        return 1
+    fi
+}
+
 # ───── 📥 Clonar dotfiles desde un repositorio ─────
 clone_dotfiles() {
     clear
