@@ -120,7 +120,7 @@ alias v='nvim'
 alias cl='clear'
 # PACMAN
 alias update="paru -Syu --skipreview --nocombinedupgrade"
-alias instalar='sudo pacman -Sy'
+alias instalar='sudo pacman -Sy --skipreview --needed'
 # pacman-optimize
 alias desbloquearpacman='sudo rm /var/lib/pacman/db.lck'
 # 
