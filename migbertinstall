@@ -494,7 +494,7 @@ install_icon_theme() {
     THEME_REPO="https://github.com/vinceliuice/Tela-circle-icon-theme.git"
     THEME_DIR="$HOME/.themes-src/Tela-circle-icon-theme"
     INSTALL_SCRIPT="install.sh"
-    ICON_DIR="/usr/share/icons/Tela-circle-dark"
+    ICON_DIR="/home/migbert/.local/share/icons/Tela-circle-dark"
 
     mkdir -p "$HOME/.themes-src"
 
