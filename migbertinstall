@@ -378,6 +378,27 @@ configure_syncthing() {
 
     sleep 2
 }
+# ───── 📶 Habilitar el servicio Bluetooth ─────
+configure_bluetooth() {
+    clear
+    logo "Habilitando el servicio de Bluetooth"
+
+    printf "\n%s%s🔧 Verificando estado del servicio bluetooth...%s\n" "${BLD}" "${CYE}" "${CNC}"
+
+    if systemctl is-enabled --quiet bluetooth.service && systemctl is-active --quiet bluetooth.service; then
+        printf "%s%s✔ Bluetooth ya está habilitado y en ejecución.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+    else
+        printf "%s%s➕ Habilitando e iniciando bluetooth.service...%s\n" "${BLD}" "${CBL}" "${CNC}"
+        if sudo systemctl enable --now bluetooth.service; then
+            printf "%s%s✅ ¡Bluetooth habilitado correctamente!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+        else
+            log_error "No se pudo habilitar el servicio bluetooth.service"
+            return 1
+        fi
+    fi
+
+    sleep 2
+}
 
 # ───── ⚡ Habilitar auto-cpufreq y TLP ─────
 configure_power_services() {
@@ -582,6 +603,8 @@ main() {
     configure_docker && add_summary "✔" "Docker configurado" || add_summary "❌" "Fallo en configuración de Docker"
 
     configure_syncthing && add_summary "✔" "Syncthing habilitado" || add_summary "❌" "Fallo al habilitar Syncthing"
+
+    configure_bluetooth && add_summary "✔" "Bluetooth habilitado" || add_summary "❌" "Fallo al habilitar Bluetooth"
 
     configure_power_services && add_summary "✔" "Servicios de energía habilitados" || add_summary "❌" "Fallo al habilitar servicios de energía"
 
