@@ -57,7 +57,7 @@ run() {
 
 # Set system vars for polybar
 "$HOME"/.config/bspwm/src/SetSysVars
-
+[ -f "$HOME/.Xmodmap" ] && xmodmap "$HOME/.Xmodmap"
 # Launch sxhkd daemon
 run sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc
 
