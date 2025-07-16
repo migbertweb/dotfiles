@@ -27,4 +27,3 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 INSTALAR PAMAC (OPCIONAL)
 sudo pacman -S pamac
-

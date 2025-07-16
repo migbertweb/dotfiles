@@ -1,16 +1,30 @@
 configuracion del sensor de huellas:
 
-sudo pacman -S fprintd libpam-fprintd
+paru -S python-validity
 
+seguir la guia del readme del repo de python-validity
+https://github.com/uunicorn/python-validity
+seccion: https://github.com/uunicorn/python-validity?tab=readme-ov-file#windows-interoperability
+"En windows en el terminal como administrador ejecutar: wmic useraccount get name,sid y copiar la salida
+buscar el usuario resgistrado, debe ser algo asi: user            S-1-5-21-4246202950-3825453895-2154764964-1001
+crear el archivo: /etc/python-validity/dbus-service.yaml
+y copiar:
+user_to_sid:
+    "userdelinux": "S-1-5-21-4246202950-3825453895-2154764964-1001"
+
+## configuracion
 configiurar sddm en /etc/pam.d/sddm
 agregar esto al inicio:
+
 auth 			[success=1 new_authtok_reqd=1 default=ignore]  	pam_unix.so try_first_pass likeauth nullok
 auth 			sufficient  	pam_fprintd.so
 
 y en sudo /etc/pam.d/sudo
 agregar esto al inicio:
+
 auth		sufficient  	pam_unix.so try_first_pass likeauth nullok
 auth    sufficient      pam_fprintd.so
+
 
 en /etc/pam.d/system-local-login
 
