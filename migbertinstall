@@ -116,7 +116,7 @@ install_dependencies() {
 
     # Lista de paquetes necesarios
     dependencies="
-        btop viewnior conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird auto-cpufreq tlp acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc vlc-plugins-all syncthing obs-studio telegram-desktop kdenlive visual-studio-code-bin stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync less
+        btop viewnior conky microsoft-edge-stable-bin google-chrome gimp inkscape thunderbird tlp tlp-rdw tlpui ethtool kdegraphics-thumbnailers acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc vlc-plugins-all syncthing obs-studio telegram-desktop kdenlive visual-studio-code-bin stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync less kdeconnect
     "
 
     printf "\n%b\n\n" "${BLD}${CBL}Verificando paquetes requeridos...${CNC}"
@@ -163,26 +163,29 @@ install_dependencies() {
     sleep 2
 }
 
-# ───── 🛡️ Instalar WireGuird si no está presente ─────
-install_wireguird() {
-    logo "Instalando WireGuird"
+# ───── 🛡️ Instalar dependencias desde AUR ─────
+install_aur_packages() {
+    logo "Instalando dependencias AUR"
 
-    if is_installed wireguird; then
-        echo "${CGR}✔ WireGuird ya está instalado.${CNC}"
-        add_summary "✔" "WireGuird ya presente, omitiendo instalación"
-        return 0
-    fi
+    local aur_dependencias=("wireguird" "youtube-music-bin")  # <- Agrega aquí los paquetes que quieras
 
-    echo "${CBL}🔍 Instalando paquete 'wireguird' desde los repositorios...${CNC}"
-    if paru -S --noconfirm --skipreview wireguird >>"$ERROR_LOG" 2>&1; then
-        echo "${CGR}✔ WireGuird instalado correctamente.${CNC}"
-        add_summary "✔" "WireGuird instalado"
-    else
-        log_error "Error al instalar wireguird con paru"
-        add_summary "❌" "Fallo al instalar WireGuird"
-        return 1
-    fi
+    for pkg in "${aur_dependencias[@]}"; do
+        if is_installed "$pkg"; then
+            echo "${CGR}✔ $pkg ya está instalado.${CNC}"
+            add_summary "✔" "$pkg ya presente, omitiendo instalación"
+        else
+            echo "${CBL}🔍 Instalando paquete '$pkg' desde AUR...${CNC}"
+            if paru -S --noconfirm --skipreview "$pkg" >>"$ERROR_LOG" 2>&1; then
+                echo "${CGR}✔ $pkg instalado correctamente.${CNC}"
+                add_summary "✔" "$pkg instalado desde AUR"
+            else
+                log_error "❌ Error al instalar $pkg con paru"
+                add_summary "❌" "Fallo al instalar $pkg desde AUR"
+            fi
+        fi
+    done
 }
+
 
 # ───── 📥 Clonar dotfiles desde un repositorio ─────
 clone_dotfiles() {
@@ -436,18 +439,6 @@ configure_power_services() {
     clear
     logo "Habilitando servicios de optimización de energía"
 
-    echo "${CBL}⚙️  Verificando estado de auto-cpufreq...${CNC}"
-    if systemctl is-enabled --quiet auto-cpufreq.service && systemctl is-active --quiet auto-cpufreq.service; then
-        echo "${CGR}✔ auto-cpufreq ya está activo.${CNC}"
-    else
-        echo "${CBL}➕ Habilitando auto-cpufreq...${CNC}"
-        if sudo systemctl enable --now auto-cpufreq.service; then
-            echo "${CGR}✔ auto-cpufreq habilitado.${CNC}"
-        else
-            log_error "No se pudo habilitar auto-cpufreq.service"
-        fi
-    fi
-
     echo "${CBL}⚙️  Verificando estado de TLP...${CNC}"
     if systemctl is-enabled --quiet tlp.service && systemctl is-active --quiet tlp.service; then
         echo "${CGR}✔ TLP ya está activo.${CNC}"
@@ -642,6 +633,8 @@ main() {
     initial_checks
 
     install_dependencies && add_summary "✔" "Dependencias verificadas e instaladas" || add_summary "❌" "Falló la instalación de dependencias"
+
+    install_aur_packages && add_summary "✔" "Dependencias AUR instaladas" || add_summary "❌" "Fallo al instalar dependencias AUR"
 
     clone_dotfiles && add_summary "✔" "Dotfiles clonados" || add_summary "❌" "Fallo al clonar los dotfiles"
 

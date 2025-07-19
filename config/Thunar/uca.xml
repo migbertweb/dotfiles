@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
+	<icon>visualstudiocode</icon>
+	<name>Abrir en VSCode</name>
+	<submenu></submenu>
+	<unique-id>1752939871652097-1</unique-id>
+	<command>code .</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
 	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
+	<name>Abrir en el Terminal</name>
 	<submenu></submenu>
 	<unique-id>1751671958513022-1</unique-id>
 	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
@@ -11,5 +26,8 @@
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
+	<audio-files/>
+	<other-files/>
+	<text-files/>
 </action>
 </actions>

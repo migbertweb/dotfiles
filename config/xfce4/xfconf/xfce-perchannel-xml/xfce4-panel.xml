@@ -66,6 +66,7 @@
         <value type="string" value="sin conexión de red"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="TelegramDesktop"/>
         <value type="string" value="blueman"/>
         <value type="string" value="Nextcloud"/>
         <value type="string" value="KeePassXC"/>

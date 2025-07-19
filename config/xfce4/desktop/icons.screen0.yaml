@@ -12,20 +12,57 @@ configs:
       width: 1920
       height: 1080
   icons:
-    "/home/migbert":
-      row: 0
-      col: 0
-    "b9323791-aaa6-4bbe-943c-3bda4a13311b":
-      row: 3
-      col: 0
-      last_seen: 1751677407106017
-    "/home/migbert/Desktop/GitHub - KernelsAndDragons_ArchPostInstall Archivos":
-      row: 6
+    "trash:///":
+      row: 1
       col: 0
     "4E21-0000":
       row: 4
       col: 0
       last_seen: 1751671958922328
+    "/home/migbert":
+      row: 0
+      col: 0
+    "/home/migbert/Desktop/GitHub - KernelsAndDragons_ArchPostInstall Archivos":
+      row: 6
+      col: 0
+    "ROOT-A":
+      row: 4
+      col: 0
+      last_seen: 1751677407110239
+    "/home/migbert/Desktop/Como criar uma Apresenta\xE7\xE3o Google Slides.pdf":
+      row: 5
+      col: 0
+    "626B-4255":
+      row: 3
+      col: 0
+      last_seen: 1751671958918597
+    "7A18904A189006F3":
+      row: 6
+      col: 0
+      last_seen: 1751671958932750
+    "/":
+      row: 2
+      col: 0
+    "/home/migbert/Desktop/nord":
+      row: 5
+      col: 0
+    "/home/migbert/Desktop/GitHub - KernelsAndDragons_ArchPostInstall.html":
+      row: 4
+      col: 0
+    "/home/migbert/Desktop/Criar uma Apresenta\xE7\xE3o Google Slides.pdf":
+      row: 4
+      col: 0
+    "moto g84 5G":
+      row: 3
+      col: 0
+      last_seen: 1751922638463463
+    "1d644dc9-e722-4fd2-a97f-958839613964":
+      row: 5
+      col: 0
+      last_seen: 1751671958927703
+    "/home/migbert/Desktop/Tutorial-Google-Slides.pdf":
+      row: 3
+      col: 0
     "4d6e4377-778c-4bd0-9b2d-17d25d4d48ab":
       row: 0
       col: 1
@@ -34,35 +71,7 @@ configs:
       row: 5
       col: 0
       last_seen: 1751677407113532
-    "626B-4255":
+    "b9323791-aaa6-4bbe-943c-3bda4a13311b":
       row: 3
       col: 0
-      last_seen: 1751671958918597
-    "1d644dc9-e722-4fd2-a97f-958839613964":
-      row: 5
-      col: 0
-      last_seen: 1751671958927703
-    "/home/migbert/Desktop/GitHub - KernelsAndDragons_ArchPostInstall.html":
-      row: 4
-      col: 0
-    "7A18904A189006F3":
-      row: 6
-      col: 0
-      last_seen: 1751671958932750
-    "trash:///":
-      row: 1
-      col: 0
-    "/":
-      row: 2
-      col: 0
-    "/home/migbert/Desktop/nord":
-      row: 5
-      col: 0
-    "moto g84 5G":
-      row: 3
-      col: 0
-      last_seen: 1751922638463463
-    "ROOT-A":
-      row: 4
-      col: 0
-      last_seen: 1751677407110239
+      last_seen: 1751677407106017

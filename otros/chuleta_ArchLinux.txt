@@ -3,10 +3,6 @@ sudo nano /etc/sudoers
 y añadir: Defaults env_reset,pwfeedback
 
 CONFIGURAR SYNCTHING (el post-install ya lo hace)
-- Instalar syncthing
-sudo pacman -S syncthing
-- agregar servicio al usuario
-systemctl --user enable syncthing.service && systemctl --user start syncthing.service
 - verificar WebUI
 http://localhost:8384/
 

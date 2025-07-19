@@ -6,7 +6,7 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/migbert/Imágenes/wallpapers/xfce4/4124499.jpg"/>
+          <property name="last-image" type="string" value="/home/migbert/Imágenes/wallpapers/xfce4/4k Wallpaper Audi S8 Anime Aerography Car El Tony.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="backdrop-cycle-timer" type="uint" value="10"/>
           <property name="backdrop-cycle-random-order" type="bool" value="false"/>
@@ -16,7 +16,7 @@
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="831"/>
-    <property name="window-height" type="int" value="559"/>
+    <property name="window-height" type="int" value="588"/>
   </property>
   <property name="desktop-icons" type="empty">
     <property name="use-custom-label-text-color" type="bool" value="false"/>
