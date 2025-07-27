@@ -6,7 +6,7 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/migbert/Imágenes/wallpapers/xfce4/4k Wallpaper Audi S8 Anime Aerography Car El Tony.jpg"/>
+          <property name="last-image" type="string" value="/home/migbert/Imágenes/wallpapers/xfce4/4124499.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="backdrop-cycle-timer" type="uint" value="10"/>
           <property name="backdrop-cycle-random-order" type="bool" value="false"/>
