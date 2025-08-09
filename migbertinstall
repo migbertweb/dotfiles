@@ -434,7 +434,7 @@ configure_bluetooth() {
     sleep 2
 }
 
-# ───── ⚡ Habilitar auto-cpufreq y TLP ─────
+# ───── ⚡ Habilitar  TLP ─────
 configure_power_services() {
     clear
     logo "Habilitando servicios de optimización de energía"
@@ -556,7 +556,7 @@ install_sddm_theme() {
 
     THEME_REPO="https://github.com/migbertweb/sddm-personal.git"
     TEMP_DIR="/tmp/sddm-theme-install"
-    SOURCE_SUBDIR="sddm-inspiration"
+    SOURCE_SUBDIR="sddm-canaima"
     TARGET_DIR="/usr/share/sddm/themes/mysddm"
     CONF_FILE="/etc/sddm.conf.d/sddm.conf"
 
