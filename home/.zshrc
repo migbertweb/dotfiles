@@ -221,6 +221,3 @@ alias kusfd='kustomize build --enable-alpha-plugins --enable-exec overlays/dev |
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-
-. "$HOME/.local/share/krita/ai_diffusion/server/uv/env"

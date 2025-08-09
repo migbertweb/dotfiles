@@ -52,6 +52,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (85%)"/>
         <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (50%)"/>
         <value type="string" value="miniaplicación gestor de la red"/>
         <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (100%)"/>
