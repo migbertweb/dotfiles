@@ -87,7 +87,8 @@ run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 run xfce4-power-manager --sm-client-disable
 
 # start keepassxc
-run keepassxc
+# run keepassxc
+# run bitwarden-desktop
 
 # start nextcloud
 run "/usr/bin/nextcloud" --background

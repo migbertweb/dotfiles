@@ -1,2 +1,3 @@
 ! Remapear Ç (keycode 47) a / y Shift+Ç a ?
-keycode 47 = slash question
+keycode 47 = ccedilla Ccedilla
+

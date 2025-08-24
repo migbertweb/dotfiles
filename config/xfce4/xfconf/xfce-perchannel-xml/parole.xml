@@ -9,10 +9,15 @@
   </property>
   <property name="window" type="empty">
     <property name="maximized" type="bool" value="false"/>
-    <property name="width" type="int" value="898"/>
+    <property name="width" type="int" value="1914"/>
     <property name="height" type="int" value="1032"/>
   </property>
   <property name="audio" type="empty">
-    <property name="volume" type="int" value="100"/>
+    <property name="volume" type="int" value="17"/>
+    <property name="visualization-enabled" type="bool" value="true"/>
+    <property name="visualization-name" type="string" value="spectrascope"/>
+  </property>
+  <property name="parole" type="empty">
+    <property name="plugins" type="string" value="parole-mpris2.so;tray-icon.so;parole-notify.so"/>
   </property>
 </channel>

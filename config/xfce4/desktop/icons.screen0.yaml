@@ -26,7 +26,7 @@ configs:
       row: 0
       col: 0
     "/home/migbert/Desktop/Como criar uma Apresenta\xE7\xE3o Google Slides.pdf":
-      row: 7
+      row: 8
       col: 0
     "ROOT-A":
       row: 4
@@ -53,8 +53,8 @@ configs:
       row: 6
       col: 0
     "/home/migbert/Desktop/skel":
-      row: 8
-      col: 0
+      row: 0
+      col: 1
     "1d644dc9-e722-4fd2-a97f-958839613964":
       row: 5
       col: 0
@@ -83,4 +83,7 @@ configs:
       last_seen: 1751677407106017
     "/home/migbert/Desktop/usuarios-meet":
       row: 4
+      col: 0
+    "/home/migbert/Desktop/portafolio":
+      row: 7
       col: 0
