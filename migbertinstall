@@ -625,6 +625,14 @@ install_sddm_theme() {
     rm -rf "$TEMP_DIR"
 }
 
+# Función específica para teclado
+setup_keyboard() {
+    echo "Configurando teclado ABNT2 brasileño para ThinkPad..."
+    sudo localectl set-keymap br-abnt2
+    sudo localectl set-x11-keymap br thinkpad
+    echo "Teclado configurado con éxito!"
+}
+
 # ───── ▶️ Ejecución ─────
 main() {
     logo "🛠 Instalador de Dotfiles"
@@ -655,6 +663,8 @@ main() {
     install_icon_theme && add_summary "✔" "Tema de íconos Tela-circle instalado" || add_summary "❌" "Fallo al instalar tema de íconos"
 
     install_sddm_theme && add_summary "✔" "Tema SDDM instalado" || add_summary "❌" "Fallo al instalar tema SDDM"
+
+    setup_keyboard
 
     echo ""
     echo "${BLD}${CBL}📋 Resumen de la instalación:${CNC}"
