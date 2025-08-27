@@ -115,7 +115,7 @@ install_dependencies() {
     fi
 
     # Lista de paquetes necesarios
-    dependencies="btop viewnior conky brave-bin google-chrome gimp inkscape thunderbird tlp tlp-rdw tlpui ethtool kdegraphics-thumbnailers acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc vlc-plugins-all syncthing obs-studio telegram-desktop kdenlive visual-studio-code-bin stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync less filelight kdeconnect"
+    dependencies="btop viewnior conky brave-bin google-chrome gimp inkscape thunderbird tlp tlp-rdw tlpui ethtool kdegraphics-thumbnailers acpi acpid xprintidle docker docker-compose php keepassxc nextcloud-client plank vlc vlc-plugins-all syncthing obs-studio telegram-desktop kdenlive visual-studio-code-bin stow ripgrep fastfetch udiskie ffmpegthumbnailer unrar p7zip zip unzip lrzip sed curl lazygit dex eza bluez bluez-utils polkit-gnome gnome-keyring seahorse ranger tldr zoxide fd xclip lxappearance jq xdg-desktop-portal ffmpeg xdg-desktop-portal-gtk xorg-xwininfo bat brightnessctl zram-generator gparted rsync less filelight kdeconnect"
 
     printf "\n%b\n\n" "${BLD}${CBL}Verificando paquetes requeridos...${CNC}"
     sleep 1
