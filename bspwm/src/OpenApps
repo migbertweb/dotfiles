@@ -71,7 +71,7 @@ case "$1" in
 	thunar
 	;;
 --browser)
-	microsoft-edge-stable # mi Browser
+	brave # mi Browser
 	;;
 --editor)
 	geany
