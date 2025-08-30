@@ -6,10 +6,10 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/migbert/Imágenes/wallpapers/xfce4/Dark Anime Wallpaper HD.jpg"/>
+          <property name="last-image" type="string" value="/home/migbert/Imágenes/walls/1-wall-imag.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
-          <property name="backdrop-cycle-timer" type="uint" value="10"/>
-          <property name="backdrop-cycle-random-order" type="bool" value="false"/>
+          <property name="backdrop-cycle-timer" type="uint" value="6"/>
+          <property name="backdrop-cycle-random-order" type="bool" value="true"/>
         </property>
       </property>
     </property>
@@ -26,6 +26,8 @@
     <property name="file-icons" type="empty">
       <property name="show-unknown-removable" type="bool" value="false"/>
       <property name="show-device-fixed" type="bool" value="false"/>
+      <property name="show-device-removable" type="bool" value="false"/>
+      <property name="show-filesystem" type="bool" value="false"/>
     </property>
     <property name="style" type="int" value="2"/>
     <property name="confirm-sorting" type="bool" value="false"/>

@@ -12,4 +12,7 @@
       <value type="string" value="xfce4-settings-helper"/>
     </property>
   </property>
+  <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
+  <property name="theme" type="string" value="Smoke"/>
+  <property name="min-width-enabled" type="bool" value="false"/>
 </channel>
