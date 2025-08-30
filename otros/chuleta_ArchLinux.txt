@@ -2,11 +2,11 @@ sudo pacman -Syyu
 sudo nano /etc/sudoers
 y añadir: Defaults env_reset,pwfeedback
 
-CONFIGURAR SYNCTHING (el post-install ya lo hace)
+CONFIGURAR SYNCTHING (el script migbertinstall ya lo instala e inicia el servicio)
 - verificar WebUI
 http://localhost:8384/
 
-CONFIGURAR PLYMOUTH
+CONFIGURAR PLYMOUTH (el script migbertinstall ya lo instala, pero no lo configura)
 sudo nano /etc/mkinitcpio.conf
 añadir: plymouth despues de udev
 sudo mkinitcpio -p linux
