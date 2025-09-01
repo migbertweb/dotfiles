@@ -1,0 +1,108 @@
+{
+  "layer": "top",
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": [],
+  "modules-right": [
+    "network",
+    "battery",
+    "pulseaudio",
+    "temperature",
+    "cpu",
+    "memory",
+    "tray",
+    "clock"
+  ],
+  // Modules configuration
+  "network": {
+    "interface": "wlan0", // cambia por tu interfaz: ip link para ver
+    "format": "  {bandwidthDownBits} ↓↑ {bandwidthUpBits}",
+    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBits}\n↑ {bandwidthUpBits}",
+    "interval": 1,
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon} ",
+    "format-icons": {
+      "1": "󰆍",
+      "2": "",
+      "3": "󰝰",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "urgent": "",
+      "focused": "󱓇",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 8
+    }
+  },
+  "hyprland/window": {
+    "max-length": 40,
+    "seperate-outputs": false
+  },
+  "mpd": {
+    "tooltip": false,
+    "format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+    "format-disconnected": "ﳌ",
+    "format-stopped": "",
+    "state-icons": {
+      "playing": "",
+      "paused": ""
+    }
+  },
+  "pulseaudio": {
+    "tooltip": true,
+    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["奄", "奔", "墳"]
+    }
+  },
+  // "network": {
+  //   "tooltip": true,
+  //   "format-wifi": "  {essid}",
+  //   "format-ethernet": " {ipaddr}",
+  //   "tooltip-format": "{ifname} {gwaddr} ({signalStrength}%)",
+  //   "format-linked": "{ifname} (No IP) ",
+  //   "format-disconnected": "Disconnected ⚠",
+  //   "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  // },
+  "cpu": {
+    "tooltip": true,
+    "format": " {}%"
+  },
+  "memory": {
+    "tooltip": false,
+    "format": " {}%"
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+    // "icons": {
+    //   "blueman": "bluetooth",
+    //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+    // }
+  },
+  "clock": {
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon} ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "Bat: {capacity}%",
+    "format-time": "{H}:{M}",
+    "format-icons": ["", "", "", "", ""]
+  }
+}
