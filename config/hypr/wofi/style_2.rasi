@@ -3,12 +3,8 @@
 configuration {
 	modi:                       "drun,run,filebrowser,window";
     show-icons:                 true;
-    disable-history:            false;
+    disable-history:            true;
     application-fallback-icon: 	"Adwaita";
-    display-drun:               "Apps";
-    display-run:                "Run";
-    display-filebrowser:        "Files";
-    display-window:             "Windows";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c}";
 }

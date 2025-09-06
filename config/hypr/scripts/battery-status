@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Función para procesar cada batería
+process_battery() {
+    local line="$1"
+    local status=$(echo "$line" | grep -io "Discharging\|Charging\|Full\|Unknown\|Not charging")
+    local level=$(echo "$line" | grep -o -P "[0-9]+(?=%)")
+    
+    if [[ "$status" == "Charging" ]] || [[ "$status" == "Not charging" ]]; then
+        printf ""
+    elif [[ "$status" == "Full" ]]; then
+        printf ""
+    else
+        if [[ $level -le 25 ]]; then
+            printf ""
+        elif [[ $level -le 50 ]]; then
+            printf ""
+        elif [[ $level -le 75 ]]; then
+            printf ""
+        else
+            printf ""
+        fi
+    fi
+}
+
+# Procesar ambas baterías
+battery_info=$(acpi -b)
+icon1=$(process_battery "$(echo "$battery_info" | sed -n '1p')")
+icon2=$(process_battery "$(echo "$battery_info" | sed -n '2p')")
+
+printf "%s %s " "$icon1" "$icon2"
