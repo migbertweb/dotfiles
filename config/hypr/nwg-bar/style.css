@@ -1,0 +1,54 @@
+window {
+  background-color: rgba(40, 42, 54, 0.582); /* Dracula background */
+  border-radius: 24px;
+  border: 1px solid #6272a4; /* Dracula purple */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.308);
+}
+
+/* Outer bar container, takes all the window width/height */
+#outer-box {
+  margin: 0px;
+}
+
+/* Inner bar container, surrounds buttons */
+#inner-box {
+  background-color: rgba(68, 71, 90, 0.664); /* Dracula current line */
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #44475a;
+  padding: 8px;
+  margin: 8px;
+}
+
+button,
+image {
+  background: none;
+  border: none;
+  box-shadow: none;
+  font-family: "JetBrains Nerd Font", "FiraCode Nerd Font",
+    "Font Awesome 6 Free";
+  font-size: 62px; /* tamaño grande del label */
+}
+
+button {
+  padding: 24px 32px;
+  margin: 8px;
+  border-radius: 20px;
+  background-color: rgba(68, 71, 90, 0.85); /* Dracula current line */
+  color: #f8f8f2; /* Dracula foreground */
+  border: 1px solid #44475a;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  background-color: #bd93f9; /* Dracula purple */
+  color: #282a36; /* Dracula background */
+  box-shadow: 0 4px 16px 0 rgba(189, 147, 249, 0.25);
+  border-color: #bd93f9;
+}
+
+button:focus {
+  outline: none;
+  border-color: #ff79c6; /* Dracula pink */
+}
