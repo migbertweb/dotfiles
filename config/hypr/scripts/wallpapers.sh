@@ -25,5 +25,5 @@ while true; do
     fi
     
     # Espera antes de cambiar otra vez (5 minutos = 300s)
-    sleep 30
+    sleep 300
 done

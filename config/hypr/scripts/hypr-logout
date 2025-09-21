@@ -1,0 +1,28 @@
+#!/bin/bash
+# ~/.local/bin/hypr-logout.sh
+
+# Obtener ID de sesión actual
+SESSION_ID=$(loginctl session-status | awk '/session/ {print $1}')
+CURRENT_USER=$(whoami)
+
+echo "Cerrando sesión de Hyprland para usuario: $CURRENT_USER"
+
+# Intentar cerrar Hyprland gracefulmente
+if command -v hyprctl >/dev/null 2>&1; then
+    echo "Cerrando Hyprland..."
+    hyprctl dispatch exit
+    sleep 2
+fi
+
+# Terminar sesión del usuario
+echo "Terminando sesión..."
+loginctl terminate-session "$SESSION_ID" 2>/dev/null
+
+# Esperar y reiniciar SDDM si es necesario
+sleep 2
+if ! loginctl | grep -q "$CURRENT_USER"; then
+    echo "Sesión terminada correctamente"
+else
+    echo "Forzando reinicio de SDDM..."
+    sudo systemctl restart sddm
+fi

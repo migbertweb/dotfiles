@@ -91,7 +91,7 @@ sl_verify="${green:1}"
 # Gtk theme
 gtk_theme="TokyoNight-zk"
 gtk_icons="Tela-circle-dracula-dark"
-gtk_cursor="Qogirr-Dark"
+gtk_cursor="material_cursors"
 geany_theme="z0mbi3-TokyoNight"
 
 # Wallpaper engine

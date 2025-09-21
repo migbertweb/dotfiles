@@ -20,7 +20,7 @@
   </property>
   <property name="lock" type="empty">
     <property name="saver-activation" type="empty">
-      <property name="delay" type="int" value="2"/>
+      <property name="delay" type="int" value="3"/>
     </property>
     <property name="user-switching" type="empty">
       <property name="enabled" type="bool" value="false"/>

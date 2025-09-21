@@ -1,0 +1,5 @@
+#!/bin/sh
+# =============================================================
+
+    ROFI_THEME="$HOME/.config/hypr/rofi-themes/style_2.rasi"
+    rofi -show drun -theme "$ROFI_THEME"

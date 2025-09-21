@@ -1,19 +1,18 @@
 {
   "layer": "top",
+  "mode": "dock",
   "reload_style_on_change": true,
   "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock", "custom/weather"],
   "modules-right": [
     "network",
     "bluetooth",
-    "battery",
-    "battery#bat2",
+    "group/expand4",
     "group/expand1",
     "group/expand2",
-    "cpu",
-    "temperature",
-    "memory",
+    "group/expand3",
     "custom/updates",
+    "custom/notification",
     "group/expand",
     "custom/power"
   ],
@@ -31,14 +30,23 @@
       "5": "",
       "6": "",
       "7": "",
-      "8": "",
+      "8": "󰕼",
       "urgent": "",
       "focused": "󱓇",
       "default": ""
     },
     "persistent-workspaces": {
-      "*": 6
+      "*": 8
     }
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 30,
+    "spacing": 1,
+    "on-click-middle": "close",
+    "tooltip-format": "{title}",
+    "ignore-list": [],
+    "on-click": "activate"
   },
   "hyprland/window": {
     "max-length": 40,
@@ -50,17 +58,19 @@
     "tooltip-format": "{essid} ({signalStrength}%)\n{ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBits}\n↑ {bandwidthUpBits}",
     "interval": 1,
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click-right": "exec $HOME/.config/hypr/scripts/NetManagerDM"
   },
   "bluetooth": {
-    "format": " {status}",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "format": "",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias}/{device_battery_percentage}%",
     "format-device-preference": ["device1", "device2"], // preference list deciding the displayed device
     "tooltip-format": "{controller_alias}\n{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\n{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click": "exec $HOME/.config/hypr/scripts/bluetoothmenu"
   },
   "battery": {
     "bat": "BAT0",
@@ -74,7 +84,9 @@
     "format-alt": "Bat: {capacity}%",
     "format-time": "{H}:{M}",
     "format-icons": ["󰂃", "󰁻", "󰁾", "󰂁", "󰁹"],
-    "tooltip": true
+    "tooltip": true,
+    "tooltip-format": "{capacity}% {timeTo} {time}",
+    "on-click": "exec xfce4-power-manager-settings"
   },
   "battery#bat2": {
     "bat": "BAT1",
@@ -87,8 +99,17 @@
     "format-plugged": "󰂄{capacity}%",
     "format-alt": "Bat: {capacity}%",
     "format-time": "{H}:{M}",
-    "format-icons": ["󰂃", "󰁻", "󰁾", "󰂁", "󰁹"],
-    "tooltip": true
+    "format-icons": ["󰂃", "󰁻", "󰁾", "󰂁", "󰁹"]
+  },
+  "group/expand4": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true
+      //  "click-to-reveal": true
+    },
+    "modules": ["battery", "battery#bat2"]
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -127,6 +148,10 @@
     "device": "intel_backlight",
     "scroll-step": 1
   },
+  "custom/pc": {
+    "format": " ",
+    "tooltip": false
+  },
   "cpu": {
     "tooltip": true,
     "format": " {}%"
@@ -136,7 +161,7 @@
     "format": " {}%"
   },
   "temperature": {
-    "format": " {}°C",
+    "format": "{}°C",
     "max-temperature": 80,
     "min-temperature": 60,
     "tooltip": true,
@@ -168,7 +193,7 @@
     }
   },
   "custom/updates": {
-    "format": "{} Update(s)",
+    "format": "{} 󰚰",
     "exec": "checkupdates | wc -l",
     "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
     "interval": 15,
@@ -176,13 +201,13 @@
   },
   "custom/launcher": {
     "format": " ",
-    "on-click": "nwg-drawer -c 6 -ml 340 -mr 340 -mb 200 -mt 100 -s $HOME/.config/hypr/nwg-drawer/drawer.css",
+    "on-click": "exec ~/.config/hypr/scripts/RofiLauncher",
     "on-click-right": "killall rofi"
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 24,
     "rotate": 0,
-    "spacing": 3
+    "spacing": 10
   },
   "group/expand": {
     "orientation": "horizontal",
@@ -203,8 +228,8 @@
     "drawer": {
       "transition-duration": 600,
       "children-class": "not-power",
-      "transition-to-left": true,
-      "click-to-reveal": true
+      "transition-to-left": true
+      //"click-to-reveal": true
     },
     "modules": ["pulseaudio", "pulseaudio/slider"]
   },
@@ -213,15 +238,25 @@
     "drawer": {
       "transition-duration": 600,
       "children-class": "not-power",
-      "transition-to-left": true,
-      "click-to-reveal": true
+      "transition-to-left": true
+      //"click-to-reveal": true
     },
     "modules": ["backlight", "backlight/slider"]
+  },
+  "group/expand3": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true,
+      "click-to-reveal": false
+    },
+    "modules": ["custom/pc", "cpu", "temperature", "memory"]
   },
   "custom/power": {
     "format": "󰐥",
     "tooltip": false,
-    "on-click": "exec ~/.config/hypr/scripts/powermenu.sh"
+    "on-click": "exec ~/.config/hypr/scripts/PowerMenu"
   },
   "custom/weather": {
     "format": "{}",
@@ -229,5 +264,25 @@
     "interval": 1800,
     "exec": "$HOME/.config/hypr/scripts/Weather wmodule",
     "on-click": "exec kitty --class kitty-floating $HOME/.config/hypr/scripts/clima.sh"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{}{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }

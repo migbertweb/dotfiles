@@ -27,12 +27,12 @@ window#waybar {
   padding-right: 16px;
   border-radius: 16px;
   border-color: @cyn;
-  border: 1px solid @brblk;
+  border: 0px solid @brblk;
   transition: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   color: @white;
-  background: @brgray;
+  background: transparent;
 }
 
 window#waybar.termite #window,
@@ -46,11 +46,11 @@ window#waybar.PCSX2 #window {
 #workspaces {
   margin-top: 4px;
   margin-left: 4px;
-  margin-right: 8px;
+  margin-right: 4px;
   margin-bottom: 0;
   padding-left: 4px;
   padding-right: 4px;
-  border-radius: 16px;
+  border-radius: 12px;
   border-color: @cyn;
   border: 1px solid @brblk;
   background: @bg;
@@ -62,7 +62,8 @@ window#waybar.PCSX2 #window {
   color: @cyn;
   background: @bg;
   font-size: 16px;
-  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 8px;
   margin-bottom: 0;
 }
 
@@ -72,7 +73,7 @@ window#waybar.PCSX2 #window {
 
 #workspaces button:hover {
   transition: box-shadow 0.4s;
-  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5), 0 -3px #ffffff inset;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.5), 0 -3px #ffffff inset;
   background: @brgray;
   text-shadow: inherit;
 }
@@ -101,8 +102,8 @@ window#waybar.PCSX2 #window {
   margin-bottom: 0;
   border-radius: 16px 0 0 16px; /* top-left, top-right, bottom-right, bottom-left */
   transition: none;
-  color: #4d4d4d;
-  background: #bd93f9;
+  color: @blk;
+  background: @mag;
 }
 
 #bluetooth {
@@ -112,8 +113,8 @@ window#waybar.PCSX2 #window {
   margin-bottom: 0;
   border-radius: 0 16px 16px 0; /* top-left, top-right, bottom-right, bottom-left */
   transition: none;
-  color: #4d4d4d;
-  background: #bd93f9;
+  color: @blk;
+  background: @mag;
 }
 
 #backlight {
@@ -150,6 +151,8 @@ window#waybar.PCSX2 #window {
   color: @blk;
   box-shadow: none;
   margin-right: 7px;
+  border: 1px solid @brblk;
+  border-radius: 8px;
 }
 
 #backlight-slider trough,
@@ -158,15 +161,16 @@ window#waybar.PCSX2 #window {
   min-width: 90px;
   min-height: 10px;
   margin-bottom: -4px;
+  border: 1px solid @brblk;
   border-radius: 8px;
-  background: @cyn;
+  background: @blu;
   color: @cyn;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
   border-radius: 8px;
-  background: @cyn;
+  background: @blu;
   color: @cyn;
 }
 
@@ -175,7 +179,7 @@ window#waybar.PCSX2 #window {
   color: #520522;
 }
 #battery.critical:not(.charging) {
-  color: red;
+  color: @red;
 }
 #battery {
   margin-top: 4px;
@@ -234,6 +238,8 @@ window#waybar.PCSX2 #window {
   padding-left: 8px;
   margin-bottom: 0;
   border-radius: 16px 0px 0px 16px; /* top-left, top-right, bottom-right, bottom-left */
+  border-color: @cyn;
+  border: 1px solid @brblk;
   font-size: 16px;
   transition: none;
   color: @fg;
@@ -246,10 +252,24 @@ window#waybar.PCSX2 #window {
   padding-right: 8px;
   margin-bottom: 0;
   border-radius: 0 16px 16px 0; /* top-left, top-right, bottom-right, bottom-left */
-  font-size: 16px;
+  font-size: 14px;
+  border-color: @cyn;
+  border: 1px solid @brblk;
   transition: none;
   color: @fg;
   background: @bg;
+}
+
+#custom-pc {
+  margin-top: 4px;
+  margin-left: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-bottom: 0;
+  border-radius: 16px;
+  background: @grn;
+  color: @blk;
+  transition: none;
 }
 
 #tray {
@@ -325,6 +345,8 @@ window#waybar.PCSX2 #window {
   padding-right: 12px;
   margin-bottom: 0;
   border-radius: 16px;
+  border-color: @cyn;
+  border: 1px solid @brblk;
   background: @bg;
   color: @fg;
   transition: none;
@@ -335,4 +357,17 @@ window#waybar.PCSX2 #window {
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5), 0 -3px #ffffff inset;
   background: @brgray;
   text-shadow: inherit;
+}
+
+#custom-notification {
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-left: 12px;
+  padding-right: 16px;
+  margin-bottom: 0;
+  border-radius: 16px;
+  background: @blu;
+  color: @blk;
+  transition: none;
 }

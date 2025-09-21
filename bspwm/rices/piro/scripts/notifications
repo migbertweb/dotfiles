@@ -1,0 +1,3 @@
+#!/bin/bash
+sleep 5 && /usr/bin/dunst &
+sleep 3 && /usr/bin/notify-send "Dunst started"
