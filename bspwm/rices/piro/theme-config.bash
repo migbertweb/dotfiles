@@ -92,6 +92,7 @@ sl_verify="${green:1}"
 gtk_theme="TokyoNight-zk"
 gtk_icons="Tela-circle-dracula-dark"
 gtk_cursor="material_cursors"
+gtk_cursor_size="42"
 geany_theme="z0mbi3-TokyoNight"
 
 # Wallpaper engine

@@ -49,6 +49,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="blueberry-tray.py"/>
         <value type="string" value="miniaplicación gestor de la red"/>
         <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (85%)"/>
         <value type="string" value="la conexión de red inalámbrica a «sukuna-78-5g» está activa: sukuna-78-5g (83%)"/>
@@ -58,6 +59,7 @@
         <value type="string" value="sin conexión de red"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="MEGAsync"/>
         <value type="string" value="Indicador de KDE Connect"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="Nextcloud"/>
@@ -95,10 +97,12 @@
     </property>
     <property name="plugin-19" type="string" value="whiskermenu">
       <property name="recent" type="array">
+        <value type="string" value="megasync.desktop"/>
+        <value type="string" value="virtualbox.desktop"/>
+        <value type="string" value="net.launchpad.plank.desktop"/>
         <value type="string" value="org.kde.kdeconnect.nonplasma.desktop"/>
         <value type="string" value="qt5ct.desktop"/>
         <value type="string" value="org.kde.kdeconnect.app.desktop"/>
-        <value type="string" value="plank.desktop"/>
         <value type="string" value="brave-browser.desktop"/>
       </property>
       <property name="launcher-icon-size" type="int" value="3"/>

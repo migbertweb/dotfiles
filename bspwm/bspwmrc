@@ -57,9 +57,11 @@ run() {
 
 # Set system vars for polybar
 "$HOME"/.config/bspwm/src/SetSysVars
-[ -f "$HOME/.Xmodmap" ] && xmodmap "$HOME/.Xmodmap"
 # Launch sxhkd daemon
 run sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc
+
+# start dunst
+run /usr/bin/dunst
 
 # Load current theme
 "${HOME}"/.config/bspwm/src/Theme.sh
@@ -88,7 +90,7 @@ run xfce4-power-manager --sm-client-disable
 
 # start keepassxc
 # run keepassxc
-# run bitwarden-desktop
+run bitwarden-desktop
 
 # start nextcloud
 run "/usr/bin/nextcloud" --background
@@ -99,16 +101,22 @@ bspc rule -a conky state=floating manage=off
 
 # Start udiskie
 # Kill if already running
-killall -9 udiskie
 run udiskie -t --no-notify
 
 # Start Telegram
 run telegram-desktop -startintray
 
+# Kde Connect
+run kdeconnect-indicator
+
 # Start zdg-desktop-portal
-run xdg-desktop-portal-gtk
-run xdg-desktop-portal
+#run xdg-desktop-portal-gtk
+#run xdg-desktop-portal
 
 # start Plank
 run sleep 10 && plank
 bspc rule -a Plank layer=above manage=on border=off
+
+# start Megasync
+run sleep 10 && megasync
+bspc rule -a Megasync layer=above manage=on border=off

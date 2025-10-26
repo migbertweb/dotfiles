@@ -8,7 +8,7 @@ fi
 #
 export VISUAL="${EDITOR}"
 export EDITOR='nvim'
-export BROWSER='firefox'
+export BROWSER='brave'
 export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
 export SUDO_PROMPT="Implementando acceso root para %u. Contraseña, por favor: "
 
