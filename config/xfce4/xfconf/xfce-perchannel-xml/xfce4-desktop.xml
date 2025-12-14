@@ -6,7 +6,7 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/migbert/Imágenes/walls/1-wallpapers.jpg"/>
+          <property name="last-image" type="string" value="/home/migbert/Imágenes/walls/13-wallpapers.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="backdrop-cycle-timer" type="uint" value="4"/>
           <property name="backdrop-cycle-random-order" type="bool" value="true"/>

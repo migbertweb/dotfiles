@@ -221,3 +221,5 @@ alias kusfd='kustomize build --enable-alpha-plugins --enable-exec overlays/dev |
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+if [ -e /home/migbert/.nix-profile/etc/profile.d/nix.sh ]; then . /home/migbert/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

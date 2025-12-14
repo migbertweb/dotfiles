@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VPN_NAME="miLaptop"
+VPN_NAME="laptop"
 
 # Check if VPN is active
 is_vpn_active() {
