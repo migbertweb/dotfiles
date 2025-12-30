@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>visualstudiocode</icon>
-	<name>Abrir en VSCode</name>
+	<icon>antigravity</icon>
+	<name>Abrir en Antigravity</name>
 	<submenu></submenu>
 	<unique-id>1752939871652097-1</unique-id>
-	<command>code .</command>
+	<command>antigravity .</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>

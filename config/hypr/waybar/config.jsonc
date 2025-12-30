@@ -2,287 +2,30 @@
   "layer": "top",
   "mode": "dock",
   "reload_style_on_change": true,
-  "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["clock", "custom/weather"],
+  "include": [
+    "/home/migbert/.config/hypr/waybar/modules.json"
+  ],
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/multiscript"
+  ],
   "modules-right": [
     "network",
     "bluetooth",
+    "custom/vpn",
     "group/expand4",
     "group/expand1",
     "group/expand2",
     "group/expand3",
     "custom/updates",
+    "custom/gmail",
     "custom/notification",
     "group/expand",
     "custom/power"
-  ],
-  // Modules configuration
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{icon} ",
-    "format-icons": {
-      "1": "󰆍",
-      "2": "",
-      "3": "󰝰",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "󰕼",
-      "urgent": "",
-      "focused": "󱓇",
-      "default": ""
-    },
-    "persistent-workspaces": {
-      "*": 8
-    }
-  },
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 30,
-    "spacing": 1,
-    "on-click-middle": "close",
-    "tooltip-format": "{title}",
-    "ignore-list": [],
-    "on-click": "activate"
-  },
-  "hyprland/window": {
-    "max-length": 40,
-    "seperate-outputs": false
-  },
-  "network": {
-    "interface": "wlan0", // cambia por tu interfaz: ip link para ver
-    "format": " ↓ {bandwidthDownBits}",
-    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBits}\n↑ {bandwidthUpBits}",
-    "interval": 1,
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "on-click-right": "exec $HOME/.config/hypr/scripts/NetManagerDM"
-  },
-  "bluetooth": {
-    "format": "",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias}/{device_battery_percentage}%",
-    "format-device-preference": ["device1", "device2"], // preference list deciding the displayed device
-    "tooltip-format": "{controller_alias}\n{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\n{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
-    "on-click": "exec $HOME/.config/hypr/scripts/bluetoothmenu"
-  },
-  "battery": {
-    "bat": "BAT0",
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-plugged": "󰂄{capacity}%",
-    "format-alt": "Bat: {capacity}%",
-    "format-time": "{H}:{M}",
-    "format-icons": ["󰂃", "󰁻", "󰁾", "󰂁", "󰁹"],
-    "tooltip": true,
-    "tooltip-format": "{capacity}% {timeTo} {time}",
-    "on-click": "exec xfce4-power-manager-settings"
-  },
-  "battery#bat2": {
-    "bat": "BAT1",
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-plugged": "󰂄{capacity}%",
-    "format-alt": "Bat: {capacity}%",
-    "format-time": "{H}:{M}",
-    "format-icons": ["󰂃", "󰁻", "󰁾", "󰂁", "󰁹"]
-  },
-  "group/expand4": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "not-power",
-      "transition-to-left": true
-      //  "click-to-reveal": true
-    },
-    "modules": ["battery", "battery#bat2"]
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "rotate": 0,
-    "format-muted": "婢",
-    "tooltip-format": "{icon} {desc} // {volume}%",
-    "scroll-step": 5,
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
-    }
-  },
-  "pulseaudio/slider": {
-    "min": 5,
-    "max": 100,
-    "rotate": 0,
-    "device": "pulseaudio",
-    "scroll-step": 1
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "󰃞", "󰃠"],
-    "tooltip": false,
-    "scroll-step": 5
-  },
-  "backlight/slider": {
-    "min": 5,
-    "max": 100,
-    "rotate": 0,
-    "device": "intel_backlight",
-    "scroll-step": 1
-  },
-  "custom/pc": {
-    "format": " ",
-    "tooltip": false
-  },
-  "cpu": {
-    "tooltip": true,
-    "format": " {}%"
-  },
-  "memory": {
-    "tooltip": true,
-    "format": " {}%"
-  },
-  "temperature": {
-    "format": "{}°C",
-    "max-temperature": 80,
-    "min-temperature": 60,
-    "tooltip": true,
-    "interval": 10,
-    "device": "coretemp-isa-0000",
-    "sensor": "Package id 0"
-  },
-  "clock": {
-    "format": "{:%H:%M}  ",
-    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "days": "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
-    },
-    "actions": {
-      "on-click-right": "mode",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
-    }
-  },
-  "custom/updates": {
-    "format": "{} 󰚰",
-    "exec": "checkupdates | wc -l",
-    "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-    "interval": 15,
-    "on-click": "exec kitty --class kitty-floating -e paru -Syyu && notify-send 'El sistema ha sido Actualizado'"
-  },
-  "custom/launcher": {
-    "format": " ",
-    "on-click": "exec ~/.config/hypr/scripts/RofiLauncher",
-    "on-click-right": "killall rofi"
-  },
-  "tray": {
-    "icon-size": 24,
-    "rotate": 0,
-    "spacing": 10
-  },
-  "group/expand": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "not-power",
-      "transition-to-left": true
-      //  "click-to-reveal": true
-    },
-    "modules": ["custom/menu", "tray"]
-  },
-  "custom/menu": {
-    "format": "󰅃",
-    "rotate": 90
-  },
-  "group/expand1": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "not-power",
-      "transition-to-left": true
-      //"click-to-reveal": true
-    },
-    "modules": ["pulseaudio", "pulseaudio/slider"]
-  },
-  "group/expand2": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "not-power",
-      "transition-to-left": true
-      //"click-to-reveal": true
-    },
-    "modules": ["backlight", "backlight/slider"]
-  },
-  "group/expand3": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "not-power",
-      "transition-to-left": true,
-      "click-to-reveal": false
-    },
-    "modules": ["custom/pc", "cpu", "temperature", "memory"]
-  },
-  "custom/power": {
-    "format": "󰐥",
-    "tooltip": false,
-    "on-click": "exec ~/.config/hypr/scripts/PowerMenu"
-  },
-  "custom/weather": {
-    "format": "{}",
-    "tooltip": true,
-    "interval": 1800,
-    "exec": "$HOME/.config/hypr/scripts/Weather wmodule",
-    "on-click": "exec kitty --class kitty-floating $HOME/.config/hypr/scripts/clima.sh"
-  },
-  "custom/notification": {
-    "tooltip": false,
-    "format": "{}{icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-  }
+  ]
 }

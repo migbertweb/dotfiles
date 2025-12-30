@@ -96,7 +96,7 @@ window#waybar.PCSX2 #window {
 
 #network {
   margin-top: 4px;
-  margin-left: 8px;
+  margin-left: 4px;
   padding-left: 8px;
   padding-right: 8px;
   margin-bottom: 0;
@@ -105,13 +105,26 @@ window#waybar.PCSX2 #window {
   color: @blk;
   background: @mag;
 }
-
+#custom-vpn {
+  margin-top: 4px;
+  margin-left: -2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-bottom: 0;
+  border-radius: 0 16px 16px 0;
+  /* top-left, top-right, bottom-right, bottom-left */
+  transition: none;
+  border: 0;
+  color: @blk;
+  background: @mag;
+}
 #bluetooth {
   margin-top: 4px;
+  margin-right: 2px;
+  margin-bottom: 0;
   padding-left: 8px;
   padding-right: 8px;
-  margin-bottom: 0;
-  border-radius: 0 16px 16px 0; /* top-left, top-right, bottom-right, bottom-left */
+  border: 0;
   transition: none;
   color: @blk;
   background: @mag;
@@ -259,6 +272,21 @@ window#waybar.PCSX2 #window {
   color: @fg;
   background: @bg;
 }
+#custom-multiscript {
+  margin-top: 4px;
+  margin-right: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 0;
+  border-radius: 0 16px 16px 0;
+  /* top-left, top-right, bottom-right, bottom-left */
+  font-size: 14px;
+  border-color: @cyn;
+  border: 1px solid @brblk;
+  transition: none;
+  color: @fg;
+  background: @bg;
+}
 
 #custom-pc {
   margin-top: 4px;
@@ -271,6 +299,8 @@ window#waybar.PCSX2 #window {
   color: @blk;
   transition: none;
 }
+
+
 
 #tray {
   margin-top: 4px;
@@ -319,6 +349,26 @@ window#waybar.PCSX2 #window {
 }
 
 #custom-updates:hover {
+  transition: box-shadow 0.4s;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5), 0 -3px #ffffff inset;
+  background: @brgray;
+  text-shadow: inherit;
+}
+
+#custom-gmail {
+  margin-top: 4px;
+  margin-left: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-bottom: 0;
+  border-radius: 16px;
+  border-color: @cyn;
+  border: 1px solid @brblk;
+  background: @bg;
+  transition: none;
+}
+
+#custom-gmail:hover {
   transition: box-shadow 0.4s;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5), 0 -3px #ffffff inset;
   background: @brgray;

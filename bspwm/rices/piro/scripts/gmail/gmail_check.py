@@ -20,7 +20,7 @@ OUTPUT_FILE = "~/.tmp/gmail_unread_count"
 
 # Tiempo de espera entre verificaciones en segundos
 # Time to wait between checks in seconds
-CHECK_INTERVAL_SECONDS = 360
+CHECK_INTERVAL_SECONDS = 600
 
 # ==============================================================================
 # FUNCIONES / FUNCTIONS
@@ -68,7 +68,11 @@ def update_file(filepath, count):
     Writes the unread count to a file.
     """
     try:
-        with open(filepath, "w") as f:
+        file_path = os.path.expanduser('~/.tmp/gmail_unread_count')
+        # Crear la carpeta .tmp si no existe
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        # Guardar el archivo
+        with open(file_path, 'w') as f:
             f.write(str(count))
     except Exception as e:
         print(f"Error al escribir archivo: {e}")
