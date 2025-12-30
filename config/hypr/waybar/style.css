@@ -114,7 +114,6 @@ window#waybar.PCSX2 #window {
   border-radius: 0 16px 16px 0;
   /* top-left, top-right, bottom-right, bottom-left */
   transition: none;
-  border: 0;
   color: @blk;
   background: @mag;
 }
@@ -124,7 +123,6 @@ window#waybar.PCSX2 #window {
   margin-bottom: 0;
   padding-left: 8px;
   padding-right: 8px;
-  border: 0;
   transition: none;
   color: @blk;
   background: @mag;
