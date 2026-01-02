@@ -18,6 +18,7 @@
     "network",
     "bluetooth",
     "custom/vpn",
+    "custom/tailscale",
     "group/expand4",
     "group/expand1",
     "group/expand2",

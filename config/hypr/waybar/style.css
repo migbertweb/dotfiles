@@ -107,19 +107,40 @@ window#waybar.PCSX2 #window {
 }
 #custom-vpn {
   margin-top: 4px;
-  margin-left: -2px;
-  padding-left: 6px;
+  margin-left: 0px;
+  padding-left: 28px;
   padding-right: 6px;
+  margin-bottom: 0;
+  border-radius: 0 0px 0px 0;
+  /* top-left, top-right, bottom-right, bottom-left */
+  transition: none;
+  color: @blk;
+background-color: @mag;
+  background-image: url("/home/migbert/dotfiles/config/hypr/waybar/Wireguard.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 18px;
+}
+#custom-tailscale {
+  margin-top: 4px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 28px;
+  padding-right: 8px;
   margin-bottom: 0;
   border-radius: 0 16px 16px 0;
   /* top-left, top-right, bottom-right, bottom-left */
   transition: none;
   color: @blk;
-  background: @mag;
+  background-color: @mag;
+  background-image: url("/home/migbert/dotfiles/config/hypr/waybar/tailscale.png");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 18px;
 }
 #bluetooth {
   margin-top: 4px;
-  margin-right: 2px;
+  margin-right: 0px;
   margin-bottom: 0;
   padding-left: 8px;
   padding-right: 8px;

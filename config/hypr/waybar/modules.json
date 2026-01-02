@@ -2,14 +2,19 @@
   "custom/multiscript": {
     "exec": "$HOME/.config/bspwm/rices/piro/scripts/Infos",
     "format": "{}",
-    "on-click": "OpenApps --clima",
-    "on-click-right": "OpenApps --usercard"
+    "on-click": "exec kitty --class kitty-floating $HOME/.config/hypr/scripts/clima.sh"
   },
   "custom/vpn": {
     "exec": "$HOME/.config/bspwm/rices/piro/scripts/vpn_status.sh",
-    "format": "󰖂 {}",
+    "format": "{}",
     "interval": 3,
     "on-click": "$HOME/.config/bspwm/rices/piro/scripts/vpn_status.sh --toggle"
+  },
+  "custom/tailscale": {
+    "exec": "$HOME/.config/bspwm/rices/piro/scripts/tailscale_status.sh",
+    "format": "{}",
+    "interval": 3,
+    "on-click": "$HOME/.config/bspwm/rices/piro/scripts/tailscale_status.sh --toggle"
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
