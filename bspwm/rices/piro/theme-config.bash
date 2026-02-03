@@ -89,7 +89,7 @@ sl_date="${fg:1}"
 sl_verify="${green:1}"
 
 # Gtk theme
-gtk_theme="TokyoNight-zk"
+gtk_theme="Dracula" #"TokyoNight-zk"
 gtk_icons="Tela-circle-dracula-dark"
 gtk_cursor="material_cursors"
 gtk_cursor_size="42"

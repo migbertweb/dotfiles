@@ -17,7 +17,6 @@
   "modules-right": [
     "network",
     "bluetooth",
-    "custom/vpn",
     "custom/tailscale",
     "group/expand4",
     "group/expand1",

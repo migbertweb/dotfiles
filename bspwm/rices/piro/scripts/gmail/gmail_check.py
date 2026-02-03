@@ -20,7 +20,7 @@ OUTPUT_FILE = "~/.tmp/gmail_unread_count"
 
 # Tiempo de espera entre verificaciones en segundos
 # Time to wait between checks in seconds
-CHECK_INTERVAL_SECONDS = 600
+CHECK_INTERVAL_SECONDS = 60
 
 # ==============================================================================
 # FUNCIONES / FUNCTIONS
@@ -117,7 +117,7 @@ def main():
                  send_notification(count)
         else:
             print("No se pudo obtener la cuenta. / Could not retrieve count.")
-            update_file(OUTPUT_FILE, "?")
+            update_file(OUTPUT_FILE, "0")
 
         # Esperar X segundos antes de la próxima verificación
         # Wait X seconds before next check

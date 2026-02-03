@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 encode_to_url_format() {
-  echo "$1" | sed 's/ /%20/g'
+	echo "$1" | sed 's/ /%20/g'
 }
 
 check_if_empty() {
-  [[ -z "$1" ]] && echo "0" || echo "$1"
+	[[ -z "$1" ]] && echo "0" || echo "$1"
 }
 
 KEY="8c5e491a43b64ecb16ffed40f5c60695"
@@ -21,115 +21,143 @@ WEATHER_DESC2=$(echo "$WEATHER" | jq -r ".weather[0].description")
 WEATHER_TEMP=$(echo "$WEATHER" | jq ".main.temp" | cut -d "." -f 1)
 WEATHER_ICON_CODE=$(echo "$WEATHER" | jq -r ".weather[].icon" | head -1)
 WEATHER_FEELS_LIKE=$(echo "$WEATHER" | jq ".main.feels_like" | cut -d "." -f 1)
+WEATHER_HUMIDITY=$(echo "$WEATHER" | jq ".main.humidity")
+WEATHER_WIND=$(echo "$WEATHER" | jq ".wind.speed")
+WEATHER_PRESSURE=$(echo "$WEATHER" | jq ".main.pressure")
+WEATHER_TEMP_MIN=$(echo "$WEATHER" | jq ".main.temp_min" | cut -d "." -f 1)
+WEATHER_TEMP_MAX=$(echo "$WEATHER" | jq ".main.temp_max" | cut -d "." -f 1)
+WEATHER_SUNRISE=$(echo "$WEATHER" | jq ".sys.sunrise")
+WEATHER_SUNSET=$(echo "$WEATHER" | jq ".sys.sunset")
 WEATHER_ICON=""
 WEATHER_HEX=""
 
 case $WEATHER_ICON_CODE in
 "01d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#ffd86b"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#ffd86b"
+	;;
 "01n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#fcdcf6"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#fcdcf6"
+	;;
 "02d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#adadff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#adadff"
+	;;
 "02n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#adadff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#adadff"
+	;;
 "03d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#adadff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#adadff"
+	;;
 "03n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#adadff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#adadff"
+	;;
 "04d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#adadff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#adadff"
+	;;
 "04n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#acb0d0"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#acb0d0"
+	;;
 "09d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#6b95ff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#6b95ff"
+	;;
 "09n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#6b95ff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#6b95ff"
+	;;
 "10d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#6b95ff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#6b95ff"
+	;;
 "10n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#6b95ff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#6b95ff"
+	;;
 "11d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#ffeb57"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#ffeb57"
+	;;
 "11n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#ffeb57"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#ffeb57"
+	;;
 "13d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#e3e6fc"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#e3e6fc"
+	;;
 "13n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#e3e6fc"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#e3e6fc"
+	;;
 "40d")
-  WEATHER_ICON=""
-  WEATHER_HEX="#84afdb"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#84afdb"
+	;;
 "40n")
-  WEATHER_ICON=""
-  WEATHER_HEX="#84afdb"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#84afdb"
+	;;
 *)
-  WEATHER_ICON=""
-  WEATHER_HEX="#adadff"
-  ;;
+	WEATHER_ICON=""
+	WEATHER_HEX="#adadff"
+	;;
 esac
 
 case $1 in
 "current_temp")
-  check_if_empty "$WEATHER_TEMP"
-  ;;
+	check_if_empty "$WEATHER_TEMP"
+	;;
 "current_temp_fahrenheit")
-  WEATHER_TEMP=$("$WEATHER_TEMP" 9 / 5 + 32)
-  check_if_empty "$WEATHER_TEMP"
-  ;;
+	WEATHER_TEMP=$("$WEATHER_TEMP" 9 / 5 + 32)
+	check_if_empty "$WEATHER_TEMP"
+	;;
 "feels_like")
-  check_if_empty "$WEATHER_FEELS_LIKE"
-  ;;
+	check_if_empty "$WEATHER_FEELS_LIKE"
+	;;
 "weather_desc")
-  [[ -z $WEATHER_DESC ]] && echo "Not Available." || echo "$WEATHER_DESC"
-  ;;
+	[[ -z $WEATHER_DESC ]] && echo "Not Available." || echo "$WEATHER_DESC"
+	;;
 "icon")
-  echo $WEATHER_ICON
-  ;;
+	echo $WEATHER_ICON
+	;;
 "hex")
-  echo $WEATHER_HEX
-  ;;
+	echo $WEATHER_HEX
+	;;
 "full")
-  echo "$WEATHER"
-  ;;
+	echo "$WEATHER"
+	;;
 "city")
-  echo "$CITY"
-  ;;
+	echo "$CITY"
+	;;
+"humidity")
+	echo "$WEATHER_HUMIDITY%"
+	;;
+"wind")
+	echo "$WEATHER_WIND m/s"
+	;;
+"pressure")
+	echo "$WEATHER_PRESSURE hPa"
+	;;
+"temp_range")
+	echo "$WEATHER_TEMP_MIN°C - $WEATHER_TEMP_MAX°C"
+	;;
+"card")
+	echo -e "\e[1;34m$CITY\e[0m"
+	echo -e "\e[1;33m$WEATHER_ICON  $WEATHER_TEMP°C\e[0m ($WEATHER_DESC2)"
+	echo -e "\e[32mSensación:\e[0m $WEATHER_FEELS_LIKE°C"
+	echo -e "\e[36mHumedad:\e[0m   $WEATHER_HUMIDITY%"
+	echo -e "\e[35mViento:\e[0m    $WEATHER_WIND m/s"
+	echo -e "\e[33mPresión:\e[0m   $WEATHER_PRESSURE hPa"
+	echo -e "\e[31mMin/Max:\e[0m   $WEATHER_TEMP_MIN°C / $WEATHER_TEMP_MAX°C"
+	;;
 "wmodule")
-  echo $WEATHER_ICON "$WEATHER_TEMP"° "$WEATHER_DESC2"
-  ;;
+	echo $WEATHER_ICON "$WEATHER_TEMP"° "$WEATHER_DESC2"
+	;;
 esac

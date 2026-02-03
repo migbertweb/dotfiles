@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>antigravity</icon>
-	<name>Abrir en Antigravity</name>
+	<icon>vscodium</icon>
+	<name>Abrir en VSCodium</name>
 	<submenu></submenu>
 	<unique-id>1752939871652097-1</unique-id>
-	<command>antigravity .</command>
-	<description></description>
+	<command>vscodium .</command>
+	<description>Abrir carpeta en VSCodium</description>
 	<range>*</range>
 	<patterns>*</patterns>
 	<directories/>

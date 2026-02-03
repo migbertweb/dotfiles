@@ -8,9 +8,9 @@
     <property name="last-used-media" type="string" value="/home/migbert/Música"/>
   </property>
   <property name="window" type="empty">
-    <property name="maximized" type="bool" value="false"/>
-    <property name="width" type="int" value="1914"/>
-    <property name="height" type="int" value="1032"/>
+    <property name="maximized" type="bool" value="true"/>
+    <property name="width" type="int" value="948"/>
+    <property name="height" type="int" value="1030"/>
   </property>
   <property name="audio" type="empty">
     <property name="volume" type="int" value="17"/>

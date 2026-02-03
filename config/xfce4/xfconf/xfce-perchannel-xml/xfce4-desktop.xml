@@ -6,7 +6,7 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/home/migbert/Imágenes/walls/13-wallpapers.jpg"/>
+          <property name="last-image" type="string" value="/home/migbert/Imágenes/walls/12-wallpapers.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="backdrop-cycle-timer" type="uint" value="4"/>
           <property name="backdrop-cycle-random-order" type="bool" value="true"/>
@@ -16,7 +16,7 @@
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="831"/>
-    <property name="window-height" type="int" value="588"/>
+    <property name="window-height" type="int" value="552"/>
   </property>
   <property name="desktop-icons" type="empty">
     <property name="use-custom-label-text-color" type="bool" value="false"/>
@@ -28,8 +28,11 @@
       <property name="show-device-fixed" type="bool" value="false"/>
       <property name="show-device-removable" type="bool" value="false"/>
       <property name="show-filesystem" type="bool" value="false"/>
+      <property name="show-trash" type="bool" value="false"/>
+      <property name="show-removable" type="bool" value="false"/>
     </property>
     <property name="style" type="int" value="2"/>
     <property name="confirm-sorting" type="bool" value="false"/>
+    <property name="gravity" type="int" value="1"/>
   </property>
 </channel>

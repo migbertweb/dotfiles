@@ -34,7 +34,7 @@ get_weather() {
 ########################################################
 get_rss() {
 	local cache_file="$CACHE_DIR/rss"
-	local max_length=40
+	local max_length=48
 
 	# Regenerar caché si está vacío, dañado o expirado
 	if [ ! -f "$cache_file" ] ||

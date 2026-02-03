@@ -7,10 +7,11 @@ fi
 #
 #
 export VISUAL="${EDITOR}"
-export EDITOR='nvim'
+export EDITOR='vscodium --wait'
 export BROWSER='brave'
 export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
 export SUDO_PROMPT="Implementando acceso root para %u. Contraseña, por favor: "
+export GEMINI_API_KEY="AIzaSyB6waRuqI10PDklrAylhjjmSVz50jSdUlU"
 
 # ----- Bat (better cat) -----
 export BAT_THEME=Dracula
@@ -22,6 +23,7 @@ export KUSTOMIZE_ENABLE_ALPHA_PLUGINS=true
 
 # ----- export sops -----
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+export IDF_PATH="$HOME/.esp-idf/v5.5.1/esp-idf"
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
@@ -48,6 +50,9 @@ zinit light marlonrichert/zsh-autocomplete
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light Aloxaf/fzf-tab
+zinit light dracula/zsh
+zinit light dracula/zsh-syntax-highlighting
+
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -223,3 +228,8 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 if [ -e /home/migbert/.nix-profile/etc/profile.d/nix.sh ]; then . /home/migbert/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# opencode
+export PATH=/home/migbert/.opencode/bin:$PATH
+
+# . $HOME/.esp-idf/v5.5.1/esp-idf/export.sh

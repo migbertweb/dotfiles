@@ -18,31 +18,40 @@ configs:
     "/home/migbert/Desktop/Jugar a Splinter Cell Pandora Tomorrow.desktop":
       row: 2
       col: 0
-    "/home/migbert/Desktop/plank":
-      row: 1
-      col: 1
     "ROOT-A":
       row: 4
       col: 0
       last_seen: 1751677407110239
+    "/home/migbert/Desktop/plank":
+      row: 2
+      col: 1
     "1d644dc9-e722-4fd2-a97f-958839613964":
       row: 5
       col: 0
       last_seen: 1751671958927703
-    "/home/migbert/Desktop/Tutorial-Google-Slides.pdf":
-      row: 5
-      col: 0
-    "/home/migbert/GoogleDrive":
-      row: 4
-      col: 0
-      last_seen: 1765716746376088
-    "/home/migbert":
-      row: 0
-      col: 0
     "b9323791-aaa6-4bbe-943c-3bda4a13311b":
       row: 3
       col: 0
       last_seen: 1751677407106017
+    "/home/migbert/GoogleDrive":
+      row: 2
+      col: 0
+      last_seen: 1769386174014736
+    "/home/migbert":
+      row: 0
+      col: 0
+    "/home/migbert/Desktop/dokploy-dark.svg":
+      row: 3
+      col: 2
+    "/home/migbert/Desktop/VSCodium_Logo.png":
+      row: 5
+      col: 1
+    "/home/migbert/Desktop/Comparativas_de_IA.excalidraw":
+      row: 4
+      col: 2
+    "/home/migbert/Desktop/Tutorial-Google-Slides.pdf":
+      row: 5
+      col: 0
     "/home/migbert/Desktop/Splinter Cell Pandora Tomorrow.desktop":
       row: 3
       col: 0
@@ -53,7 +62,7 @@ configs:
       row: 6
       col: 0
     "/home/migbert/Desktop/steam.desktop":
-      row: 5
+      row: 8
       col: 0
     "4d6e4377-778c-4bd0-9b2d-17d25d4d48ab":
       row: 0
@@ -62,32 +71,46 @@ configs:
     "/home/migbert/Desktop/skel":
       row: 0
       col: 1
+    "/home/migbert/Desktop/dokploy.png":
+      row: 1
+      col: 2
     "/home/migbert/Desktop/GitHub - KernelsAndDragons_ArchPostInstall Archivos":
       row: 6
       col: 0
-    "/home/migbert/Desktop/include":
-      row: 3
+    "/home/migbert/Desktop/portafolio":
+      row: 7
       col: 0
     "/home/migbert/Desktop/Como criar uma Apresenta\xE7\xE3o Google Slides.pdf":
       row: 8
       col: 0
-    "/home/migbert/Desktop/usuarios-meet":
-      row: 4
-      col: 0
-    "moto g84 5G":
-      row: 3
-      col: 0
-      last_seen: 1751922638463463
-    "/home/migbert/Desktop/portafolio":
+    "/home/migbert/Desktop/include":
       row: 7
       col: 0
+    "/home/migbert/Desktop/install.sh":
+      row: 5
+      col: 0
+    "/home/migbert/Desktop/Test-IA":
+      row: 3
+      col: 1
+    "/home/migbert/Desktop/Doom 3 BFG Edition.desktop":
+      row: 0
+      col: 1
     "/home/migbert/Desktop/nord":
       row: 5
+      col: 0
+    "/home/migbert/Desktop/ElevenLabs_2025-12-17T21_45_41_Julieth Obando - Emotive, Engaging_pvc_sp103_s50_sb89_se66_b_m2.mp3":
+      row: 0
+      col: 2
+    "/home/migbert/Desktop/usuarios-meet":
+      row: 4
       col: 0
     "4E21-0000":
       row: 4
       col: 0
       last_seen: 1751671958922328
+    "/home/migbert/Desktop/logo.webp":
+      row: 3
+      col: 0
     "626B-4255":
       row: 3
       col: 0
@@ -95,20 +118,42 @@ configs:
     "/home/migbert/Desktop/Spec Ops The Line.desktop":
       row: 4
       col: 0
+    "moto g84 5G":
+      row: 3
+      col: 0
+      last_seen: 1751922638463463
     "/home/migbert/Desktop/Need for Speed Most Wanted 2005.desktop":
+      row: 0
+      col: 1
+    "/home/migbert/Desktop/bitwarden_export_20251222005737.zip":
+      row: 7
+      col: 1
+    "/home/migbert/Desktop/dokploy-dark.png":
+      row: 2
+      col: 2
+    "/home/migbert/Desktop/src":
       row: 6
       col: 0
-    "/home/migbert/Desktop/src":
-      row: 2
+    "/home/migbert/Desktop/credentials.json":
+      row: 4
       col: 0
     "/":
       row: 2
       col: 0
+    "/home/migbert/Desktop/000.webp":
+      row: 8
+      col: 1
     "/home/migbert/Desktop/kitty.conf":
-      row: 0
+      row: 1
       col: 1
     "trash:///":
       row: 1
+      col: 0
+    "/home/migbert/Desktop/Gemini-3-family-cover.webp":
+      row: 4
+      col: 1
+    "/home/migbert/Desktop/06e930c7-ab5c-4507-922d-4c113570ea80.avif":
+      row: 2
       col: 0
     "5ce71e6a-5092-4eea-a83d-fb4281b2e4aa":
       row: 5

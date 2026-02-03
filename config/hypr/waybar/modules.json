@@ -29,10 +29,10 @@
       "5": "",
       "6": "",
       "7": "",
-      "8": "󰕼",
+      "8": "󱎓",
       "urgent": "",
-      "focused": "󱓇",
-      "default": ""
+      "active": "󰮯",
+      "default": ""
     },
     "persistent-workspaces": {
       "*": 8
@@ -53,17 +53,23 @@
   },
   "network": {
     "interface": "wlan0",
-    "format": " ↓ {bandwidthDownBits}",
-    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBits}\n↑ {bandwidthUpBits}",
-    "interval": 1,
+    "format": "{icon} {bandwidthDownBits}",
+    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname} {frequency} ({signaldBm}dBm)\nIP: {ipaddr}\n↓ {bandwidthDownBits}\n↑ {bandwidthUpBits}",
+    "interval": 2,
+    "format-icons": [
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click-right": "exec $HOME/.config/hypr/scripts/NetManagerDM"
   },
   "bluetooth": {
-    "format": "",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias}/{device_battery_percentage}%",
+    "format": "on",
+    "format-connected": "{device_alias}",
+    "format-connected-battery": "{device_alias}/{device_battery_percentage}%",
     "format-device-preference": ["device1", "device2"],
     "tooltip-format": "{controller_alias}\n{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\n{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
