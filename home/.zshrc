@@ -11,7 +11,7 @@ export EDITOR='vscodium --wait'
 export BROWSER='brave'
 export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
 export SUDO_PROMPT="Implementando acceso root para %u. Contraseña, por favor: "
-export GEMINI_API_KEY="AIzaSyB6waRuqI10PDklrAylhjjmSVz50jSdUlU"
+export GEMINI_API_KEY="A"
 
 # ----- Bat (better cat) -----
 export BAT_THEME=Dracula
