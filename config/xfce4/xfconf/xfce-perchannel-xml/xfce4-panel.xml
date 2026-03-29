@@ -10,7 +10,7 @@
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="0"/>
-      <property name="size" type="uint" value="36"/>
+      <property name="size" type="uint" value="39"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="19"/>
         <value type="int" value="2"/>
@@ -32,6 +32,7 @@
         <value type="double" value="0.27450980392156865"/>
         <value type="double" value="1"/>
       </property>
+      <property name="border-width" type="uint" value="0"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -49,6 +50,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="gui.py"/>
         <value type="string" value="la conexión de red inalámbrica a «sukuna-78-2.4g» está activa: sukuna-78-2.4g (96%)"/>
         <value type="string" value="la conexión de red inalámbrica a «sukuna-78-2.4g» está activa: sukuna-78-2.4g (95%)"/>
         <value type="string" value="blueberry-tray.py"/>
@@ -61,6 +63,9 @@
         <value type="string" value="sin conexión de red"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="blueman"/>
+        <value type="string" value="ThinkFan UI"/>
+        <value type="string" value="Arch-Update"/>
         <value type="string" value="TelegramDesktop"/>
         <value type="string" value="steam"/>
         <value type="string" value="gui.py"/>
@@ -78,6 +83,7 @@
       <property name="digital-date-font" type="string" value="Sans 10"/>
       <property name="digital-time-font" type="string" value="Sans Bold 12"/>
       <property name="digital-date-format" type="string" value="%a, %d %b"/>
+      <property name="digital-time-format" type="string" value="%I:%M %p"/>
     </property>
     <property name="plugin-9" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -102,19 +108,20 @@
     </property>
     <property name="plugin-19" type="string" value="whiskermenu">
       <property name="recent" type="array">
-        <value type="string" value="xfce-session-settings.desktop"/>
+        <value type="string" value="btrfs-assistant.desktop"/>
+        <value type="string" value="uuctl.desktop"/>
+        <value type="string" value="lstopo.desktop"/>
+        <value type="string" value="cachyos-pi.desktop"/>
+        <value type="string" value="octopi.desktop"/>
         <value type="string" value="xfce-ui-settings.desktop"/>
+        <value type="string" value="plank.desktop"/>
+        <value type="string" value="kitty.desktop"/>
+        <value type="string" value="xfce-session-settings.desktop"/>
         <value type="string" value="thunar-settings.desktop"/>
         <value type="string" value="thunar.desktop"/>
-        <value type="string" value="org.jellyfin.JellyfinDesktop.desktop"/>
         <value type="string" value="brave-browser.desktop"/>
         <value type="string" value="virtualbox.desktop"/>
         <value type="string" value="net.lutris.Lutris.desktop"/>
-        <value type="string" value="steam.desktop"/>
-        <value type="string" value="net.launchpad.plank.desktop"/>
-        <value type="string" value="org.kde.kdeconnect.nonplasma.desktop"/>
-        <value type="string" value="qt5ct.desktop"/>
-        <value type="string" value="org.kde.kdeconnect.app.desktop"/>
       </property>
       <property name="launcher-icon-size" type="int" value="3"/>
       <property name="category-icon-size" type="int" value="2"/>

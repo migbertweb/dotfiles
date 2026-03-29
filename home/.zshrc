@@ -9,10 +9,10 @@ fi
 export VISUAL="${EDITOR}"
 export EDITOR='vscodium --wait'
 export BROWSER='brave'
+export TERMINAL='kitty'
 export HISTORY_IGNORE="(ls|pwd|exit|sudo reboot|history)"
 export SUDO_PROMPT="Implementando acceso root para %u. Contraseña, por favor: "
-export GEMINI_API_KEY="A"
-
+# export GOOGLE_GENERATIVE_AI_API_KEY="AIzaSyCLEbC-eqgnGPiQctCsN0VoDsObvtubVao"
 # ----- Bat (better cat) -----
 export BAT_THEME=Dracula
 
@@ -214,6 +214,8 @@ alias encrypt='sops_encrypt'
 alias decrypt='sops_decrypt'
 alias edit-encrypted='sops'
 alias ver-encrypted='sops --decrypt'
+##### Alias de IA #####
+alias oc='ollama launch claude'
 ##### Alias para kustomize #####
 alias kusto-b='kustomize build --enable-alpha-plugins --enable-exec'
 alias kustomize='kustomize --enable-alpha-plugins --enable-exec'

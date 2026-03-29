@@ -1,0 +1,8 @@
+[Nemo Action]
+Active=true
+Name=Abrir en Antigravity
+Comment=Abrir el archivo o carpeta seleccionada en Antigravity
+Exec=antigravity %F
+Selection=any
+Extensions=any;
+Icon-Name=antigravity

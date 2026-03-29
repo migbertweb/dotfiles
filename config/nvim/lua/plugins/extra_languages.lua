@@ -1,10 +1,4 @@
 return {
-  {
-    "Exafunction/codeium.nvim",
-    cmd = "Codeium",
-    --build = ":Codeium Auth",
-    opts = {},
-  },
   --- blade -----------------------------
   {
     "jwalton512/vim-blade",

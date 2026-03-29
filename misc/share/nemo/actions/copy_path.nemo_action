@@ -1,0 +1,10 @@
+[Nemo Action]
+Active=true
+Name=Copiar Ruta Completa
+Comment=Copia la ruta absoluta del archivo al portapapeles
+Exec=bash -c "echo -n %F | xclip -selection clipboard"
+Icon-Name=edit-copy
+Selection=any
+Extensions=any;
+Quote=double
+Dependencies=xclip;
